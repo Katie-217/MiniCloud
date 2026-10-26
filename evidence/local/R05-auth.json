@@ -1,0 +1,12 @@
+{
+  "output": "R05",
+  "verified_at_utc": "2026-10-26T15:48:23.790241+00:00",
+  "details": {
+    "admin_login": "successful",
+    "realm": "master",
+    "user": "sv01",
+    "enabled": true,
+    "admin_console": "http://localhost:8081/auth/admin/master/console/",
+    "secrets": "omitted"
+  }
+}

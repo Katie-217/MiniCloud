@@ -61,8 +61,33 @@ services:
       retries: 12
       start_period: 30s
 
+  authentication-identity-server:
+    <<: *service-defaults
+    image: quay.io/keycloak/keycloak:26.1.4
+    container_name: authentication-identity-server
+    command: ["start-dev"]
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${KEYCLOAK_ADMIN:-admin}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:?Run scripts/setup.py}
+      KC_HTTP_ENABLED: "true"
+      KC_HTTP_RELATIVE_PATH: /auth
+      KC_HOSTNAME_STRICT: "false"
+      KC_PROXY_HEADERS: xforwarded
+    ports: ["8081:8080"]
+    volumes:
+      - keycloak-data:/opt/keycloak/data
+      - ./authentication-identity-server/healthcheck.sh:/opt/keycloak/healthcheck.sh:ro
+    healthcheck:
+      test: ["CMD", "bash", "/opt/keycloak/healthcheck.sh"]
+      interval: 15s
+      timeout: 5s
+      retries: 20
+      start_period: 60s
+
+
 volumes:
   db-data:
+  keycloak-data:
 
 networks:
   cloud-net:

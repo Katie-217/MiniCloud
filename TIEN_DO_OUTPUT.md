@@ -4,7 +4,7 @@ Cập nhật lần đầu: **26/10/2026** theo ngày phiên làm việc. Nguồn
 
 ## 1. Tổng quan hiện tại
 
-- **Output bắt buộc đạt: 2/18** nhóm trong bảng dưới. Đây là cách chia nhóm để quản lý, không phải cách chia điểm của PDF.
+- **Output bắt buộc đạt: 3/18** nhóm trong bảng dưới. Đây là cách chia nhóm để quản lý, không phải cách chia điểm của PDF.
 - **Mở rộng đạt: 0/10** mục.
 - Các service local được triển khai và kiểm thử dần theo bảng mục 3; chỉ các dòng `DAT` được tính hoàn thành.
 - Git local có `main` và các branch theo nhóm, kết nối repo Katie-217/MiniCloud; lịch sử tài liệu ban đầu được giữ nguyên.
@@ -32,7 +32,7 @@ Không lấy trạng thái container Running thay cho kết quả kiểm thử c
 | R02 | Home và `/blog/` HTTP 200, nội dung đúng — tr. 12–13 | `feat/web-api-database` | DAT | evidence/local/R02-web.json; Home + Blog |
 | R03 | `/hello` trực tiếp và qua proxy trả JSON đúng — tr. 13 | `feat/web-api-database` + `feat/gateway-network-tests` | CHO_KIEM_THU | evidence/local/R03-api.json; direct đạt, chờ proxy |
 | R04 | `minicloud.notes` có bảng và dữ liệu khởi tạo — tr. 6, 14 | `feat/web-api-database` | DAT | evidence/local/R04-database.json |
-| R05 | Keycloak admin đăng nhập được, tạo user sv01 — tr. 14–15 | `feat/identity-storage-dns` | CHUA_LAM | — |
+| R05 | Keycloak admin đăng nhập được, tạo user sv01 — tr. 14–15 | `feat/identity-storage-dns` | DAT | evidence/local/R05-auth.json; R05-keycloak-admin.png; R05-keycloak-user.png |
 | R06 | MinIO bucket demo, upload và tải file được — tr. 2, 15–16 | `feat/identity-storage-dns` | CHUA_LAM | — |
 | R07 | DNS Web trả `10.10.10.10` bằng dig — tr. 16–17 | `feat/identity-storage-dns` | CHUA_LAM | — |
 | R08 | Prometheus node target UP, query metric có dữ liệu — tr. 17–18 | `feat/monitoring-dashboard` | CHUA_LAM | — |
