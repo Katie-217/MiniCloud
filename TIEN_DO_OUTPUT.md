@@ -9,6 +9,8 @@ Cập nhật lần đầu: **26/10/2026** theo ngày phiên làm việc. Nguồn
 - Đã đọc đề và chuẩn bị kế hoạch, quy ước Git, bảng theo dõi. Chưa có mã nguồn hệ thống hoặc kết quả chạy service.
 - Đã khởi tạo Git local, branch `chore/project-foundation`; chưa có remote. Commit tài liệu: `567b95e` — `docs: ghi nhận kế hoạch`; `main` trỏ vào mốc khởi tạo này.
 - Đã thêm `.gitignore` loại trừ bí mật, dữ liệu runtime và file trích PDF; `.gitattributes` thống nhất line ending cho file container Linux.
+- Đã kết nối `https://github.com/Katie-217/MiniCloud`, giữ README và lịch sử remote; đã push branch nền tảng. Nhóm: Võ Thị Thiên Kim — 521H0092; Diệp Yến Nhi — chờ MSSV. Docker Hub namespace: `katie217`.
+- Quy ước mới: commit message tiếng Anh, tiền tố phù hợp và thông điệp chính khoảng 4–5 từ. AWS để sau theo yêu cầu người dùng; tiếp tục toàn bộ công việc local không phụ thuộc AWS.
 - Docker CLI/Compose đã cài; lần kiểm tra cuối `docker info` đã kết nối được Linux engine, server **29.0.1**. Chưa build/chạy service MyMiniCloud.
 
 ## 2. Quy ước trạng thái
@@ -58,7 +60,7 @@ Khi có kết quả, mỗi mục ghi: ID output, môi trường local/EC2, branc
 | ID | Vấn đề | Ảnh hưởng | Hướng xử lý | Trạng thái |
 |---|---|---|---|---|
 | FIX-001 | Ban đầu Docker CLI không kết nối được `dockerDesktopLinuxEngine` | Đã hết chặn build/chạy container | Kiểm tra lại bằng `docker info --format '{{.ServerVersion}}'`, nhận `29.0.1` | DAT |
-| FIX-002 | Chưa có remote GitHub | Chưa push được commit/branch lên repo bạn tạo | Git local đã sẵn sàng; nhận URL repo, kiểm tra nội dung rồi kết nối | CHO_THONG_TIN |
+| FIX-002 | Chưa có remote GitHub ở lần kiểm tra đầu | Đã hết chặn push branch | Đã fetch, giữ lịch sử và push `chore/project-foundation` lên MiniCloud | DAT |
 
 Chưa có lỗi chức năng nào của MyMiniCloud được xác nhận vì chưa triển khai service.
 
@@ -66,9 +68,9 @@ Chưa có lỗi chức năng nào của MyMiniCloud được xác nhận vì ch�
 
 | Việc cần làm rõ | Trạng thái | Hành động tiếp theo |
 |---|---|---|
-| URL repo và quyền làm việc | CHO_THONG_TIN | Người dùng tạo repo và gửi URL; agent kiểm tra remote |
-| MSSV, tên sinh viên/nhóm | CHO_THONG_TIN | Cập nhật định danh và báo cáo khi nhận được |
-| Username Docker Hub và login local | CHO_THONG_TIN | Xác minh namespace và quyền push |
+| URL repo và quyền làm việc | DAT | Katie-217/MiniCloud; quyền ADMIN; đã push branch |
+| MSSV, tên sinh viên/nhóm | DANG_LAM | Có Võ Thị Thiên Kim / 521H0092 và Diệp Yến Nhi; chờ MSSV thành viên thứ hai |
+| Username Docker Hub và login local | DANG_LAM | Namespace katie217; sẽ xác minh bằng push image thực tế |
 | Có EC2 Ubuntu hay chưa | CHO_THONG_TIN | Chốt phương án; nếu có, xác minh SSH và môi trường |
 | Public IP, user SSH, đường dẫn key nếu đã có EC2 | CHO_THONG_TIN | Kết nối bằng key local, không đưa nội dung key vào Git/chat |
 

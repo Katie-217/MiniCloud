@@ -85,20 +85,20 @@ Phần mở rộng giữ sau M3, chia dự kiến: `feat/content-student-extensi
 
 ## 5. Quy ước commit
 
-Định dạng đã chốt theo yêu cầu: **`type: thông điệp chính 4–5 từ`**, không tính tiền tố vào số từ. Không thêm dấu `*` vào subject; dấu `*` trong lời nhắn được hiểu là ký hiệu mô tả định dạng.
+Định dạng đã chốt theo yêu cầu mới nhất: **`type: English summary of 4–5 words`**. Thông điệp bằng tiếng Anh, ngắn gọn, đúng ý chính; không tính tiền tố vào số từ. Không thêm dấu `*` vào subject. Commit cũ đã có trên remote được giữ nguyên lịch sử.
 
 | Tình huống | Ví dụ commit |
 |---|---|
-| Lưu kế hoạch/quy ước | `docs: ghi nhận kế hoạch` |
-| Tạo cấu trúc | `chore: khởi tạo cấu trúc` |
-| Thêm Home | `feat: phục vụ trang chủ` |
-| Thêm Blog | `feat: phục vụ trang blog` |
-| API hello | `feat: thêm API chào hỏi` |
-| Seed DB | `feat: khởi tạo dữ liệu` |
-| Sửa routing | `fix: sửa đường dẫn proxy` |
-| Bổ sung test | `test: kiểm tra thông mạng` |
-| Lưu evidence | `docs: bổ sung bằng chứng` |
-| Cập nhật trạng thái riêng | `docs: cập nhật bảng output` |
+| Lưu kế hoạch/quy ước | `docs: record project implementation plan` |
+| Tạo cấu trúc | `chore: initialize project directory structure` |
+| Thêm Home | `feat: serve project home page` |
+| Thêm Blog | `feat: serve static blog page` |
+| API hello | `feat: add hello API endpoint` |
+| Seed DB | `feat: initialize database seed records` |
+| Sửa routing | `fix: correct authentication proxy routing` |
+| Bổ sung test | `test: verify internal network connectivity` |
+| Lưu evidence | `docs: capture local verification evidence` |
+| Cập nhật trạng thái riêng | `docs: update output tracking status` |
 
 Quy trình mỗi commit: sửa một chức năng/output → kiểm tra diff → chạy test liên quan → cập nhật `TIEN_DO_OUTPUT.md` → commit đúng file. Những thay đổi phục vụ cùng một output có thể nằm chung commit; không gom Web, DB và Auth thành một commit duy nhất.
 
