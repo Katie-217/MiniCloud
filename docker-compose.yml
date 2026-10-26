@@ -103,6 +103,22 @@ services:
       retries: 12
       start_period: 15s
 
+  internal-dns-server:
+    <<: *service-defaults
+    image: internetsystemsconsortium/bind9:9.18
+    container_name: internal-dns-server
+    ports: ["1053:53/udp", "1053:53/tcp"]
+    volumes:
+      - ./internal-dns-server/named.conf:/etc/bind/named.conf:ro
+      - ./internal-dns-server/named.conf.options:/etc/bind/named.conf.options:ro
+      - ./internal-dns-server/named.conf.local:/etc/bind/named.conf.local:ro
+      - ./internal-dns-server/db.cloud.local:/etc/bind/db.cloud.local:ro
+    healthcheck:
+      test: ["CMD", "named-checkconf", "/etc/bind/named.conf"]
+      interval: 15s
+      timeout: 5s
+      retries: 6
+
 volumes:
   db-data:
   keycloak-data:
