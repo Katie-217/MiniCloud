@@ -1,9 +1,16 @@
 {
   "output": "R03",
-  "verified_at_utc": "2026-10-26T15:44:30.749570+00:00",
+  "verified_at_utc": "2026-10-26T15:59:15.932116+00:00",
   "details": [
     {
       "url": "http://localhost:8085/hello",
+      "status": 200,
+      "json": {
+        "message": "Hello from App Server!"
+      }
+    },
+    {
+      "url": "http://localhost/api/hello",
       "status": 200,
       "json": {
         "message": "Hello from App Server!"
