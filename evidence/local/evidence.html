@@ -1,0 +1,95 @@
+<!doctype html><html lang="vi"><meta charset="utf-8"><title>MyMiniCloud local evidence</title>
+<style>body{margin:0;background:#edf2f5;color:#183043;font:17px Arial,sans-serif}section{background:white;margin:28px;padding:36px;border-top:6px solid #167264;border-radius:8px}h1{font-size:30px}.label{font-size:12px;letter-spacing:2px;color:#167264}table{border-collapse:collapse;width:100%;font-size:15px}th,td{border:1px solid #d4dee5;padding:12px;text-align:left}th{background:#ecf3f5}pre{background:#132b38;color:#e1f3f4;padding:24px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.5;font-size:16px}code{color:#125b69}</style><section id="R01"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>10 healthy containers · 9 server roles</h1><p>Source: <code>R01-stack.json</code> — captured test results, not sample output.</p><table><tr><th>Container</th><th>Health</th><th>Network</th><th>Restart policy</th></tr><tr><td>object-storage-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>authentication-identity-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>internal-dns-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>monitoring-node-exporter-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>monitoring-prometheus-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>monitoring-grafana-dashboard-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>relational-database-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>web-frontend-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>application-backend-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>api-gateway-proxy-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr></table></section><section id="R03"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>Flask API · direct and gateway</h1><p>Source: <code>R03-api.json</code> — captured test results, not sample output.</p><pre>[
+  {
+    &quot;url&quot;: &quot;http://localhost:8085/hello&quot;,
+    &quot;status&quot;: 200,
+    &quot;json&quot;: {
+      &quot;message&quot;: &quot;Hello from App Server!&quot;
+    }
+  },
+  {
+    &quot;url&quot;: &quot;http://localhost/api/hello&quot;,
+    &quot;status&quot;: 200,
+    &quot;json&quot;: {
+      &quot;message&quot;: &quot;Hello from App Server!&quot;
+    }
+  }
+]</pre></section><section id="R04"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>MariaDB · initial schema and records</h1><p>Source: <code>R04-database.json</code> — captured test results, not sample output.</p><pre>{
+  &quot;query&quot;: &quot;USE minicloud; SHOW TABLES; SELECT * FROM notes;&quot;,
+  &quot;output&quot;: &quot;Tables_in_minicloud\nnotes\nid\ttitle\tcreated_at\n1\tHello from MariaDB!\t2026-10-26 15:44:53\n2\tPersistence verification 521H0092\t2026-10-26 16:00:24&quot;
+}</pre></section><section id="R07"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>Bind9 · authoritative DNS</h1><p>Source: <code>R07-dns.json</code> — captured test results, not sample output.</p><pre>[
+  {
+    &quot;server&quot;: &quot;internal-dns-server&quot;,
+    &quot;port&quot;: &quot;53&quot;,
+    &quot;name&quot;: &quot;web-frontend-server.cloud.local&quot;,
+    &quot;answer&quot;: &quot;10.10.10.10&quot;
+  },
+  {
+    &quot;server&quot;: &quot;host.docker.internal&quot;,
+    &quot;port&quot;: &quot;1053&quot;,
+    &quot;name&quot;: &quot;web-frontend-server.cloud.local&quot;,
+    &quot;answer&quot;: &quot;10.10.10.10&quot;
+  }
+]</pre></section><section id="R10"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>Reverse Proxy · Web / API / Auth</h1><p>Source: <code>R10-gateway.json</code> — captured test results, not sample output.</p><pre>[
+  {
+    &quot;path&quot;: &quot;/&quot;,
+    &quot;status&quot;: 200,
+    &quot;content_type&quot;: &quot;text/html; charset=utf-8&quot;
+  },
+  {
+    &quot;path&quot;: &quot;/blog/&quot;,
+    &quot;status&quot;: 200,
+    &quot;content_type&quot;: &quot;text/html; charset=utf-8&quot;
+  },
+  {
+    &quot;path&quot;: &quot;/api/hello&quot;,
+    &quot;status&quot;: 200,
+    &quot;content_type&quot;: &quot;application/json&quot;
+  },
+  {
+    &quot;path&quot;: &quot;/api/notes&quot;,
+    &quot;status&quot;: 200,
+    &quot;content_type&quot;: &quot;application/json&quot;
+  },
+  {
+    &quot;path&quot;: &quot;/auth/&quot;,
+    &quot;status&quot;: 302,
+    &quot;location&quot;: &quot;http://localhost/auth/admin/&quot;
+  },
+  {
+    &quot;oidc_issuer&quot;: &quot;http://localhost/auth/realms/master&quot;,
+    &quot;token_endpoint&quot;: &quot;http://localhost/auth/realms/master/protocol/openid-connect/token&quot;
+  }
+]</pre></section><section id="R11"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>cloud-net · 3 pings to each service</h1><p>Source: <code>R11-network.json</code> — captured test results, not sample output.</p><table><tr><th>Container</th><th>Packets</th><th>Loss</th></tr><tr><td>monitoring-node-exporter-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>monitoring-prometheus-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>relational-database-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>authentication-identity-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>object-storage-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>web-frontend-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>application-backend-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>api-gateway-proxy-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>internal-dns-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>monitoring-grafana-dashboard-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr></table><p>Full ping output is retained in R11-network.json.</p></section><section id="R12"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>State preserved after recreating 5 containers</h1><p>Source: <code>R12-persistence.json</code> — captured test results, not sample output.</p><pre>{
+  &quot;all_five_container_ids_changed&quot;: true,
+  &quot;named_volumes_unchanged&quot;: {
+    &quot;relational-database-server&quot;: [
+      &quot;myminicloud_db-data&quot;
+    ],
+    &quot;authentication-identity-server&quot;: [
+      &quot;myminicloud_keycloak-data&quot;
+    ],
+    &quot;object-storage-server&quot;: [
+      &quot;myminicloud_minio-data&quot;
+    ],
+    &quot;monitoring-prometheus-server&quot;: [
+      &quot;myminicloud_prometheus-data&quot;
+    ],
+    &quot;monitoring-grafana-dashboard-server&quot;: [
+      &quot;myminicloud_grafana-data&quot;
+    ]
+  },
+  &quot;database_custom_marker_preserved&quot;: &quot;Persistence verification 521H0092&quot;,
+  &quot;keycloak_sv01_preserved&quot;: true,
+  &quot;minio_demo_object_preserved&quot;: true,
+  &quot;grafana_custom_folder_preserved&quot;: true,
+  &quot;prometheus_historical_sample_preserved&quot;: true,
+  &quot;historical_sample_time&quot;: 1793030422.2727716
+}</pre></section><section id="R13"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>Custom image published to Docker Hub</h1><p>Source: <code>R13-dockerhub.json</code> — captured test results, not sample output.</p><pre>{
+  &quot;image&quot;: &quot;katie217/myminicloud-web:1.0.0&quot;,
+  &quot;digest&quot;: &quot;sha256:4988e9c9b5c2fb9c21d801a2035e4d4cc52f01de71bbb4de33d4cafff9121815&quot;,
+  &quot;manifest_read_back&quot;: true,
+  &quot;repository_url&quot;: &quot;https://hub.docker.com/r/katie217/myminicloud-web&quot;,
+  &quot;tag_url&quot;: &quot;https://hub.docker.com/r/katie217/myminicloud-web/tags&quot;,
+  &quot;manifest_media_type&quot;: &quot;application/vnd.oci.image.index.v1+json&quot;
+}</pre></section></html>
