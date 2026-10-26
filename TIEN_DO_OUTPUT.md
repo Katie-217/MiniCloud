@@ -43,7 +43,7 @@ Không lấy trạng thái container Running thay cho kết quả kiểm thử c
 | R13 | Ít nhất 1 image tùy chỉnh trên Docker Hub, có link/tag — tr. 3 | `chore/cloud-deployment` | DAT | evidence/local/R13-dockerhub.json; katie217/myminicloud-web:1.0.0; manifest verified from registry |
 | R14 | Toàn hệ thống chạy trên EC2 Ubuntu, public IP và test server đạt — tr. 1, 3 | `chore/cloud-deployment` | CHUA_LAM | — |
 | R15 | Dockerfile/Compose/config và source đủ để tái tạo — tr. 3 | Toàn bộ branch triển khai | DANG_LAM | Đã có setup, env mẫu và quy ước cấu hình |
-| R16 | Báo cáo đủ 5 chương + phụ lục, thống kê mở rộng — tr. 3, 27 | `docs/submission-evidence` | CHUA_LAM | — |
+| R16 | Báo cáo đủ 5 chương + phụ lục, thống kê mở rộng — tr. 3, 27 | `docs/submission-evidence` | CHO_KIEM_THU | report/BaoCao_Local_521H0092.md/.pdf/.docx: đủ 5 chương cho local; chờ EC2 và MSSV thành viên hai |
 | R17 | Video demo và link truy cập được trong phụ lục — tr. 3 | `docs/submission-evidence` | CHUA_LAM | — |
 | R18 | Ảnh từng server, log test; phân biệt local và EC2 — tr. 3 | Từng branch + `docs/submission-evidence` | CHO_KIEM_THU | evidence/local: đủ ảnh/log từng server, network, persistence, Docker Hub; EC2 chưa thực hiện |
 

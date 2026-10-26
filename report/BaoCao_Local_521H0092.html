@@ -1,0 +1,277 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>MyMiniCloud — Báo cáo local</title><style>body{font:11pt Arial,sans-serif;line-height:1.6;color:#19303d}h1{font-size:25pt;color:#125d55}h2{font-size:18pt;color:#125d55;border-bottom:1px solid #b8cecc;page-break-before:always}h3{font-size:13pt;page-break-after:avoid}table{width:100%;border-collapse:collapse;font-size:9pt}th,td{border:1px solid #b8c8cd;padding:7px;vertical-align:top}th{background:#edf4f4}tr{break-inside:avoid}img{max-width:100%;max-height:225mm;object-fit:contain;display:block;margin:16px auto}p:has(img){break-inside:avoid}pre{white-space:pre-wrap;word-break:break-word;background:#f1f5f6;padding:12px;font-size:9pt}a{color:#126b77;overflow-wrap:anywhere}code{font-size:9pt}</style></head><body><h1>BÁO CÁO CUỐI KỲ — MYMINICLOUD</h1>
+<p><strong>Bản kiểm chứng LOCAL — chưa triển khai AWS EC2</strong></p>
+<p>Môn học: Điện toán đám mây.</p>
+<p>Sinh viên: <strong>Võ Thị Thiên Kim — 521H0092</strong>; <strong>Diệp Yến Nhi — MSSV chờ bổ sung</strong>.</p>
+<p>Ngày ghi nhận kết quả: <strong>26/10/2026</strong>, múi giờ Việt Nam. Mỗi log JSON có thời điểm kiểm thử UTC riêng để đối chiếu.</p>
+<p>Repository: https://github.com/Katie-217/MiniCloud</p>
+<p>Tài liệu này ghi kết quả thực tế trên Docker Desktop Linux engine. Phần AWS và video EC2 còn thiếu; tài liệu cần cập nhật trước khi nộp bản cuối. Đã thực hiện <strong>0/10 mục mở rộng</strong>; <code>/secure</code> mới có cấu hình kiểm tra token và test từ chối token thiếu/sai, chưa hoàn thành luồng E04.</p>
+<h2>Chương 1. Giới thiệu và mục tiêu</h2>
+<h3>1.1. Bài toán</h3>
+<p>Xây dựng mô phỏng hạ tầng cloud thu nhỏ MyMiniCloud gồm Web, Application, Database, Authentication, Object Storage, Internal DNS, Monitoring, Visualization và Reverse Proxy. Mỗi thành phần chạy trong container riêng và tham gia mạng <code>cloud-net</code>.</p>
+<p>Mô hình có 9 loại server và 10 container chạy thường trực do Monitoring sử dụng thêm Node Exporter, đúng cấu trúc Compose của hướng dẫn chi tiết. Đây là hạ tầng mô phỏng trên một máy, chưa có độ sẵn sàng cao hay điều phối nhiều node.</p>
+<h3>1.2. Mục tiêu kiểm chứng</h3>
+<ul>
+<li>Web phục vụ Home/Blog; Flask cung cấp API trực tiếp và qua proxy, đọc dữ liệu MariaDB thật.</li>
+<li>Keycloak có admin đăng nhập và user sv01; MinIO upload/download; Bind9 trả bản ghi theo đề.</li>
+<li>Prometheus thu thập metrics; Grafana hiển thị CPU/RAM/Network.</li>
+<li>Container cùng mạng, restart policy hợp lệ; dữ liệu lưu được sau khi tạo lại container.</li>
+<li>Image Web tùy chỉnh được publish Docker Hub. AWS chờ setup từ người dùng.</li>
+</ul>
+<h2>Chương 2. Kiến trúc và sơ đồ</h2>
+<p><img alt="Kiến trúc hệ thống local" src="architecture.png" /></p>
+<h3>2.1. Luồng request</h3>
+<ol>
+<li>Trình duyệt gọi gateway <code>http://localhost/</code>, gateway chuyển tới Web Nginx.</li>
+<li><code>/api/hello</code> chuyển thành Flask <code>/hello</code>; <code>/api/notes</code> đọc bảng notes bằng tài khoản DB ứng dụng, không dùng root.</li>
+<li><code>/auth/</code> được giữ nguyên đường dẫn khi chuyển tới Keycloak. Context path phía Keycloak cũng là <code>/auth</code>.</li>
+<li>Prometheus scrape Node Exporter mỗi 15 giây. Grafana truy vấn Prometheus bằng tên service nội bộ.</li>
+<li>MinIO và Bind9 có bài kiểm thử độc lập. Bản ghi IP 10.10.10.10 trong zone là IP ví dụ theo đề; không tự gán IP đó cho Web container.</li>
+</ol>
+<h3>2.2. Ánh xạ cổng</h3>
+<table>
+<thead>
+<tr>
+<th>Dịch vụ</th>
+<th>Cổng host → container</th>
+<th>Vai trò</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gateway</td>
+<td>80 → 80</td>
+<td>Web/App/Auth qua điểm vào chung</td>
+</tr>
+<tr>
+<td>Web</td>
+<td>8080 → 80</td>
+<td>Home và Blog</td>
+</tr>
+<tr>
+<td>App</td>
+<td>8085 → 8081</td>
+<td>Flask API</td>
+</tr>
+<tr>
+<td>MariaDB</td>
+<td>127.0.0.1:3306 → 3306</td>
+<td>CSDL quan hệ</td>
+</tr>
+<tr>
+<td>Keycloak</td>
+<td>8081 → 8080</td>
+<td>Quản trị tại /auth/</td>
+</tr>
+<tr>
+<td>MinIO</td>
+<td>9000 / 9001</td>
+<td>S3 API / Console</td>
+</tr>
+<tr>
+<td>Bind9</td>
+<td>1053 → 53 UDP/TCP</td>
+<td>DNS lab</td>
+</tr>
+<tr>
+<td>Node Exporter</td>
+<td>127.0.0.1:9100 → 9100</td>
+<td>Metrics</td>
+</tr>
+<tr>
+<td>Prometheus</td>
+<td>9090 → 9090</td>
+<td>Thu thập và truy vấn</td>
+</tr>
+<tr>
+<td>Grafana</td>
+<td>3000 → 3000</td>
+<td>Dashboard</td>
+</tr>
+</tbody>
+</table>
+<h2>Chương 3. Cấu hình và Dockerfile</h2>
+<h3>3.1. Docker Compose</h3>
+<p><code>docker-compose.yml</code> đặt tên project <code>myminicloud</code>, khai báo mạng <code>cloud-net</code> và tên container riêng. Các service kế thừa <code>restart: unless-stopped</code>, network và cấu hình xoay log. Healthcheck được dùng trong <code>depends_on</code> để chờ dịch vụ sẵn sàng. Mật khẩu được sinh vào <code>.env</code> local bởi <code>scripts/setup.py</code> và không nằm trong Git.</p>
+<p>Named volumes lưu dữ liệu MariaDB, Keycloak, MinIO, Prometheus và Grafana. Không dùng thao tác xóa volume để khởi tạo lại khi kiểm thử.</p>
+<h3>3.2. Web, App và DB</h3>
+<ul>
+<li><code>web-frontend-server/Dockerfile</code>: dựa trên Nginx Alpine, copy config và HTML. <code>/blog/</code> dùng alias có dấu <code>/</code> cuối như hướng dẫn.</li>
+<li><code>application-backend-server/Dockerfile</code>: Python 3.11 Alpine, cài requirements, chạy Gunicorn dưới user không đặc quyền. API giữ nội dung JSON <code>/hello</code> theo đề; <code>/notes</code> thể hiện kết nối DB thật.</li>
+<li>SQL <code>relational-database-server/init/001_init.sql</code> tạo database minicloud, bảng notes và seed <code>Hello from MariaDB!</code>. Sau test persistence có thêm một bản ghi đánh dấu kiểm thử.</li>
+</ul>
+<h3>3.3. Auth, Storage và DNS</h3>
+<ul>
+<li>Keycloak dùng image 26.1.4, <code>start-dev</code>, context path <code>/auth</code>; script kiểm thử đăng nhập admin và tạo user sv01. Volume giữ dữ liệu H2 của bài lab.</li>
+<li>MinIO build từ source chính thức tag RELEASE.2025-04-22T22-12-26Z, kiểm tra SHA256 archive. Cách này thay thế các image/download đã không còn truy cập được khi thực hiện; LICENSE được giữ trong image. Console đầy đủ đã được kiểm thử.</li>
+<li>Bind9 dùng ba file theo đề và một named.conf include rõ ràng; UDP/TCP 1053 công bố ra host. Zone có bản ghi Web 10.10.10.10.</li>
+</ul>
+<h3>3.4. Monitoring và Gateway</h3>
+<p>Prometheus job node trỏ <code>monitoring-node-exporter-server:9100</code>. Grafana được provision datasource và Node Exporter Full revision 37, giữ tác giả/license template. Trên Docker Desktop, CPU/RAM là số liệu Linux VM; network phản ánh namespace exporter quan sát được. Root filesystem và một số panel tùy chọn có thể N/A; ba nhóm CPU/RAM/Network chính có dữ liệu.</p>
+<p>Gateway Nginx có upstream với Docker DNS resolver để cập nhật IP sau khi container được tạo lại. <code>/api/</code> bỏ tiền tố; <code>/auth/</code> giữ tiền tố và truyền các header forwarded phù hợp. <code>/auth/</code> trả redirect 302; URL issuer kiểm chứng là <code>http://localhost/auth/realms/master</code>.</p>
+<h2>Chương 4. Demo và kiểm thử</h2>
+<h3>4.1. Kết quả chức năng local</h3>
+<table>
+<thead>
+<tr>
+<th>Nhóm</th>
+<th>Kỳ vọng</th>
+<th>Kết quả thực tế / bằng chứng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compose</td>
+<td>Toàn bộ server chạy, chung mạng, restart đúng</td>
+<td>10 container healthy; R01-stack.json</td>
+</tr>
+<tr>
+<td>Web</td>
+<td>Home/Blog HTTP 200</td>
+<td>Cả hai đạt; R02-web.json</td>
+</tr>
+<tr>
+<td>App</td>
+<td>Hello JSON đúng, trực tiếp/qua proxy</td>
+<td>Cả hai đạt; R03-api.json</td>
+</tr>
+<tr>
+<td>Database</td>
+<td>notes và seed tồn tại</td>
+<td>Query đạt; R04-database.json; App đọc DB đạt</td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>Admin login, tạo sv01</td>
+<td>API và trình duyệt đạt; R05-auth.json</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>Bucket demo, upload/download</td>
+<td>Hai chiều khớp SHA256 và bytes; R06-storage.json</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>Web trả 10.10.10.10</td>
+<td>Đạt qua nội bộ và host 1053; R07-dns.json</td>
+</tr>
+<tr>
+<td>Prometheus</td>
+<td>Target node UP, metrics có dữ liệu</td>
+<td>Đạt; R08-monitoring.json</td>
+</tr>
+<tr>
+<td>Grafana</td>
+<td>CPU/RAM/Network hiển thị</td>
+<td>Đạt qua query và ảnh UI; R09-grafana.json</td>
+</tr>
+<tr>
+<td>Proxy</td>
+<td>Web/API/Auth route đúng</td>
+<td>200 / JSON / 302, issuer đúng; R10-gateway.json</td>
+</tr>
+<tr>
+<td>Network</td>
+<td>Ping các server thành công</td>
+<td>3 gói/service, cả 10 service 0% loss; R11-network.json</td>
+</tr>
+<tr>
+<td>Persistence</td>
+<td>Tạo lại container không mất dữ liệu</td>
+<td>5 container ID đổi, dữ liệu vẫn còn; R12-persistence.json</td>
+</tr>
+<tr>
+<td>Docker Hub</td>
+<td>Có image tùy chỉnh</td>
+<td>katie217/myminicloud-web:1.0.0; R13-dockerhub.json</td>
+</tr>
+<tr>
+<td>AWS EC2</td>
+<td>Toàn hệ thống chạy public IP</td>
+<td>Chưa làm theo chỉ dẫn chờ AWS từ người dùng</td>
+</tr>
+</tbody>
+</table>
+<h3>4.2. Ảnh minh chứng</h3>
+<p>Ảnh log bên dưới được tạo từ kết quả kiểm thử đã lưu, không dùng ảnh mẫu của đề. Các ảnh giao diện Web/Keycloak/MinIO/Prometheus/Grafana được chụp từ hệ thống thực đang chạy.</p>
+<p><img alt="Compose và trạng thái container" src="../evidence/local/R01-result.png" /></p>
+<p><img alt="Trang Home" src="../evidence/local/R02-home.png" /></p>
+<p><img alt="Trang Blog" src="../evidence/local/R02-blog.png" /></p>
+<p><img alt="API trực tiếp và qua proxy" src="../evidence/local/R03-result.png" /></p>
+<p><img alt="Query MariaDB" src="../evidence/local/R04-result.png" /></p>
+<p><img alt="Keycloak và user sv01" src="../evidence/local/R05-keycloak-user.png" /></p>
+<p><img alt="Object trong MinIO Console" src="../evidence/local/R06-minio-object.png" /></p>
+<p><img alt="DNS nội bộ và cổng host" src="../evidence/local/R07-result.png" /></p>
+<p><img alt="Prometheus target UP" src="../evidence/local/R08-prometheus-targets.png" /></p>
+<p><img alt="Grafana CPU RAM Network" src="../evidence/local/R09-grafana-dashboard.png" /></p>
+<p><img alt="Gateway Web API Auth" src="../evidence/local/R10-result.png" /></p>
+<p><img alt="Thông mạng toàn hệ thống" src="../evidence/local/R11-result.png" /></p>
+<p><img alt="Lưu dữ liệu sau khi tạo lại container" src="../evidence/local/R12-result.png" /></p>
+<p><img alt="Image Docker Hub" src="../evidence/local/R13-result.png" /></p>
+<h3>4.3. Cách chạy lại kiểm thử</h3>
+<pre><code class="language-powershell">docker compose up -d --build --wait
+docker build -t myminicloud-tools:local tools
+.venv/Scripts/python scripts/check_all.py --screenshots
+</code></pre>
+<p>Kiểm thử persistence riêng: <code>.venv/Scripts/python scripts/check_persistence.py</code>. Lệnh này chỉ tạo lại 5 container lưu dữ liệu của MyMiniCloud, giữ nguyên volume; có bổ sung bản ghi DB và folder Grafana để chứng minh dữ liệu không bị tạo lại từ seed.</p>
+<h3>4.4. Các mục mở rộng</h3>
+<p>Hiện <strong>0/10 mục</strong>. Blog mới có trang chỉ mục cơ bản; chưa có 3 bài mở rộng. Chưa có JSON 5 sinh viên, studentdb, realm MSSV/client flask-app/token hợp lệ, avatar public/documents PDF, DNS bổ sung, metrics Web, dashboard cá nhân, route student hoặc Round Robin. Việc có <code>/notes</code> và <code>/secure</code> không được tính thay cho các yêu cầu này.</p>
+<h2>Chương 5. Đánh giá và phân tích</h2>
+<h3>5.1. Kết quả và ưu điểm</h3>
+<p>Phần chức năng bắt buộc trên local đã có kiểm thử thực tế và script chạy lại. Cấu hình tách service rõ ràng; healthcheck, named volume, tài khoản DB ứng dụng và mật khẩu ngoài Git giúp vận hành demo thuận tiện. Git giữ từng branch nhóm và các commit chức năng nhỏ; commit từ thời điểm chốt quy ước mới dùng tiếng Anh.</p>
+<h3>5.2. Khó khăn và cách xử lý</h3>
+<table>
+<thead>
+<tr>
+<th>Vấn đề</th>
+<th>Cách xử lý và kiểm chứng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cổng App/Auth và tên service khác nhau giữa các trang đề</td>
+<td>Thống nhất theo Compose: App 8085, Auth 8081; dùng tên service dài</td>
+</tr>
+<tr>
+<td>Mẫu ghi 9 container nhưng có Node Exporter</td>
+<td>Báo cáo đúng 9 vai trò / 10 container</td>
+</tr>
+<tr>
+<td>MinIO registry/archive không tải được</td>
+<td>Build từ source chính thức có SHA256, kiểm thử Console và S3</td>
+</tr>
+<tr>
+<td>Docker Desktop không hỗ trợ rslave cho mount root này</td>
+<td>Bỏ propagation rslave, giữ read-only và proc/sys mounts; query metrics đạt</td>
+</tr>
+<tr>
+<td>Proxy Auth có thể sai context path</td>
+<td>Thống nhất /auth ở hai phía; kiểm tra UI và issuer</td>
+</tr>
+<tr>
+<td>Container tạo lại có IP khác</td>
+<td>Upstream resolve bằng Docker DNS; kiểm tra proxy sau recreate</td>
+</tr>
+</tbody>
+</table>
+<h3>5.3. Hạn chế và phần còn thiếu</h3>
+<ul>
+<li>Chưa có EC2/public IP và minh chứng cloud; đây là yêu cầu bắt buộc còn thiếu.</li>
+<li>MSSV Diệp Yến Nhi cần bổ sung trước khi nộp.</li>
+<li>Metrics chưa cung cấp giám sát mọi container; chưa có logging tập trung Loki. Theo test chi tiết của đề, Grafana dùng dữ liệu Prometheus; log container được lưu riêng và đã loại mật khẩu.</li>
+<li>Bản local dùng HTTP và Keycloak dev; chưa phải cấu hình vận hành production.</li>
+<li>Video local và đường dẫn nằm trong phụ lục; cần bổ sung phần EC2 rồi hoàn thiện hồ sơ cuối.</li>
+<li>Chưa thực hiện 10 mục mở rộng. Các kết quả local không được tính tự động là kết quả EC2.</li>
+</ul>
+<h3>5.4. Hướng tiếp tục</h3>
+<p>Khi người dùng chuẩn bị AWS, triển khai cùng source trên EC2 Ubuntu, cập nhật origin/hostname, kiểm thử đủ từng server qua SSH và public endpoint, chụp bằng chứng EC2, cập nhật báo cáo/video. Sau khi khép toàn bộ phần bắt buộc mới làm mở rộng theo bảng tiến độ.</p>
+<h2>Phụ lục</h2>
+<ul>
+<li>Source và lịch sử branch: https://github.com/Katie-217/MiniCloud</li>
+<li>Docker Hub: https://hub.docker.com/r/katie217/myminicloud-web</li>
+<li>Image tag: <code>katie217/myminicloud-web:1.0.0</code>; digest chính xác trong <code>evidence/local/R13-dockerhub.json</code>.</li>
+<li>Video local: <a href="Demo_Local_521H0092.webm">Demo_Local_521H0092.webm</a>. Link repo sau khi push: https://github.com/Katie-217/MiniCloud/blob/main/report/Demo_Local_521H0092.webm</li>
+<li>Log/JSON/ảnh: <code>evidence/local/</code>; <code>service-logs.txt</code> đã loại mật khẩu; <code>image-inventory.json</code> ghi image ID/digest đang chạy.</li>
+<li>Bảng theo dõi: <code>TIEN_DO_OUTPUT.md</code>. AWS và hồ sơ cuối chưa được đánh dấu hoàn thành.</li>
+<li>Đề gốc: Báo Cáo Cuối Kỳ.docx.pdf, trang 1–3, 11–20 và 21–27.</li>
+<li>Tài liệu cấu hình tham khảo: https://docs.docker.com/compose/how-tos/startup-order/ ; https://www.keycloak.org/server/reverseproxy ; https://github.com/prometheus/node_exporter#docker ; https://grafana.com/docs/grafana/latest/administration/provisioning/ .</li>
+</ul></body></html>
