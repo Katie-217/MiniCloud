@@ -32,6 +32,9 @@ services:
       DB_HOST: relational-database-server
       DB_USER: ${MARIADB_USER:-minicloud}
       DB_PASSWORD: ${MARIADB_PASSWORD:?Run scripts/setup.py}
+      OIDC_ISSUER: ${PUBLIC_ORIGIN:-http://localhost}/auth/realms/master
+      OIDC_JWKS_URL: http://authentication-identity-server:8080/auth/realms/master/protocol/openid-connect/certs
+      OIDC_AUDIENCE: myapp
     depends_on:
       relational-database-server:
         condition: service_healthy
@@ -61,8 +64,68 @@ services:
       retries: 12
       start_period: 30s
 
+  authentication-identity-server:
+    <<: *service-defaults
+    image: quay.io/keycloak/keycloak:26.1.4
+    container_name: authentication-identity-server
+    command: ["start-dev"]
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${KEYCLOAK_ADMIN:-admin}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:?Run scripts/setup.py}
+      KC_HTTP_ENABLED: "true"
+      KC_HTTP_RELATIVE_PATH: /auth
+      KC_HOSTNAME_STRICT: "false"
+      KC_PROXY_HEADERS: xforwarded
+    ports: ["8081:8080"]
+    volumes:
+      - keycloak-data:/opt/keycloak/data
+      - ./authentication-identity-server/healthcheck.sh:/opt/keycloak/healthcheck.sh:ro
+    healthcheck:
+      test: ["CMD", "bash", "/opt/keycloak/healthcheck.sh"]
+      interval: 15s
+      timeout: 5s
+      retries: 20
+      start_period: 60s
+
+  object-storage-server:
+    <<: *service-defaults
+    build: ./object-storage-server
+    image: ${DOCKERHUB_USERNAME:-katie217}/myminicloud-minio:source-2025-04-22
+    container_name: object-storage-server
+    command: ["server", "/data", "--console-address", ":9001"]
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minicloudadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:?Run scripts/setup.py}
+    ports: ["9000:9000", "9001:9001"]
+    volumes:
+      - minio-data:/data
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 15s
+
+  internal-dns-server:
+    <<: *service-defaults
+    image: internetsystemsconsortium/bind9:9.18
+    container_name: internal-dns-server
+    ports: ["1053:53/udp", "1053:53/tcp"]
+    volumes:
+      - ./internal-dns-server/named.conf:/etc/bind/named.conf:ro
+      - ./internal-dns-server/named.conf.options:/etc/bind/named.conf.options:ro
+      - ./internal-dns-server/named.conf.local:/etc/bind/named.conf.local:ro
+      - ./internal-dns-server/db.cloud.local:/etc/bind/db.cloud.local:ro
+    healthcheck:
+      test: ["CMD", "named-checkconf", "/etc/bind/named.conf"]
+      interval: 15s
+      timeout: 5s
+      retries: 6
+
 volumes:
   db-data:
+  keycloak-data:
+  minio-data:
 
 networks:
   cloud-net:

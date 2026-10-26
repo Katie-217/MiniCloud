@@ -1,0 +1,20 @@
+{
+  "output": "OIDC endpoint preparation",
+  "verified_at_utc": "2026-10-26T15:52:23.187189+00:00",
+  "details": [
+    {
+      "case": "missing token",
+      "status": 401,
+      "body": {
+        "error": "Missing Bearer token"
+      }
+    },
+    {
+      "case": "malformed token",
+      "status": 401,
+      "body": {
+        "error": "Invalid access token"
+      }
+    }
+  ]
+}

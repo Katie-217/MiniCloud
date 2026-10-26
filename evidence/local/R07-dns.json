@@ -1,0 +1,18 @@
+{
+  "output": "R07",
+  "verified_at_utc": "2026-10-26T15:51:50.348555+00:00",
+  "details": [
+    {
+      "server": "internal-dns-server",
+      "port": "53",
+      "name": "web-frontend-server.cloud.local",
+      "answer": "10.10.10.10"
+    },
+    {
+      "server": "host.docker.internal",
+      "port": "1053",
+      "name": "web-frontend-server.cloud.local",
+      "answer": "10.10.10.10"
+    }
+  ]
+}
