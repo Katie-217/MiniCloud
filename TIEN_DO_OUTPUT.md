@@ -29,7 +29,7 @@ Không lấy trạng thái container Running thay cho kết quả kiểm thử c
 | ID | Output cần đạt / căn cứ PDF | Branch phụ trách | Trạng thái | Minh chứng / commit |
 |---|---|---|---|---|
 | R01 | Compose khởi động toàn hệ thống; `cloud-net`, container name, cổng, restart đúng — tr. 1–3 | `chore/project-foundation` + các nhóm tích hợp | CHO_KIEM_THU | Compose nền hợp lệ; chưa đủ service |
-| R02 | Home và `/blog/` HTTP 200, nội dung đúng — tr. 12–13 | `feat/web-api-database` | CHUA_LAM | — |
+| R02 | Home và `/blog/` HTTP 200, nội dung đúng — tr. 12–13 | `feat/web-api-database` | CHO_KIEM_THU | evidence/local/R02-web.json; Home đạt, Blog chưa làm |
 | R03 | `/hello` trực tiếp và qua proxy trả JSON đúng — tr. 13 | `feat/web-api-database` + `feat/gateway-network-tests` | CHUA_LAM | — |
 | R04 | `minicloud.notes` có bảng và dữ liệu khởi tạo — tr. 6, 14 | `feat/web-api-database` | CHUA_LAM | — |
 | R05 | Keycloak admin đăng nhập được, tạo user sv01 — tr. 14–15 | `feat/identity-storage-dns` | CHUA_LAM | — |

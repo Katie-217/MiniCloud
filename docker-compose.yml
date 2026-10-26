@@ -12,9 +12,15 @@ x-service-defaults: &service-defaults
 services:
   web-frontend-server:
     <<: *service-defaults
-    image: nginx:1.28-alpine
+    build: ./web-frontend-server
+    image: ${DOCKERHUB_USERNAME:-katie217}/myminicloud-web:${IMAGE_TAG:-local}
     container_name: web-frontend-server
     ports: ["8080:80"]
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1/"]
+      interval: 10s
+      timeout: 3s
+      retries: 6
 
 networks:
   cloud-net:
