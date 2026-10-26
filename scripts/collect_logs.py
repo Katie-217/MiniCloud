@@ -7,7 +7,7 @@ log = run("docker", "compose", "logs", "--no-color", "--tail", "80")
 for key, value in cfg.items():
     if "PASSWORD" in key and value:
         log = log.replace(value, "[REDACTED]")
-save("service-logs.txt", log)
+save("service-logs.txt", "\n".join(line.rstrip() for line in log.splitlines()) + "\n")
 inventory = []
 for service in run("docker", "compose", "config", "--services").splitlines():
     image = run("docker", "inspect", service, "--format", '{{.Config.Image}}')

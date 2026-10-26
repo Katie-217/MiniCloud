@@ -32,7 +32,7 @@ Không lấy trạng thái container Running thay cho kết quả kiểm thử c
 | R02 | Home và `/blog/` HTTP 200, nội dung đúng — tr. 12–13 | `feat/web-api-database` | DAT | evidence/local/R02-web.json; Home + Blog |
 | R03 | `/hello` trực tiếp và qua proxy trả JSON đúng — tr. 13 | `feat/web-api-database` + `feat/gateway-network-tests` | DAT | evidence/local/R03-api.json; direct + proxy |
 | R04 | `minicloud.notes` có bảng và dữ liệu khởi tạo — tr. 6, 14 | `feat/web-api-database` | DAT | evidence/local/R04-database.json |
-| R05 | Keycloak admin đăng nhập được, tạo user sv01 — tr. 14–15 | `feat/identity-storage-dns` | DAT | evidence/local/R05-auth.json; admin token login + created sv01; UI screenshot captured later |
+| R05 | Keycloak admin đăng nhập được, tạo user sv01 — tr. 14–15 | `feat/identity-storage-dns` | DAT | evidence/local/R05-auth.json; R05-keycloak-admin.png; R05-keycloak-user.png |
 | R06 | MinIO bucket demo, upload và tải file được — tr. 2, 15–16 | `feat/identity-storage-dns` | DAT | evidence/local/R06-storage.json; R06-minio-bucket.png; R06-minio-object.png |
 | R07 | DNS Web trả `10.10.10.10` bằng dig — tr. 16–17 | `feat/identity-storage-dns` | DAT | evidence/local/R07-dns.json; dig internal 53 + published host 1053 |
 | R08 | Prometheus node target UP, query metric có dữ liệu — tr. 17–18 | `feat/monitoring-dashboard` | DAT | evidence/local/R08-monitoring.json |

@@ -1,6 +1,6 @@
 {
   "output": "App to DB integration",
-  "verified_at_utc": "2026-10-26T15:45:55.492854+00:00",
+  "verified_at_utc": "2026-10-26T16:02:52.118813+00:00",
   "details": {
     "url": "http://localhost:8085/notes",
     "status": 200,
@@ -8,6 +8,10 @@
       {
         "id": 1,
         "title": "Hello from MariaDB!"
+      },
+      {
+        "id": 2,
+        "title": "Persistence verification 521H0092"
       }
     ],
     "connection": "Flask uses the dedicated MariaDB application user over cloud-net"

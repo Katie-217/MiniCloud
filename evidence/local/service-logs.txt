@@ -1,0 +1,472 @@
+relational-database-server  | 2026-10-26 16:00:33+00:00 [Note] [Entrypoint]: Entrypoint script for MariaDB Server 1:11.4.13+maria~ubu2404 started.
+relational-database-server  | 2026-10-26 16:00:34+00:00 [Warn] [Entrypoint]: /sys/fs/cgroup///memory.pressure not writable, functionality unavailable to MariaDB
+relational-database-server  | 2026-10-26 16:00:34+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+relational-database-server  | 2026-10-26 16:00:34+00:00 [Note] [Entrypoint]: Entrypoint script for MariaDB Server 1:11.4.13+maria~ubu2404 started.
+relational-database-server  | 2026-10-26 16:00:35+00:00 [Note] [Entrypoint]: MariaDB upgrade not required
+relational-database-server  | 2026-10-26 16:00:35 0 [Note] Starting MariaDB 11.4.13-MariaDB-ubu2404 source revision 170b1d70737be6f134448f51713cdc1ae215b420 server_uid iDO+mdyL/3lpNV2WbiEkxvZdiSI= as process 1
+relational-database-server  | 2026-10-26 16:00:35 0 [Note] InnoDB: Compressed tables use zlib 1.3
+relational-database-server  | 2026-10-26 16:00:35 0 [Note] InnoDB: Number of transaction pools: 1
+relational-database-server  | 2026-10-26 16:00:35 0 [Note] InnoDB: Using crc32 + pclmulqdq instructions
+relational-database-server  | 2026-10-26 16:00:35 0 [Note] mariadbd: O_TMPFILE is not supported on /tmp (disabling future attempts)
+relational-database-server  | 2026-10-26 16:00:35 0 [Warning] mariadbd: io_uring_queue_init() failed with EPERM: sysctl kernel.io_uring_disabled has the value 2, or 1 and the user of the process is not a member of sysctl kernel.io_uring_group. (see man 2 io_uring_setup).
+relational-database-server  | create_uring failed: falling back to libaio
+relational-database-server  | 2026-10-26 16:00:35 0 [Note] InnoDB: Using Linux native AIO
+relational-database-server  | 2026-10-26 16:00:35 0 [Note] InnoDB: innodb_buffer_pool_size_max=8388608m, innodb_buffer_pool_size=128m
+relational-database-server  | 2026-10-26 16:00:35 0 [Note] InnoDB: Completed initialization of buffer pool
+relational-database-server  | 2026-10-26 16:00:35 0 [Note] InnoDB: File system buffers for log disabled (block size=4096 bytes)
+relational-database-server  | 2026-10-26 16:00:35 0 [Note] InnoDB: End of log at LSN=48555
+relational-database-server  | 2026-10-26 16:00:35 0 [Note] InnoDB: Opened 3 undo tablespaces
+relational-database-server  | 2026-10-26 16:00:35 0 [Note] InnoDB: 128 rollback segments in 3 undo tablespaces are active.
+relational-database-server  | 2026-10-26 16:00:35 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+relational-database-server  | 2026-10-26 16:00:35 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+relational-database-server  | 2026-10-26 16:00:35 0 [Note] InnoDB: log sequence number 48555; transaction id 27
+relational-database-server  | 2026-10-26 16:00:35 0 [Note] Plugin 'FEEDBACK' is disabled.
+relational-database-server  | 2026-10-26 16:00:35 0 [Note] Plugin 'wsrep-provider' is disabled.
+relational-database-server  | 2026-10-26 16:00:35 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+relational-database-server  | 2026-10-26 16:00:35 0 [Note] InnoDB: Buffer pool(s) load completed at 261026 16:00:35
+relational-database-server  | 2026-10-26 16:00:36 0 [Note] Server socket created on IP: '0.0.0.0', port: '3306'.
+relational-database-server  | 2026-10-26 16:00:36 0 [Note] Server socket created on IP: '::', port: '3306'.
+relational-database-server  | 2026-10-26 16:00:36 0 [Note] mariadbd: Event Scheduler: Loaded 0 events
+relational-database-server  | 2026-10-26 16:00:36 0 [Note] mariadbd: ready for connections.
+relational-database-server  | Version: '11.4.13-MariaDB-ubu2404'  socket: '/run/mysqld/mysqld.sock'  port: 3306  mariadb.org binary distribution
+object-storage-server       | MinIO Object Storage Server
+object-storage-server       | Copyright: 2015-2026 MinIO, Inc.
+object-storage-server       | License: GNU AGPLv3 - https://www.gnu.org/licenses/agpl-3.0.html
+object-storage-server       | Version: DEVELOPMENT.GOGET (go1.24.13 linux/amd64)
+object-storage-server       |
+object-storage-server       | API: http://172.19.0.9:9000  http://127.0.0.1:9000
+object-storage-server       | WebUI: http://172.19.0.9:9001 http://127.0.0.1:9001
+object-storage-server       |
+object-storage-server       | Docs: https://docs.min.io
+monitoring-prometheus-server  | time=2026-10-26T16:00:33.971Z level=INFO source=main.go:687 msg="Starting Prometheus Server" mode=server version="(version=3.2.1, branch=HEAD, revision=804c49d58f3f3784c77c9c8ec17c9062092cae27)"
+monitoring-prometheus-server  | time=2026-10-26T16:00:33.971Z level=INFO source=main.go:692 msg="operational information" build_context="(go=go1.23.6, platform=linux/amd64, user=root@42fd9529152a, date=20250226-09:19:49, tags=netgo,builtinassets,stringlabels)" host_details="(Linux 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 100b9fedaf6c localdomain)" fd_limits="(soft=1048576, hard=1048576)" vm_limits="(soft=unlimited, hard=unlimited)"
+monitoring-prometheus-server  | time=2026-10-26T16:00:33.973Z level=INFO source=main.go:768 msg="Leaving GOMAXPROCS=20: CPU quota undefined" component=automaxprocs
+monitoring-prometheus-server  | time=2026-10-26T16:00:33.977Z level=INFO source=web.go:654 msg="Start listening for connections" component=web address=0.0.0.0:9090
+monitoring-prometheus-server  | time=2026-10-26T16:00:33.978Z level=INFO source=main.go:1228 msg="Starting TSDB ..."
+monitoring-prometheus-server  | time=2026-10-26T16:00:33.979Z level=INFO source=tls_config.go:347 msg="Listening on" component=web address=[::]:9090
+monitoring-prometheus-server  | time=2026-10-26T16:00:33.979Z level=INFO source=tls_config.go:350 msg="TLS is disabled." component=web http2=false address=[::]:9090
+monitoring-prometheus-server  | time=2026-10-26T16:00:33.983Z level=INFO source=head.go:628 msg="Replaying on-disk memory mappable chunks if any" component=tsdb
+monitoring-prometheus-server  | time=2026-10-26T16:00:33.986Z level=INFO source=head.go:715 msg="On-disk memory mappable chunks replay completed" component=tsdb duration=3.112641ms
+monitoring-prometheus-server  | time=2026-10-26T16:00:33.986Z level=INFO source=head.go:723 msg="Replaying WAL, this may take a while" component=tsdb
+monitoring-prometheus-server  | time=2026-10-26T16:00:34.032Z level=INFO source=head.go:795 msg="WAL segment loaded" component=tsdb segment=0 maxSegment=1
+monitoring-prometheus-server  | time=2026-10-26T16:00:34.033Z level=INFO source=head.go:795 msg="WAL segment loaded" component=tsdb segment=1 maxSegment=1
+monitoring-prometheus-server  | time=2026-10-26T16:00:34.033Z level=INFO source=head.go:832 msg="WAL replay completed" component=tsdb checkpoint_replay_duration=105.396µs wal_replay_duration=47.140599ms wbl_replay_duration=372ns chunk_snapshot_load_duration=0s mmap_chunk_replay_duration=3.112641ms total_replay_duration=50.539689ms
+monitoring-prometheus-server  | time=2026-10-26T16:00:34.036Z level=INFO source=main.go:1249 msg="filesystem information" fs_type=EXT4_SUPER_MAGIC
+monitoring-prometheus-server  | time=2026-10-26T16:00:34.036Z level=INFO source=main.go:1252 msg="TSDB started"
+monitoring-prometheus-server  | time=2026-10-26T16:00:34.036Z level=INFO source=main.go:1437 msg="Loading configuration file" filename=/etc/prometheus/prometheus.yml
+monitoring-prometheus-server  | time=2026-10-26T16:00:34.041Z level=INFO source=main.go:1476 msg="updated GOGC" old=100 new=75
+monitoring-prometheus-server  | time=2026-10-26T16:00:34.041Z level=INFO source=main.go:1486 msg="Completed loading of configuration file" db_storage=3.329µs remote_storage=11.63µs web_handler=1.418µs query_engine=2.635µs scrape=560.682µs scrape_sd=82.001µs notify=2.422µs notify_sd=1.174µs rules=2.85µs tracing=9.518µs filename=/etc/prometheus/prometheus.yml totalDuration=4.49703ms
+monitoring-prometheus-server  | time=2026-10-26T16:00:34.041Z level=INFO source=main.go:1213 msg="Server is ready to receive web requests."
+monitoring-prometheus-server  | time=2026-10-26T16:00:34.041Z level=INFO source=manager.go:175 msg="Starting rule manager..." component="rule manager"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+monitoring-node-exporter-server  | time=2026-10-26T16:04:18.053Z level=ERROR source=http.go:219 msg="error encoding and sending metric family: write tcp 127.0.0.1:9100->127.0.0.1:39978: write: connection reset by peer"
+authentication-identity-server   | Updating the configuration and installing your custom providers, if any. Please wait.
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:52:23 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:52:33 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:52:43 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:52:53 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:53:03 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:53:13 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:53:23 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:53:33 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:53:43 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+authentication-identity-server   | 2026-10-26 16:00:41,302 WARN  [io.qua.config] (build-20) Unrecognized configuration key "quarkus.smallrye-health.extensions.enabled" was provided; it will be ignored; verify that the dependency extension for this configuration is set or that you did not make a typo
+authentication-identity-server   | 2026-10-26 16:00:44,985 INFO  [io.qua.hib.orm.dep.HibernateOrmProcessor] (build-33) Persistence unit 'keycloak-default': Enforcing Quarkus defaults for dialect 'org.hibernate.dialect.H2Dialect' by automatically setting 'jakarta.persistence.database-product-version=2.3.230'.
+authentication-identity-server   | 2026-10-26 16:00:44,994 INFO  [io.qua.hib.orm.dep.HibernateOrmProcessor] (build-33) A legacy persistence.xml file is present in the classpath. This file will be used to configure JPA/Hibernate ORM persistence units, and any configuration of the Hibernate ORM extension will be ignored. To ignore persistence.xml files instead, set the configuration property 'quarkus.hibernate-orm.persistence-xml.ignore' to 'true'.
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:53:53 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:54:03 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:54:13 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:54:23 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:54:33 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:54:43 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:54:53 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:55:03 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+authentication-identity-server   | 2026-10-26 16:00:57,175 INFO  [io.qua.dep.QuarkusAugmentor] (main) Quarkus augmentation completed in 17741ms
+authentication-identity-server   | Running the server in development mode. DO NOT use this configuration in production.
+authentication-identity-server   | 2026-10-26 16:01:02,187 INFO  [org.keycloak.quarkus.runtime.storage.infinispan.CacheManagerFactory] (ForkJoinPool.commonPool-worker-1) Starting Infinispan embedded cache manager
+authentication-identity-server   | 2026-10-26 16:01:02,395 INFO  [org.infinispan.CONTAINER] (ForkJoinPool.commonPool-worker-1) Virtual threads support enabled
+authentication-identity-server   | 2026-10-26 16:01:02,830 INFO  [org.infinispan.CONTAINER] (ForkJoinPool.commonPool-worker-1) ISPN000556: Starting user marshaller 'org.infinispan.commons.marshall.ImmutableProtoStreamMarshaller'
+authentication-identity-server   | 2026-10-26 16:01:04,474 INFO  [org.keycloak.connections.infinispan.DefaultInfinispanConnectionProviderFactory] (main) Node name: node_748525, Site name: null
+authentication-identity-server   | 2026-10-26 16:01:04,486 INFO  [org.keycloak.broker.provider.AbstractIdentityProviderMapper] (main) Registering class org.keycloak.broker.provider.mappersync.ConfigSyncEventListener
+authentication-identity-server   | 2026-10-26 16:01:06,909 WARN  [io.agroal.pool] (main) Datasource '<default>': JDBC resources leaked: 1 ResultSet(s) and 0 Statement(s)
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:55:14 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:55:24 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:55:34 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:55:44 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:55:54 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:56:04 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:56:14 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+authentication-identity-server   | 2026-10-26 16:01:07,125 INFO  [io.quarkus] (main) Keycloak 26.1.4 on JVM (powered by Quarkus 3.15.3.1) started in 9.781s. Listening on: http://0.0.0.0:8080
+authentication-identity-server   | 2026-10-26 16:01:07,126 INFO  [io.quarkus] (main) Profile dev activated.
+authentication-identity-server   | 2026-10-26 16:01:07,126 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-h2, keycloak, narayana-jta, opentelemetry, reactive-routes, rest, rest-jackson, smallrye-context-propagation, vertx]
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:56:24 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:56:34 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:56:44 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:56:54 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:57:04 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:57:14 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:57:25 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:57:35 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:57:45 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:57:55 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:58:05 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:58:15 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:58:25 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:58:35 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:58:45 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:58:55 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:59:05 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 172.19.0.11 - - [26/Oct/2026:15:59:15 +0000] "GET / HTTP/1.0" 200 819 "-" "python-requests/2.32.5" "172.19.0.1"
+web-frontend-server              | 172.19.0.11 - - [26/Oct/2026:15:59:15 +0000] "GET /blog/ HTTP/1.0" 200 825 "-" "python-requests/2.32.5" "172.19.0.1"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:59:15 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:59:25 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:59:35 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:59:45 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:15:59:56 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:00:06 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:00:16 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:00:27 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:00:37 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:00:47 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:00:57 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:01:07 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:01:18 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:01:28 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:01:38 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:01:48 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:01:58 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:02:08 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:02:18 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:02:28 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 172.19.0.11 - - [26/Oct/2026:16:02:29 +0000] "GET / HTTP/1.0" 200 819 "-" "python-requests/2.32.5" "172.19.0.1"
+web-frontend-server              | 172.19.0.11 - - [26/Oct/2026:16:02:29 +0000] "GET /blog/ HTTP/1.0" 200 825 "-" "python-requests/2.32.5" "172.19.0.1"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:02:38 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:02:48 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 172.19.0.1 - - [26/Oct/2026:16:02:51 +0000] "GET / HTTP/1.1" 200 819 "-" "python-requests/2.32.5" "-"
+web-frontend-server              | 172.19.0.1 - - [26/Oct/2026:16:02:51 +0000] "GET /blog/ HTTP/1.1" 200 825 "-" "python-requests/2.32.5" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:02:58 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 172.19.0.11 - - [26/Oct/2026:16:02:59 +0000] "GET / HTTP/1.0" 200 819 "-" "python-requests/2.32.5" "172.19.0.1"
+web-frontend-server              | 172.19.0.11 - - [26/Oct/2026:16:02:59 +0000] "GET /blog/ HTTP/1.0" 200 825 "-" "python-requests/2.32.5" "172.19.0.1"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:03:08 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:03:18 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:03:29 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:03:39 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:03:49 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:03:59 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:04:09 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+web-frontend-server              | 127.0.0.1 - - [26/Oct/2026:16:04:19 +0000] "GET / HTTP/1.1" 200 819 "-" "Wget" "-"
+application-backend-server       | 127.0.0.1 - - [26/Oct/2026:15:53:08 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server       | 127.0.0.1 - - [26/Oct/2026:15:53:18 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server       | 127.0.0.1 - - [26/Oct/2026:15:53:28 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server       | 127.0.0.1 - - [26/Oct/2026:15:53:38 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:53:48 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:53:58 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.18784235Z level=info msg="Starting Grafana" version=11.6.0 commit=d2fdff9ee4d75c74bfd3a97c18a0b8e4d029f06e branch=HEAD compiled=2026-10-26T16:00:48Z
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.188663101Z level=info msg="Config loaded from" file=/usr/share/grafana/conf/defaults.ini
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.188755774Z level=info msg="Config loaded from" file=/etc/grafana/grafana.ini
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:54:09 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:54:19 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:54:29 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:54:39 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:54:49 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:54:59 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.188771217Z level=info msg="Config overridden from command line" arg="default.paths.data=/var/lib/grafana"
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.188778992Z level=info msg="Config overridden from command line" arg="default.paths.logs=/var/log/grafana"
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.188784969Z level=info msg="Config overridden from command line" arg="default.paths.plugins=/var/lib/grafana/plugins"
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.188791315Z level=info msg="Config overridden from command line" arg="default.paths.provisioning=/etc/grafana/provisioning"
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.18879679Z level=info msg="Config overridden from command line" arg="default.log.mode=console"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:55:09 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.188803477Z level=info msg="Config overridden from Environment variable" var="GF_PATHS_DATA=/var/lib/grafana"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:55:20 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:55:30 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.188809811Z level=info msg="Config overridden from Environment variable" var="GF_PATHS_LOGS=/var/log/grafana"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:55:40 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.188815177Z level=info msg="Config overridden from Environment variable" var="GF_PATHS_PLUGINS=/var/lib/grafana/plugins"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:55:50 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.188820917Z level=info msg="Config overridden from Environment variable" var="GF_PATHS_PROVISIONING=/etc/grafana/provisioning"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:56:00 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.188826213Z level=info msg="Config overridden from Environment variable" var="GF_SECURITY_ADMIN_USER=admin"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:56:10 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:56:21 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.188832026Z level=info msg="Config overridden from Environment variable" var="GF_SECURITY_ADMIN_PASSWORD=*********"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:34 +0000] "GET /auth/resources/n9gr9/login/keycloak.v2/js/authChecker.js HTTP/1.1" 200 2369 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:34 +0000] "GET /auth/resources/n9gr9/login/keycloak.v2/img/keycloak-bg.png HTTP/1.1" 200 81955 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:56:31 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.188837819Z level=info msg="Config overridden from Environment variable" var="GF_USERS_ALLOW_SIGN_UP=false"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:56:41 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.188843998Z level=info msg=Target target=[all]
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:56:51 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:57:01 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.188864247Z level=info msg="Path Home" path=/usr/share/grafana
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.188869718Z level=info msg="Path Data" path=/var/lib/grafana
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.188875504Z level=info msg="Path Logs" path=/var/log/grafana
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.188880715Z level=info msg="Path Plugins" path=/var/lib/grafana/plugins
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.18888635Z level=info msg="Path Provisioning" path=/etc/grafana/provisioning
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:34 +0000] "GET /auth/resources/n9gr9/login/keycloak.v2/img/keycloak-logo-text.png HTTP/1.1" 200 20022 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+monitoring-grafana-dashboard-server  | logger=settings t=2026-10-26T16:00:48.188892441Z level=info msg="App mode production"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:57:11 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:34 +0000] "GET /auth/resources/n9gr9/common/keycloak/vendor/patternfly-v5/assets/fonts/RedHatDisplay/RedHatDisplay-Medium.woff2 HTTP/1.1" 200 26700 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+monitoring-grafana-dashboard-server  | logger=featuremgmt t=2026-10-26T16:00:48.189750284Z level=info msg=FeatureToggles newDashboardSharingComponent=true onPremToCloudMigrations=true annotationPermissionUpdate=true alertingInsights=true awsAsyncQueryCaching=true alertRuleRestore=true transformationsRedesign=true lokiStructuredMetadata=true userStorageAPI=true accessActionSets=true addFieldFromCalculationStatFunctions=true influxdbBackendMigration=true azureMonitorEnableUserAuth=true dataplaneFrontendFallback=true alertingSimplifiedRouting=true alertingNoDataErrorExecution=true logsContextDatasourceUi=true lokiQueryHints=true newPDFRendering=true alertingUIOptimizeReducer=true dashboardSceneSolo=true kubernetesPlaylists=true tlsMemcached=true dashgpt=true ssoSettingsSAML=true dashboardSceneForViewers=true preinstallAutoUpdate=true lokiQuerySplitting=true logsExploreTableVisualisation=true logRowsPopoverMenu=true cloudWatchNewLabelParsing=true ssoSettingsApi=true promQLScope=true unifiedRequestLog=true reportingUseRawTimeRange=true alertingQueryAndExpressionsStepMode=true formatString=true panelMonitoring=true useSessionStorageForRedirection=true prometheusAzureOverrideAudience=true logsInfiniteScrolling=true angularDeprecationUI=true newFiltersUI=true exploreMetrics=true lokiLabelNamesQueryApi=true cloudWatchRoundUpEndTime=true pinNavItems=true nestedFolders=true correlations=true recordedQueriesMulti=true alertingRuleVersionHistoryRestore=true recoveryThreshold=true cloudWatchCrossAccountQuerying=true groupToNestedTableTransformation=true publicDashboardsScene=true alertingApiServer=true dashboardScene=true alertingNotificationsStepMode=true
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:34 +0000] "GET /auth/resources/n9gr9/common/keycloak/vendor/patternfly-v5/assets/fonts/webfonts/fa-solid-900.woff2 HTTP/1.1" 200 79200 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:57:21 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:34 +0000] "GET /auth/resources/n9gr9/common/keycloak/vendor/patternfly-v5/assets/fonts/RedHatText/RedHatText-Regular.woff2 HTTP/1.1" 200 25880 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:57:32 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=sqlstore t=2026-10-26T16:00:48.1900294Z level=info msg="Connecting to DB" dbtype=sqlite3
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:57:42 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:57:52 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:58:02 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:58:12 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=migrator t=2026-10-26T16:00:48.211909998Z level=info msg="Locking database"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:34 +0000] "GET /auth/resources/n9gr9/common/keycloak/vendor/patternfly-v5/assets/fonts/RedHatText/RedHatText-Medium.woff2 HTTP/1.1" 200 26916 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:34 +0000] "GET /auth/resources/n9gr9/login/keycloak.v2/img/favicon.ico HTTP/1.1" 200 627 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:58:22 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:58:32 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "POST /auth/realms/master/login-actions/authenticate?session_code=Mb-OFT47B11uGvv3xBDK_DDWS1L25oZl09dbk8wZuVg&execution=75acb688-f2b0-4efc-b112-efb4cae2a5fc&client_id=security-admin-console&tab_id=DniRzDY2Cvs&client_data=eyJydSI6Imh0dHA6Ly9sb2NhbGhvc3QvYXV0aC9hZG1pbi9tYXN0ZXIvY29uc29sZS8iLCJydCI6ImNvZGUiLCJybSI6InF1ZXJ5Iiwic3QiOiI1OTk2MDE2OC02YWNkLTQyNTYtYTBiZC1lNjk0OTk3MDdiZGIifQ HTTP/1.1" 302 0 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:58:42 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:58:53 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=migrator t=2026-10-26T16:00:48.211995271Z level=info msg="Starting DB migrations"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:59:03 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=migrator t=2026-10-26T16:00:48.248121785Z level=info msg="migrations completed" performed=0 skipped=644 duration=1.275061ms
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:59:13 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/admin/master/console/?state=59960168-6acd-4256-a0bd-e69499707bdb&session_state=6ae42aa2-db92-4379-9f4b-8bd6b322d492&iss=http%3A%2F%2Flocalhost%2Fauth%2Frealms%2Fmaster&code=d0d26962-c9cb-44ba-8557-4b846c508fbd.6ae42aa2-db92-4379-9f4b-8bd6b322d492.15606169-5535-4b7b-bcbe-7102e3648024 HTTP/1.1" 200 3799 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+monitoring-grafana-dashboard-server  | logger=migrator t=2026-10-26T16:00:48.249263887Z level=info msg="Unlocking database"
+monitoring-grafana-dashboard-server  | logger=secrets t=2026-10-26T16:00:48.250284445Z level=info msg="Envelope encryption state" enabled=true currentprovider=secretKey.v1
+monitoring-grafana-dashboard-server  | logger=plugin.angulardetectorsprovider.dynamic t=2026-10-26T16:00:48.37938344Z level=info msg="Restored cache from database" duration=781.886µs
+application-backend-server           | 172.19.0.11 - - [26/Oct/2026:15:59:15 +0000] "GET /hello HTTP/1.0" 200 37 "-" "python-requests/2.32.5"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/main-WdJKhXYS.css HTTP/1.1" 200 1160754 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+monitoring-grafana-dashboard-server  | logger=resource-migrator t=2026-10-26T16:00:48.383203808Z level=info msg="Locking database"
+monitoring-grafana-dashboard-server  | logger=resource-migrator t=2026-10-26T16:00:48.383273581Z level=info msg="Starting DB migrations"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/main-CdTyjLTW.js HTTP/1.1" 200 765271 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+application-backend-server           | 172.19.0.11 - - [26/Oct/2026:15:59:15 +0000] "GET /notes HTTP/1.0" 200 41 "-" "python-requests/2.32.5"
+monitoring-grafana-dashboard-server  | logger=resource-migrator t=2026-10-26T16:00:48.387451922Z level=info msg="migrations completed" performed=0 skipped=23 duration=90.042µs
+application-backend-server           | 172.19.0.1 - - [26/Oct/2026:15:59:15 +0000] "GET /hello HTTP/1.1" 200 37 "-" "python-requests/2.32.5"
+application-backend-server           | 172.19.0.11 - - [26/Oct/2026:15:59:15 +0000] "GET /hello HTTP/1.0" 200 37 "-" "python-requests/2.32.5"
+monitoring-grafana-dashboard-server  | logger=resource-migrator t=2026-10-26T16:00:48.3885138Z level=info msg="Unlocking database"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:59:23 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:59:33 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:59:43 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/RedHatText-Regular-BDARZx4I.woff2 HTTP/1.1" 200 25880 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:15:59:53 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/RedHatText-Medium-CFPgPIaW.woff2 HTTP/1.1" 200 26916 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:00:04 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=sql-resource-server t=2026-10-26T16:00:48.388773957Z level=info msg="Using channel notifier"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/common/keycloak/vendor/react/react.production.min.js HTTP/1.1" 200 7411 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+monitoring-grafana-dashboard-server  | logger=plugin.store t=2026-10-26T16:00:48.40388848Z level=info msg="Loading plugins..."
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/common/keycloak/vendor/react/react-jsx-runtime.production.min.js HTTP/1.1" 200 939 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:00:14 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:00:24 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:00:35 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/common/keycloak/vendor/react-dom/react-dom.production.min.js HTTP/1.1" 200 132966 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/favicon.svg HTTP/1.1" 200 6718 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/master/admin/en HTTP/1.1" 200 319547 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/realms/master/protocol/openid-connect/3p-cookies/step1.html HTTP/1.1" 200 2318 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:00:46 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/realms/master/protocol/openid-connect/3p-cookies/step2.html HTTP/1.1" 200 686 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/favicon.svg HTTP/1.1" 200 6718 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+monitoring-grafana-dashboard-server  | logger=plugins.registration t=2026-10-26T16:00:48.592773659Z level=info msg="Plugin registered" pluginId=grafana-lokiexplore-app
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:00:56 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/realms/master/protocol/openid-connect/login-status-iframe.html HTTP/1.1" 200 5600 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "POST /auth/realms/master/protocol/openid-connect/token HTTP/1.1" 200 2684 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/realms/master/protocol/openid-connect/login-status-iframe.html/init?client_id=security-admin-console&origin=http%3A%2F%2Flocalhost HTTP/1.1" 204 0 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+monitoring-grafana-dashboard-server  | logger=plugins.registration t=2026-10-26T16:00:48.657680035Z level=info msg="Plugin registered" pluginId=grafana-pyroscope-app
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:01:06 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/admin/serverinfo HTTP/1.1" 200 267884 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/img_avatar.svg HTTP/1.1" 200 1916 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+monitoring-grafana-dashboard-server  | logger=plugin.store t=2026-10-26T16:00:48.657871932Z level=info msg="Plugins loaded" count=57 duration=253.985119ms
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:01:17 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=query_data t=2026-10-26T16:00:48.725472924Z level=info msg="Query Service initialization"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:01:27 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=live.push_http t=2026-10-26T16:00:48.751627347Z level=info msg="Live Push Gateway initialization"
+monitoring-grafana-dashboard-server  | logger=ngalert.notifier.alertmanager org=1 t=2026-10-26T16:00:48.77120485Z level=info msg="Applying new configuration to Alertmanager" configHash=d2c56faca6af2a5772ff4253222f7386
+monitoring-grafana-dashboard-server  | logger=ngalert t=2026-10-26T16:00:48.818411252Z level=info msg="Using simple database alert instance store"
+monitoring-grafana-dashboard-server  | logger=ngalert.state.manager.persist t=2026-10-26T16:00:48.81859402Z level=info msg="Using sync state persister"
+monitoring-grafana-dashboard-server  | logger=ngalert.state.manager t=2026-10-26T16:00:48.818741146Z level=info msg="Running in alternative execution of Error/NoData mode"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/logo.svg HTTP/1.1" 200 22413 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/admin/realms/master/ui-ext/realms/names?first=0&max=11&search= HTTP/1.1" 200 44 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/admin/master/console/whoami?currentRealm=master HTTP/1.1" 200 474 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:01:37 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/FileUpload-D5agceQK.css HTTP/1.1" 200 2721 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+monitoring-grafana-dashboard-server  | logger=infra.usagestats.collector t=2026-10-26T16:00:48.833345635Z level=info msg="registering usage stat providers" usageStatsProvidersLen=2
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/DataListItemRow-0rnekGZx.css HTTP/1.1" 200 44062 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/GroupPickerDialog-Dl_Lyzxi.css HTTP/1.1" 200 125 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:01:47 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/KeySelect-BJe01BGx.css HTTP/1.1" 200 1010 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+monitoring-grafana-dashboard-server  | logger=grafanaStorageLogger t=2026-10-26T16:00:48.842360383Z level=info msg="Storage starting"
+monitoring-grafana-dashboard-server  | logger=ngalert.state.manager t=2026-10-26T16:00:48.84688322Z level=info msg="Warming state cache for startup"
+monitoring-grafana-dashboard-server  | logger=ngalert.multiorg.alertmanager t=2026-10-26T16:00:48.851771094Z level=info msg="Starting MultiOrg Alertmanager"
+monitoring-grafana-dashboard-server  | logger=http.server t=2026-10-26T16:00:48.861724971Z level=info msg="HTTP Server Listen" address=[::]:3000 protocol=http subUrl= socket=
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/admin/realms/master HTTP/1.1" 200 4390 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+monitoring-grafana-dashboard-server  | logger=ngalert.state.manager t=2026-10-26T16:00:49.879646866Z level=info msg="State cache has been initialized" states=0 duration=1.032760022s
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/AddRoleMappingModal-Cz6tDcfR.css HTTP/1.1" 200 89 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+monitoring-grafana-dashboard-server  | logger=ngalert.scheduler t=2026-10-26T16:00:49.879942716Z level=info msg="Starting scheduler" tickInterval=10s maxAttempts=3
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/DynamicComponents-DniN0CZn.css HTTP/1.1" 200 150 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/ExpandableSection-Bbwii8N8.css HTTP/1.1" 200 8444 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+monitoring-grafana-dashboard-server  | logger=ticker t=2026-10-26T16:00:49.880018351Z level=info msg=starting first_tick=2026-10-26T16:00:50Z
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:01:57 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:02:08 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:02:18 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:02:28 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=provisioning.plugins t=2026-10-26T16:00:49.905845638Z level=error msg="Failed to read plugin provisioning files from directory" path=/etc/grafana/provisioning/plugins error="open /etc/grafana/provisioning/plugins: no such file or directory"
+application-backend-server           | 172.19.0.11 - - [26/Oct/2026:16:02:29 +0000] "GET /hello HTTP/1.0" 200 37 "-" "python-requests/2.32.5"
+application-backend-server           | 172.19.0.11 - - [26/Oct/2026:16:02:29 +0000] "GET /notes HTTP/1.0" 200 94 "-" "python-requests/2.32.5"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:02:38 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:02:48 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/Tabs-ViNVmBYo.css HTTP/1.1" 200 41705 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+application-backend-server           | 172.19.0.1 - - [26/Oct/2026:16:02:51 +0000] "GET /hello HTTP/1.1" 200 37 "-" "python-requests/2.32.5"
+application-backend-server           | 172.19.0.11 - - [26/Oct/2026:16:02:51 +0000] "GET /hello HTTP/1.0" 200 37 "-" "python-requests/2.32.5"
+application-backend-server           | 172.19.0.1 - - [26/Oct/2026:16:02:52 +0000] "GET /notes HTTP/1.1" 200 94 "-" "python-requests/2.32.5"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/index-YFvMvTG9.css HTTP/1.1" 200 6608 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+application-backend-server           | 172.19.0.1 - - [26/Oct/2026:16:02:52 +0000] "GET /secure HTTP/1.1" 401 33 "-" "python-requests/2.32.5"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/DescriptionListTerm-DesQLGah.css HTTP/1.1" 200 18296 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+application-backend-server           | 172.19.0.1 - - [26/Oct/2026:16:02:52 +0000] "GET /secure HTTP/1.1" 401 33 "-" "python-requests/2.32.5"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/Dashboard-D322USTx.css HTTP/1.1" 200 2505 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/admin/realms/master HTTP/1.1" 200 4390 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/Dashboard-DS4_W7em.js HTTP/1.1" 200 7407 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:02:58 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=provisioning.alerting t=2026-10-26T16:00:49.90720851Z level=error msg="can't read alerting provisioning files from directory" path=/etc/grafana/provisioning/alerting error="open /etc/grafana/provisioning/alerting: no such file or directory"
+monitoring-grafana-dashboard-server  | logger=provisioning.alerting t=2026-10-26T16:00:49.907254081Z level=info msg="starting to provision alerting"
+monitoring-grafana-dashboard-server  | logger=provisioning.alerting t=2026-10-26T16:00:49.918676729Z level=info msg="finished to provision alerting"
+application-backend-server           | 172.19.0.11 - - [26/Oct/2026:16:02:59 +0000] "GET /hello HTTP/1.0" 200 37 "-" "python-requests/2.32.5"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/useLocaleSort-CNAUNMmq.js HTTP/1.1" 200 306 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+application-backend-server           | 172.19.0.11 - - [26/Oct/2026:16:02:59 +0000] "GET /notes HTTP/1.0" 200 94 "-" "python-requests/2.32.5"
+monitoring-grafana-dashboard-server  | logger=provisioning.dashboard t=2026-10-26T16:00:49.93342718Z level=info msg="starting to provision dashboards"
+monitoring-grafana-dashboard-server  | logger=grafana.update.checker t=2026-10-26T16:00:50.046730147Z level=info msg="Update check succeeded" duration=1.200153491s
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:03:09 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=provisioning.dashboard t=2026-10-26T16:00:50.067385111Z level=info msg="finished to provision dashboards"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:03:19 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=plugins.update.checker t=2026-10-26T16:00:50.080790602Z level=info msg="Update check succeeded" duration=1.239095057s
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:03:30 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=grafana-apiserver t=2026-10-26T16:00:50.167126412Z level=info msg="Adding GroupVersion notifications.alerting.grafana.app v0alpha1 to ResourceManager"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/RoutableTabs-Cj6rcOzH.js HTTP/1.1" 200 1239 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:03:40 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:03:50 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:04:00 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:04:10 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+application-backend-server           | 127.0.0.1 - - [26/Oct/2026:16:04:20 +0000] "GET /healthz HTTP/1.1" 200 16 "-" "Python-urllib/3.11"
+monitoring-grafana-dashboard-server  | logger=grafana-apiserver t=2026-10-26T16:00:50.168776288Z level=info msg="Adding GroupVersion userstorage.grafana.app v0alpha1 to ResourceManager"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/ExpandableSection-gi6-E2FN.js HTTP/1.1" 200 4505 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+monitoring-grafana-dashboard-server  | logger=grafana-apiserver t=2026-10-26T16:00:50.170110088Z level=info msg="Adding GroupVersion playlist.grafana.app v0alpha1 to ResourceManager"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/KeySelect-IDTeTluw.js HTTP/1.1" 200 1389 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+monitoring-grafana-dashboard-server  | logger=grafana-apiserver t=2026-10-26T16:00:50.173389873Z level=info msg="Adding GroupVersion dashboard.grafana.app v0alpha1 to ResourceManager"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/Tabs-IiPxazEu.js HTTP/1.1" 200 17136 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+monitoring-grafana-dashboard-server  | logger=grafana-apiserver t=2026-10-26T16:00:50.174333453Z level=info msg="Adding GroupVersion dashboard.grafana.app v1alpha1 to ResourceManager"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:35 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/DescriptionListTerm-CJeuzAKt.js HTTP/1.1" 200 4252 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/DataListItemRow-C3LqP3Yr.js HTTP/1.1" 200 5425 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+monitoring-grafana-dashboard-server  | logger=grafana-apiserver t=2026-10-26T16:00:50.175401675Z level=info msg="Adding GroupVersion dashboard.grafana.app v2alpha1 to ResourceManager"
+monitoring-grafana-dashboard-server  | logger=grafana-apiserver t=2026-10-26T16:00:50.176479039Z level=info msg="Adding GroupVersion featuretoggle.grafana.app v0alpha1 to ResourceManager"
+monitoring-grafana-dashboard-server  | logger=grafana-apiserver t=2026-10-26T16:00:50.178703014Z level=info msg="Adding GroupVersion iam.grafana.app v0alpha1 to ResourceManager"
+monitoring-grafana-dashboard-server  | logger=app-registry t=2026-10-26T16:00:50.236810142Z level=info msg="app registry initialized"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/FileUpload-BTKRQPhc.js HTTP/1.1" 200 64786 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/PageHandler-BUYQSOtk.js HTTP/1.1" 200 1559 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/ClientSelect-DfNvgTlt.js HTTP/1.1" 200 658 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/DynamicComponents-Cl2iJJnw.js HTTP/1.1" 200 10084 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+monitoring-grafana-dashboard-server  | logger=infra.usagestats t=2026-10-26T16:02:18.843056652Z level=info msg="Usage stats are ready to report"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/GroupPickerDialog-BD-l5Yq_.js HTTP/1.1" 200 5228 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/AddRoleMappingModal-GdRn9A1w.js HTTP/1.1" 200 7218 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/MultiLineInput-CM4ZGy5B.js HTTP/1.1" 200 1539 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+monitoring-grafana-dashboard-server  | logger=context userId=1 orgId=1 uname=admin t=2026-10-26T16:03:47.547585618Z level=info msg="Request Completed" method=GET path=/api/live/ws status=-1 remote_addr=172.19.0.1 time_ms=3 duration=3.382187ms size=0 referer= handler=/api/live/ws status_source=server
+monitoring-grafana-dashboard-server  | logger=context userId=1 orgId=1 uname=admin t=2026-10-26T16:03:47.810134717Z level=info msg="Request Completed" method=GET path=/api/live/ws status=-1 remote_addr=172.19.0.1 time_ms=4 duration=4.573315ms size=0 referer= handler=/api/live/ws status_source=server
+monitoring-grafana-dashboard-server  | logger=context userId=1 orgId=1 uname=admin t=2026-10-26T16:03:48.14015631Z level=info msg="Request Completed" method=GET path=/react/jsx-runtime status=404 remote_addr=172.19.0.1 time_ms=10 duration=10.550222ms size=62317 referer="http://localhost:3000/d/node-exporter-full/node-exporter-full?from=now-15m&orgId=1&to=now&var-datasource=prometheus&var-job=node&var-node=monitoring-node-exporter-server%3A9100" handler=notfound status_source=server
+monitoring-grafana-dashboard-server  | logger=live t=2026-10-26T16:03:48.342318059Z level=info msg="Initialized channel handler" channel=grafana/dashboard/uid/node-exporter-full address=grafana/dashboard/uid/node-exporter-full
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/ConfirmDialog-BpghauDa.js HTTP/1.1" 200 928 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/filter-icon-AZ5aTmZF.js HTTP/1.1" 200 397 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/translationFormatter-FIcT_WMC.js HTTP/1.1" 200 145 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+monitoring-grafana-dashboard-server  | logger=context userId=1 orgId=1 uname=admin t=2026-10-26T16:03:53.701729703Z level=info msg="Request Completed" method=GET path=/api/live/ws status=-1 remote_addr=172.19.0.1 time_ms=4 duration=4.376225ms size=0 referer= handler=/api/live/ws status_source=server
+monitoring-grafana-dashboard-server  | logger=context userId=1 orgId=1 uname=admin t=2026-10-26T16:03:53.865183306Z level=info msg="Request Completed" method=GET path=/react/jsx-runtime status=404 remote_addr=172.19.0.1 time_ms=9 duration=9.266108ms size=62317 referer="http://localhost:3000/d/node-exporter-full/node-exporter-full?from=now-15m&orgId=1&to=now&var-datasource=prometheus&var-job=node&var-node=monitoring-node-exporter-server%3A9100&viewPanel=74" handler=notfound status_source=server
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/useParams-ncjyfZeQ.js HTTP/1.1" 200 118 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/constants-BclHbWtx.js HTTP/1.1" 200 177 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/index-BpgtWJNU.js HTTP/1.1" 200 836255 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/RedHatDisplay-Bold-4NfIjmgI.woff2 HTTP/1.1" 200 26664 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/RedHatDisplay-Medium-C1BzJLzv.woff2 HTTP/1.1" 200 26700 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/user-section-DQytkT-6.css HTTP/1.1" 200 2997 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/DropdownPanel-Dur9M3jN.css HTTP/1.1" 200 1085 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/PermissionTab-CIKqlXCr.css HTTP/1.1" 200 139 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/ViewHeader-BI0nMf5o.css HTTP/1.1" 200 219 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/favicon.svg HTTP/1.1" 200 6718 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/UsersSection-CuctwsDt.js HTTP/1.1" 200 12355 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/warning-triangle-icon-CQFFdBwo.js HTTP/1.1" 200 1950 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/DropdownPanel-Qv4gRNah.js HTTP/1.1" 200 996 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/Trans-DXLUl81y.js HTTP/1.1" 200 7643 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/ViewHeader-DlSfixri.js HTTP/1.1" 200 2679 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/resources/n9gr9/admin/keycloak.v2/assets/PermissionTab-CD4TfTM-.js HTTP/1.1" 200 3293 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/admin/realms/master/ui-ext/info HTTP/1.1" 200 37 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/admin/realms/master/users/profile HTTP/1.1" 200 988 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+api-gateway-proxy-server             | 172.19.0.1 - - [26/Oct/2026:16:03:36 +0000] "GET /auth/admin/realms/master/ui-ext/brute-force-user?briefRepresentation=true&first=0&max=11&q= HTTP/1.1" 200 742 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"

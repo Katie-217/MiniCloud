@@ -11,7 +11,7 @@ with sync_playwright() as p:
     page.goto("http://localhost:9090/targets")
     page.get_by_text("monitoring-node-exporter-server:9100", exact=False).first.wait_for(timeout=30000)
     page.screenshot(path=str(EVIDENCE / "R08-prometheus-targets.png"), full_page=True)
-    page.goto("http://localhost:9090/query?g0.expr=node_cpu_seconds_total&g0.tab=1")
+    page.goto("http://localhost:9090/query?g0.expr=node_cpu_seconds_total%7Bcpu%3D%220%22%7D&g0.tab=1")
     page.wait_for_timeout(2000)
     page.screenshot(path=str(EVIDENCE / "R08-prometheus-query.png"), full_page=True)
     page.goto("http://localhost:3000/login")

@@ -1,0 +1,86 @@
+{
+  "output": "Runtime image inventory",
+  "verified_at_utc": "2026-10-26T16:04:25.863021+00:00",
+  "details": [
+    {
+      "service": "relational-database-server",
+      "image": "mariadb:11.4",
+      "image_id": "sha256:250e1609e93c0e6aecf64bfbab2d84d5e89d2481540fe77447ff6c855c3b1873",
+      "repo_digests": [
+        "mariadb@sha256:250e1609e93c0e6aecf64bfbab2d84d5e89d2481540fe77447ff6c855c3b1873"
+      ]
+    },
+    {
+      "service": "application-backend-server",
+      "image": "katie217/myminicloud-app:local",
+      "image_id": "sha256:4eb522480ebb6464e18c5e543b46d2df19d150a1f62283f72d9cd32cc78c556d",
+      "repo_digests": [
+        "katie217/myminicloud-app@sha256:4eb522480ebb6464e18c5e543b46d2df19d150a1f62283f72d9cd32cc78c556d"
+      ]
+    },
+    {
+      "service": "monitoring-node-exporter-server",
+      "image": "prom/node-exporter:v1.9.1",
+      "image_id": "sha256:d00a542e409ee618a4edc67da14dd48c5da66726bbd5537ab2af9c1dfc442c8a",
+      "repo_digests": [
+        "prom/node-exporter@sha256:d00a542e409ee618a4edc67da14dd48c5da66726bbd5537ab2af9c1dfc442c8a"
+      ]
+    },
+    {
+      "service": "monitoring-prometheus-server",
+      "image": "prom/prometheus:v3.2.1",
+      "image_id": "sha256:6927e0919a144aa7616fd0137d4816816d42f6b816de3af269ab065250859a62",
+      "repo_digests": [
+        "prom/prometheus@sha256:6927e0919a144aa7616fd0137d4816816d42f6b816de3af269ab065250859a62"
+      ]
+    },
+    {
+      "service": "monitoring-grafana-dashboard-server",
+      "image": "grafana/grafana:11.6.0",
+      "image_id": "sha256:62d2b9d20a19714ebfe48d1bb405086081bc602aa053e28cf6d73c7537640dfb",
+      "repo_digests": [
+        "grafana/grafana@sha256:62d2b9d20a19714ebfe48d1bb405086081bc602aa053e28cf6d73c7537640dfb"
+      ]
+    },
+    {
+      "service": "object-storage-server",
+      "image": "katie217/myminicloud-minio:source-2025-04-22",
+      "image_id": "sha256:d32b276f800074ed738a6ccc2636a2f9d46102b5dd2e6fb99f8cb5ec4ba5c447",
+      "repo_digests": [
+        "katie217/myminicloud-minio@sha256:d32b276f800074ed738a6ccc2636a2f9d46102b5dd2e6fb99f8cb5ec4ba5c447"
+      ]
+    },
+    {
+      "service": "web-frontend-server",
+      "image": "katie217/myminicloud-web:local",
+      "image_id": "sha256:4988e9c9b5c2fb9c21d801a2035e4d4cc52f01de71bbb4de33d4cafff9121815",
+      "repo_digests": [
+        "katie217/myminicloud-web@sha256:4988e9c9b5c2fb9c21d801a2035e4d4cc52f01de71bbb4de33d4cafff9121815"
+      ]
+    },
+    {
+      "service": "authentication-identity-server",
+      "image": "quay.io/keycloak/keycloak:26.1.4",
+      "image_id": "sha256:044a457e04987e1fff756be3d2fa325a4ef420fa356b7034ecc9f1b693c32761",
+      "repo_digests": [
+        "quay.io/keycloak/keycloak@sha256:044a457e04987e1fff756be3d2fa325a4ef420fa356b7034ecc9f1b693c32761"
+      ]
+    },
+    {
+      "service": "api-gateway-proxy-server",
+      "image": "nginx:1.28-alpine",
+      "image_id": "sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236",
+      "repo_digests": [
+        "nginx@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236"
+      ]
+    },
+    {
+      "service": "internal-dns-server",
+      "image": "internetsystemsconsortium/bind9:9.18",
+      "image_id": "sha256:1ffb29c718ee2540c5643c1e8166629a07bbd505f99107baae535e9f86eb7eef",
+      "repo_digests": [
+        "internetsystemsconsortium/bind9@sha256:1ffb29c718ee2540c5643c1e8166629a07bbd505f99107baae535e9f86eb7eef"
+      ]
+    }
+  ]
+}
