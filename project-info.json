@@ -1,0 +1,10 @@
+{
+  "project": "MyMiniCloud",
+  "dockerhub_username": "katie217",
+  "members": [
+    {"name": "Võ Thị Thiên Kim", "student_id": "521H0092"},
+    {"name": "Diệp Yến Nhi", "student_id": null}
+  ],
+  "scope": "mandatory-local-first",
+  "aws_status": "deferred-by-user"
+}

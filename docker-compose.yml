@@ -1,0 +1,22 @@
+name: myminicloud
+
+x-service-defaults: &service-defaults
+  restart: unless-stopped
+  networks: [cloud-net]
+  logging:
+    driver: json-file
+    options:
+      max-size: "10m"
+      max-file: "3"
+
+services:
+  web-frontend-server:
+    <<: *service-defaults
+    image: nginx:1.28-alpine
+    container_name: web-frontend-server
+    ports: ["8080:80"]
+
+networks:
+  cloud-net:
+    name: cloud-net
+    driver: bridge
