@@ -122,10 +122,51 @@ services:
       timeout: 5s
       retries: 6
 
+  monitoring-node-exporter-server:
+    <<: *service-defaults
+    image: prom/node-exporter:v1.9.1
+    container_name: monitoring-node-exporter-server
+    command:
+      - --path.procfs=/host/proc
+      - --path.sysfs=/host/sys
+      - --path.rootfs=/rootfs
+      - --collector.filesystem.mount-points-exclude=^/(dev|proc|sys|var/lib/docker/.+)($$|/)
+    pid: host
+    ports: ["127.0.0.1:9100:9100"]
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:9100/metrics"]
+      interval: 15s
+      timeout: 5s
+      retries: 6
+
+  monitoring-prometheus-server:
+    <<: *service-defaults
+    image: prom/prometheus:v3.2.1
+    container_name: monitoring-prometheus-server
+    command: ["--config.file=/etc/prometheus/prometheus.yml", "--storage.tsdb.path=/prometheus", "--storage.tsdb.retention.time=7d"]
+    ports: ["9090:9090"]
+    volumes:
+      - ./monitoring-prometheus-server/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    depends_on:
+      monitoring-node-exporter-server:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:9090/-/ready"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+
+
 volumes:
   db-data:
   keycloak-data:
   minio-data:
+  prometheus-data:
 
 networks:
   cloud-net:

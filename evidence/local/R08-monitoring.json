@@ -1,0 +1,75 @@
+{
+  "output": "R08",
+  "verified_at_utc": "2026-10-26T15:55:08.034059+00:00",
+  "details": {
+    "targets": [
+      {
+        "url": "http://monitoring-node-exporter-server:9100/metrics",
+        "health": "up",
+        "last_error": ""
+      }
+    ],
+    "queries": {
+      "up{job=\"node\"}": {
+        "series_count": 1,
+        "sample": {
+          "metric": {
+            "__name__": "up",
+            "instance": "monitoring-node-exporter-server:9100",
+            "job": "node"
+          },
+          "value": [
+            1793030108.001,
+            "1"
+          ]
+        }
+      },
+      "node_cpu_seconds_total": {
+        "series_count": 160,
+        "sample": {
+          "metric": {
+            "__name__": "node_cpu_seconds_total",
+            "cpu": "0",
+            "instance": "monitoring-node-exporter-server:9100",
+            "job": "node",
+            "mode": "idle"
+          },
+          "value": [
+            1793030108.006,
+            "1639.12"
+          ]
+        }
+      },
+      "node_memory_MemAvailable_bytes": {
+        "series_count": 1,
+        "sample": {
+          "metric": {
+            "__name__": "node_memory_MemAvailable_bytes",
+            "instance": "monitoring-node-exporter-server:9100",
+            "job": "node"
+          },
+          "value": [
+            1793030108.012,
+            "14465757184"
+          ]
+        }
+      },
+      "node_network_receive_bytes_total": {
+        "series_count": 2,
+        "sample": {
+          "metric": {
+            "__name__": "node_network_receive_bytes_total",
+            "device": "eth0",
+            "instance": "monitoring-node-exporter-server:9100",
+            "job": "node"
+          },
+          "value": [
+            1793030108.032,
+            "1672"
+          ]
+        }
+      }
+    },
+    "scope": "Docker Desktop Linux VM CPU/memory; exporter-visible network namespace; not Windows host/per-container monitoring"
+  }
+}
