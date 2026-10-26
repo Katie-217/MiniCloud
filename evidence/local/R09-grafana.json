@@ -1,0 +1,41 @@
+{
+  "output": "R09",
+  "verified_at_utc": "2026-10-26T15:55:56.988616+00:00",
+  "details": {
+    "datasource_health": "OK",
+    "dashboard": "Node Exporter Full",
+    "uid": "node-exporter-full",
+    "metric_queries_through_grafana": {
+      "cpu": [
+        {
+          "metric": {},
+          "value": [
+            1793030156.964,
+            "80.56571713333334"
+          ]
+        }
+      ],
+      "memory": [
+        {
+          "metric": {
+            "instance": "monitoring-node-exporter-server:9100",
+            "job": "node"
+          },
+          "value": [
+            1793030156.975,
+            "13.620879233235028"
+          ]
+        }
+      ],
+      "network": [
+        {
+          "metric": {},
+          "value": [
+            1793030156.987,
+            "11.784112888888886"
+          ]
+        }
+      ]
+    }
+  }
+}
