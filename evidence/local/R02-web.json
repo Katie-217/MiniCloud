@@ -1,0 +1,18 @@
+{
+  "output": "R02",
+  "verified_at_utc": "2026-10-26T15:43:07.348747+00:00",
+  "details": [
+    {
+      "path": "/",
+      "status": 200,
+      "expected_text": "MyMiniCloud – Home",
+      "body": "<!doctype html>\n<html lang=\"vi\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>MyMiniCloud – Home</title>\n  <link rel=\"stylesheet\" href=\"/style.css\">\n</head>\n<body>\n  <main>\n    <p class=\"eyebrow\">ĐIỆN TOÁN ĐÁM MÂY · 521H0092</p>\n    <h1>MyMiniCloud – Home</h1>\n    <p class=\"intro\">Mô phỏng hạ tầng cloud với 9 loại server, kết nối qua Docker Network.</p>\n    <a class=\"button\" href=\"/blog/\">Khám phá Blog →</a>\n    <section aria-label=\"Thành viên nhóm\">\n      <h2>Nhóm thực hiện</h2>\n      <p>Võ Thị Thiên Kim <span>521H0092</span></p>\n      <p>Diệp Yến Nhi <span>MSSV đang bổ sung</span></p>\n    </section>\n    <p class=\"footnote\">Nginx · Docker Compose · MyMiniCloud</p>\n  </main>\n</body>\n</html>\n"
+    },
+    {
+      "path": "/blog/",
+      "status": 200,
+      "expected_text": "MyMiniCloud – Blog",
+      "body": "<!doctype html>\n<html lang=\"vi\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>MyMiniCloud – Blog</title>\n  <link rel=\"stylesheet\" href=\"/style.css\">\n</head>\n<body>\n  <main>\n    <p class=\"eyebrow\">MYMINICLOUD · STATIC WEB HOSTING</p>\n    <h1>MyMiniCloud – Blog</h1>\n    <p class=\"intro\">Trang blog được phục vụ bởi Nginx trong container riêng, kết nối với các dịch vụ qua mạng cloud-net.</p>\n    <section>\n      <h2>Cloud trong một máy tính</h2>\n      <p>Mỗi dịch vụ đảm nhiệm một vai trò: phục vụ Web, xử lý API, lưu dữ liệu, xác thực, lưu trữ tệp, phân giải tên và giám sát.</p>\n    </section>\n    <a class=\"button\" href=\"/\">← Quay lại trang chính</a>\n  </main>\n</body>\n</html>\n"
+    }
+  ]
+}

@@ -12,9 +12,57 @@ x-service-defaults: &service-defaults
 services:
   web-frontend-server:
     <<: *service-defaults
-    image: nginx:1.28-alpine
+    build: ./web-frontend-server
+    image: ${DOCKERHUB_USERNAME:-katie217}/myminicloud-web:${IMAGE_TAG:-local}
     container_name: web-frontend-server
     ports: ["8080:80"]
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1/"]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+
+  application-backend-server:
+    <<: *service-defaults
+    build: ./application-backend-server
+    image: ${DOCKERHUB_USERNAME:-katie217}/myminicloud-app:${IMAGE_TAG:-local}
+    container_name: application-backend-server
+    ports: ["8085:8081"]
+    environment:
+      DB_HOST: relational-database-server
+      DB_USER: ${MARIADB_USER:-minicloud}
+      DB_PASSWORD: ${MARIADB_PASSWORD:?Run scripts/setup.py}
+    depends_on:
+      relational-database-server:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8081/healthz')"]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+
+  relational-database-server:
+    <<: *service-defaults
+    image: mariadb:11.4
+    container_name: relational-database-server
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:?Run scripts/setup.py}
+      MARIADB_DATABASE: ${MARIADB_DATABASE:-minicloud}
+      MARIADB_USER: ${MARIADB_USER:-minicloud}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD:?Run scripts/setup.py}
+    ports: ["127.0.0.1:3306:3306"]
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./relational-database-server/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+volumes:
+  db-data:
 
 networks:
   cloud-net:
