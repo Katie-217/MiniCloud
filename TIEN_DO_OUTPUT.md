@@ -9,7 +9,7 @@ Cập nhật lần đầu: **26/10/2026** theo ngày phiên làm việc. Nguồn
 - Đã đọc đề và chuẩn bị kế hoạch, quy ước Git, bảng theo dõi. Chưa có mã nguồn hệ thống hoặc kết quả chạy service.
 - Đã khởi tạo Git local, branch `chore/project-foundation`; chưa có remote. Commit tài liệu: `567b95e` — `docs: ghi nhận kế hoạch`; `main` trỏ vào mốc khởi tạo này.
 - Đã thêm `.gitignore` loại trừ bí mật, dữ liệu runtime và file trích PDF; `.gitattributes` thống nhất line ending cho file container Linux.
-- Docker CLI/Compose đã cài nhưng engine Linux chưa kết nối được tại lần kiểm tra đầu.
+- Docker CLI/Compose đã cài; lần kiểm tra cuối `docker info` đã kết nối được Linux engine, server **29.0.1**. Chưa build/chạy service MyMiniCloud.
 
 ## 2. Quy ước trạng thái
 
@@ -53,11 +53,11 @@ Công việc chuẩn bị đã hoàn thành: đọc PDF, trích yêu cầu/tiêu
 
 Khi có kết quả, mỗi mục ghi: ID output, môi trường local/EC2, branch/commit, lệnh hoặc thao tác kiểm thử, kết quả thực tế và file minh chứng.
 
-## 5. Vấn đề đã xác nhận cần fix
+## 5. Vấn đề cần fix và tình trạng xử lý
 
 | ID | Vấn đề | Ảnh hưởng | Hướng xử lý | Trạng thái |
 |---|---|---|---|---|
-| FIX-001 | Docker CLI không kết nối được `dockerDesktopLinuxEngine` | Chưa build/chạy/test container được | Bạn mở Docker Desktop; sau đó kiểm tra engine rồi xử lý lỗi nếu còn | CAN_FIX |
+| FIX-001 | Ban đầu Docker CLI không kết nối được `dockerDesktopLinuxEngine` | Đã hết chặn build/chạy container | Kiểm tra lại bằng `docker info --format '{{.ServerVersion}}'`, nhận `29.0.1` | DAT |
 | FIX-002 | Chưa có remote GitHub | Chưa push được commit/branch lên repo bạn tạo | Git local đã sẵn sàng; nhận URL repo, kiểm tra nội dung rồi kết nối | CHO_THONG_TIN |
 
 Chưa có lỗi chức năng nào của MyMiniCloud được xác nhận vì chưa triển khai service.
@@ -105,3 +105,4 @@ Chưa có lỗi chức năng nào của MyMiniCloud được xác nhận vì ch�
 |---|---|---|
 | 26/10/2026 | Tạo bảng theo dõi, kế hoạch và quy ước; khởi tạo Git local để lưu commit ngay | `chore/project-foundation` / `docs: ghi nhận kế hoạch` |
 | 26/10/2026 | Bổ sung quy tắc loại trừ file local/bí mật và line ending; không tính là output hệ thống đã chạy | `chore/project-foundation` / `chore: cấu hình nền git` |
+| 26/10/2026 | Xác minh Docker Linux engine đã chạy; đóng FIX-001; các output hệ thống vẫn chưa thực hiện | `chore/project-foundation` / `docs: cập nhật trạng thái` |

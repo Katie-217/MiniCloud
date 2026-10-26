@@ -13,7 +13,7 @@ Kiểm tra ngày 26/10/2026 theo ngày của phiên làm việc:
 | Workspace Git | Đã khởi tạo Git local, branch `chore/project-foundation`; chưa có remote | Commit tài liệu local; kết nối sau khi nhận URL repo, bảo toàn nội dung remote |
 | Docker CLI | Có phiên bản 29.0.1 | Không cần cài lại |
 | Docker Compose | Có v2.40.3 | Không cần cài lại |
-| Docker Engine | Không kết nối được pipe `dockerDesktopLinuxEngine` | Mở Docker Desktop, chờ Linux engine chạy rồi kiểm tra lại |
+| Docker Engine | Lần kiểm tra sau đã kết nối được; server 29.0.1 | Đã sẵn sàng cho bước build/chạy container |
 | WSL | Có thành phần `docker-desktop`; chưa thấy Ubuntu riêng | Chưa cần cài Ubuntu WSL chỉ để làm bài này; có thể dùng PowerShell và container công cụ |
 | SSH | Có OpenSSH client | Cần thông tin kết nối EC2 khi triển khai |
 | AWS CLI | Chưa có | Chưa cần cài nếu dùng Console và SSH |
