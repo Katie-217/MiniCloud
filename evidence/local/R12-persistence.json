@@ -1,0 +1,30 @@
+{
+  "output": "R12",
+  "verified_at_utc": "2026-10-26T16:01:15.401643+00:00",
+  "details": {
+    "all_five_container_ids_changed": true,
+    "named_volumes_unchanged": {
+      "relational-database-server": [
+        "myminicloud_db-data"
+      ],
+      "authentication-identity-server": [
+        "myminicloud_keycloak-data"
+      ],
+      "object-storage-server": [
+        "myminicloud_minio-data"
+      ],
+      "monitoring-prometheus-server": [
+        "myminicloud_prometheus-data"
+      ],
+      "monitoring-grafana-dashboard-server": [
+        "myminicloud_grafana-data"
+      ]
+    },
+    "database_custom_marker_preserved": "Persistence verification 521H0092",
+    "keycloak_sv01_preserved": true,
+    "minio_demo_object_preserved": true,
+    "grafana_custom_folder_preserved": true,
+    "prometheus_historical_sample_preserved": true,
+    "historical_sample_time": 1793030422.2727716
+  }
+}
