@@ -4,7 +4,7 @@ Cập nhật lần đầu: **26/10/2026** theo ngày phiên làm việc. Nguồn
 
 ## 1. Tổng quan hiện tại
 
-- **Output bắt buộc đạt: 12/18** nhóm trong bảng dưới. Đây là cách chia nhóm để quản lý, không phải cách chia điểm của PDF.
+- **Output bắt buộc đạt: 13/18** nhóm trong bảng dưới. Đây là cách chia nhóm để quản lý, không phải cách chia điểm của PDF.
 - **Mở rộng đạt: 0/10** mục.
 - Các service local được triển khai và kiểm thử dần theo bảng mục 3; chỉ các dòng `DAT` được tính hoàn thành.
 - Git local có `main` và các branch theo nhóm, kết nối repo Katie-217/MiniCloud; lịch sử tài liệu ban đầu được giữ nguyên.
@@ -40,7 +40,7 @@ Không lấy trạng thái container Running thay cho kết quả kiểm thử c
 | R10 | Proxy `/`, `/api/`, `/auth/` hoạt động, đúng status/redirect — tr. 19–20 | `feat/gateway-network-tests` | DAT | evidence/local/R10-gateway.json; Web/App/Auth + correct public OIDC issuer |
 | R11 | Các server thông mạng, có log ping và network membership — tr. 20 | `feat/gateway-network-tests` | DAT | evidence/local/R11-network.json; ping 3 packets for each of 10 services, 0% loss |
 | R12 | Volume cần thiết lưu được dữ liệu, restart policy đầy đủ — tr. 3 | Các nhóm service + `feat/gateway-network-tests` | DAT | evidence/local/R12-persistence.json; custom data preserved across all 5 stateful service recreations |
-| R13 | Ít nhất 1 image tùy chỉnh trên Docker Hub, có link/tag — tr. 3 | `chore/cloud-deployment` | CHUA_LAM | — |
+| R13 | Ít nhất 1 image tùy chỉnh trên Docker Hub, có link/tag — tr. 3 | `chore/cloud-deployment` | DAT | evidence/local/R13-dockerhub.json; katie217/myminicloud-web:1.0.0; manifest verified from registry |
 | R14 | Toàn hệ thống chạy trên EC2 Ubuntu, public IP và test server đạt — tr. 1, 3 | `chore/cloud-deployment` | CHUA_LAM | — |
 | R15 | Dockerfile/Compose/config và source đủ để tái tạo — tr. 3 | Toàn bộ branch triển khai | DANG_LAM | Đã có setup, env mẫu và quy ước cấu hình |
 | R16 | Báo cáo đủ 5 chương + phụ lục, thống kê mở rộng — tr. 3, 27 | `docs/submission-evidence` | CHUA_LAM | — |
