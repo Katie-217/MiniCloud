@@ -34,6 +34,29 @@ services:
       timeout: 3s
       retries: 6
 
+  relational-database-server:
+    <<: *service-defaults
+    image: mariadb:11.4
+    container_name: relational-database-server
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:?Run scripts/setup.py}
+      MARIADB_DATABASE: ${MARIADB_DATABASE:-minicloud}
+      MARIADB_USER: ${MARIADB_USER:-minicloud}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD:?Run scripts/setup.py}
+    ports: ["127.0.0.1:3306:3306"]
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./relational-database-server/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+volumes:
+  db-data:
+
 networks:
   cloud-net:
     name: cloud-net
