@@ -4,7 +4,7 @@ Cập nhật lần đầu: **26/10/2026** theo ngày phiên làm việc. Nguồn
 
 ## 1. Tổng quan hiện tại
 
-- **Output bắt buộc đạt: 9/18** nhóm trong bảng dưới. Đây là cách chia nhóm để quản lý, không phải cách chia điểm của PDF.
+- **Output bắt buộc đạt: 11/18** nhóm trong bảng dưới. Đây là cách chia nhóm để quản lý, không phải cách chia điểm của PDF.
 - **Mở rộng đạt: 0/10** mục.
 - Các service local được triển khai và kiểm thử dần theo bảng mục 3; chỉ các dòng `DAT` được tính hoàn thành.
 - Git local có `main` và các branch theo nhóm, kết nối repo Katie-217/MiniCloud; lịch sử tài liệu ban đầu được giữ nguyên.
@@ -28,7 +28,7 @@ Không lấy trạng thái container Running thay cho kết quả kiểm thử c
 
 | ID | Output cần đạt / căn cứ PDF | Branch phụ trách | Trạng thái | Minh chứng / commit |
 |---|---|---|---|---|
-| R01 | Compose khởi động toàn hệ thống; `cloud-net`, container name, cổng, restart đúng — tr. 1–3 | `chore/project-foundation` + các nhóm tích hợp | CHO_KIEM_THU | Compose nền hợp lệ; chưa đủ service |
+| R01 | Compose khởi động toàn hệ thống; `cloud-net`, container name, cổng, restart đúng — tr. 1–3 | `chore/project-foundation` + các nhóm tích hợp | DAT | evidence/local/R01-stack.json; 10 healthy containers / 9 server roles |
 | R02 | Home và `/blog/` HTTP 200, nội dung đúng — tr. 12–13 | `feat/web-api-database` | DAT | evidence/local/R02-web.json; Home + Blog |
 | R03 | `/hello` trực tiếp và qua proxy trả JSON đúng — tr. 13 | `feat/web-api-database` + `feat/gateway-network-tests` | DAT | evidence/local/R03-api.json; direct + proxy |
 | R04 | `minicloud.notes` có bảng và dữ liệu khởi tạo — tr. 6, 14 | `feat/web-api-database` | DAT | evidence/local/R04-database.json |
@@ -38,7 +38,7 @@ Không lấy trạng thái container Running thay cho kết quả kiểm thử c
 | R08 | Prometheus node target UP, query metric có dữ liệu — tr. 17–18 | `feat/monitoring-dashboard` | DAT | evidence/local/R08-monitoring.json |
 | R09 | Grafana datasource hoạt động, CPU/RAM/Network có dữ liệu — tr. 18–19 | `feat/monitoring-dashboard` | DAT | evidence/local/R09-grafana.json; R09-grafana-dashboard.png; R09-grafana-network.png |
 | R10 | Proxy `/`, `/api/`, `/auth/` hoạt động, đúng status/redirect — tr. 19–20 | `feat/gateway-network-tests` | DAT | evidence/local/R10-gateway.json; Web/App/Auth + correct public OIDC issuer |
-| R11 | Các server thông mạng, có log ping và network membership — tr. 20 | `feat/gateway-network-tests` | CHUA_LAM | — |
+| R11 | Các server thông mạng, có log ping và network membership — tr. 20 | `feat/gateway-network-tests` | DAT | evidence/local/R11-network.json; ping 3 packets for each of 10 services, 0% loss |
 | R12 | Volume cần thiết lưu được dữ liệu, restart policy đầy đủ — tr. 3 | Các nhóm service + `feat/gateway-network-tests` | CHUA_LAM | — |
 | R13 | Ít nhất 1 image tùy chỉnh trên Docker Hub, có link/tag — tr. 3 | `chore/cloud-deployment` | CHUA_LAM | — |
 | R14 | Toàn hệ thống chạy trên EC2 Ubuntu, public IP và test server đạt — tr. 1, 3 | `chore/cloud-deployment` | CHUA_LAM | — |

@@ -1,0 +1,100 @@
+{
+  "output": "R01",
+  "verified_at_utc": "2026-10-26T16:00:22.628381+00:00",
+  "details": {
+    "service_count": 10,
+    "role_count": 9,
+    "checks": [
+      {
+        "service": "relational-database-server",
+        "running": true,
+        "health": "healthy",
+        "restart": "unless-stopped",
+        "networks": [
+          "cloud-net"
+        ]
+      },
+      {
+        "service": "application-backend-server",
+        "running": true,
+        "health": "healthy",
+        "restart": "unless-stopped",
+        "networks": [
+          "cloud-net"
+        ]
+      },
+      {
+        "service": "authentication-identity-server",
+        "running": true,
+        "health": "healthy",
+        "restart": "unless-stopped",
+        "networks": [
+          "cloud-net"
+        ]
+      },
+      {
+        "service": "internal-dns-server",
+        "running": true,
+        "health": "healthy",
+        "restart": "unless-stopped",
+        "networks": [
+          "cloud-net"
+        ]
+      },
+      {
+        "service": "monitoring-node-exporter-server",
+        "running": true,
+        "health": "healthy",
+        "restart": "unless-stopped",
+        "networks": [
+          "cloud-net"
+        ]
+      },
+      {
+        "service": "monitoring-prometheus-server",
+        "running": true,
+        "health": "healthy",
+        "restart": "unless-stopped",
+        "networks": [
+          "cloud-net"
+        ]
+      },
+      {
+        "service": "monitoring-grafana-dashboard-server",
+        "running": true,
+        "health": "healthy",
+        "restart": "unless-stopped",
+        "networks": [
+          "cloud-net"
+        ]
+      },
+      {
+        "service": "object-storage-server",
+        "running": true,
+        "health": "healthy",
+        "restart": "unless-stopped",
+        "networks": [
+          "cloud-net"
+        ]
+      },
+      {
+        "service": "web-frontend-server",
+        "running": true,
+        "health": "healthy",
+        "restart": "unless-stopped",
+        "networks": [
+          "cloud-net"
+        ]
+      },
+      {
+        "service": "api-gateway-proxy-server",
+        "running": true,
+        "health": "healthy",
+        "restart": "unless-stopped",
+        "networks": [
+          "cloud-net"
+        ]
+      }
+    ]
+  }
+}
