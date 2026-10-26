@@ -1,0 +1,15 @@
+{
+  "output": "R06",
+  "verified_at_utc": "2026-10-26T15:49:26.244122+00:00",
+  "details": {
+    "bucket": "demo",
+    "key": "index.html",
+    "uploaded_bytes": 819,
+    "downloaded_bytes": 819,
+    "sha256": "097d8ef7172bf68a12e1c6195735a1201a4b9c7a0d6c44de1822e1151e1fffb6",
+    "bytes_match": true,
+    "objects": [
+      "index.html"
+    ]
+  }
+}

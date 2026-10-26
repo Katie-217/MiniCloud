@@ -84,10 +84,29 @@ services:
       retries: 20
       start_period: 60s
 
+  object-storage-server:
+    <<: *service-defaults
+    build: ./object-storage-server
+    image: ${DOCKERHUB_USERNAME:-katie217}/myminicloud-minio:source-2025-04-22
+    container_name: object-storage-server
+    command: ["server", "/data", "--console-address", ":9001"]
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minicloudadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:?Run scripts/setup.py}
+    ports: ["9000:9000", "9001:9001"]
+    volumes:
+      - minio-data:/data
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 15s
 
 volumes:
   db-data:
   keycloak-data:
+  minio-data:
 
 networks:
   cloud-net:
