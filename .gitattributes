@@ -1,0 +1,14 @@
+# Linux container files use LF even when Git runs on Windows.
+* text=auto eol=lf
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.docx binary
+*.zip binary

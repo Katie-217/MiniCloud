@@ -1,0 +1,35 @@
+# Local secrets and SSH credentials
+.env
+.env.*
+!.env.example
+!**/.env.example
+*.pem
+*.key
+id_rsa
+id_ed25519
+
+# Runtime data; keep source config and test evidence tracked
+object-storage-server/data/
+relational-database-server/data/
+authentication-identity-server/data/
+monitoring-prometheus-server/data/
+monitoring-grafana-dashboard-server/data/
+
+# Dependencies and interpreter cache
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local PDF and extraction scratch files
+/Báo Cáo Cuối Kỳ.docx.pdf
+/pdf_extracted.txt
+/pdf_figures/
+
+# OS and editor transient files
+.DS_Store
+Thumbs.db
+*.swp
+~$*

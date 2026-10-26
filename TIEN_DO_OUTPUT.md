@@ -7,7 +7,8 @@ Cập nhật lần đầu: **26/10/2026** theo ngày phiên làm việc. Nguồn
 - **Output bắt buộc đạt: 0/18** nhóm trong bảng dưới. Đây là cách chia nhóm để quản lý, không phải cách chia điểm của PDF.
 - **Mở rộng đạt: 0/10** mục.
 - Đã đọc đề và chuẩn bị kế hoạch, quy ước Git, bảng theo dõi. Chưa có mã nguồn hệ thống hoặc kết quả chạy service.
-- Đã khởi tạo Git local, branch `chore/project-foundation`; chưa có remote. Subject commit chuẩn bị: `docs: ghi nhận kế hoạch`.
+- Đã khởi tạo Git local, branch `chore/project-foundation`; chưa có remote. Commit tài liệu: `567b95e` — `docs: ghi nhận kế hoạch`; `main` trỏ vào mốc khởi tạo này.
+- Đã thêm `.gitignore` loại trừ bí mật, dữ liệu runtime và file trích PDF; `.gitattributes` thống nhất line ending cho file container Linux.
 - Docker CLI/Compose đã cài nhưng engine Linux chưa kết nối được tại lần kiểm tra đầu.
 
 ## 2. Quy ước trạng thái
@@ -103,3 +104,4 @@ Chưa có lỗi chức năng nào của MyMiniCloud được xác nhận vì ch�
 | Ngày | Nội dung | Branch / commit |
 |---|---|---|
 | 26/10/2026 | Tạo bảng theo dõi, kế hoạch và quy ước; khởi tạo Git local để lưu commit ngay | `chore/project-foundation` / `docs: ghi nhận kế hoạch` |
+| 26/10/2026 | Bổ sung quy tắc loại trừ file local/bí mật và line ending; không tính là output hệ thống đã chạy | `chore/project-foundation` / `chore: cấu hình nền git` |
