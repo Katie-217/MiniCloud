@@ -13,6 +13,9 @@ def set_status(output, status, evidence):
     for index, line in enumerate(lines):
         if line.startswith(f"| {output} |"):
             cells = [part.strip() for part in line.split("|")[1:-1]]
+            previous_commit = re.search(r"; commit `[a-f0-9]+`", cells[-1])
+            if previous_commit and "; commit `" not in evidence:
+                evidence += previous_commit.group(0)
             cells[-2:] = [status, evidence.replace("|", "/")]
             lines[index] = "| " + " | ".join(cells) + " |"
             found = True
