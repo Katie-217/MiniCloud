@@ -6,12 +6,12 @@ Cập nhật lần đầu: **26/10/2026** theo ngày phiên làm việc. Nguồn
 
 - **Output bắt buộc đạt: 2/18** nhóm trong bảng dưới. Đây là cách chia nhóm để quản lý, không phải cách chia điểm của PDF.
 - **Mở rộng đạt: 0/10** mục.
-- Đã đọc đề và chuẩn bị kế hoạch, quy ước Git, bảng theo dõi. Chưa có mã nguồn hệ thống hoặc kết quả chạy service.
-- Đã khởi tạo Git local, branch `chore/project-foundation`; chưa có remote. Commit tài liệu: `567b95e` — `docs: ghi nhận kế hoạch`; `main` trỏ vào mốc khởi tạo này.
+- Các service local được triển khai và kiểm thử dần theo bảng mục 3; chỉ các dòng `DAT` được tính hoàn thành.
+- Git local có `main` và các branch theo nhóm, kết nối repo Katie-217/MiniCloud; lịch sử tài liệu ban đầu được giữ nguyên.
 - Đã thêm `.gitignore` loại trừ bí mật, dữ liệu runtime và file trích PDF; `.gitattributes` thống nhất line ending cho file container Linux.
 - Đã kết nối `https://github.com/Katie-217/MiniCloud`, giữ README và lịch sử remote; đã push branch nền tảng. Nhóm: Võ Thị Thiên Kim — 521H0092; Diệp Yến Nhi — chờ MSSV. Docker Hub namespace: `katie217`.
 - Quy ước mới: commit message tiếng Anh, tiền tố phù hợp và thông điệp chính khoảng 4–5 từ. AWS để sau theo yêu cầu người dùng; tiếp tục toàn bộ công việc local không phụ thuộc AWS.
-- Docker CLI/Compose đã cài; lần kiểm tra cuối `docker info` đã kết nối được Linux engine, server **29.0.1**. Chưa build/chạy service MyMiniCloud.
+- Docker CLI/Compose đã cài; `docker info` kết nối được Linux engine, server **29.0.1**. Các container MyMiniCloud được quản lý riêng, không dừng container project khác.
 
 ## 2. Quy ước trạng thái
 
@@ -49,7 +49,7 @@ Không lấy trạng thái container Running thay cho kết quả kiểm thử c
 
 ## 4. Những output đã đạt
 
-**Chưa có output chức năng nào được kiểm thử đạt.**
+Các dòng `DAT` ở bảng mục 3 và 7 là output đã kiểm thử đạt, kèm đường dẫn log/ảnh. Các dòng `CHO_KIEM_THU` mới đạt một phần hoặc còn thiếu test tích hợp.
 
 Công việc chuẩn bị đã hoàn thành: đọc PDF, trích yêu cầu/tiêu chí, lập kế hoạch hai ngày và quy trình branch/commit, tạo bảng này. Các công việc đó không được tính thay cho output hệ thống theo đề.
 
@@ -62,7 +62,7 @@ Khi có kết quả, mỗi mục ghi: ID output, môi trường local/EC2, branc
 | FIX-001 | Ban đầu Docker CLI không kết nối được `dockerDesktopLinuxEngine` | Đã hết chặn build/chạy container | Kiểm tra lại bằng `docker info --format '{{.ServerVersion}}'`, nhận `29.0.1` | DAT |
 | FIX-002 | Chưa có remote GitHub ở lần kiểm tra đầu | Đã hết chặn push branch | Đã fetch, giữ lịch sử và push `chore/project-foundation` lên MiniCloud | DAT |
 
-Chưa có lỗi chức năng nào của MyMiniCloud được xác nhận vì chưa triển khai service.
+Lỗi phát hiện khi triển khai sẽ được thêm vào bảng trên, có nguyên nhân và kết quả kiểm thử lại.
 
 ## 6. Thông tin và setup còn thiếu
 
