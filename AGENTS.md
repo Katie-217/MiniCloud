@@ -10,8 +10,8 @@
 
 - Mỗi nhóm yêu cầu có một branch riêng theo bảng trong kế hoạch triển khai.
 - Mỗi thay đổi chức năng hoặc mỗi output hoàn thành có một commit riêng; không gom nhiều chức năng độc lập vào một commit lớn.
-- Định dạng: `<type>: <thông điệp chính 4–5 từ>`. Số từ tính phần sau tiền tố; dùng `feat`, `fix`, `chore`, `test`, `docs` phù hợp.
-- Ví dụ hợp lệ: `feat: phục vụ trang chủ`, `feat: thêm API chào hỏi`, `fix: sửa đường dẫn proxy`, `docs: cập nhật bảng output`.
+- Commit message dùng **tiếng Anh**, ngắn gọn, đúng ý chính. Định dạng: `<type>: <English summary of 4–5 words>`. Số từ tính phần sau tiền tố; dùng `feat`, `fix`, `chore`, `test`, `docs` phù hợp.
+- Ví dụ hợp lệ: `feat: serve home and blog`, `feat: add hello API endpoint`, `fix: correct authentication proxy routing`, `docs: update output tracking status`.
 - Kiểm tra diff, chạy kiểm thử phù hợp, cập nhật tiến độ rồi commit các file liên quan. Không đánh dấu output đạt nếu mới viết cấu hình mà chưa kiểm thử thực tế.
 - Branch chức năng bắt đầu từ `main` đã tích hợp nhóm trước; hoàn tất và kiểm thử nhóm hiện tại trước khi tích hợp nhóm kế tiếp. Tránh để các nhóm phụ thuộc nằm ở những branch chưa được tích hợp.
 - Không thay đổi author Git đã được cấu hình trừ khi người dùng yêu cầu.

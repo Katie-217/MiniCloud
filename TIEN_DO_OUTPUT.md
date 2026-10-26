@@ -7,8 +7,11 @@ Cập nhật lần đầu: **26/10/2026** theo ngày phiên làm việc. Nguồn
 - **Output bắt buộc đạt: 0/18** nhóm trong bảng dưới. Đây là cách chia nhóm để quản lý, không phải cách chia điểm của PDF.
 - **Mở rộng đạt: 0/10** mục.
 - Đã đọc đề và chuẩn bị kế hoạch, quy ước Git, bảng theo dõi. Chưa có mã nguồn hệ thống hoặc kết quả chạy service.
-- Đã khởi tạo Git local, branch `chore/project-foundation`; chưa có remote. Subject commit chuẩn bị: `docs: ghi nhận kế hoạch`.
-- Docker CLI/Compose đã cài nhưng engine Linux chưa kết nối được tại lần kiểm tra đầu.
+- Đã khởi tạo Git local, branch `chore/project-foundation`; chưa có remote. Commit tài liệu: `567b95e` — `docs: ghi nhận kế hoạch`; `main` trỏ vào mốc khởi tạo này.
+- Đã thêm `.gitignore` loại trừ bí mật, dữ liệu runtime và file trích PDF; `.gitattributes` thống nhất line ending cho file container Linux.
+- Đã kết nối `https://github.com/Katie-217/MiniCloud`, giữ README và lịch sử remote; đã push branch nền tảng. Nhóm: Võ Thị Thiên Kim — 521H0092; Diệp Yến Nhi — chờ MSSV. Docker Hub namespace: `katie217`.
+- Quy ước mới: commit message tiếng Anh, tiền tố phù hợp và thông điệp chính khoảng 4–5 từ. AWS để sau theo yêu cầu người dùng; tiếp tục toàn bộ công việc local không phụ thuộc AWS.
+- Docker CLI/Compose đã cài; lần kiểm tra cuối `docker info` đã kết nối được Linux engine, server **29.0.1**. Chưa build/chạy service MyMiniCloud.
 
 ## 2. Quy ước trạng thái
 
@@ -25,7 +28,7 @@ Không lấy trạng thái container Running thay cho kết quả kiểm thử c
 
 | ID | Output cần đạt / căn cứ PDF | Branch phụ trách | Trạng thái | Minh chứng / commit |
 |---|---|---|---|---|
-| R01 | Compose khởi động toàn hệ thống; `cloud-net`, container name, cổng, restart đúng — tr. 1–3 | `chore/project-foundation` + các nhóm tích hợp | CHUA_LAM | — |
+| R01 | Compose khởi động toàn hệ thống; `cloud-net`, container name, cổng, restart đúng — tr. 1–3 | `chore/project-foundation` + các nhóm tích hợp | CHO_KIEM_THU | Compose nền hợp lệ; chưa đủ service |
 | R02 | Home và `/blog/` HTTP 200, nội dung đúng — tr. 12–13 | `feat/web-api-database` | CHUA_LAM | — |
 | R03 | `/hello` trực tiếp và qua proxy trả JSON đúng — tr. 13 | `feat/web-api-database` + `feat/gateway-network-tests` | CHUA_LAM | — |
 | R04 | `minicloud.notes` có bảng và dữ liệu khởi tạo — tr. 6, 14 | `feat/web-api-database` | CHUA_LAM | — |
@@ -39,7 +42,7 @@ Không lấy trạng thái container Running thay cho kết quả kiểm thử c
 | R12 | Volume cần thiết lưu được dữ liệu, restart policy đầy đủ — tr. 3 | Các nhóm service + `feat/gateway-network-tests` | CHUA_LAM | — |
 | R13 | Ít nhất 1 image tùy chỉnh trên Docker Hub, có link/tag — tr. 3 | `chore/cloud-deployment` | CHUA_LAM | — |
 | R14 | Toàn hệ thống chạy trên EC2 Ubuntu, public IP và test server đạt — tr. 1, 3 | `chore/cloud-deployment` | CHUA_LAM | — |
-| R15 | Dockerfile/Compose/config và source đủ để tái tạo — tr. 3 | Toàn bộ branch triển khai | CHUA_LAM | — |
+| R15 | Dockerfile/Compose/config và source đủ để tái tạo — tr. 3 | Toàn bộ branch triển khai | DANG_LAM | Đã có setup, env mẫu và quy ước cấu hình |
 | R16 | Báo cáo đủ 5 chương + phụ lục, thống kê mở rộng — tr. 3, 27 | `docs/submission-evidence` | CHUA_LAM | — |
 | R17 | Video demo và link truy cập được trong phụ lục — tr. 3 | `docs/submission-evidence` | CHUA_LAM | — |
 | R18 | Ảnh từng server, log test; phân biệt local và EC2 — tr. 3 | Từng branch + `docs/submission-evidence` | CHUA_LAM | — |
@@ -52,12 +55,12 @@ Công việc chuẩn bị đã hoàn thành: đọc PDF, trích yêu cầu/tiêu
 
 Khi có kết quả, mỗi mục ghi: ID output, môi trường local/EC2, branch/commit, lệnh hoặc thao tác kiểm thử, kết quả thực tế và file minh chứng.
 
-## 5. Vấn đề đã xác nhận cần fix
+## 5. Vấn đề cần fix và tình trạng xử lý
 
 | ID | Vấn đề | Ảnh hưởng | Hướng xử lý | Trạng thái |
 |---|---|---|---|---|
-| FIX-001 | Docker CLI không kết nối được `dockerDesktopLinuxEngine` | Chưa build/chạy/test container được | Bạn mở Docker Desktop; sau đó kiểm tra engine rồi xử lý lỗi nếu còn | CAN_FIX |
-| FIX-002 | Chưa có remote GitHub | Chưa push được commit/branch lên repo bạn tạo | Git local đã sẵn sàng; nhận URL repo, kiểm tra nội dung rồi kết nối | CHO_THONG_TIN |
+| FIX-001 | Ban đầu Docker CLI không kết nối được `dockerDesktopLinuxEngine` | Đã hết chặn build/chạy container | Kiểm tra lại bằng `docker info --format '{{.ServerVersion}}'`, nhận `29.0.1` | DAT |
+| FIX-002 | Chưa có remote GitHub ở lần kiểm tra đầu | Đã hết chặn push branch | Đã fetch, giữ lịch sử và push `chore/project-foundation` lên MiniCloud | DAT |
 
 Chưa có lỗi chức năng nào của MyMiniCloud được xác nhận vì chưa triển khai service.
 
@@ -65,9 +68,9 @@ Chưa có lỗi chức năng nào của MyMiniCloud được xác nhận vì ch�
 
 | Việc cần làm rõ | Trạng thái | Hành động tiếp theo |
 |---|---|---|
-| URL repo và quyền làm việc | CHO_THONG_TIN | Người dùng tạo repo và gửi URL; agent kiểm tra remote |
-| MSSV, tên sinh viên/nhóm | CHO_THONG_TIN | Cập nhật định danh và báo cáo khi nhận được |
-| Username Docker Hub và login local | CHO_THONG_TIN | Xác minh namespace và quyền push |
+| URL repo và quyền làm việc | DAT | Katie-217/MiniCloud; quyền ADMIN; đã push branch |
+| MSSV, tên sinh viên/nhóm | DANG_LAM | Có Võ Thị Thiên Kim / 521H0092 và Diệp Yến Nhi; chờ MSSV thành viên thứ hai |
+| Username Docker Hub và login local | DANG_LAM | Namespace katie217; sẽ xác minh bằng push image thực tế |
 | Có EC2 Ubuntu hay chưa | CHO_THONG_TIN | Chốt phương án; nếu có, xác minh SSH và môi trường |
 | Public IP, user SSH, đường dẫn key nếu đã có EC2 | CHO_THONG_TIN | Kết nối bằng key local, không đưa nội dung key vào Git/chat |
 
@@ -103,3 +106,5 @@ Chưa có lỗi chức năng nào của MyMiniCloud được xác nhận vì ch�
 | Ngày | Nội dung | Branch / commit |
 |---|---|---|
 | 26/10/2026 | Tạo bảng theo dõi, kế hoạch và quy ước; khởi tạo Git local để lưu commit ngay | `chore/project-foundation` / `docs: ghi nhận kế hoạch` |
+| 26/10/2026 | Bổ sung quy tắc loại trừ file local/bí mật và line ending; không tính là output hệ thống đã chạy | `chore/project-foundation` / `chore: cấu hình nền git` |
+| 26/10/2026 | Xác minh Docker Linux engine đã chạy; đóng FIX-001; các output hệ thống vẫn chưa thực hiện | `chore/project-foundation` / `docs: cập nhật trạng thái` |
