@@ -1,0 +1,35 @@
+{
+  "output": "R10",
+  "verified_at_utc": "2026-10-26T16:02:59.928032+00:00",
+  "details": [
+    {
+      "path": "/",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/blog/",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/api/hello",
+      "status": 200,
+      "content_type": "application/json"
+    },
+    {
+      "path": "/api/notes",
+      "status": 200,
+      "content_type": "application/json"
+    },
+    {
+      "path": "/auth/",
+      "status": 302,
+      "location": "http://localhost/auth/admin/"
+    },
+    {
+      "oidc_issuer": "http://localhost/auth/realms/master",
+      "token_endpoint": "http://localhost/auth/realms/master/protocol/openid-connect/token"
+    }
+  ]
+}
