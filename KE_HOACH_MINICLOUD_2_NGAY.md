@@ -4,6 +4,8 @@ Nguồn: **Báo Cáo Cuối Kỳ.docx.pdf**, 27 trang, trong workspace. Số tra
 
 **Cập nhật theo yêu cầu làm việc:** hoàn tất và kiểm thử toàn bộ phần bắt buộc, bao gồm EC2/Docker Hub/hồ sơ nộp, trước khi làm mở rộng. Dùng [kế hoạch triển khai theo branch](KE_HOACH_TRIEN_KHAI_BAT_BUOC.md) làm thứ tự thực hiện và [bảng output](TIEN_DO_OUTPUT.md) để theo dõi đã đạt, cần fix, chưa làm. Quy ước commit nằm trong `AGENTS.md`.
 
+**Điều chỉnh hiện tại:** người dùng yêu cầu AWS để sau; các phần local/Docker Hub/hồ sơ local được thực hiện trước. Trạng thái thực tế cập nhật trong `TIEN_DO_OUTPUT.md`; checklist dưới đây là danh sách tiêu chí của đề, không tự thay thế kết quả kiểm chứng đó.
+
 Đây là tài liệu phân tích và kế hoạch thực hiện; chưa phải kết quả triển khai hay minh chứng đã chạy thành công. Các thời lượng, tên file minh chứng và cách tổ chức thư mục là đề xuất, không phải quy định của giảng viên.
 
 ## 1. Phạm vi và cách chấm điểm

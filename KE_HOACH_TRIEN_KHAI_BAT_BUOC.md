@@ -2,6 +2,8 @@
 
 Tài liệu này áp dụng thứ tự ưu tiên mới theo yêu cầu của bạn: **setup → thực hiện và kiểm thử phần bắt buộc → tổng hợp đủ đầu ra → mở rộng**. Nội dung yêu cầu gốc, số trang PDF và các lỗi trong mẫu nằm ở `KE_HOACH_MINICLOUD_2_NGAY.md`.
 
+**Điều chỉnh theo chỉ dẫn mới nhất:** AWS để người dùng kiểm tra sau. Hiện hoàn thành chức năng local, Docker Hub và hồ sơ demo local; giữ EC2 và phần hồ sơ cloud ở trạng thái chờ. Không làm mở rộng trước khi khép phần bắt buộc.
+
 ## 1. Trạng thái setup đã kiểm tra
 
 Kiểm tra ngày 26/10/2026 theo ngày của phiên làm việc:
@@ -9,19 +11,19 @@ Kiểm tra ngày 26/10/2026 theo ngày của phiên làm việc:
 | Thành phần | Thực tế quan sát được | Việc cần làm |
 |---|---|---|
 | Git | Có Git 2.49.0; đã có cấu hình author | Dùng cấu hình hiện có |
-| GitHub CLI | Đã đăng nhập tài khoản `Katie-217` | Cần URL repo, xác minh quyền đọc/ghi repo đó |
-| Workspace Git | Đã khởi tạo Git local, branch `chore/project-foundation`; chưa có remote | Commit tài liệu local; kết nối sau khi nhận URL repo, bảo toàn nội dung remote |
+| GitHub CLI | Tài khoản Katie-217 có quyền ADMIN repo MiniCloud | Đã fetch/push; giữ lịch sử remote |
+| Workspace Git | Có main và các branch nhóm, remote Katie-217/MiniCloud | Tích hợp từng nhóm sau kiểm thử |
 | Docker CLI | Có phiên bản 29.0.1 | Không cần cài lại |
 | Docker Compose | Có v2.40.3 | Không cần cài lại |
 | Docker Engine | Lần kiểm tra sau đã kết nối được; server 29.0.1 | Đã sẵn sàng cho bước build/chạy container |
 | WSL | Có thành phần `docker-desktop`; chưa thấy Ubuntu riêng | Chưa cần cài Ubuntu WSL chỉ để làm bài này; có thể dùng PowerShell và container công cụ |
 | SSH | Có OpenSSH client | Cần thông tin kết nối EC2 khi triển khai |
 | AWS CLI | Chưa có | Chưa cần cài nếu dùng Console và SSH |
-| MSSV / nhóm | Chưa được cung cấp | Dùng để đặt định danh, realm và báo cáo |
-| Docker Hub | Chưa kiểm chứng username/login/quyền push | Cần namespace và đăng nhập local |
-| AWS EC2 | Chưa biết đã có máy hay chưa | Cần xác minh sớm, trước khi triển khai local kéo dài |
+| MSSV / nhóm | Võ Thị Thiên Kim 521H0092; Diệp Yến Nhi | Chờ MSSV Diệp Yến Nhi |
+| Docker Hub | katie217; Web image 1.0.0 đã push và đọc lại manifest | Output R13 đạt |
+| AWS EC2 | Người dùng yêu cầu để sau | Tiếp tục toàn bộ phần local; chưa tạo/truy cập EC2 |
 
-Thông tin cần bạn cung cấp: URL repo, MSSV/tên sinh viên hoặc nhóm, username Docker Hub, trạng thái EC2. Nếu đã có EC2: public IP, username SSH và đường dẫn `.pem` trên máy; không gửi nội dung key/mật khẩu/token trong chat.
+Thông tin còn chờ: MSSV Diệp Yến Nhi và trạng thái EC2. Khi người dùng sẵn sàng phần AWS: public IP, username SSH và đường dẫn `.pem` trên máy; không gửi nội dung key/mật khẩu/token trong chat.
 
 Git đã được khởi tạo cục bộ để có thể commit ngay, không phụ thuộc việc tạo remote. Commit tài liệu ban đầu dùng subject `docs: ghi nhận kế hoạch`; tạo `main` tại commit gốc này làm mốc khởi tạo, tiếp tục G0 trên `chore/project-foundation`. Khi nhận URL repo, đọc nội dung remote trước; nếu có lịch sử sẵn thì tích hợp hoặc chuyển các commit phù hợp, không dùng force push hay ghi đè lịch sử.
 
@@ -32,7 +34,7 @@ Git đã được khởi tạo cục bộ để có thể commit ngay, không ph
 - Docker client kết nối được Linux engine; Compose gọi được Docker.
 - Repo xác định rõ, quyền làm việc được kiểm chứng, có branch làm việc.
 - Có MSSV/tên nhóm và namespace Docker Hub.
-- Đã biết phương án EC2; chưa cần hoàn tất EC2 để bắt đầu viết Web/App nhưng phải biết có thể triển khai.
+- AWS được tách khỏi mốc bắt đầu local theo yêu cầu mới nhất; trạng thái EC2 được giữ rõ trong bảng tiến độ.
 
 ### M1 — phần cơ bản local đạt
 
@@ -62,8 +64,9 @@ Git đã được khởi tạo cục bộ để có thể commit ngay, không ph
 | G2 | `feat/identity-storage-dns` | B04–B06 / R05–R07: Keycloak, MinIO, Bind9; cấu hình lưu dữ liệu liên quan | G1; login/user, upload/download, dig có kết quả |
 | G3 | `feat/monitoring-dashboard` | B07–B08 / R08–R09: Node Exporter, Prometheus, Grafana; datasource/dashboard dựng lại được | G2; target UP, query và biểu đồ có dữ liệu |
 | G4 | `feat/gateway-network-tests` | B09–B10 / R10–R12: proxy Web/App/Auth, kiểm tra toàn mạng, kiểm thử lưu dữ liệu và restart policy | G3; M1 đạt, đủ bằng chứng local |
-| G5 | `chore/cloud-deployment` | R13–R14: image Docker Hub, hướng dẫn/config EC2, triển khai và kiểm thử cloud | G4; M2 đạt |
-| G6 | `docs/submission-evidence` | R16–R18: báo cáo, ảnh/log, link video, hướng dẫn chạy và bảng tổng hợp cuối | G5; M3 đạt |
+| G5a | `chore/image-publication` | R13: image Docker Hub, tag/digest và kiểm chứng registry | G4; đã hoàn thành độc lập AWS |
+| G5b | `chore/cloud-deployment` | R14: triển khai EC2 và kiểm thử cloud | Chờ thông tin AWS từ người dùng; chưa tạo branch |
+| G6 | `docs/submission-evidence` | R16–R18: báo cáo, ảnh/log, video local, hướng dẫn chạy và bảng tổng hợp | Làm bản local sau G5a; bổ sung cloud sau G5b trước M3 |
 
 Mỗi branch có nhiều commit nhỏ theo chức năng/output. Kết thúc nhóm, kiểm thử các luồng liên quan và tích hợp vào `main`; branch sau tạo từ `main` đã cập nhật. Có thể push branch để theo dõi sau khi repo đã được kết nối. PR chỉ dùng nếu quy trình repo cần.
 

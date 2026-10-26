@@ -1,0 +1,76 @@
+{
+  "output": "Local demo video",
+  "verified_at_utc": "2026-10-26T16:13:47.912721+00:00",
+  "details": [
+    {
+      "chapter": "01 · Docker Compose / cloud-net",
+      "url": "file:///D:/%C4%90i%E1%BB%87n%20to%C3%A1n%20%C4%91%C3%A1m%20m%C3%A2y/evidence/local/evidence.html#R01",
+      "note": "9 server roles, 10 healthy containers; local verification only."
+    },
+    {
+      "chapter": "02 · Web Home through Gateway",
+      "url": "http://localhost/",
+      "note": "HTTP 200. Group: Vo Thi Thien Kim / 521H0092 and Diep Yen Nhi."
+    },
+    {
+      "chapter": "03 · Static Blog",
+      "url": "http://localhost/blog/",
+      "note": "Nginx serves /blog/; navigation back to Home is available."
+    },
+    {
+      "chapter": "04 · Flask API",
+      "url": "file:///D:/%C4%90i%E1%BB%87n%20to%C3%A1n%20%C4%91%C3%A1m%20m%C3%A2y/evidence/local/evidence.html#R03",
+      "note": "Direct :8085/hello and gateway /api/hello return matching JSON."
+    },
+    {
+      "chapter": "05 · MariaDB",
+      "url": "file:///D:/%C4%90i%E1%BB%87n%20to%C3%A1n%20%C4%91%C3%A1m%20m%C3%A2y/evidence/local/evidence.html#R04",
+      "note": "Actual SHOW TABLES / SELECT output, including initial seed and persistence marker."
+    },
+    {
+      "chapter": "06 · Keycloak through /auth/",
+      "url": "http://localhost/auth/admin/master/console/#/master/users",
+      "note": "Administrator login succeeds and sv01 exists in master realm."
+    },
+    {
+      "chapter": "07 · MinIO Object Storage",
+      "url": "http://localhost:9001/browser/demo",
+      "note": "demo/index.html is uploaded; download was verified byte-for-byte and by SHA256."
+    },
+    {
+      "chapter": "08 · Bind9 DNS",
+      "url": "file:///D:/%C4%90i%E1%BB%87n%20to%C3%A1n%20%C4%91%C3%A1m%20m%C3%A2y/evidence/local/evidence.html#R07",
+      "note": "dig returns 10.10.10.10 on internal port 53 and published host port 1053."
+    },
+    {
+      "chapter": "09 · Prometheus",
+      "url": "http://localhost:9090/targets",
+      "note": "Node Exporter target is UP; CPU, memory and network metrics are available."
+    },
+    {
+      "chapter": "10 · Grafana Node Exporter Full",
+      "url": "http://localhost:3000/d/node-exporter-full/node-exporter-full?from=now-5m&to=now&var-datasource=prometheus&var-job=node&var-node=monitoring-node-exporter-server:9100&timezone=browser&orgId=1&var-diskdevices=%5Ba-z%5D%2B%7Cnvme%5B0-9%5D%2Bn%5B0-9%5D%2B%7Cmmcblk%5B0-9%5D%2B&refresh=1m",
+      "note": "CPU / RAM / Network charts use real Linux Docker metrics; this is not Windows host monitoring."
+    },
+    {
+      "chapter": "11 · Unified Reverse Proxy",
+      "url": "file:///D:/%C4%90i%E1%BB%87n%20to%C3%A1n%20%C4%91%C3%A1m%20m%C3%A2y/evidence/local/evidence.html#R10",
+      "note": "Web 200, API JSON, Auth 302 and public OIDC issuer verified."
+    },
+    {
+      "chapter": "12 · Internal Network",
+      "url": "file:///D:/%C4%90i%E1%BB%87n%20to%C3%A1n%20%C4%91%C3%A1m%20m%C3%A2y/evidence/local/evidence.html#R11",
+      "note": "3 ICMP packets to each of 10 services; 0% packet loss."
+    },
+    {
+      "chapter": "13 · Persistent Volumes",
+      "url": "file:///D:/%C4%90i%E1%BB%87n%20to%C3%A1n%20%C4%91%C3%A1m%20m%C3%A2y/evidence/local/evidence.html#R12",
+      "note": "Five containers recreated; DB, user, object, Grafana folder and historical samples preserved."
+    },
+    {
+      "chapter": "14 · Docker Hub / Remaining Work",
+      "url": "file:///D:/%C4%90i%E1%BB%87n%20to%C3%A1n%20%C4%91%C3%A1m%20m%C3%A2y/evidence/local/evidence.html#R13",
+      "note": "katie217/myminicloud-web:1.0.0 published. AWS EC2 and final cloud evidence remain pending; 0/10 extensions."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "output": "R15",
+  "verified_at_utc": "2026-10-26T16:16:36.004629+00:00",
+  "details": {
+    "required_files_present": [
+      "docker-compose.yml",
+      ".env.example",
+      "scripts/setup.py",
+      "README.md",
+      "project-info.json",
+      "web-frontend-server/Dockerfile",
+      "application-backend-server/Dockerfile",
+      "relational-database-server/init/001_init.sql",
+      "authentication-identity-server/healthcheck.sh",
+      "object-storage-server/Dockerfile",
+      "internal-dns-server/db.cloud.local",
+      "monitoring-prometheus-server/prometheus.yml",
+      "monitoring-grafana-dashboard-server/provisioning/datasources/prometheus.yml",
+      "api-gateway-proxy-server/nginx.conf"
+    ],
+    "compose_valid": true,
+    "setup_preserves_existing_credentials": true,
+    "runtime_verified": "R01-stack.json and full functional evidence"
+  }
+}

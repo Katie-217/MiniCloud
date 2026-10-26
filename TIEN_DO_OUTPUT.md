@@ -4,7 +4,7 @@ Cập nhật lần đầu: **26/10/2026** theo ngày phiên làm việc. Nguồn
 
 ## 1. Tổng quan hiện tại
 
-- **Output bắt buộc đạt: 13/18** nhóm trong bảng dưới. Đây là cách chia nhóm để quản lý, không phải cách chia điểm của PDF.
+- **Output bắt buộc đạt: 14/18** nhóm trong bảng dưới. Đây là cách chia nhóm để quản lý, không phải cách chia điểm của PDF.
 - **Mở rộng đạt: 0/10** mục.
 - Các service local được triển khai và kiểm thử dần theo bảng mục 3; chỉ các dòng `DAT` được tính hoàn thành.
 - Git local có `main` và các branch theo nhóm, kết nối repo Katie-217/MiniCloud; lịch sử tài liệu ban đầu được giữ nguyên.
@@ -12,6 +12,9 @@ Cập nhật lần đầu: **26/10/2026** theo ngày phiên làm việc. Nguồn
 - Đã kết nối `https://github.com/Katie-217/MiniCloud`, giữ README và lịch sử remote; đã push branch nền tảng. Nhóm: Võ Thị Thiên Kim — 521H0092; Diệp Yến Nhi — chờ MSSV. Docker Hub namespace: `katie217`.
 - Quy ước mới: commit message tiếng Anh, tiền tố phù hợp và thông điệp chính khoảng 4–5 từ. AWS để sau theo yêu cầu người dùng; tiếp tục toàn bộ công việc local không phụ thuộc AWS.
 - Docker CLI/Compose đã cài; `docker info` kết nối được Linux engine, server **29.0.1**. Các container MyMiniCloud được quản lý riêng, không dừng container project khác.
+- **Kết quả local:** toàn bộ chức năng cơ bản đã kiểm thử đạt; 10 container healthy; bộ kiểm thử tổng hợp thành công, bao gồm UI. Docker Hub Web image 1.0.0 đã push và xác minh manifest.
+- **Hồ sơ local:** báo cáo PDF 18 trang và DOCX/Markdown đủ 5 chương; video WebM 75,68 giây gồm 14 phần, có chú thích; ảnh/log đầy đủ trong `evidence/local/`.
+- **Chưa hoàn tất toàn đề:** EC2/public IP và bằng chứng cloud; bổ sung MSSV Diệp Yến Nhi; cập nhật báo cáo/video bản cuối. Mở rộng hiện chưa làm.
 
 ## 2. Quy ước trạng thái
 
@@ -28,24 +31,24 @@ Không lấy trạng thái container Running thay cho kết quả kiểm thử c
 
 | ID | Output cần đạt / căn cứ PDF | Branch phụ trách | Trạng thái | Minh chứng / commit |
 |---|---|---|---|---|
-| R01 | Compose khởi động toàn hệ thống; `cloud-net`, container name, cổng, restart đúng — tr. 1–3 | `chore/project-foundation` + các nhóm tích hợp | DAT | evidence/local/R01-stack.json; 10 healthy containers / 9 server roles |
-| R02 | Home và `/blog/` HTTP 200, nội dung đúng — tr. 12–13 | `feat/web-api-database` | DAT | evidence/local/R02-web.json; Home + Blog |
-| R03 | `/hello` trực tiếp và qua proxy trả JSON đúng — tr. 13 | `feat/web-api-database` + `feat/gateway-network-tests` | DAT | evidence/local/R03-api.json; direct + proxy |
-| R04 | `minicloud.notes` có bảng và dữ liệu khởi tạo — tr. 6, 14 | `feat/web-api-database` | DAT | evidence/local/R04-database.json |
-| R05 | Keycloak admin đăng nhập được, tạo user sv01 — tr. 14–15 | `feat/identity-storage-dns` | DAT | evidence/local/R05-auth.json; R05-keycloak-admin.png; R05-keycloak-user.png |
-| R06 | MinIO bucket demo, upload và tải file được — tr. 2, 15–16 | `feat/identity-storage-dns` | DAT | evidence/local/R06-storage.json; R06-minio-bucket.png; R06-minio-object.png |
-| R07 | DNS Web trả `10.10.10.10` bằng dig — tr. 16–17 | `feat/identity-storage-dns` | DAT | evidence/local/R07-dns.json; dig internal 53 + published host 1053 |
-| R08 | Prometheus node target UP, query metric có dữ liệu — tr. 17–18 | `feat/monitoring-dashboard` | DAT | evidence/local/R08-monitoring.json |
-| R09 | Grafana datasource hoạt động, CPU/RAM/Network có dữ liệu — tr. 18–19 | `feat/monitoring-dashboard` | DAT | evidence/local/R09-grafana.json; R09-grafana-dashboard.png; R09-grafana-network.png |
-| R10 | Proxy `/`, `/api/`, `/auth/` hoạt động, đúng status/redirect — tr. 19–20 | `feat/gateway-network-tests` | DAT | evidence/local/R10-gateway.json; Web/App/Auth + correct public OIDC issuer |
-| R11 | Các server thông mạng, có log ping và network membership — tr. 20 | `feat/gateway-network-tests` | DAT | evidence/local/R11-network.json; ping 3 packets for each of 10 services, 0% loss |
-| R12 | Volume cần thiết lưu được dữ liệu, restart policy đầy đủ — tr. 3 | Các nhóm service + `feat/gateway-network-tests` | DAT | evidence/local/R12-persistence.json; custom data preserved across all 5 stateful service recreations |
-| R13 | Ít nhất 1 image tùy chỉnh trên Docker Hub, có link/tag — tr. 3 | `chore/cloud-deployment` | DAT | evidence/local/R13-dockerhub.json; katie217/myminicloud-web:1.0.0; manifest verified from registry |
-| R14 | Toàn hệ thống chạy trên EC2 Ubuntu, public IP và test server đạt — tr. 1, 3 | `chore/cloud-deployment` | CHUA_LAM | — |
-| R15 | Dockerfile/Compose/config và source đủ để tái tạo — tr. 3 | Toàn bộ branch triển khai | DANG_LAM | Đã có setup, env mẫu và quy ước cấu hình |
-| R16 | Báo cáo đủ 5 chương + phụ lục, thống kê mở rộng — tr. 3, 27 | `docs/submission-evidence` | CHUA_LAM | — |
-| R17 | Video demo và link truy cập được trong phụ lục — tr. 3 | `docs/submission-evidence` | CHUA_LAM | — |
-| R18 | Ảnh từng server, log test; phân biệt local và EC2 — tr. 3 | Từng branch + `docs/submission-evidence` | CHUA_LAM | — |
+| R01 | Compose khởi động toàn hệ thống; `cloud-net`, container name, cổng, restart đúng — tr. 1–3 | `chore/project-foundation` + các nhóm tích hợp | DAT | evidence/local/R01-stack.json; 10 healthy containers / 9 server roles; commit `1f9f77b` |
+| R02 | Home và `/blog/` HTTP 200, nội dung đúng — tr. 12–13 | `feat/web-api-database` | DAT | evidence/local/R02-web.json; Home + Blog; commit `a28234e` |
+| R03 | `/hello` trực tiếp và qua proxy trả JSON đúng — tr. 13 | `feat/web-api-database` + `feat/gateway-network-tests` | DAT | evidence/local/R03-api.json; direct + proxy; commit `35f3502` |
+| R04 | `minicloud.notes` có bảng và dữ liệu khởi tạo — tr. 6, 14 | `feat/web-api-database` | DAT | evidence/local/R04-database.json; commit `ea51eb3` |
+| R05 | Keycloak admin đăng nhập được, tạo user sv01 — tr. 14–15 | `feat/identity-storage-dns` | DAT | evidence/local/R05-auth.json; R05-keycloak-admin.png; R05-keycloak-user.png; commit `22e8a99` |
+| R06 | MinIO bucket demo, upload và tải file được — tr. 2, 15–16 | `feat/identity-storage-dns` | DAT | evidence/local/R06-storage.json; R06-minio-bucket.png; R06-minio-object.png; commit `2114441` |
+| R07 | DNS Web trả `10.10.10.10` bằng dig — tr. 16–17 | `feat/identity-storage-dns` | DAT | evidence/local/R07-dns.json; dig internal 53 + published host 1053; commit `41e7815` |
+| R08 | Prometheus node target UP, query metric có dữ liệu — tr. 17–18 | `feat/monitoring-dashboard` | DAT | evidence/local/R08-monitoring.json; commit `435dc43` |
+| R09 | Grafana datasource hoạt động, CPU/RAM/Network có dữ liệu — tr. 18–19 | `feat/monitoring-dashboard` | DAT | evidence/local/R09-grafana.json; R09-grafana-dashboard.png; R09-grafana-network.png; commit `25d4a51` |
+| R10 | Proxy `/`, `/api/`, `/auth/` hoạt động, đúng status/redirect — tr. 19–20 | `feat/gateway-network-tests` | DAT | evidence/local/R10-gateway.json; Web/App/Auth + correct public OIDC issuer; commit `35f3502` |
+| R11 | Các server thông mạng, có log ping và network membership — tr. 20 | `feat/gateway-network-tests` | DAT | evidence/local/R11-network.json; ping 3 packets for each of 10 services, 0% loss; commit `1f9f77b` |
+| R12 | Volume cần thiết lưu được dữ liệu, restart policy đầy đủ — tr. 3 | Các nhóm service + `feat/gateway-network-tests` | DAT | evidence/local/R12-persistence.json; custom data preserved across all 5 stateful service recreations; commit `5967fba` |
+| R13 | Ít nhất 1 image tùy chỉnh trên Docker Hub, có link/tag — tr. 3 | `chore/image-publication` | DAT | evidence/local/R13-dockerhub.json; katie217/myminicloud-web:1.0.0; manifest verified from registry; commit `431197d` |
+| R14 | Toàn hệ thống chạy trên EC2 Ubuntu, public IP và test server đạt — tr. 1, 3 | `chore/cloud-deployment` | CHO_THONG_TIN | AWS deferred by user; no EC2 resources created/accessed |
+| R15 | Dockerfile/Compose/config và source đủ để tái tạo — tr. 3 | Toàn bộ branch triển khai | DAT | evidence/local/R15-source.json; full source/config, setup idempotent, README with tested commands |
+| R16 | Báo cáo đủ 5 chương + phụ lục, thống kê mở rộng — tr. 3, 27 | `docs/submission-evidence` | CHO_KIEM_THU | report/BaoCao_Local_521H0092.md/.pdf/.docx: đủ 5 chương cho local; chờ EC2 và MSSV thành viên hai; commit `503a61a` |
+| R17 | Video demo và link truy cập được trong phụ lục — tr. 3 | `docs/submission-evidence` | CHO_KIEM_THU | report/Demo_Local_521H0092.webm: silent captioned local walkthrough; EC2 segment pending; commit `f3e3c15` |
+| R18 | Ảnh từng server, log test; phân biệt local và EC2 — tr. 3 | Từng branch + `docs/submission-evidence` | CHO_KIEM_THU | evidence/local: đủ ảnh/log từng server, network, persistence, Docker Hub; EC2 chưa thực hiện; commit `0d2c665` |
 
 ## 4. Những output đã đạt
 
@@ -61,8 +64,10 @@ Khi có kết quả, mỗi mục ghi: ID output, môi trường local/EC2, branc
 |---|---|---|---|---|
 | FIX-001 | Ban đầu Docker CLI không kết nối được `dockerDesktopLinuxEngine` | Đã hết chặn build/chạy container | Kiểm tra lại bằng `docker info --format '{{.ServerVersion}}'`, nhận `29.0.1` | DAT |
 | FIX-002 | Chưa có remote GitHub ở lần kiểm tra đầu | Đã hết chặn push branch | Đã fetch, giữ lịch sử và push `chore/project-foundation` lên MiniCloud | DAT |
+| FIX-003 | Image/download MinIO được hướng dẫn không còn truy cập được tại lần kiểm tra | Không dựng được storage bằng cách copy image mẫu | Build source chính thức có tag/checksum, giữ license; UI và upload/download đã kiểm thử | DAT |
+| FIX-004 | Docker Desktop từ chối root bind mount rslave | Node Exporter không start với cấu hình host mount ban đầu | Dùng root bind read-only mặc định, giữ proc/sys mounts; metric và dashboard có dữ liệu | DAT |
 
-Lỗi phát hiện khi triển khai sẽ được thêm vào bảng trên, có nguyên nhân và kết quả kiểm thử lại.
+Hiện không còn lỗi chức năng làm trượt các bài kiểm thử local đã chạy. Các hạn chế ngoài bộ kiểm thử được ghi ở mục 10; phần AWS chưa được kiểm chứng.
 
 ## 6. Thông tin và setup còn thiếu
 
@@ -70,8 +75,8 @@ Lỗi phát hiện khi triển khai sẽ được thêm vào bảng trên, có n
 |---|---|---|
 | URL repo và quyền làm việc | DAT | Katie-217/MiniCloud; quyền ADMIN; đã push branch |
 | MSSV, tên sinh viên/nhóm | DANG_LAM | Có Võ Thị Thiên Kim / 521H0092 và Diệp Yến Nhi; chờ MSSV thành viên thứ hai |
-| Username Docker Hub và login local | DANG_LAM | Namespace katie217; sẽ xác minh bằng push image thực tế |
-| Có EC2 Ubuntu hay chưa | CHO_THONG_TIN | Chốt phương án; nếu có, xác minh SSH và môi trường |
+| Username Docker Hub và login local | DAT | Namespace katie217; push Web 1.0.0 và đọc lại manifest thành công |
+| Có EC2 Ubuntu hay chưa | CHO_THONG_TIN | Người dùng yêu cầu để sau; chưa thao tác AWS |
 | Public IP, user SSH, đường dẫn key nếu đã có EC2 | CHO_THONG_TIN | Kết nối bằng key local, không đưa nội dung key vào Git/chat |
 
 ## 7. Mở rộng chưa làm
@@ -108,3 +113,30 @@ Lỗi phát hiện khi triển khai sẽ được thêm vào bảng trên, có n
 | 26/10/2026 | Tạo bảng theo dõi, kế hoạch và quy ước; khởi tạo Git local để lưu commit ngay | `chore/project-foundation` / `docs: ghi nhận kế hoạch` |
 | 26/10/2026 | Bổ sung quy tắc loại trừ file local/bí mật và line ending; không tính là output hệ thống đã chạy | `chore/project-foundation` / `chore: cấu hình nền git` |
 | 26/10/2026 | Xác minh Docker Linux engine đã chạy; đóng FIX-001; các output hệ thống vẫn chưa thực hiện | `chore/project-foundation` / `docs: cập nhật trạng thái` |
+| 26/10/2026 | Local mandatory features and integration checks passed; 10 healthy containers; named-volume recreation passed | Group branches integrated into main |
+| 26/10/2026 | Published katie217/myminicloud-web:1.0.0 and verified registry manifest | `chore/image-publication` / `431197d` |
+| 26/10/2026 | Generated local PDF/DOCX report, screenshots and 75.68-second video; AWS deferred | `docs/submission-evidence` / `503a61a`, `f3e3c15` |
+
+## 10. Hạn chế còn lại và thứ tự tiếp tục
+
+1. **AWS EC2 chưa thực hiện** theo yêu cầu người dùng: chưa có public IP, SSH và bằng chứng cloud. Khi có thông tin, triển khai cùng source trên branch `chore/cloud-deployment`, kiểm thử đủ server rồi cập nhật R14.
+2. **R16/R17/R18 mới hoàn tất bản local**: báo cáo, video và ảnh/log cloud phải bổ sung sau EC2. Video local có chú thích, không có giọng đọc; file `report/Demo_Local_521H0092.webm`, 75,68 giây, 1440×1000, đã kiểm tra playback.
+3. **MSSV Diệp Yến Nhi còn thiếu**: cập nhật `project-info.json`, trang Home, báo cáo và video khi được cung cấp; rebuild Web nếu đổi nội dung.
+4. **Metrics có giới hạn**: CPU/RAM Linux VM của Docker Desktop, network theo namespace exporter; chưa có cAdvisor/mọi container hoặc toàn bộ Windows. Một số panel Root FS/hệ thống tùy chọn của template có thể N/A; CPU/RAM/Network bắt buộc đã có dữ liệu.
+5. **Logging tập trung chưa làm**: theo bài demo chi tiết dùng Grafana + Prometheus, log container được lưu riêng đã loại mật khẩu; chưa có Loki.
+6. **Mở rộng 0/10**: chỉ bắt đầu sau khi khép phần bắt buộc. `/secure` đã có test từ chối token thiếu/sai, chưa có realm MSSV/client/token hợp lệ của E04.
+
+Các artifact dùng ngay: [README](README.md), [báo cáo PDF local](report/BaoCao_Local_521H0092.pdf), [DOCX](report/BaoCao_Local_521H0092.docx), [video local](report/Demo_Local_521H0092.webm), [trang xem video](report/Demo_Local_521H0092.html), [ảnh/log](evidence/local/).
+
+## 11. Branch đã thực hiện
+
+| Nhóm | Branch | Kết quả |
+|---|---|---|
+| Nền tảng | `chore/project-foundation` | Repo/config/setup và quy ước; đã tích hợp main |
+| Web/App/DB | `feat/web-api-database` | HTTP/JSON/SQL và App–DB đạt; đã tích hợp main |
+| Identity/Storage/DNS | `feat/identity-storage-dns` | Auth UI, S3 và dig đạt; đã tích hợp main |
+| Monitoring/Grafana | `feat/monitoring-dashboard` | Metrics/query/charts đạt; đã tích hợp main |
+| Gateway/Network/Volume | `feat/gateway-network-tests` | Routing/ping/recreate và bộ test tổng hợp đạt; đã tích hợp main |
+| Docker Hub | `chore/image-publication` | Web image 1.0.0 push/manifest đạt; đã tích hợp main |
+| Hồ sơ local | `docs/submission-evidence` | Báo cáo/ảnh/video local và hướng dẫn; phần cloud vẫn chờ |
+| AWS | `chore/cloud-deployment` | Chưa tạo, chờ người dùng kiểm tra AWS |
