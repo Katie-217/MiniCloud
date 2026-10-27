@@ -7,22 +7,204 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+  <header>
+    <div class="header-container">
+      <a class="logo" href="/">
+        ☁️ MyMiniCloud
+        <span class="logo-badge">9 Servers · Local Stack</span>
+      </a>
+      <nav>
+        <a href="/">Trang chủ</a>
+        <a href="/blog/">Blog</a>
+        <a href="#services">Dịch vụ</a>
+        <a href="#demo">Live Demo</a>
+        <a href="#team">Nhóm</a>
+      </nav>
+    </div>
+  </header>
+
   <main>
-    <p class="eyebrow">ĐIỆN TOÁN ĐÁM MÂY · 521H0092</p>
-    <h1>MyMiniCloud – Home</h1>
-    <p class="intro">Mô phỏng hạ tầng cloud với 9 loại server, kết nối qua Docker Network.</p>
-    <a class="button" href="/blog/">Khám phá Blog →</a>
-    <section><h2>Nhật ký triển khai</h2><ul>
-      <li><a href="/blog/blog1.html">Mạng giữa các dịch vụ</a></li>
-      <li><a href="/blog/blog2.html">Lưu dữ liệu qua vòng đời container</a></li>
-      <li><a href="/blog/blog3.html">Giám sát bằng số liệu</a></li>
-    </ul></section>
-    <section aria-label="Thành viên nhóm">
-      <h2>Nhóm thực hiện</h2>
-      <p>Võ Thị Thiên Kim <span>521H0092</span></p>
-      <p>Diệp Yến Nhi <span>MSSV đang bổ sung</span></p>
+    <div class="hero">
+      <p class="eyebrow">ĐIỆN TOÁN ĐÁM MÂY · ĐỒ ÁN CUỐI KỲ · 521H0092</p>
+      <h1>MyMiniCloud – Home</h1>
+      <p class="intro">Mô phỏng hạ tầng cloud toàn diện gồm 9 loại server, 13 containers độc lập kết nối qua Docker Network <code>cloud-net</code>, hỗ trợ bảo mật OIDC, giám sát Prometheus/Grafana, cân bằng tải Round Robin và lưu trữ đối tượng MinIO.</p>
+      
+      <div class="hero-actions">
+        <a class="button" href="/blog/">Khám phá Blog →</a>
+        <a class="button button-outline" href="/api/student" target="_blank">Student API (/api/student)</a>
+        <a class="button button-outline" href="/lb/whoami" target="_blank">Load Balancer (/lb/whoami)</a>
+        <a class="button button-outline" href="http://localhost:3000/d/system-health-521h0092/system-health-of-521h0092" target="_blank">Grafana Health</a>
+      </div>
+    </div>
+
+    <!-- 9 Server Grid -->
+    <h2 class="section-title" id="services">Hạ tầng 9 Loại Server Bắt Buộc</h2>
+    <div class="grid-servers">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">1. Web Frontend</h3>
+          <span class="badge badge-green">Nginx 1.28</span>
+        </div>
+        <p class="card-desc">Cung cấp giao diện web tĩnh, blog 3 bài và proxy metrics cho exporter.</p>
+        <a class="card-link" href="/blog/">Xem Blog (/blog/) →</a>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">2. Application Backend</h3>
+          <span class="badge badge-blue">Flask 3.11</span>
+        </div>
+        <p class="card-desc">Xử lý logic, API /hello, /student JSON và kết nối cơ sở dữ liệu MariaDB.</p>
+        <a class="card-link" href="/api/hello" target="_blank">Gọi /api/hello →</a>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">3. Relational Database</h3>
+          <span class="badge badge-purple">MariaDB 11.4</span>
+        </div>
+        <p class="card-desc">Lưu trữ database minicloud.notes và studentdb.students có volume bền vững.</p>
+        <a class="card-link" href="/api/students-db" target="_blank">Xem /api/students-db →</a>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">4. Authentication Server</h3>
+          <span class="badge badge-blue">Keycloak 26.1</span>
+        </div>
+        <p class="card-desc">Quản lý định danh OIDC, realm realm_521H0092, client flask-app và user sv01/sv02.</p>
+        <a class="card-link" href="/auth/" target="_blank">Keycloak Console →</a>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">5. Object Storage</h3>
+          <span class="badge badge-green">MinIO Server</span>
+        </div>
+        <p class="card-desc">Lưu trữ S3 bucket: demo, profile-pics (công khai) và documents chứa báo cáo PDF.</p>
+        <a class="card-link" href="http://localhost:9001/" target="_blank">MinIO Console (:9001) →</a>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">6. Internal DNS</h3>
+          <span class="badge badge-purple">Bind9 9.18</span>
+        </div>
+        <p class="card-desc">Phân giải tên miền cloud.local cho Web, App, MinIO và Keycloak qua cổng 1053/53.</p>
+        <span class="card-desc">zone: cloud.local</span>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">7. Monitoring Server</h3>
+          <span class="badge badge-blue">Prometheus 3.2</span>
+        </div>
+        <p class="card-desc">Thu thập metrics thời gian thực từ Node Exporter và Web Server (100% UP).</p>
+        <a class="card-link" href="http://localhost:9090/targets" target="_blank">Prometheus Targets →</a>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">8. Visualization Server</h3>
+          <span class="badge badge-green">Grafana 11.6</span>
+        </div>
+        <p class="card-desc">Hiển thị dashboard System Health of 521H0092 (CPU, Memory, Network traffic).</p>
+        <a class="card-link" href="http://localhost:3000/" target="_blank">Mở Grafana (:3000) →</a>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">9. Reverse Proxy / Gateway</h3>
+          <span class="badge badge-purple">Nginx Gateway</span>
+        </div>
+        <p class="card-desc">Cổng vào duy nhất port 80, điều phối định tuyến và Round Robin 2 Web server.</p>
+        <a class="card-link" href="/healthz">Gateway /healthz →</a>
+      </div>
+    </div>
+
+    <!-- Live Interactive Demo -->
+    <h2 class="section-title" id="demo">Kiểm Tra Chức Năng Tương Tác</h2>
+    <div class="demo-box">
+      <h3>Dữ Liệu Sinh Viên & Cân Bằng Tải Trực Tuyến</h3>
+      <p class="card-desc">Dữ liệu được nạp trực tiếp qua reverse proxy từ Application Backend và 2 Web instances.</p>
+      
+      <div class="demo-controls">
+        <button class="button" onclick="loadStudents()">Tải danh sách sinh viên (/api/student)</button>
+        <button class="button button-outline" onclick="testRoundRobin()">Gọi Round Robin Load Balancer (/lb/whoami)</button>
+      </div>
+
+      <div class="table-wrapper" id="studentTableWrapper" style="display: none;">
+        <table id="studentTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Họ và Tên</th>
+              <th>Ngành Học</th>
+              <th>GPA</th>
+            </tr>
+          </thead>
+          <tbody id="studentTbody"></tbody>
+        </table>
+      </div>
+
+      <div class="lb-log" id="lbLog">Nhấn nút "Gọi Round Robin Load Balancer" để kiểm tra luân phiên request giữa web-frontend-server1 và web-frontend-server2...</div>
+    </div>
+
+    <!-- Blog Articles Links -->
+    <section>
+      <h2>Nhật ký triển khai</h2>
+      <ul>
+        <li><a href="/blog/blog1.html">Mạng giữa các dịch vụ</a></li>
+        <li><a href="/blog/blog2.html">Lưu dữ liệu qua vòng đời container</a></li>
+        <li><a href="/blog/blog3.html">Giám sát bằng số liệu</a></li>
+      </ul>
     </section>
-    <p class="footnote">Nginx · Docker Compose · MyMiniCloud</p>
+
+    <!-- Team Members Section -->
+    <section aria-label="Thành viên nhóm" id="team">
+      <h2>Nhóm thực hiện</h2>
+      <div class="team-container">
+        <img class="avatar-img" src="http://localhost:9000/profile-pics/avatar.jpg" alt="Avatar Võ Thị Thiên Kim" onerror="this.src='/blog/images/storage.svg'">
+        <div class="team-info">
+          <p class="team-member">Võ Thị Thiên Kim <span>521H0092</span></p>
+          <p class="team-member">Diệp Yến Nhi <span>MSSV đang bổ sung</span></p>
+        </div>
+      </div>
+    </section>
+
+    <p class="footnote">Nginx · Docker Compose · MyMiniCloud · Kiến trúc đám mây thu nhỏ</p>
   </main>
+
+  <script>
+    async function loadStudents() {
+      try {
+        const res = await fetch('/api/student');
+        const data = await res.json();
+        const tbody = document.getElementById('studentTbody');
+        tbody.innerHTML = '';
+        data.forEach(s => {
+          const row = document.createElement('tr');
+          row.innerHTML = `<td><code>${s.id}</code></td><td><strong>${s.name}</strong></td><td>${s.major}</td><td><span class="badge badge-green">${s.gpa}</span></td>`;
+          tbody.appendChild(row);
+        });
+        document.getElementById('studentTableWrapper').style.display = 'block';
+      } catch (e) {
+        alert('Lỗi nạp dữ liệu: ' + e);
+      }
+    }
+
+    async function testRoundRobin() {
+      const logBox = document.getElementById('lbLog');
+      try {
+        const res = await fetch('/lb/whoami');
+        const text = await res.text();
+        const header = res.headers.get('x-backend-server') || 'unknown';
+        const timestamp = new Date().toLocaleTimeString();
+        logBox.innerHTML = `[${timestamp}] Phản hồi từ: <strong>${text.trim()}</strong> (X-Backend-Server: ${header})<br>` + logBox.innerHTML;
+      } catch (e) {
+        logBox.innerHTML = `Lỗi gọi /lb/whoami: ${e}<br>` + logBox.innerHTML;
+      }
+    }
+  </script>
 </body>
 </html>
