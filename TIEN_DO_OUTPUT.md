@@ -4,7 +4,7 @@ Cập nhật lần đầu: **26/10/2026**, cập nhật kế hoạch **27/10/202
 
 ## 1. Tổng quan hiện tại
 
-- **Output bắt buộc đạt: 14/18** nhóm trong bảng dưới. Đây là cách chia nhóm để quản lý, không phải cách chia điểm của PDF.
+- **Output bắt buộc đạt: 15/18** nhóm trong bảng dưới. Đây là cách chia nhóm để quản lý, không phải cách chia điểm của PDF.
 - **Mở rộng đạt: 10/10** mục.
 - Các service local được triển khai và kiểm thử dần theo bảng mục 3; chỉ các dòng `DAT` được tính hoàn thành.
 - Git local có `main` và các branch theo nhóm, kết nối repo Katie-217/MiniCloud; lịch sử tài liệu ban đầu được giữ nguyên.
@@ -42,7 +42,7 @@ Không lấy trạng thái container Running thay cho kết quả kiểm thử c
 | R06 | MinIO bucket demo, upload và tải file được — tr. 2, 15–16 | `feat/identity-storage-dns` | DAT | evidence/local/R06-storage.json; upload/download byte-for-byte; Console screenshot later; commit `2114441` |
 | R07 | DNS Web trả `10.10.10.10` bằng dig — tr. 16–17 | `feat/identity-storage-dns` | DAT | evidence/local/R07-dns.json; dig internal 53 + published host 1053; commit `41e7815` |
 | R08 | Prometheus node target UP, query metric có dữ liệu — tr. 17–18 | `feat/monitoring-dashboard` | DAT | evidence/local/R08-monitoring.json; commit `435dc43` |
-| R09 | Grafana datasource hoạt động, CPU/RAM/Network có dữ liệu — tr. 18–19 | `feat/monitoring-dashboard` | CHO_KIEM_THU | evidence/local/R09-grafana.json; datasource + queries đạt; chờ kiểm tra hình ảnh dashboard; commit `25d4a51` |
+| R09 | Grafana datasource hoạt động, CPU/RAM/Network có dữ liệu — tr. 18–19 | `feat/monitoring-dashboard` | DAT | evidence/local/R09-grafana.json; R09-grafana-dashboard.png; R09-grafana-network.png; commit `25d4a51` |
 | R10 | Proxy `/`, `/api/`, `/auth/` hoạt động, đúng status/redirect — tr. 19–20 | `feat/gateway-network-tests` | DAT | evidence/local/R10-gateway.json; Web/App/Auth + correct public OIDC issuer; commit `35f3502` |
 | R11 | Các server thông mạng, có log ping và network membership — tr. 20 | `feat/gateway-network-tests` | DAT | evidence/local/R11-network.json; ping 3 packets for each of 13 services, 0% loss; commit `1f9f77b` |
 | R12 | Volume cần thiết lưu được dữ liệu, restart policy đầy đủ — tr. 3 | Các nhóm service + `feat/gateway-network-tests` | DAT | evidence/local/R12-persistence.json; custom data preserved across all 5 stateful service recreations; commit `5967fba` |
