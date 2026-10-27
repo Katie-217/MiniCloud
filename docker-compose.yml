@@ -15,7 +15,36 @@ services:
     build: ./web-frontend-server
     image: ${DOCKERHUB_USERNAME:-katie217}/myminicloud-web:${IMAGE_TAG:-local}
     container_name: web-frontend-server
+    hostname: web-frontend-server
     ports: ["8080:80"]
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1/"]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+
+  web-frontend-server1:
+    <<: *service-defaults
+    image: ${DOCKERHUB_USERNAME:-katie217}/myminicloud-web:${IMAGE_TAG:-local}
+    container_name: web-frontend-server1
+    hostname: web-frontend-server1
+    depends_on:
+      web-frontend-server:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1/"]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+
+  web-frontend-server2:
+    <<: *service-defaults
+    image: ${DOCKERHUB_USERNAME:-katie217}/myminicloud-web:${IMAGE_TAG:-local}
+    container_name: web-frontend-server2
+    hostname: web-frontend-server2
+    depends_on:
+      web-frontend-server:
+        condition: service_healthy
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1/"]
       interval: 10s
@@ -203,6 +232,10 @@ services:
       - ./api-gateway-proxy-server/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
       web-frontend-server:
+        condition: service_healthy
+      web-frontend-server1:
+        condition: service_healthy
+      web-frontend-server2:
         condition: service_healthy
       application-backend-server:
         condition: service_healthy

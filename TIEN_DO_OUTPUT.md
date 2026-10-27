@@ -5,7 +5,7 @@ Cập nhật lần đầu: **26/10/2026**, cập nhật kế hoạch **27/10/202
 ## 1. Tổng quan hiện tại
 
 - **Output bắt buộc đạt: 14/18** nhóm trong bảng dưới. Đây là cách chia nhóm để quản lý, không phải cách chia điểm của PDF.
-- **Mở rộng đạt: 9/10** mục.
+- **Mở rộng đạt: 10/10** mục.
 - Các service local được triển khai và kiểm thử dần theo bảng mục 3; chỉ các dòng `DAT` được tính hoàn thành.
 - Git local có `main` và các branch theo nhóm, kết nối repo Katie-217/MiniCloud; lịch sử tài liệu ban đầu được giữ nguyên.
 - Đã thêm `.gitignore` loại trừ bí mật, dữ liệu runtime và file trích PDF; `.gitattributes` thống nhất line ending cho file container Linux.
@@ -97,7 +97,7 @@ Hiện không còn lỗi chức năng làm trượt các bài kiểm thử MiniC
 | E07 | Prometheus giám sát Web, target UP và metrics thật | DAT | evidence/local/E07-web-metrics.json; feat/web-metrics; python scripts/check_web_metrics.py; E07-web-targets.png; E07-web-metrics.png |
 | E08 | System Health of MSSV, 3 biểu đồ có dữ liệu | DAT | evidence/local/E08-system-health.json; feat/personal-health-dashboard; python scripts/check_health_dashboard.py; E08-system-health.png |
 | E09 | Proxy `/student/` trả JSON backend | DAT | evidence/local/E09-student-proxy.json; feat/student-proxy-route; python scripts/check_student_proxy.py |
-| E10 | 2 Web server, log Round Robin luân phiên | CHUA_LAM | — |
+| E10 | 2 Web server, log Round Robin luân phiên | DAT | evidence/local/E10-round-robin.json; feat/round-robin-balancing; python scripts/check_round_robin.py |
 
 ## 8. Các điểm cần đối chiếu khi triển khai
 
