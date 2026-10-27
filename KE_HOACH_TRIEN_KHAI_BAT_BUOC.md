@@ -1,8 +1,8 @@
 # Kế hoạch triển khai: hoàn thành yêu cầu bắt buộc trước
 
-Tài liệu này áp dụng thứ tự ưu tiên mới theo yêu cầu của bạn: **setup → thực hiện và kiểm thử phần bắt buộc → tổng hợp đủ đầu ra → mở rộng**. Nội dung yêu cầu gốc, số trang PDF và các lỗi trong mẫu nằm ở `KE_HOACH_MINICLOUD_2_NGAY.md`.
+Tài liệu này lưu kế hoạch giai đoạn nền tảng đã thực hiện. **Thứ tự hiện hành ngày 27/10/2026 nằm trong [KE_HOACH_HOAN_THIEN_LOCAL.md](KE_HOACH_HOAN_THIEN_LOCAL.md): hoàn tất local và 10 mở rộng → người dùng kiểm tra → AWS.** Nội dung yêu cầu gốc, số trang PDF và các lỗi trong mẫu nằm ở `KE_HOACH_MINICLOUD_2_NGAY.md`.
 
-**Điều chỉnh theo chỉ dẫn mới nhất:** AWS để người dùng kiểm tra sau. Hiện hoàn thành chức năng local, Docker Hub và hồ sơ demo local; giữ EC2 và phần hồ sơ cloud ở trạng thái chờ. Không làm mở rộng trước khi khép phần bắt buộc.
+**Điều chỉnh theo chỉ dẫn mới nhất:** AWS chờ người dùng duyệt bản local cuối. Được thực hiện cả 10 mở rộng trước EC2; giữ EC2 và phần hồ sơ cloud ở trạng thái chờ.
 
 ## 1. Trạng thái setup đã kiểm tra
 
@@ -53,7 +53,7 @@ Git đã được khởi tạo cục bộ để có thể commit ngay, không ph
 
 - R16–R18: báo cáo 5 chương + phụ lục; link video; log/ảnh cho từng server, network, Docker Hub và EC2.
 - `TIEN_DO_OUTPUT.md` phản ánh đúng kết quả; các lỗi còn lại và việc chưa làm đều được liệt kê.
-- Chỉ bắt đầu phần mở rộng sau mốc này. Nếu còn lỗi khiến output bắt buộc không đạt, ưu tiên sửa trước.
+- Quy tắc cũ chờ M3 mới mở rộng đã được thay thế: sửa lỗi bắt buộc local trước, rồi làm đủ 10 mở rộng trong kế hoạch hiện hành; không chờ EC2.
 
 ## 3. Branch theo nhóm yêu cầu
 
@@ -70,7 +70,7 @@ Git đã được khởi tạo cục bộ để có thể commit ngay, không ph
 
 Mỗi branch có nhiều commit nhỏ theo chức năng/output. Kết thúc nhóm, kiểm thử các luồng liên quan và tích hợp vào `main`; branch sau tạo từ `main` đã cập nhật. Có thể push branch để theo dõi sau khi repo đã được kết nối. PR chỉ dùng nếu quy trình repo cần.
 
-Phần mở rộng giữ sau M3, chia dự kiến: `feat/content-student-extensions` (E01–E03/E09), `feat/identity-storage-extensions` (E04–E06), `feat/observability-extensions` (E07–E08), `feat/round-robin-balancing` (E10). Bảng trạng thái vẫn ghi tất cả E01–E10 là chưa làm cho đến khi thực hiện.
+Các branch mở rộng và thứ tự mới được xác định trong `KE_HOACH_HOAN_THIEN_LOCAL.md`. Bảng trạng thái vẫn ghi E01–E10 chưa làm cho đến khi có kiểm thử thực tế.
 
 ## 4. Task chi tiết và kiểm thử theo nhóm
 
@@ -107,7 +107,7 @@ Quy trình mỗi commit: sửa một chức năng/output → kiểm tra diff →
 
 Khi bắt đầu triển khai, file tiến độ ghi branch, subject hoặc hash commit đã có, test và bằng chứng. Một output mới có code nhưng chưa chạy được sẽ mang trạng thái `CHO_KIEM_THU`, không phải `DAT`.
 
-## 6. Thứ tự trong hai ngày, ưu tiên bắt buộc
+## 6. Lịch dự kiến ban đầu — đã được thay thế ngày 27/10/2026
 
 Giả định tổng khoảng 20 giờ làm tập trung; đây là dự kiến, không phải bảo đảm mọi bước sẽ vừa thời lượng khi còn thiếu repo/Docker/EC2.
 
@@ -124,4 +124,4 @@ Giả định tổng khoảng 20 giờ làm tập trung; đây là dự kiến, 
 | Ngày 2, giờ 4–8 | Mở rộng sau M3, chọn theo thời gian thực tế | Làm từng mục có test/commit; cập nhật báo cáo và video tương ứng |
 | Ngày 2, giờ 8–10 | Dự phòng và kiểm tra bộ nộp cuối | File tổng hợp phản ánh đúng tất cả đã làm/chưa làm |
 
-Nếu phần bắt buộc trễ, dùng thời gian mở rộng để khép bắt buộc. Với yêu cầu ưu tiên mới, không cam kết hoàn tất cả 10 mục mở rộng trong hai ngày; tiến độ thực tế sau M3 sẽ quyết định số mục có thể làm chắc chắn.
+Lịch trên chỉ lưu phương án ban đầu. Không dùng các bước AWS trong lịch này trước khi người dùng duyệt local. Thời lượng và thứ tự phần việc còn lại dùng kế hoạch hiện hành; mục tiêu là đủ 10 mở rộng, không tự giảm phạm vi theo lịch cũ.

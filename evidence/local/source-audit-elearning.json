@@ -1,0 +1,51 @@
+{
+  "inspection_date": "2026-10-27",
+  "repository": "https://github.com/Katie-217/E-learning-Management-App",
+  "built_branch": "main",
+  "built_commit": "9e9ebd539c7f08092ea6855c9aceafe645bd28e0",
+  "candidate_branch_comparison": {
+    "branch": "management_system",
+    "commit": "9eccf4771123d207a3b25f11347cc63d79cfdb4e",
+    "ahead_of_main": 12,
+    "behind_main": 0,
+    "build_tested": false
+  },
+  "toolchain": {
+    "flutter": "3.35.7",
+    "dart": "3.9.2"
+  },
+  "commands": [
+    {
+      "command": "flutter pub get",
+      "exit_code": 0
+    },
+    {
+      "command": "flutter build web --release --no-pub",
+      "exit_code": 0,
+      "compilation_seconds": 93.2
+    }
+  ],
+  "artifact": {
+    "file": "build/web/main.dart.js",
+    "bytes": 4586977,
+    "sha256": "0bb6e1b302910116fc6eeae1e5dbdf9f43a352d7841e1d3d9dc90bbfb8741964"
+  },
+  "warnings": [
+    "Wasm dry-run reported unsupported native library imports; JavaScript Web build completed successfully."
+  ],
+  "source_changes": "No handwritten source or lockfile edits; Flutter regenerated desktop plugin files in temporary checkout.",
+  "runtime_verified": false,
+  "firebase_project_accessed": false,
+  "application_launched": false,
+  "imported_into_minicloud": false,
+  "not_verified": [
+    "Browser rendering",
+    "Login",
+    "Firestore data",
+    "Storage transfers",
+    "Local emulators",
+    "Gateway subpath integration",
+    "Docker image execution"
+  ],
+  "static_import_check": "Filesystem-relative heuristic was not a valid compiler result; actual Flutter Web build passed."
+}

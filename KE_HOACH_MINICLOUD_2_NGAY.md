@@ -2,7 +2,7 @@
 
 Nguồn: **Báo Cáo Cuối Kỳ.docx.pdf**, 27 trang, trong workspace. Số trang bên dưới là số trang PDF, tính từ 1. Đã đọc phần chữ và xem các hình kiến trúc, cấu trúc thư mục, kết quả khởi động ở trang 2, 3, 11.
 
-**Cập nhật theo yêu cầu làm việc:** hoàn tất và kiểm thử toàn bộ phần bắt buộc, bao gồm EC2/Docker Hub/hồ sơ nộp, trước khi làm mở rộng. Dùng [kế hoạch triển khai theo branch](KE_HOACH_TRIEN_KHAI_BAT_BUOC.md) làm thứ tự thực hiện và [bảng output](TIEN_DO_OUTPUT.md) để theo dõi đã đạt, cần fix, chưa làm. Quy ước commit nằm trong `AGENTS.md`.
+**Cập nhật 27/10/2026:** hoàn tất phần bắt buộc local, cả 10 mở rộng, Docker Hub và hồ sơ local để người dùng kiểm tra trước khi thuê EC2. Dùng [kế hoạch hoàn thiện local](KE_HOACH_HOAN_THIEN_LOCAL.md) cho thứ tự tiếp theo và [bảng output](TIEN_DO_OUTPUT.md) để theo dõi đã đạt, cần fix, chưa làm. Quy ước commit nằm trong `AGENTS.md`.
 
 **Điều chỉnh hiện tại:** người dùng yêu cầu AWS để sau; các phần local/Docker Hub/hồ sơ local được thực hiện trước. Trạng thái thực tế cập nhật trong `TIEN_DO_OUTPUT.md`; checklist dưới đây là danh sách tiêu chí của đề, không tự thay thế kết quả kiểm chứng đó.
 

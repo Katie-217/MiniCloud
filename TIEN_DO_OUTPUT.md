@@ -1,6 +1,6 @@
 # Bảng theo dõi output MyMiniCloud
 
-Cập nhật lần đầu: **26/10/2026** theo ngày phiên làm việc. Nguồn yêu cầu: `Báo Cáo Cuối Kỳ.docx.pdf`. Cách làm chi tiết: `KE_HOACH_MINICLOUD_2_NGAY.md`; thứ tự branch và triển khai: `KE_HOACH_TRIEN_KHAI_BAT_BUOC.md`.
+Cập nhật lần đầu: **26/10/2026**, cập nhật kế hoạch **27/10/2026**. Nguồn yêu cầu: `Báo Cáo Cuối Kỳ.docx.pdf`. Tiêu chí theo trang: `KE_HOACH_MINICLOUD_2_NGAY.md`; thứ tự triển khai hiện hành: [KE_HOACH_HOAN_THIEN_LOCAL.md](KE_HOACH_HOAN_THIEN_LOCAL.md). Kế hoạch bắt buộc cũ lưu giai đoạn nền tảng đã thực hiện.
 
 ## 1. Tổng quan hiện tại
 
@@ -15,6 +15,9 @@ Cập nhật lần đầu: **26/10/2026** theo ngày phiên làm việc. Nguồn
 - **Kết quả local:** toàn bộ chức năng cơ bản đã kiểm thử đạt; 10 container healthy; bộ kiểm thử tổng hợp thành công, bao gồm UI. Docker Hub Web image 1.0.0 đã push và xác minh manifest.
 - **Hồ sơ local:** báo cáo PDF 18 trang và DOCX/Markdown đủ 5 chương; video WebM 75,68 giây gồm 14 phần, có chú thích; ảnh/log đầy đủ trong `evidence/local/`.
 - **Chưa hoàn tất toàn đề:** EC2/public IP và bằng chứng cloud; bổ sung MSSV Diệp Yến Nhi; cập nhật báo cáo/video bản cuối. Mở rộng hiện chưa làm.
+- **Thứ tự mới 27/10:** hoàn tất local và 10 mở rộng, Docker Hub/hồ sơ → người dùng kiểm tra bản cuối → mới thuê và triển khai EC2. Chưa thao tác AWS.
+- **Repo E-learning đã khảo sát:** main `9e9ebd5` build Flutter Web thành công; Firebase Auth/Firestore/Storage chưa chạy kiểm thử dữ liệu. Chưa nhập source hoặc thay Web MiniCloud. Branch management_system ahead main 12 commit, chưa build branch đó.
+  Minh chứng khảo sát: [source-audit-elearning.json](evidence/local/source-audit-elearning.json); đây là test build repo nguồn, không phải output E01–E10 đã đạt.
 
 ## 2. Quy ước trạng thái
 
@@ -67,7 +70,7 @@ Khi có kết quả, mỗi mục ghi: ID output, môi trường local/EC2, branc
 | FIX-003 | Image/download MinIO được hướng dẫn không còn truy cập được tại lần kiểm tra | Không dựng được storage bằng cách copy image mẫu | Build source chính thức có tag/checksum, giữ license; UI và upload/download đã kiểm thử | DAT |
 | FIX-004 | Docker Desktop từ chối root bind mount rslave | Node Exporter không start với cấu hình host mount ban đầu | Dùng root bind read-only mặc định, giữ proc/sys mounts; metric và dashboard có dữ liệu | DAT |
 
-Hiện không còn lỗi chức năng làm trượt các bài kiểm thử local đã chạy. Các hạn chế ngoài bộ kiểm thử được ghi ở mục 10; phần AWS chưa được kiểm chứng.
+Hiện không còn lỗi chức năng làm trượt các bài kiểm thử MiniCloud local đã chạy. Các hạn chế ngoài bộ kiểm thử được ghi ở mục 10; phần AWS và môi trường dữ liệu E-learning chưa được kiểm chứng. Không tính cảnh báo Wasm dry-run của repo E-learning là lỗi bản Web JavaScript đã build thành công.
 
 ## 6. Thông tin và setup còn thiếu
 
@@ -78,6 +81,8 @@ Hiện không còn lỗi chức năng làm trượt các bài kiểm thử local
 | Username Docker Hub và login local | DAT | Namespace katie217; push Web 1.0.0 và đọc lại manifest thành công |
 | Có EC2 Ubuntu hay chưa | CHO_THONG_TIN | Người dùng yêu cầu để sau; chưa thao tác AWS |
 | Public IP, user SSH, đường dẫn key nếu đã có EC2 | CHO_THONG_TIN | Kết nối bằng key local, không đưa nội dung key vào Git/chat |
+| Repo ứng dụng demo | DANG_LAM | Đã nhận E-learning; main build Web đạt; cần môi trường Firebase demo riêng và kiểm thử UI, không dùng database thật |
+| Avatar cá nhân cho E05 | CHO_THONG_TIN | Cần ảnh được người dùng chọn/cung cấp; chưa coi ảnh minh họa bất kỳ là avatar cá nhân đã hoàn tất |
 
 ## 7. Mở rộng chưa làm
 
@@ -116,15 +121,17 @@ Hiện không còn lỗi chức năng làm trượt các bài kiểm thử local
 | 26/10/2026 | Local mandatory features and integration checks passed; 10 healthy containers; named-volume recreation passed | Group branches integrated into main |
 | 26/10/2026 | Published katie217/myminicloud-web:1.0.0 and verified registry manifest | `chore/image-publication` / `431197d` |
 | 26/10/2026 | Generated local PDF/DOCX report, screenshots and 75.68-second video; AWS deferred | `docs/submission-evidence` / `503a61a`, `f3e3c15` |
+| 27/10/2026 | Kế hoạch hoàn tất local/10 mở rộng trước AWS; đối chiếu branch Coffee Shop/E-learning; build Flutter Web main đạt, chưa chạy Firebase/data | `docs/local-completion-plan` / `docs: plan complete local delivery`; evidence/local/source-audit-elearning.json |
 
 ## 10. Hạn chế còn lại và thứ tự tiếp tục
 
-1. **AWS EC2 chưa thực hiện** theo yêu cầu người dùng: chưa có public IP, SSH và bằng chứng cloud. Khi có thông tin, triển khai cùng source trên branch `chore/cloud-deployment`, kiểm thử đủ server rồi cập nhật R14.
+1. **AWS EC2 chưa thực hiện** theo yêu cầu người dùng: chưa có public IP, SSH và bằng chứng cloud. Chỉ sau khi người dùng kiểm tra và xác nhận bản local cuối đạt mới triển khai trên branch `chore/cloud-deployment`, kiểm thử đủ server rồi cập nhật R14.
 2. **R16/R17/R18 mới hoàn tất bản local**: báo cáo, video và ảnh/log cloud phải bổ sung sau EC2. Video local có chú thích, không có giọng đọc; file `report/Demo_Local_521H0092.webm`, 75,68 giây, 1440×1000, đã kiểm tra playback.
 3. **MSSV Diệp Yến Nhi còn thiếu**: cập nhật `project-info.json`, trang Home, báo cáo và video khi được cung cấp; rebuild Web nếu đổi nội dung.
 4. **Metrics có giới hạn**: CPU/RAM Linux VM của Docker Desktop, network theo namespace exporter; chưa có cAdvisor/mọi container hoặc toàn bộ Windows. Một số panel Root FS/hệ thống tùy chọn của template có thể N/A; CPU/RAM/Network bắt buộc đã có dữ liệu.
 5. **Logging tập trung chưa làm**: theo bài demo chi tiết dùng Grafana + Prometheus, log container được lưu riêng đã loại mật khẩu; chưa có Loki.
-6. **Mở rộng 0/10**: chỉ bắt đầu sau khi khép phần bắt buộc. `/secure` đã có test từ chối token thiếu/sai, chưa có realm MSSV/client/token hợp lệ của E04.
+6. **Mở rộng 0/10**: được làm trước EC2 theo thứ tự mới; kế hoạch đã có task/output/test cho cả 10 mục. `/secure` đã có test từ chối token thiếu/sai, chưa có realm MSSV/client/token hợp lệ của E04.
+7. **E-learning chưa tích hợp:** main đã build Web, nhưng đăng nhập/dữ liệu Firebase, môi trường emulator, base path và proxy chưa kiểm thử. Không dùng kết quả build để tuyên bố đủ các luồng ứng dụng; không thay SQL/Keycloak/MinIO theo đề bằng Firebase.
 
 Các artifact dùng ngay: [README](README.md), [báo cáo PDF local](report/BaoCao_Local_521H0092.pdf), [DOCX](report/BaoCao_Local_521H0092.docx), [video local](report/Demo_Local_521H0092.webm), [trang xem video](report/Demo_Local_521H0092.html), [ảnh/log](evidence/local/).
 
@@ -140,3 +147,21 @@ Các artifact dùng ngay: [README](README.md), [báo cáo PDF local](report/BaoC
 | Docker Hub | `chore/image-publication` | Web image 1.0.0 push/manifest đạt; đã tích hợp main |
 | Hồ sơ local | `docs/submission-evidence` | Báo cáo/ảnh/video local và hướng dẫn; phần cloud vẫn chờ |
 | AWS | `chore/cloud-deployment` | Chưa tạo, chờ người dùng kiểm tra AWS |
+| Kế hoạch local cuối | `docs/local-completion-plan` | Lập task/output/test cho E01–E10 và tích hợp demo; chưa tính thêm output triển khai đạt |
+
+## 12. Công việc tiếp theo theo kế hoạch ngày 27/10/2026
+
+| Nhóm | Branch dự kiến | Trạng thái | Điều kiện hoàn thành |
+|---|---|---|---|
+| Student JSON / SQL / route | feat/student-api-database | CHUA_LAM | E02/E03/E09 kiểm thử và có minh chứng |
+| Blog / giao diện demo | feat/demo-web-content | CHUA_LAM | E01 và UI đọc API qua gateway |
+| Realm / token hợp lệ | feat/identity-extensions | CHUA_LAM | E04 đủ test chấp nhận/từ chối token |
+| Avatar / tài liệu / DNS | feat/storage-dns-extensions | CHUA_LAM | E05/E06; PDF cuối upload lại sau cập nhật báo cáo |
+| Web metrics / dashboard | feat/observability-extensions | CHUA_LAM | E07/E08 với dữ liệu thật |
+| Round robin | feat/round-robin-balancing | CHUA_LAM | E10, giữ các route/metrics cũ đạt |
+| E-learning demo | feat/elearning-web-demo | CHUA_LAM | Build source đã khảo sát; bước tích hợp cần UI/data runtime và môi trường riêng |
+| Kiểm thử / image release | test/local-release-readiness; chore/local-release-images | CHUA_LAM | Regression, persistence, dựng lại, Hub tag/digest cuối |
+| Hồ sơ local cuối | docs/final-local-delivery | CHUA_LAM | Báo cáo/video/ảnh/log/tracker phản ánh bản release |
+| Duyệt local trước AWS | Phụ thuộc người dùng | CHO_THONG_TIN | Chỉ yêu cầu duyệt sau khi có bộ bàn giao local cụ thể |
+
+Chi tiết cách làm, test và ước lượng nằm trong [kế hoạch hoàn thiện local](KE_HOACH_HOAN_THIEN_LOCAL.md). Chưa thay đổi số lượng DAT khi mới hoàn tất khảo sát và kế hoạch.

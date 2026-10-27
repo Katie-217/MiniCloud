@@ -5,6 +5,14 @@
     {"name": "Võ Thị Thiên Kim", "student_id": "521H0092"},
     {"name": "Diệp Yến Nhi", "student_id": null}
   ],
-  "scope": "mandatory-local-first",
-  "aws_status": "deferred-by-user"
+  "scope": "complete-local-before-user-review",
+  "aws_status": "awaiting-final-local-approval",
+  "reuse_source": {
+    "repository": "https://github.com/Katie-217/E-learning-Management-App",
+    "source_branch": "main",
+    "source_commit": "9e9ebd539c7f08092ea6855c9aceafe645bd28e0",
+    "alternative_branch": "management_system",
+    "alternative_commit": "9eccf4771123d207a3b25f11347cc63d79cfdb4e",
+    "status": "web-build-passed-data-runtime-unverified"
+  }
 }
