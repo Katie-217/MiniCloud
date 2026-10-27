@@ -1,0 +1,18 @@
+{
+  "realm": "realm_521H0092",
+  "enabled": true,
+  "displayName": "MyMiniCloud - 521H0092",
+  "sslRequired": "none",
+  "registrationAllowed": false,
+  "clients": [{
+    "clientId": "flask-app", "enabled": true, "protocol": "openid-connect",
+    "publicClient": true, "directAccessGrantsEnabled": true,
+    "standardFlowEnabled": true, "redirectUris": ["http://localhost/*"],
+    "webOrigins": ["http://localhost"],
+    "protocolMappers": [{
+      "name": "flask-api-audience", "protocol": "openid-connect",
+      "protocolMapper": "oidc-audience-mapper",
+      "config": {"included.client.audience": "flask-app", "id.token.claim": "false", "access.token.claim": "true"}
+    }]
+  }]
+}

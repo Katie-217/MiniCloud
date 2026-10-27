@@ -33,3 +33,5 @@ __pycache__/
 Thumbs.db
 *.swp
 ~$*
+logs/
+

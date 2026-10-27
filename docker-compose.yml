@@ -32,9 +32,9 @@ services:
       DB_HOST: relational-database-server
       DB_USER: ${MARIADB_USER:-minicloud}
       DB_PASSWORD: ${MARIADB_PASSWORD:?Run scripts/setup.py}
-      OIDC_ISSUER: ${PUBLIC_ORIGIN:-http://localhost}/auth/realms/master
-      OIDC_JWKS_URL: http://authentication-identity-server:8080/auth/realms/master/protocol/openid-connect/certs
-      OIDC_AUDIENCE: myapp
+      OIDC_ISSUER: ${PUBLIC_ORIGIN:-http://localhost}/auth/realms/${OIDC_REALM:-realm_521H0092}
+      OIDC_JWKS_URL: http://authentication-identity-server:8080/auth/realms/${OIDC_REALM:-realm_521H0092}/protocol/openid-connect/certs
+      OIDC_AUDIENCE: flask-app
     depends_on:
       relational-database-server:
         condition: service_healthy
