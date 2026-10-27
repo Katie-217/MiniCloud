@@ -1,0 +1,42 @@
+{
+  "output": "E01",
+  "verified_at_utc": "2026-10-27T11:26:38.206902+00:00",
+  "details": [
+    {
+      "url": "http://localhost:8080/blog/blog1.html",
+      "status": 200,
+      "image_loaded": true,
+      "home_link": true
+    },
+    {
+      "url": "http://localhost:8080/blog/blog2.html",
+      "status": 200,
+      "image_loaded": true,
+      "home_link": true
+    },
+    {
+      "url": "http://localhost:8080/blog/blog3.html",
+      "status": 200,
+      "image_loaded": true,
+      "home_link": true
+    },
+    {
+      "url": "http://localhost/blog/blog1.html",
+      "status": 200,
+      "image_loaded": true,
+      "home_link": true
+    },
+    {
+      "url": "http://localhost/blog/blog2.html",
+      "status": 200,
+      "image_loaded": true,
+      "home_link": true
+    },
+    {
+      "url": "http://localhost/blog/blog3.html",
+      "status": 200,
+      "image_loaded": true,
+      "home_link": true
+    }
+  ]
+}
