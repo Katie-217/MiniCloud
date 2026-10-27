@@ -59,3 +59,18 @@ def secure():
         return jsonify(error="Invalid access token"), 401
     except requests.RequestException:
         return jsonify(error="Identity provider unavailable"), 503
+
+@app.get("/students-db")
+def students_database():
+    try:
+        with pymysql.connect(
+            host=os.environ["DB_HOST"], user=os.environ["DB_USER"],
+            password=os.environ["DB_PASSWORD"], database="studentdb",
+            connect_timeout=5, read_timeout=5, cursorclass=pymysql.cursors.DictCursor,
+        ) as connection:
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT id, student_id, fullname, CAST(dob AS CHAR) AS dob, major FROM students ORDER BY id")
+                return jsonify(cursor.fetchall())
+    except pymysql.MySQLError:
+        app.logger.exception("Student database query failed")
+        return jsonify(error="Database unavailable"), 503

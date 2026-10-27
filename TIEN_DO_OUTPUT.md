@@ -5,7 +5,7 @@ Cập nhật lần đầu: **26/10/2026**, cập nhật kế hoạch **27/10/202
 ## 1. Tổng quan hiện tại
 
 - **Output bắt buộc đạt: 14/18** nhóm trong bảng dưới. Đây là cách chia nhóm để quản lý, không phải cách chia điểm của PDF.
-- **Mở rộng đạt: 1/10** mục.
+- **Mở rộng đạt: 2/10** mục.
 - Các service local được triển khai và kiểm thử dần theo bảng mục 3; chỉ các dòng `DAT` được tính hoàn thành.
 - Git local có `main` và các branch theo nhóm, kết nối repo Katie-217/MiniCloud; lịch sử tài liệu ban đầu được giữ nguyên.
 - Đã thêm `.gitignore` loại trừ bí mật, dữ liệu runtime và file trích PDF; `.gitattributes` thống nhất line ending cho file container Linux.
@@ -90,7 +90,7 @@ Hiện không còn lỗi chức năng làm trượt các bài kiểm thử MiniC
 |---|---|---|---|
 | E01 | Blog 3 bài, mỗi bài có ảnh và link quay lại | CHUA_LAM | — |
 | E02 | `/student`, JSON 5 sinh viên đủ trường | DAT | evidence/local/E02-student-api.json; feat/student-json-api; python scripts/check_students.py |
-| E03 | `studentdb.students`, schema đúng, ít nhất 3 dòng | CHUA_LAM | — |
+| E03 | `studentdb.students`, schema đúng, ít nhất 3 dòng | DAT | evidence/local/E03-student-database.json; feat/student-sql-database; python scripts/check_student_database.py |
 | E04 | Realm MSSV, 2 user, public client, token gọi `/secure` | CHUA_LAM | — |
 | E05 | Avatar public URL, documents chứa PDF báo cáo | CHUA_LAM | — |
 | E06 | Bản ghi DNS App/MinIO/Keycloak, dig đúng | CHUA_LAM | — |
