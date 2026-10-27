@@ -1,12 +1,21 @@
 {
   "output": "R01",
-  "verified_at_utc": "2026-10-26T16:03:07.168116+00:00",
+  "verified_at_utc": "2026-10-27T11:52:30.305388+00:00",
   "details": {
-    "service_count": 10,
+    "service_count": 13,
     "role_count": 9,
     "checks": [
       {
-        "service": "object-storage-server",
+        "service": "web-frontend-server",
+        "running": true,
+        "health": "healthy",
+        "restart": "unless-stopped",
+        "networks": [
+          "cloud-net"
+        ]
+      },
+      {
+        "service": "web-frontend-server2",
         "running": true,
         "health": "healthy",
         "restart": "unless-stopped",
@@ -42,16 +51,16 @@
         ]
       },
       {
-        "service": "monitoring-prometheus-server",
+        "service": "monitoring-web-exporter-server",
         "running": true,
-        "health": "healthy",
+        "health": "running",
         "restart": "unless-stopped",
         "networks": [
           "cloud-net"
         ]
       },
       {
-        "service": "monitoring-grafana-dashboard-server",
+        "service": "monitoring-prometheus-server",
         "running": true,
         "health": "healthy",
         "restart": "unless-stopped",
@@ -69,15 +78,6 @@
         ]
       },
       {
-        "service": "web-frontend-server",
-        "running": true,
-        "health": "healthy",
-        "restart": "unless-stopped",
-        "networks": [
-          "cloud-net"
-        ]
-      },
-      {
         "service": "application-backend-server",
         "running": true,
         "health": "healthy",
@@ -87,7 +87,34 @@
         ]
       },
       {
+        "service": "web-frontend-server1",
+        "running": true,
+        "health": "healthy",
+        "restart": "unless-stopped",
+        "networks": [
+          "cloud-net"
+        ]
+      },
+      {
         "service": "api-gateway-proxy-server",
+        "running": true,
+        "health": "healthy",
+        "restart": "unless-stopped",
+        "networks": [
+          "cloud-net"
+        ]
+      },
+      {
+        "service": "monitoring-grafana-dashboard-server",
+        "running": true,
+        "health": "healthy",
+        "restart": "unless-stopped",
+        "networks": [
+          "cloud-net"
+        ]
+      },
+      {
+        "service": "object-storage-server",
         "running": true,
         "health": "healthy",
         "restart": "unless-stopped",
