@@ -1,0 +1,27 @@
+{
+  "output": "E08",
+  "verified_at_utc": "2026-10-27T11:45:41.605106+00:00",
+  "details": {
+    "dashboard_title": "System Health of 521H0092",
+    "dashboard_uid": "system-health-521h0092",
+    "panels": [
+      {
+        "id": 1,
+        "title": "CPU Usage (%)",
+        "expr": "100 * (1 - avg by (instance) (rate(node_cpu_seconds_total{job=\"node\",mode=\"idle\"}[5m])))"
+      },
+      {
+        "id": 2,
+        "title": "Memory Usage (%)",
+        "expr": "100 * (1 - node_memory_MemAvailable_bytes{job=\"node\"} / node_memory_MemTotal_bytes{job=\"node\"})"
+      },
+      {
+        "id": 3,
+        "title": "Network Traffic (Receive)",
+        "expr": "sum by (instance) (rate(node_network_receive_bytes_total{job=\"node\",device!=\"lo\"}[5m]))"
+      }
+    ],
+    "datasource": "Prometheus",
+    "verified_queries": true
+  }
+}
