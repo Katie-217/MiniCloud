@@ -151,6 +151,8 @@ Các artifact dùng ngay: [README](README.md), [báo cáo PDF local](report/BaoC
 
 ## 12. Công việc tiếp theo theo kế hoạch ngày 27/10/2026
 
+Chỉ dẫn mới nhất: mỗi chức năng một branch riêng. Bảng dưới là nhóm tiến độ; tên branch thực thi chính xác nằm trong bảng chức năng ở `KE_HOACH_HOAN_THIEN_LOCAL.md`. E01–E10 không dùng chung branch.
+
 | Nhóm | Branch dự kiến | Trạng thái | Điều kiện hoàn thành |
 |---|---|---|---|
 | Student JSON / SQL / route | feat/student-api-database | CHUA_LAM | E02/E03/E09 kiểm thử và có minh chứng |

@@ -10,7 +10,7 @@
 
 ## Git và commit theo yêu cầu người dùng
 
-- Mỗi nhóm yêu cầu có một branch riêng theo bảng trong kế hoạch triển khai.
+- Theo chỉ dẫn mới nhất: mỗi chức năng có một branch riêng; E01–E10 tách thành 10 branch, không gom nhiều chức năng độc lập chung branch. Các thay đổi, kiểm thử và minh chứng liên quan chức năng đó được commit trong branch tương ứng.
 - Mỗi thay đổi chức năng hoặc mỗi output hoàn thành có một commit riêng; không gom nhiều chức năng độc lập vào một commit lớn.
 - Commit message dùng **tiếng Anh**, ngắn gọn, đúng ý chính. Định dạng: `<type>: <English summary of 4–5 words>`. Số từ tính phần sau tiền tố; dùng `feat`, `fix`, `chore`, `test`, `docs` phù hợp.
 - Ví dụ hợp lệ: `feat: serve home and blog`, `feat: add hello API endpoint`, `fix: correct authentication proxy routing`, `docs: update output tracking status`.

@@ -64,7 +64,27 @@ Tên file minh chứng bên dưới là **đầu ra dự kiến**, chưa phải 
 | L9 `docs/final-local-delivery` | Cập nhật sơ đồ, báo cáo 5 chương, ảnh/log, video, README và bảng output; upload PDF cuối vào documents | PDF/DOCX/Markdown, video local, link Hub/video, tracker đã đạt/cần fix/chưa làm | Mở được file và link; video phản ánh bản cuối; đủ 10 mở rộng nếu đã đạt thực tế; ghi rõ cloud chưa có. PDF trong MinIO khớp bản cuối bàn giao |
 | L10 `chore/cloud-deployment` | Chỉ bắt đầu sau người dùng xác nhận local đạt; hướng dẫn AWS trong chat, deploy và test cùng bản release | R14 và bằng chứng evidence/ec2, phần cloud bổ sung báo cáo/video | Full stack EC2 Ubuntu, Web/API qua public IP, kiểm thử từng server, network/volume/metrics/token đúng môi trường |
 
-Các task trong cùng branch vẫn có commit riêng cho từng chức năng/output: E02, E03 và E09 không gom vào một commit. Mỗi nhóm bắt đầu từ main đã tích hợp và kiểm thử nhóm trước.
+**Điều chỉnh theo chỉ dẫn mới nhất:** bảng L ở trên là nhóm công việc tổng quan; branch thực thi tách theo từng chức năng trong bảng sau. Mỗi chức năng bắt đầu từ main đã tích hợp và kiểm thử chức năng trước; code, test, minh chứng và tracker của chức năng được commit ngay trong branch đó.
+
+| Chức năng | Branch thực thi |
+|---|---|
+| E02 JSON student API | feat/student-json-api |
+| E03 student SQL database | feat/student-sql-database |
+| E09 student gateway route | feat/student-proxy-route |
+| E01 blog cá nhân | feat/personal-blog |
+| Giao diện cổng demo | feat/demo-portal |
+| E04 Keycloak realm/token | feat/student-identity |
+| E05 avatar/documents | feat/profile-object-storage |
+| E06 DNS mở rộng | feat/service-dns-records |
+| E07 Web metrics | feat/web-metrics |
+| E08 dashboard cá nhân | feat/personal-health-dashboard |
+| E10 round robin | feat/round-robin-balancing |
+| Flutter E-learning demo | feat/elearning-web-demo |
+| Regression bản release | test/local-release-readiness |
+| Image bản release | chore/local-release-images |
+| Báo cáo bản cuối | docs/final-local-report |
+| Video bản cuối | docs/final-local-video |
+| Tổng hợp đầu ra | docs/final-output-summary |
 
 ## 5. Checklist chi tiết cho 10 mở rộng
 
