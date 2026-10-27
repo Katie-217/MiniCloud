@@ -143,6 +143,15 @@ services:
       timeout: 5s
       retries: 6
 
+  monitoring-web-exporter-server:
+    <<: *service-defaults
+    image: nginx/nginx-prometheus-exporter:1.4.1
+    container_name: monitoring-web-exporter-server
+    command: ["--nginx.scrape-uri=http://web-frontend-server:80/stub_status"]
+    depends_on:
+      web-frontend-server:
+        condition: service_healthy
+
   monitoring-prometheus-server:
     <<: *service-defaults
     image: prom/prometheus:v3.2.1
@@ -155,6 +164,8 @@ services:
     depends_on:
       monitoring-node-exporter-server:
         condition: service_healthy
+      monitoring-web-exporter-server:
+        condition: service_started
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:9090/-/ready"]
       interval: 10s
