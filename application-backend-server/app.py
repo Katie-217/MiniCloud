@@ -2,6 +2,8 @@
 from flask import Flask, jsonify, request
 import os
 import time
+import json
+from pathlib import Path
 import pymysql
 import requests
 from jose import jwt, JWTError
@@ -16,6 +18,11 @@ def hello():
 @app.get("/healthz")
 def health():
     return jsonify(status="ok")
+
+@app.get("/student")
+def students():
+    data = json.loads(Path(__file__).with_name("students.json").read_text(encoding="utf-8"))
+    return jsonify(data)
 
 @app.get("/notes")
 def notes():
