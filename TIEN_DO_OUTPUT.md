@@ -4,7 +4,7 @@ Cập nhật lần đầu: **26/10/2026**, cập nhật kế hoạch **27/10/202
 
 ## 1. Tổng quan hiện tại
 
-- **Output bắt buộc đạt: 13/18** nhóm trong bảng dưới. Đây là cách chia nhóm để quản lý, không phải cách chia điểm của PDF.
+- **Output bắt buộc đạt: 14/18** nhóm trong bảng dưới. Đây là cách chia nhóm để quản lý, không phải cách chia điểm của PDF.
 - **Mở rộng đạt: 10/10** mục.
 - Các service local được triển khai và kiểm thử dần theo bảng mục 3; chỉ các dòng `DAT` được tính hoàn thành.
 - Git local có `main` và các branch theo nhóm, kết nối repo Katie-217/MiniCloud; lịch sử tài liệu ban đầu được giữ nguyên.
@@ -50,7 +50,7 @@ Không lấy trạng thái container Running thay cho kết quả kiểm thử c
 | R14 | Toàn hệ thống chạy trên EC2 Ubuntu, public IP và test server đạt — tr. 1, 3 | `chore/cloud-deployment` | CHO_THONG_TIN | AWS deferred by user; no EC2 resources created/accessed |
 | R15 | Dockerfile/Compose/config và source đủ để tái tạo — tr. 3 | Toàn bộ branch triển khai | DAT | evidence/local/R15-source.json; full source/config, setup idempotent, README with tested commands |
 | R16 | Báo cáo đủ 5 chương + phụ lục, thống kê mở rộng — tr. 3, 27 | `docs/submission-evidence` | CHO_KIEM_THU | report/BaoCao_Local_521H0092.md/.pdf/.docx: đủ 5 chương cho local; chờ EC2 và MSSV thành viên hai; commit `503a61a` |
-| R17 | Video demo và link truy cập được trong phụ lục — tr. 3 | `docs/submission-evidence` | CHO_KIEM_THU | report/Demo_Local_521H0092.webm: silent captioned local walkthrough; EC2 segment pending; commit `f3e3c15` |
+| R17 | Video demo và link truy cập được trong phụ lục — tr. 3 | `docs/submission-evidence` | DAT | report/Demo_Local_521H0092.webm: complete walkthrough covering all 10 extensions; EC2 pending; commit `f3e3c15` |
 | R18 | Ảnh từng server, log test; phân biệt local và EC2 — tr. 3 | Từng branch + `docs/submission-evidence` | CHO_KIEM_THU | evidence/local: đủ ảnh/log từng server, network, persistence, Docker Hub; EC2 chưa thực hiện; commit `0d2c665` |
 
 ## 4. Những output đã đạt

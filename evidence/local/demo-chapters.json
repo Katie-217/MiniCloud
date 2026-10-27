@@ -1,76 +1,66 @@
 {
-  "output": "Local demo video",
-  "verified_at_utc": "2026-10-26T16:13:47.912721+00:00",
+  "output": "Local demo video with 10 extensions",
+  "verified_at_utc": "2026-10-27T11:58:08.374886+00:00",
   "details": [
     {
-      "chapter": "01 · Docker Compose / cloud-net",
-      "url": "file:///D:/%C4%90i%E1%BB%87n%20to%C3%A1n%20%C4%91%C3%A1m%20m%C3%A2y/evidence/local/evidence.html#R01",
-      "note": "9 server roles, 10 healthy containers; local verification only."
-    },
-    {
-      "chapter": "02 · Web Home through Gateway",
+      "chapter": "01 · MyMiniCloud Portal & Infrastructure",
       "url": "http://localhost/",
-      "note": "HTTP 200. Group: Vo Thi Thien Kim / 521H0092 and Diep Yen Nhi."
+      "note": "9 server roles, 13 containers running on Docker network cloud-net. Group: Vo Thi Thien Kim / 521H0092."
     },
     {
-      "chapter": "03 · Static Blog",
+      "chapter": "02 · Interactive Student Table (E02 / E09)",
+      "url": "http://localhost/",
+      "note": "Dynamic retrieval of 5 student records from Flask /api/student and proxy /student/."
+    },
+    {
+      "chapter": "03 · Illustrated Blog (E01)",
       "url": "http://localhost/blog/",
-      "note": "Nginx serves /blog/; navigation back to Home is available."
+      "note": "3 illustrated articles with images and return navigation to Home."
     },
     {
-      "chapter": "04 · Flask API",
-      "url": "file:///D:/%C4%90i%E1%BB%87n%20to%C3%A1n%20%C4%91%C3%A1m%20m%C3%A2y/evidence/local/evidence.html#R03",
-      "note": "Direct :8085/hello and gateway /api/hello return matching JSON."
+      "chapter": "03b · Blog Article 1",
+      "url": "http://localhost/blog/blog1.html",
+      "note": "Detailed architectural discussion with illustrated network diagram."
     },
     {
-      "chapter": "05 · MariaDB",
-      "url": "file:///D:/%C4%90i%E1%BB%87n%20to%C3%A1n%20%C4%91%C3%A1m%20m%C3%A2y/evidence/local/evidence.html#R04",
-      "note": "Actual SHOW TABLES / SELECT output, including initial seed and persistence marker."
+      "chapter": "04 · Flask API (/api/hello)",
+      "url": "http://localhost/api/hello",
+      "note": "Gateway proxies /api/hello to application-backend-server returning JSON."
     },
     {
-      "chapter": "06 · Keycloak through /auth/",
-      "url": "http://localhost/auth/admin/master/console/#/master/users",
-      "note": "Administrator login succeeds and sv01 exists in master realm."
+      "chapter": "05 · Proxy Route (/student/)",
+      "url": "http://localhost/student/",
+      "note": "Nginx gateway dedicated route to Flask /student endpoint."
     },
     {
-      "chapter": "07 · MinIO Object Storage",
-      "url": "http://localhost:9001/browser/demo",
-      "note": "demo/index.html is uploaded; download was verified byte-for-byte and by SHA256."
+      "chapter": "06 · Keycloak Identity & Security (R05 / E04)",
+      "url": "http://localhost/auth/admin/master/console/",
+      "note": "Admin console active; realm_521H0092, client flask-app and users sv01/sv02 configured."
     },
     {
-      "chapter": "08 · Bind9 DNS",
-      "url": "file:///D:/%C4%90i%E1%BB%87n%20to%C3%A1n%20%C4%91%C3%A1m%20m%C3%A2y/evidence/local/evidence.html#R07",
-      "note": "dig returns 10.10.10.10 on internal port 53 and published host port 1053."
+      "chapter": "07 · MinIO Object Storage (R06 / E05)",
+      "url": "http://localhost:9001/browser",
+      "note": "Buckets: demo, profile-pics (public avatar.jpg) and documents (coursework report PDF)."
     },
     {
-      "chapter": "09 · Prometheus",
+      "chapter": "08 · Prometheus Monitoring (R08 / E07)",
       "url": "http://localhost:9090/targets",
-      "note": "Node Exporter target is UP; CPU, memory and network metrics are available."
+      "note": "Both node and web targets in UP state with real nginx metrics scraped."
     },
     {
-      "chapter": "10 · Grafana Node Exporter Full",
-      "url": "http://localhost:3000/d/node-exporter-full/node-exporter-full?from=now-5m&to=now&var-datasource=prometheus&var-job=node&var-node=monitoring-node-exporter-server:9100&timezone=browser&orgId=1&var-diskdevices=%5Ba-z%5D%2B%7Cnvme%5B0-9%5D%2Bn%5B0-9%5D%2B%7Cmmcblk%5B0-9%5D%2B&refresh=1m",
-      "note": "CPU / RAM / Network charts use real Linux Docker metrics; this is not Windows host monitoring."
+      "chapter": "09 · Grafana System Health (R09 / E08)",
+      "url": "http://localhost:3000/d/system-health-521h0092/system-health-of-521h0092?orgId=1&from=now-15m&to=now&timezone=browser&refresh=10s",
+      "note": "Dashboard System Health of 521H0092 displaying CPU %, Memory %, and Network Traffic."
     },
     {
-      "chapter": "11 · Unified Reverse Proxy",
-      "url": "file:///D:/%C4%90i%E1%BB%87n%20to%C3%A1n%20%C4%91%C3%A1m%20m%C3%A2y/evidence/local/evidence.html#R10",
-      "note": "Web 200, API JSON, Auth 302 and public OIDC issuer verified."
+      "chapter": "10 · Round Robin Load Balancer (E10)",
+      "url": "http://localhost/lb/whoami",
+      "note": "Nginx gateway alternates sequentially between web-frontend-server1 and server2."
     },
     {
-      "chapter": "12 · Internal Network",
-      "url": "file:///D:/%C4%90i%E1%BB%87n%20to%C3%A1n%20%C4%91%C3%A1m%20m%C3%A2y/evidence/local/evidence.html#R11",
-      "note": "3 ICMP packets to each of 10 services; 0% packet loss."
-    },
-    {
-      "chapter": "13 · Persistent Volumes",
-      "url": "file:///D:/%C4%90i%E1%BB%87n%20to%C3%A1n%20%C4%91%C3%A1m%20m%C3%A2y/evidence/local/evidence.html#R12",
-      "note": "Five containers recreated; DB, user, object, Grafana folder and historical samples preserved."
-    },
-    {
-      "chapter": "14 · Docker Hub / Remaining Work",
-      "url": "file:///D:/%C4%90i%E1%BB%87n%20to%C3%A1n%20%C4%91%C3%A1m%20m%C3%A2y/evidence/local/evidence.html#R13",
-      "note": "katie217/myminicloud-web:1.0.0 published. AWS EC2 and final cloud evidence remain pending; 0/10 extensions."
+      "chapter": "11 · Complete Local Verification",
+      "url": "file:///D:/%C4%90i%E1%BB%87n%20to%C3%A1n%20%C4%91%C3%A1m%20m%C3%A2y/evidence/local/evidence.html",
+      "note": "14/18 mandatory outputs and 10/10 extensions verified. AWS EC2 deferred until local inspection."
     }
   ]
 }
