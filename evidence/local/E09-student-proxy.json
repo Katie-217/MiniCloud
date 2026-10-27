@@ -1,0 +1,41 @@
+{
+  "output": "E09",
+  "verified_at_utc": "2026-10-27T11:24:15.626154+00:00",
+  "details": {
+    "url": "http://localhost/student/",
+    "status": 200,
+    "json": [
+      {
+        "gpa": 3.5,
+        "id": 1,
+        "major": "Công nghệ thông tin",
+        "name": "Nguyễn Minh An"
+      },
+      {
+        "gpa": 3.2,
+        "id": 2,
+        "major": "Kỹ thuật phần mềm",
+        "name": "Trần Bảo Bình"
+      },
+      {
+        "gpa": 3.8,
+        "id": 3,
+        "major": "Khoa học máy tính",
+        "name": "Lê Ngọc Chi"
+      },
+      {
+        "gpa": 3.1,
+        "id": 4,
+        "major": "Hệ thống thông tin",
+        "name": "Phạm Gia Duy"
+      },
+      {
+        "gpa": 3.6,
+        "id": 5,
+        "major": "Mạng máy tính",
+        "name": "Đặng Khánh Hà"
+      }
+    ],
+    "matches_api_student": true
+  }
+}
