@@ -1,0 +1,92 @@
+{
+  "output": "E06",
+  "verified_at_utc": "2026-10-27T11:38:29.811789+00:00",
+  "details": {
+    "records": [
+      [
+        "web-frontend-server.cloud.local",
+        "10.10.10.10"
+      ],
+      [
+        "app-backend.cloud.local",
+        "10.10.10.20"
+      ],
+      [
+        "minio.cloud.local",
+        "10.10.10.30"
+      ],
+      [
+        "keycloak.cloud.local",
+        "10.10.10.40"
+      ]
+    ],
+    "soa_serial": "2026102701",
+    "checks": [
+      {
+        "name": "web-frontend-server.cloud.local",
+        "expected_ip": "10.10.10.10",
+        "actual_ip": "10.10.10.10",
+        "server": "internal-dns-server",
+        "port": "53",
+        "matched": true
+      },
+      {
+        "name": "web-frontend-server.cloud.local",
+        "expected_ip": "10.10.10.10",
+        "actual_ip": "10.10.10.10",
+        "server": "host.docker.internal",
+        "port": "1053",
+        "matched": true
+      },
+      {
+        "name": "app-backend.cloud.local",
+        "expected_ip": "10.10.10.20",
+        "actual_ip": "10.10.10.20",
+        "server": "internal-dns-server",
+        "port": "53",
+        "matched": true
+      },
+      {
+        "name": "app-backend.cloud.local",
+        "expected_ip": "10.10.10.20",
+        "actual_ip": "10.10.10.20",
+        "server": "host.docker.internal",
+        "port": "1053",
+        "matched": true
+      },
+      {
+        "name": "minio.cloud.local",
+        "expected_ip": "10.10.10.30",
+        "actual_ip": "10.10.10.30",
+        "server": "internal-dns-server",
+        "port": "53",
+        "matched": true
+      },
+      {
+        "name": "minio.cloud.local",
+        "expected_ip": "10.10.10.30",
+        "actual_ip": "10.10.10.30",
+        "server": "host.docker.internal",
+        "port": "1053",
+        "matched": true
+      },
+      {
+        "name": "keycloak.cloud.local",
+        "expected_ip": "10.10.10.40",
+        "actual_ip": "10.10.10.40",
+        "server": "internal-dns-server",
+        "port": "53",
+        "matched": true
+      },
+      {
+        "name": "keycloak.cloud.local",
+        "expected_ip": "10.10.10.40",
+        "actual_ip": "10.10.10.40",
+        "server": "host.docker.internal",
+        "port": "1053",
+        "matched": true
+      }
+    ],
+    "zone_file": "$TTL 1H\n@ IN SOA ns.cloud.local. admin.cloud.local. (\n    2026102701 1H 15M 1W 1H\n)\n  IN NS ns.cloud.local.\nns IN A 127.0.0.1\nweb-frontend-server IN A 10.10.10.10\napp-backend         IN A 10.10.10.20\napp-backend-server  IN A 10.10.10.20\nminio               IN A 10.10.10.30\nobject-storage-server IN A 10.10.10.30\nkeycloak            IN A 10.10.10.40\nauthentication-identity-server IN A 10.10.10.40\n"
+  }
+}
