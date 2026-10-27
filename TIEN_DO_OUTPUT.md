@@ -5,7 +5,7 @@ Cập nhật lần đầu: **26/10/2026**, cập nhật kế hoạch **27/10/202
 ## 1. Tổng quan hiện tại
 
 - **Output bắt buộc đạt: 14/18** nhóm trong bảng dưới. Đây là cách chia nhóm để quản lý, không phải cách chia điểm của PDF.
-- **Mở rộng đạt: 5/10** mục.
+- **Mở rộng đạt: 6/10** mục.
 - Các service local được triển khai và kiểm thử dần theo bảng mục 3; chỉ các dòng `DAT` được tính hoàn thành.
 - Git local có `main` và các branch theo nhóm, kết nối repo Katie-217/MiniCloud; lịch sử tài liệu ban đầu được giữ nguyên.
 - Đã thêm `.gitignore` loại trừ bí mật, dữ liệu runtime và file trích PDF; `.gitattributes` thống nhất line ending cho file container Linux.
@@ -92,7 +92,7 @@ Hiện không còn lỗi chức năng làm trượt các bài kiểm thử MiniC
 | E02 | `/student`, JSON 5 sinh viên đủ trường | DAT | evidence/local/E02-student-api.json; feat/student-json-api; python scripts/check_students.py |
 | E03 | `studentdb.students`, schema đúng, ít nhất 3 dòng | DAT | evidence/local/E03-student-database.json; feat/student-sql-database; python scripts/check_student_database.py |
 | E04 | Realm MSSV, 2 user, public client, token gọi `/secure` | DAT | evidence/local/E04-keycloak.json; feat/student-identity; python scripts/check_identity.py |
-| E05 | Avatar public URL, documents chứa PDF báo cáo | CHUA_LAM | — |
+| E05 | Avatar public URL, documents chứa PDF báo cáo | DAT | evidence/local/E05-storage.json; feat/profile-object-storage; python scripts/check_profile_storage.py; E05-minio-avatar.png |
 | E06 | Bản ghi DNS App/MinIO/Keycloak, dig đúng | CHUA_LAM | — |
 | E07 | Prometheus giám sát Web, target UP và metrics thật | CHUA_LAM | — |
 | E08 | System Health of MSSV, 3 biểu đồ có dữ liệu | CHUA_LAM | — |

@@ -1,0 +1,22 @@
+{
+  "output": "E05",
+  "verified_at_utc": "2026-10-27T11:36:45.804291+00:00",
+  "details": {
+    "profile_pics": {
+      "bucket": "profile-pics",
+      "key": "avatar.jpg",
+      "public_url": "http://localhost:9000/profile-pics/avatar.jpg",
+      "anonymous_status": 200,
+      "content_type": "image/jpeg",
+      "sha256": "f483568b7e36f7c0cfc50e0a3555e4c246d51b52b2c4941eadc4523fbb67c9da",
+      "bytes": 661640
+    },
+    "documents": {
+      "bucket": "documents",
+      "key": "BaoCao_Local_521H0092.pdf",
+      "anonymous_status": 403,
+      "sha256": "58ce0457b69ea8e1ed716cc7cd4ab678580ea849af80cfb72f9aa55cd1dcbdc4",
+      "bytes": 832575
+    }
+  }
+}
