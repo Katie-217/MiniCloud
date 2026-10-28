@@ -1,12 +1,21 @@
 {
   "output": "R01",
-  "verified_at_utc": "2026-10-27T11:52:30.305388+00:00",
+  "verified_at_utc": "2026-10-28T11:42:36.764825+00:00",
   "details": {
     "service_count": 13,
     "role_count": 9,
     "checks": [
       {
         "service": "web-frontend-server",
+        "running": true,
+        "health": "healthy",
+        "restart": "unless-stopped",
+        "networks": [
+          "cloud-net"
+        ]
+      },
+      {
+        "service": "web-frontend-server1",
         "running": true,
         "health": "healthy",
         "restart": "unless-stopped",
@@ -24,7 +33,7 @@
         ]
       },
       {
-        "service": "authentication-identity-server",
+        "service": "relational-database-server",
         "running": true,
         "health": "healthy",
         "restart": "unless-stopped",
@@ -33,7 +42,7 @@
         ]
       },
       {
-        "service": "internal-dns-server",
+        "service": "application-backend-server",
         "running": true,
         "health": "healthy",
         "restart": "unless-stopped",
@@ -69,7 +78,7 @@
         ]
       },
       {
-        "service": "relational-database-server",
+        "service": "monitoring-grafana-dashboard-server",
         "running": true,
         "health": "healthy",
         "restart": "unless-stopped",
@@ -78,16 +87,7 @@
         ]
       },
       {
-        "service": "application-backend-server",
-        "running": true,
-        "health": "healthy",
-        "restart": "unless-stopped",
-        "networks": [
-          "cloud-net"
-        ]
-      },
-      {
-        "service": "web-frontend-server1",
+        "service": "authentication-identity-server",
         "running": true,
         "health": "healthy",
         "restart": "unless-stopped",
@@ -105,7 +105,7 @@
         ]
       },
       {
-        "service": "monitoring-grafana-dashboard-server",
+        "service": "internal-dns-server",
         "running": true,
         "health": "healthy",
         "restart": "unless-stopped",

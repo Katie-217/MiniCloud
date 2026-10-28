@@ -1,6 +1,6 @@
 {
   "output": "E03",
-  "verified_at_utc": "2026-10-27T11:53:04.256370+00:00",
+  "verified_at_utc": "2026-10-28T11:43:19.665366+00:00",
   "details": {
     "schema": "Field\tType\tNull\tKey\tDefault\tExtra\nid\tint(11)\tNO\tPRI\tNULL\tauto_increment\nstudent_id\tvarchar(10)\tYES\t\tNULL\t\nfullname\tvarchar(100)\tYES\t\tNULL\t\ndob\tdate\tYES\t\tNULL\t\nmajor\tvarchar(50)\tYES\t\tNULL",
     "rows": "id\tstudent_id\tfullname\tdob\tmajor\n1\tDEMO001\tNguyễn Minh An\t2003-01-12\tInformation Technology\n2\tDEMO002\tTrần Bảo Bình\t2003-05-20\tSoftware Engineering\n3\tDEMO003\tLê Ngọc Chi\t2003-09-08\tComputer Science",

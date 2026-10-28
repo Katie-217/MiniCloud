@@ -1,6 +1,6 @@
 {
   "output": "R04",
-  "verified_at_utc": "2026-10-27T11:52:22.818641+00:00",
+  "verified_at_utc": "2026-10-28T11:42:29.355140+00:00",
   "details": {
     "query": "USE minicloud; SHOW TABLES; SELECT * FROM notes;",
     "output": "Tables_in_minicloud\nnotes\nid\ttitle\tcreated_at\n1\tHello from MariaDB!\t2026-10-26 15:44:53\n2\tPersistence verification 521H0092\t2026-10-26 16:00:24"

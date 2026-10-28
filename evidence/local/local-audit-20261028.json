@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-28",
+  "command": ".venv/Scripts/python.exe scripts/check_all.py",
+  "exit_code": 0,
+  "verification_steps": 22,
+  "extensions_passed": 10,
+  "container_count": 13,
+  "scope": "local-only; AWS remains unverified",
+  "log": "evidence/local/local-audit-20261028.txt"
+}
