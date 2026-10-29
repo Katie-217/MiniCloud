@@ -1,17 +1,17 @@
 {
-  "version": "local-20261029",
-  "source_commit": "1f27f82ef7b69bc4597e5d666c5bd03495526a16",
+  "version": "local-20261029.1",
+  "source_commit": "a249748225e36128dfe0706751667eab6261c174",
   "images": {
     "web": {
-      "tag": "katie217/myminicloud-web:local-20261029",
-      "pinned": "katie217/myminicloud-web@sha256:f25160aff571d2745d2d0a1c411552ce1b6ba7f4c642084f0a33b97363e49125",
-      "digest": "sha256:f25160aff571d2745d2d0a1c411552ce1b6ba7f4c642084f0a33b97363e49125",
-      "local_image_id": "sha256:f25160aff571d2745d2d0a1c411552ce1b6ba7f4c642084f0a33b97363e49125",
+      "tag": "katie217/myminicloud-web:local-20261029.1",
+      "pinned": "katie217/myminicloud-web@sha256:1fb082911391e3ada620c0254e81a2d0d5564ac62856cf046b84a522fef7a76a",
+      "digest": "sha256:1fb082911391e3ada620c0254e81a2d0d5564ac62856cf046b84a522fef7a76a",
+      "local_image_id": "sha256:1fb082911391e3ada620c0254e81a2d0d5564ac62856cf046b84a522fef7a76a",
       "registry_manifest_verified": true,
       "repository": "https://hub.docker.com/r/katie217/myminicloud-web"
     },
     "app": {
-      "tag": "katie217/myminicloud-app:local-20261029",
+      "tag": "katie217/myminicloud-app:local-20261029.1",
       "pinned": "katie217/myminicloud-app@sha256:23ee3d8a6749ee6763f3c615ac00740b05da61b23c20b18040c0bf28914b8b91",
       "digest": "sha256:23ee3d8a6749ee6763f3c615ac00740b05da61b23c20b18040c0bf28914b8b91",
       "local_image_id": "sha256:23ee3d8a6749ee6763f3c615ac00740b05da61b23c20b18040c0bf28914b8b91",
@@ -19,7 +19,7 @@
       "repository": "https://hub.docker.com/r/katie217/myminicloud-app"
     },
     "minio": {
-      "tag": "katie217/myminicloud-minio:local-20261029",
+      "tag": "katie217/myminicloud-minio:local-20261029.1",
       "pinned": "katie217/myminicloud-minio@sha256:f61ba90a49fcc2834657c7d323d5b48170a644ef7ddc8df88a7adac5aa0af3e0",
       "digest": "sha256:f61ba90a49fcc2834657c7d323d5b48170a644ef7ddc8df88a7adac5aa0af3e0",
       "local_image_id": "sha256:f61ba90a49fcc2834657c7d323d5b48170a644ef7ddc8df88a7adac5aa0af3e0",
@@ -27,7 +27,7 @@
       "repository": "https://hub.docker.com/r/katie217/myminicloud-minio"
     },
     "elearning": {
-      "tag": "katie217/myminicloud-elearning:local-20261029",
+      "tag": "katie217/myminicloud-elearning:local-20261029.1",
       "pinned": "katie217/myminicloud-elearning@sha256:52205b3544eb022afc03e240b2076d122bbb5e907d0d4d7fbd98edfbeefdde75",
       "digest": "sha256:52205b3544eb022afc03e240b2076d122bbb5e907d0d4d7fbd98edfbeefdde75",
       "local_image_id": "sha256:52205b3544eb022afc03e240b2076d122bbb5e907d0d4d7fbd98edfbeefdde75",
@@ -35,18 +35,27 @@
       "repository": "https://hub.docker.com/r/katie217/myminicloud-elearning"
     },
     "firebase": {
-      "tag": "katie217/myminicloud-firebase:local-20261029",
+      "tag": "katie217/myminicloud-firebase:local-20261029.1",
       "pinned": "katie217/myminicloud-firebase@sha256:2bfe35b598b72fbd2b81e0b3e9c0d10152ca745cd30a2529198ebc9646503a63",
       "digest": "sha256:2bfe35b598b72fbd2b81e0b3e9c0d10152ca745cd30a2529198ebc9646503a63",
       "local_image_id": "sha256:2bfe35b598b72fbd2b81e0b3e9c0d10152ca745cd30a2529198ebc9646503a63",
       "registry_manifest_verified": true,
       "repository": "https://hub.docker.com/r/katie217/myminicloud-firebase"
+    },
+    "tools": {
+      "tag": "katie217/myminicloud-tools:local-20261029.1",
+      "pinned": "katie217/myminicloud-tools@sha256:8d7ed446e55f5ef7c6de4f85eb94d6974ebef9bed5805d25cdedab3d9afafb17",
+      "digest": "sha256:8d7ed446e55f5ef7c6de4f85eb94d6974ebef9bed5805d25cdedab3d9afafb17",
+      "local_image_id": "sha256:8d7ed446e55f5ef7c6de4f85eb94d6974ebef9bed5805d25cdedab3d9afafb17",
+      "registry_manifest_verified": true,
+      "repository": "https://hub.docker.com/r/katie217/myminicloud-tools"
     }
   },
+  "custom_image_platform": "linux/amd64",
   "runtime_images": {
-    "web-frontend-server": "katie217/myminicloud-web@sha256:f25160aff571d2745d2d0a1c411552ce1b6ba7f4c642084f0a33b97363e49125",
-    "web-frontend-server1": "katie217/myminicloud-web@sha256:f25160aff571d2745d2d0a1c411552ce1b6ba7f4c642084f0a33b97363e49125",
-    "web-frontend-server2": "katie217/myminicloud-web@sha256:f25160aff571d2745d2d0a1c411552ce1b6ba7f4c642084f0a33b97363e49125",
+    "web-frontend-server": "katie217/myminicloud-web@sha256:1fb082911391e3ada620c0254e81a2d0d5564ac62856cf046b84a522fef7a76a",
+    "web-frontend-server1": "katie217/myminicloud-web@sha256:1fb082911391e3ada620c0254e81a2d0d5564ac62856cf046b84a522fef7a76a",
+    "web-frontend-server2": "katie217/myminicloud-web@sha256:1fb082911391e3ada620c0254e81a2d0d5564ac62856cf046b84a522fef7a76a",
     "application-backend-server": "katie217/myminicloud-app@sha256:23ee3d8a6749ee6763f3c615ac00740b05da61b23c20b18040c0bf28914b8b91",
     "object-storage-server": "katie217/myminicloud-minio@sha256:f61ba90a49fcc2834657c7d323d5b48170a644ef7ddc8df88a7adac5aa0af3e0",
     "elearning-web-server": "katie217/myminicloud-elearning@sha256:52205b3544eb022afc03e240b2076d122bbb5e907d0d4d7fbd98edfbeefdde75",
@@ -58,6 +67,8 @@
     "monitoring-node-exporter-server": "prom/node-exporter@sha256:d00a542e409ee618a4edc67da14dd48c5da66726bbd5537ab2af9c1dfc442c8a",
     "monitoring-web-exporter-server": "nginx/nginx-prometheus-exporter@sha256:a146e4e56cedf2bd4858ce0d04cf4da0b7ce1c88b7973f9221934c8651fa3e1c",
     "monitoring-prometheus-server": "prom/prometheus@sha256:6927e0919a144aa7616fd0137d4816816d42f6b816de3af269ab065250859a62",
-    "monitoring-grafana-dashboard-server": "grafana/grafana@sha256:62d2b9d20a19714ebfe48d1bb405086081bc602aa053e28cf6d73c7537640dfb"
+    "monitoring-grafana-dashboard-server": "grafana/grafana@sha256:62d2b9d20a19714ebfe48d1bb405086081bc602aa053e28cf6d73c7537640dfb",
+    "logging-loki-server": "grafana/loki@sha256:0db216b630ae1f348a1584c67f3cead8b4c1fc839169a39501db664744158e28",
+    "logging-alloy-server": "grafana/alloy@sha256:8ab871206bd2d8f89277f53abffee5f452a293980788d52f85fa183a87a505a4"
   }
 }
