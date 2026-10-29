@@ -85,7 +85,7 @@ Hiện không còn lỗi chức năng làm trượt các bài kiểm thử MiniC
 | Có EC2 Ubuntu hay chưa | CHO_THONG_TIN | Người dùng yêu cầu để sau; chưa thao tác AWS |
 | Public IP, user SSH, đường dẫn key nếu đã có EC2 | CHO_THONG_TIN | Kết nối bằng key local, không đưa nội dung key vào Git/chat |
 | Repo ứng dụng demo | DAT | feat/elearning-web-demo; source main 9e9ebd5; hai vai trò, khóa học, số ghi danh và persistence bằng emulator; chức năng ngoài luồng demo chưa kiểm chứng |
-| Avatar cá nhân cho E05 | CHO_THONG_TIN | Cần ảnh được người dùng chọn/cung cấp; chưa coi ảnh minh họa bất kỳ là avatar cá nhân đã hoàn tất |
+| Avatar cá nhân cho E05 | DAT | Người dùng chọn chữ cái đầu tên ngày 29/10/2026; avatar chữ K cho Thiên Kim, nguồn SVG và bản JPEG trong object-storage-server |
 
 ## 7. Mở rộng chưa làm
 

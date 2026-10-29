@@ -14,3 +14,5 @@ Source giữ Console đầy đủ cho bài lab; binary tự build không có rel
 - Credentials: đọc `MINIO_ROOT_USER` và `MINIO_ROOT_PASSWORD` trong `.env` local.
 - Dữ liệu: named volume `minio-data`; không lưu vào Git.
 - `.venv/Scripts/python scripts/check_storage.py` tạo bucket demo, upload HTML và tải về đối chiếu SHA256.
+
+Avatar cá nhân dùng chữ **K** theo lựa chọn của người dùng ngày 29/10/2026; `avatar.svg` là nguồn vector, `avatar.jpg` là bản render JPEG để khớp tên file trong đề. Không dùng ảnh chân dung minh họa thay cho ảnh thật của sinh viên. Chạy `scripts/check_profile_storage.py` để upload avatar và PDF, kiểm tra URL công khai và đối chiếu bytes/hash.

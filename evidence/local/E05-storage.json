@@ -1,6 +1,6 @@
 {
   "output": "E05",
-  "verified_at_utc": "2026-10-28T11:43:28.293587+00:00",
+  "verified_at_utc": "2026-10-29T11:17:30.952841+00:00",
   "details": {
     "profile_pics": {
       "bucket": "profile-pics",
@@ -8,8 +8,8 @@
       "public_url": "http://localhost:9000/profile-pics/avatar.jpg",
       "anonymous_status": 200,
       "content_type": "image/jpeg",
-      "sha256": "f483568b7e36f7c0cfc50e0a3555e4c246d51b52b2c4941eadc4523fbb67c9da",
-      "bytes": 661640
+      "sha256": "2280cdce8e6e07f3bf392dd968d1619ac253eed301f3ed28844c415b143e78c8",
+      "bytes": 30213
     },
     "documents": {
       "bucket": "documents",
