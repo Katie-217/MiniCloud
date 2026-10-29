@@ -1,8 +1,8 @@
 {
   "output": "E10",
-  "verified_at_utc": "2026-10-29T11:02:31.383251+00:00",
+  "verified_at_utc": "2026-10-29T11:34:27.329108+00:00",
   "details": {
-    "verified_after_replica_recreation": true,
+    "verified_after_replica_recreation": false,
     "upstream": "web_lb",
     "servers": [
       "web-frontend-server1:80",
@@ -12,72 +12,72 @@
       {
         "request": 1,
         "status": 200,
-        "server_header": "web-frontend-server1",
-        "body": "Response from web-frontend-server1"
+        "server_header": "web-frontend-server2",
+        "body": "Response from web-frontend-server2"
       },
       {
         "request": 2,
         "status": 200,
-        "server_header": "web-frontend-server2",
-        "body": "Response from web-frontend-server2"
+        "server_header": "web-frontend-server1",
+        "body": "Response from web-frontend-server1"
       },
       {
         "request": 3,
         "status": 200,
-        "server_header": "web-frontend-server1",
-        "body": "Response from web-frontend-server1"
+        "server_header": "web-frontend-server2",
+        "body": "Response from web-frontend-server2"
       },
       {
         "request": 4,
         "status": 200,
-        "server_header": "web-frontend-server2",
-        "body": "Response from web-frontend-server2"
+        "server_header": "web-frontend-server1",
+        "body": "Response from web-frontend-server1"
       },
       {
         "request": 5,
         "status": 200,
-        "server_header": "web-frontend-server1",
-        "body": "Response from web-frontend-server1"
+        "server_header": "web-frontend-server2",
+        "body": "Response from web-frontend-server2"
       },
       {
         "request": 6,
         "status": 200,
-        "server_header": "web-frontend-server2",
-        "body": "Response from web-frontend-server2"
-      },
-      {
-        "request": 7,
-        "status": 200,
         "server_header": "web-frontend-server1",
         "body": "Response from web-frontend-server1"
       },
       {
-        "request": 8,
+        "request": 7,
         "status": 200,
         "server_header": "web-frontend-server2",
         "body": "Response from web-frontend-server2"
+      },
+      {
+        "request": 8,
+        "status": 200,
+        "server_header": "web-frontend-server1",
+        "body": "Response from web-frontend-server1"
       }
     ],
     "html_requests": [
       {
         "request": 1,
         "status": 200,
-        "server_header": "web-frontend-server1"
+        "server_header": "web-frontend-server2"
       },
       {
         "request": 2,
         "status": 200,
-        "server_header": "web-frontend-server2"
+        "server_header": "web-frontend-server1"
       },
       {
         "request": 3,
         "status": 200,
-        "server_header": "web-frontend-server1"
+        "server_header": "web-frontend-server2"
       },
       {
         "request": 4,
         "status": 200,
-        "server_header": "web-frontend-server2"
+        "server_header": "web-frontend-server1"
       }
     ],
     "distribution": {

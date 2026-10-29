@@ -1,0 +1,120 @@
+{
+  "output": "Local functional and UI suite",
+  "verified_at_utc": "2026-10-29T11:45:48.170877+00:00",
+  "details": {
+    "verification_steps": 27,
+    "all_passed": true,
+    "checks": [
+      {
+        "script": "check_web.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_app.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_database.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_app_database.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_auth.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_storage.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_dns.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_monitoring.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_grafana.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_gateway.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_stack.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_network.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_blog.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_students.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_student_database.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_identity.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_profile_storage.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_service_dns.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_web_metrics.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_health_dashboard.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_student_proxy.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_round_robin.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_secure_portal.py",
+        "exit_code": 0
+      },
+      {
+        "script": "check_logging.py",
+        "exit_code": 0
+      },
+      {
+        "script": "capture_auth.py",
+        "exit_code": 0
+      },
+      {
+        "script": "capture_storage.py",
+        "exit_code": 0
+      },
+      {
+        "script": "capture_monitoring.py",
+        "exit_code": 0
+      }
+    ],
+    "source": "final-verification-20261029.log; successful sequential check_all.py process",
+    "scope": "local; AWS unverified"
+  }
+}

@@ -1,11 +1,11 @@
 {
   "output": "Centralized service logging",
-  "verified_at_utc": "2026-10-29T11:23:21.409462+00:00",
+  "verified_at_utc": "2026-10-29T11:38:26.159754+00:00",
   "details": {
-    "query": "{project=\"myminicloud\",service=\"application-backend-server\"} |= \"minicloud-log-check-47ea94849620\"",
-    "marker": "minicloud-log-check-47ea94849620",
+    "query": "{project=\"myminicloud\",service=\"application-backend-server\"} |= \"minicloud-log-check-2aa16403ff6e\"",
+    "marker": "minicloud-log-check-2aa16403ff6e",
     "log_lines": [
-      "172.19.0.16 - - [29/Oct/2026:11:22:53 +0000] \"GET /hello?log_check=minicloud-log-check-47ea94849620 HTTP/1.0\" 200 37 \"-\" \"python-requests/2.32.5\""
+      "172.19.0.16 - - [29/Oct/2026:11:37:55 +0000] \"GET /hello?log_check=minicloud-log-check-2aa16403ff6e HTTP/1.0\" 200 37 \"-\" \"python-requests/2.32.5\""
     ],
     "grafana_datasource_health": "OK",
     "grafana_proxy_query": "successful",

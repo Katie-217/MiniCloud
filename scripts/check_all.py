@@ -2,7 +2,9 @@
 import argparse
 import subprocess
 import sys
+import time
 from pathlib import Path
+from lab import save, result
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--screenshots", action="store_true")
@@ -51,9 +53,18 @@ if args.screenshots:
     ])
 
 print(f"Starting test suite: {len(checks)} verification steps...")
+verified = []
 for check in checks:
     script_name = check[0]
     print(f"--> Running {script_name}...")
+    started = time.monotonic()
     subprocess.run([sys.executable, str(root / "scripts" / script_name), *check[1:]], cwd=root, check=True)
+    verified.append({"script": script_name, "args": check[1:], "exit_code": 0,
+        "elapsed_seconds": round(time.monotonic()-started, 2)})
+
+save("local-suite.json", result("Local functional and UI suite", {
+    "verification_steps": len(verified), "all_passed": True, "checks": verified,
+    "scope": "local; AWS unverified",
+}))
 
 print(f"SUCCESS: All {len(checks)} mandatory and extension checks passed completely!")

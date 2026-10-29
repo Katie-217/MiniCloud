@@ -1,5 +1,5 @@
 <!doctype html><html lang="vi"><meta charset="utf-8"><title>MyMiniCloud local evidence</title>
-<style>body{margin:0;background:#edf2f5;color:#183043;font:17px Arial,sans-serif}section{background:white;margin:28px;padding:36px;border-top:6px solid #167264;border-radius:8px}h1{font-size:30px}.label{font-size:12px;letter-spacing:2px;color:#167264}table{border-collapse:collapse;width:100%;font-size:15px}th,td{border:1px solid #d4dee5;padding:12px;text-align:left}th{background:#ecf3f5}pre{background:#132b38;color:#e1f3f4;padding:24px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.5;font-size:16px}code{color:#125b69}</style><section id="R01"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>10 healthy containers · 9 server roles</h1><p>Source: <code>R01-stack.json</code> — captured test results, not sample output.</p><table><tr><th>Container</th><th>Health</th><th>Network</th><th>Restart policy</th></tr><tr><td>web-frontend-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>web-frontend-server2</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>authentication-identity-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>internal-dns-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>monitoring-node-exporter-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>monitoring-web-exporter-server</td><td>running</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>monitoring-prometheus-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>relational-database-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>application-backend-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>web-frontend-server1</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>api-gateway-proxy-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>monitoring-grafana-dashboard-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>object-storage-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr></table></section><section id="R03"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>Flask API · direct and gateway</h1><p>Source: <code>R03-api.json</code> — captured test results, not sample output.</p><pre>[
+<style>body{margin:0;background:#edf2f5;color:#183043;font:17px Arial,sans-serif}section{background:white;margin:28px;padding:36px;border-top:6px solid #167264;border-radius:8px}h1{font-size:30px}.label{font-size:12px;letter-spacing:2px;color:#167264}table{border-collapse:collapse;width:100%;font-size:15px}th,td{border:1px solid #d4dee5;padding:12px;text-align:left}th{background:#ecf3f5}pre{background:#132b38;color:#e1f3f4;padding:24px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.5;font-size:16px}code{color:#125b69}</style><section id="R01"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>17 running/healthy containers · 9 server roles</h1><p>Source: <code>R01-stack.json</code> — captured test results, not sample output.</p><table><tr><th>Container</th><th>Health</th><th>Network</th><th>Restart policy</th></tr><tr><td>web-frontend-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>monitoring-web-exporter-server</td><td>running</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>monitoring-node-exporter-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>monitoring-prometheus-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>firebase-emulator-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>internal-dns-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>object-storage-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>elearning-web-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>logging-loki-server</td><td>running</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>relational-database-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>web-frontend-server1</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>application-backend-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>logging-alloy-server</td><td>running</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>web-frontend-server2</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>authentication-identity-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>api-gateway-proxy-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr><tr><td>monitoring-grafana-dashboard-server</td><td>healthy</td><td>cloud-net</td><td>unless-stopped</td></tr></table></section><section id="R03"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>Flask API · direct and gateway</h1><p>Source: <code>R03-api.json</code> — captured test results, not sample output.</p><pre>[
   {
     &quot;url&quot;: &quot;http://localhost:8085/hello&quot;,
     &quot;status&quot;: 200,
@@ -60,7 +60,7 @@
     &quot;oidc_issuer&quot;: &quot;http://localhost/auth/realms/master&quot;,
     &quot;token_endpoint&quot;: &quot;http://localhost/auth/realms/master/protocol/openid-connect/token&quot;
   }
-]</pre></section><section id="R11"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>cloud-net · 3 pings to each service</h1><p>Source: <code>R11-network.json</code> — captured test results, not sample output.</p><table><tr><th>Container</th><th>Packets</th><th>Loss</th></tr><tr><td>relational-database-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>web-frontend-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>web-frontend-server1</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>web-frontend-server2</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>application-backend-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>authentication-identity-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>api-gateway-proxy-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>monitoring-node-exporter-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>monitoring-web-exporter-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>monitoring-prometheus-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>internal-dns-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>monitoring-grafana-dashboard-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>object-storage-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr></table><p>Full ping output is retained in R11-network.json.</p></section><section id="R12"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>State preserved after recreating 5 containers</h1><p>Source: <code>R12-persistence.json</code> — captured test results, not sample output.</p><pre>{
+]</pre></section><section id="R11"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>cloud-net · 3 pings to each service</h1><p>Source: <code>R11-network.json</code> — captured test results, not sample output.</p><table><tr><th>Container</th><th>Packets</th><th>Loss</th></tr><tr><td>firebase-emulator-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>elearning-web-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>internal-dns-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>logging-loki-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>web-frontend-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>monitoring-web-exporter-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>monitoring-node-exporter-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>monitoring-prometheus-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>web-frontend-server1</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>web-frontend-server2</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>relational-database-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>application-backend-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>authentication-identity-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>api-gateway-proxy-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>logging-alloy-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>object-storage-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr><tr><td>monitoring-grafana-dashboard-server</td><td>3 transmitted / 3 received</td><td>0%</td></tr></table><p>Full ping output is retained in R11-network.json.</p></section><section id="R12"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>State preserved after recreating 5 containers</h1><p>Source: <code>R12-persistence.json</code> — captured test results, not sample output.</p><pre>{
   &quot;all_five_container_ids_changed&quot;: true,
   &quot;named_volumes_unchanged&quot;: {
     &quot;relational-database-server&quot;: [
@@ -84,12 +84,342 @@
   &quot;minio_demo_object_preserved&quot;: true,
   &quot;grafana_custom_folder_preserved&quot;: true,
   &quot;prometheus_historical_sample_preserved&quot;: true,
-  &quot;historical_sample_time&quot;: 1793030422.2727716
-}</pre></section><section id="R13"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>Custom image published to Docker Hub</h1><p>Source: <code>R13-dockerhub.json</code> — captured test results, not sample output.</p><pre>{
-  &quot;image&quot;: &quot;katie217/myminicloud-web:1.0.0&quot;,
-  &quot;digest&quot;: &quot;sha256:4988e9c9b5c2fb9c21d801a2035e4d4cc52f01de71bbb4de33d4cafff9121815&quot;,
-  &quot;manifest_read_back&quot;: true,
-  &quot;repository_url&quot;: &quot;https://hub.docker.com/r/katie217/myminicloud-web&quot;,
-  &quot;tag_url&quot;: &quot;https://hub.docker.com/r/katie217/myminicloud-web/tags&quot;,
-  &quot;manifest_media_type&quot;: &quot;application/vnd.oci.image.index.v1+json&quot;
+  &quot;historical_sample_time&quot;: 1793273727.4548295
+}</pre></section><section id="R13"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>Verified custom images on Docker Hub</h1><p>Source: <code>release-images.json</code> — captured test results, not sample output.</p><table><tr><th>Image tag</th><th>Digest prefix</th><th>Registry verification</th></tr><tr><td>katie217/myminicloud-web:local-20261029.1</td><td>sha256:1fb082911391e3ada620…</td><td>True</td></tr><tr><td>katie217/myminicloud-app:local-20261029.1</td><td>sha256:23ee3d8a6749ee6763f3…</td><td>True</td></tr><tr><td>katie217/myminicloud-minio:local-20261029.1</td><td>sha256:f61ba90a49fcc2834657…</td><td>True</td></tr><tr><td>katie217/myminicloud-elearning:local-20261029.1</td><td>sha256:52205b3544eb022afc03…</td><td>True</td></tr><tr><td>katie217/myminicloud-firebase:local-20261029.1</td><td>sha256:2bfe35b598b72fbd2b81…</td><td>True</td></tr><tr><td>katie217/myminicloud-tools:local-20261029.1</td><td>sha256:8d7ed446e55f5ef7c6de…</td><td>True</td></tr></table><p>Full digests for every runtime image are retained in release-images.json.</p></section><section id="E03"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>Student SQL schema and actual rows</h1><p>Source: <code>E03-student-database.json</code> — captured test results, not sample output.</p><pre>{
+  &quot;schema&quot;: &quot;Field\tType\tNull\tKey\tDefault\tExtra\nid\tint(11)\tNO\tPRI\tNULL\tauto_increment\nstudent_id\tvarchar(10)\tYES\t\tNULL\t\nfullname\tvarchar(100)\tYES\t\tNULL\t\ndob\tdate\tYES\t\tNULL\t\nmajor\tvarchar(50)\tYES\t\tNULL&quot;,
+  &quot;rows&quot;: &quot;id\tstudent_id\tfullname\tdob\tmajor\n1\tDEMO001\tNguyễn Minh An\t2003-01-12\tInformation Technology\n2\tDEMO002\tTrần Bảo Bình\t2003-05-20\tSoftware Engineering\n3\tDEMO003\tLê Ngọc Chi\t2003-09-08\tComputer Science&quot;,
+  &quot;migration_idempotent&quot;: true,
+  &quot;existing_notes_preserved&quot;: true,
+  &quot;synthetic_data&quot;: true,
+  &quot;api_response&quot;: [
+    {
+      &quot;dob&quot;: &quot;2003-01-12&quot;,
+      &quot;fullname&quot;: &quot;Nguyễn Minh An&quot;,
+      &quot;id&quot;: 1,
+      &quot;major&quot;: &quot;Information Technology&quot;,
+      &quot;student_id&quot;: &quot;DEMO001&quot;
+    },
+    {
+      &quot;dob&quot;: &quot;2003-05-20&quot;,
+      &quot;fullname&quot;: &quot;Trần Bảo Bình&quot;,
+      &quot;id&quot;: 2,
+      &quot;major&quot;: &quot;Software Engineering&quot;,
+      &quot;student_id&quot;: &quot;DEMO002&quot;
+    },
+    {
+      &quot;dob&quot;: &quot;2003-09-08&quot;,
+      &quot;fullname&quot;: &quot;Lê Ngọc Chi&quot;,
+      &quot;id&quot;: 3,
+      &quot;major&quot;: &quot;Computer Science&quot;,
+      &quot;student_id&quot;: &quot;DEMO003&quot;
+    }
+  ]
+}</pre></section><section id="E04"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>Signed token acceptance and rejection</h1><p>Source: <code>E04-keycloak.json</code> — captured test results, not sample output.</p><pre>{
+  &quot;realm&quot;: &quot;realm_521H0092&quot;,
+  &quot;users&quot;: [
+    &quot;sv01&quot;,
+    &quot;sv02&quot;
+  ],
+  &quot;public_client&quot;: &quot;flask-app&quot;,
+  &quot;issuer&quot;: &quot;http://localhost/auth/realms/realm_521H0092&quot;,
+  &quot;token_endpoint&quot;: &quot;http://localhost/auth/realms/realm_521H0092/protocol/openid-connect/token&quot;,
+  &quot;checks&quot;: [
+    {
+      &quot;case&quot;: &quot;valid_sv01&quot;,
+      &quot;status&quot;: 200,
+      &quot;response&quot;: {
+        &quot;message&quot;: &quot;Secure resource OK&quot;,
+        &quot;preferred_username&quot;: &quot;sv01&quot;
+      }
+    },
+    {
+      &quot;case&quot;: &quot;valid_sv02&quot;,
+      &quot;status&quot;: 200,
+      &quot;response&quot;: {
+        &quot;message&quot;: &quot;Secure resource OK&quot;,
+        &quot;preferred_username&quot;: &quot;sv02&quot;
+      }
+    },
+    {
+      &quot;case&quot;: &quot;missing&quot;,
+      &quot;status&quot;: 401
+    },
+    {
+      &quot;case&quot;: &quot;malformed&quot;,
+      &quot;status&quot;: 401
+    },
+    {
+      &quot;case&quot;: &quot;wrong_audience_signed&quot;,
+      &quot;status&quot;: 401
+    },
+    {
+      &quot;case&quot;: &quot;expired_signed&quot;,
+      &quot;status&quot;: 401
+    }
+  ],
+  &quot;secrets&quot;: &quot;omitted&quot;,
+  &quot;reproduction&quot;: &quot;realm-template.json plus this script; passwords from ignored .env&quot;
+}</pre></section><section id="E06"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>All service DNS records</h1><p>Source: <code>E06-dns.json</code> — captured test results, not sample output.</p><pre>{
+  &quot;records&quot;: [
+    [
+      &quot;web-frontend-server.cloud.local&quot;,
+      &quot;10.10.10.10&quot;
+    ],
+    [
+      &quot;app-backend.cloud.local&quot;,
+      &quot;10.10.10.20&quot;
+    ],
+    [
+      &quot;minio.cloud.local&quot;,
+      &quot;10.10.10.30&quot;
+    ],
+    [
+      &quot;keycloak.cloud.local&quot;,
+      &quot;10.10.10.40&quot;
+    ]
+  ],
+  &quot;soa_serial&quot;: &quot;2026102701&quot;,
+  &quot;checks&quot;: [
+    {
+      &quot;name&quot;: &quot;web-frontend-server.cloud.local&quot;,
+      &quot;expected_ip&quot;: &quot;10.10.10.10&quot;,
+      &quot;actual_ip&quot;: &quot;10.10.10.10&quot;,
+      &quot;server&quot;: &quot;internal-dns-server&quot;,
+      &quot;port&quot;: &quot;53&quot;,
+      &quot;matched&quot;: true
+    },
+    {
+      &quot;name&quot;: &quot;web-frontend-server.cloud.local&quot;,
+      &quot;expected_ip&quot;: &quot;10.10.10.10&quot;,
+      &quot;actual_ip&quot;: &quot;10.10.10.10&quot;,
+      &quot;server&quot;: &quot;host.docker.internal&quot;,
+      &quot;port&quot;: &quot;1053&quot;,
+      &quot;matched&quot;: true
+    },
+    {
+      &quot;name&quot;: &quot;app-backend.cloud.local&quot;,
+      &quot;expected_ip&quot;: &quot;10.10.10.20&quot;,
+      &quot;actual_ip&quot;: &quot;10.10.10.20&quot;,
+      &quot;server&quot;: &quot;internal-dns-server&quot;,
+      &quot;port&quot;: &quot;53&quot;,
+      &quot;matched&quot;: true
+    },
+    {
+      &quot;name&quot;: &quot;app-backend.cloud.local&quot;,
+      &quot;expected_ip&quot;: &quot;10.10.10.20&quot;,
+      &quot;actual_ip&quot;: &quot;10.10.10.20&quot;,
+      &quot;server&quot;: &quot;host.docker.internal&quot;,
+      &quot;port&quot;: &quot;1053&quot;,
+      &quot;matched&quot;: true
+    },
+    {
+      &quot;name&quot;: &quot;minio.cloud.local&quot;,
+      &quot;expected_ip&quot;: &quot;10.10.10.30&quot;,
+      &quot;actual_ip&quot;: &quot;10.10.10.30&quot;,
+      &quot;server&quot;: &quot;internal-dns-server&quot;,
+      &quot;port&quot;: &quot;53&quot;,
+      &quot;matched&quot;: true
+    },
+    {
+      &quot;name&quot;: &quot;minio.cloud.local&quot;,
+      &quot;expected_ip&quot;: &quot;10.10.10.30&quot;,
+      &quot;actual_ip&quot;: &quot;10.10.10.30&quot;,
+      &quot;server&quot;: &quot;host.docker.internal&quot;,
+      &quot;port&quot;: &quot;1053&quot;,
+      &quot;matched&quot;: true
+    },
+    {
+      &quot;name&quot;: &quot;keycloak.cloud.local&quot;,
+      &quot;expected_ip&quot;: &quot;10.10.10.40&quot;,
+      &quot;actual_ip&quot;: &quot;10.10.10.40&quot;,
+      &quot;server&quot;: &quot;internal-dns-server&quot;,
+      &quot;port&quot;: &quot;53&quot;,
+      &quot;matched&quot;: true
+    },
+    {
+      &quot;name&quot;: &quot;keycloak.cloud.local&quot;,
+      &quot;expected_ip&quot;: &quot;10.10.10.40&quot;,
+      &quot;actual_ip&quot;: &quot;10.10.10.40&quot;,
+      &quot;server&quot;: &quot;host.docker.internal&quot;,
+      &quot;port&quot;: &quot;1053&quot;,
+      &quot;matched&quot;: true
+    }
+  ],
+  &quot;zone_file&quot;: &quot;$TTL 1H\n@ IN SOA ns.cloud.local. admin.cloud.local. (\n    2026102701 1H 15M 1W 1H\n)\n  IN NS ns.cloud.local.\nns IN A 127.0.0.1\nweb-frontend-server IN A 10.10.10.10\napp-backend         IN A 10.10.10.20\napp-backend-server  IN A 10.10.10.20\nminio               IN A 10.10.10.30\nobject-storage-server IN A 10.10.10.30\nkeycloak            IN A 10.10.10.40\nauthentication-identity-server IN A 10.10.10.40\n&quot;
+}</pre></section><section id="E10"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>Round robin across both Web backends</h1><p>Source: <code>E10-round-robin.json</code> — captured test results, not sample output.</p><pre>{
+  &quot;verified_after_replica_recreation&quot;: false,
+  &quot;upstream&quot;: &quot;web_lb&quot;,
+  &quot;servers&quot;: [
+    &quot;web-frontend-server1:80&quot;,
+    &quot;web-frontend-server2:80&quot;
+  ],
+  &quot;whoami_requests&quot;: [
+    {
+      &quot;request&quot;: 1,
+      &quot;status&quot;: 200,
+      &quot;server_header&quot;: &quot;web-frontend-server2&quot;,
+      &quot;body&quot;: &quot;Response from web-frontend-server2&quot;
+    },
+    {
+      &quot;request&quot;: 2,
+      &quot;status&quot;: 200,
+      &quot;server_header&quot;: &quot;web-frontend-server1&quot;,
+      &quot;body&quot;: &quot;Response from web-frontend-server1&quot;
+    },
+    {
+      &quot;request&quot;: 3,
+      &quot;status&quot;: 200,
+      &quot;server_header&quot;: &quot;web-frontend-server2&quot;,
+      &quot;body&quot;: &quot;Response from web-frontend-server2&quot;
+    },
+    {
+      &quot;request&quot;: 4,
+      &quot;status&quot;: 200,
+      &quot;server_header&quot;: &quot;web-frontend-server1&quot;,
+      &quot;body&quot;: &quot;Response from web-frontend-server1&quot;
+    },
+    {
+      &quot;request&quot;: 5,
+      &quot;status&quot;: 200,
+      &quot;server_header&quot;: &quot;web-frontend-server2&quot;,
+      &quot;body&quot;: &quot;Response from web-frontend-server2&quot;
+    },
+    {
+      &quot;request&quot;: 6,
+      &quot;status&quot;: 200,
+      &quot;server_header&quot;: &quot;web-frontend-server1&quot;,
+      &quot;body&quot;: &quot;Response from web-frontend-server1&quot;
+    },
+    {
+      &quot;request&quot;: 7,
+      &quot;status&quot;: 200,
+      &quot;server_header&quot;: &quot;web-frontend-server2&quot;,
+      &quot;body&quot;: &quot;Response from web-frontend-server2&quot;
+    },
+    {
+      &quot;request&quot;: 8,
+      &quot;status&quot;: 200,
+      &quot;server_header&quot;: &quot;web-frontend-server1&quot;,
+      &quot;body&quot;: &quot;Response from web-frontend-server1&quot;
+    }
+  ],
+  &quot;html_requests&quot;: [
+    {
+      &quot;request&quot;: 1,
+      &quot;status&quot;: 200,
+      &quot;server_header&quot;: &quot;web-frontend-server2&quot;
+    },
+    {
+      &quot;request&quot;: 2,
+      &quot;status&quot;: 200,
+      &quot;server_header&quot;: &quot;web-frontend-server1&quot;
+    },
+    {
+      &quot;request&quot;: 3,
+      &quot;status&quot;: 200,
+      &quot;server_header&quot;: &quot;web-frontend-server2&quot;
+    },
+    {
+      &quot;request&quot;: 4,
+      &quot;status&quot;: 200,
+      &quot;server_header&quot;: &quot;web-frontend-server1&quot;
+    }
+  ],
+  &quot;distribution&quot;: {
+    &quot;web-frontend-server1&quot;: 4,
+    &quot;web-frontend-server2&quot;: 4
+  }
+}</pre></section><section id="LOG"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>Real request logs in Loki and Grafana</h1><p>Source: <code>service-logging.json</code> — captured test results, not sample output.</p><pre>{
+  &quot;query&quot;: &quot;{project=\&quot;myminicloud\&quot;,service=\&quot;application-backend-server\&quot;} |= \&quot;minicloud-log-check-2aa16403ff6e\&quot;&quot;,
+  &quot;marker&quot;: &quot;minicloud-log-check-2aa16403ff6e&quot;,
+  &quot;log_lines&quot;: [
+    &quot;172.19.0.16 - - [29/Oct/2026:11:37:55 +0000] \&quot;GET /hello?log_check=minicloud-log-check-2aa16403ff6e HTTP/1.0\&quot; 200 37 \&quot;-\&quot; \&quot;python-requests/2.32.5\&quot;&quot;
+  ],
+  &quot;grafana_datasource_health&quot;: &quot;OK&quot;,
+  &quot;grafana_proxy_query&quot;: &quot;successful&quot;,
+  &quot;only_project_streams_observed&quot;: true,
+  &quot;stream_service_labels&quot;: [
+    &quot;api-gateway-proxy-server&quot;,
+    &quot;application-backend-server&quot;,
+    &quot;authentication-identity-server&quot;,
+    &quot;elearning-web-server&quot;,
+    &quot;firebase-emulator-server&quot;,
+    &quot;logging-alloy-server&quot;,
+    &quot;logging-loki-server&quot;,
+    &quot;monitoring-grafana-dashboard-server&quot;,
+    &quot;monitoring-node-exporter-server&quot;,
+    &quot;monitoring-prometheus-server&quot;,
+    &quot;monitoring-web-exporter-server&quot;,
+    &quot;object-storage-server&quot;,
+    &quot;relational-database-server&quot;,
+    &quot;web-frontend-server&quot;,
+    &quot;web-frontend-server1&quot;,
+    &quot;web-frontend-server2&quot;
+  ],
+  &quot;verified_after_loki_recreation&quot;: true,
+  &quot;collection_scope&quot;: &quot;myminicloud only&quot;,
+  &quot;dashboard&quot;: &quot;http://localhost:3000/d/minicloud-service-logs/myminicloud-service-logs&quot;
+}</pre></section><section id="ELM"><p class="label">MYMINICLOUD · LOCAL VERIFICATION · 521H0092</p><h1>E-learning local emulator demo</h1><p>Source: <code>elearning-demo.json</code> — captured test results, not sample output.</p><pre>{
+  &quot;url&quot;: &quot;http://localhost/elearning/&quot;,
+  &quot;project&quot;: &quot;demo-minicloud&quot;,
+  &quot;checks&quot;: [
+    {
+      &quot;case&quot;: &quot;instructor_authentication&quot;,
+      &quot;passed&quot;: true
+    },
+    {
+      &quot;case&quot;: &quot;student_authentication&quot;,
+      &quot;passed&quot;: true
+    },
+    {
+      &quot;case&quot;: &quot;seeded_course_read&quot;,
+      &quot;passed&quot;: true
+    },
+    {
+      &quot;case&quot;: &quot;instructor_browser_login&quot;,
+      &quot;passed&quot;: true,
+      &quot;url&quot;: &quot;http://localhost/elearning/&quot;
+    },
+    {
+      &quot;case&quot;: &quot;instructor_live_enrollment_count&quot;,
+      &quot;passed&quot;: true,
+      &quot;seed_course_students&quot;: 1
+    },
+    {
+      &quot;case&quot;: &quot;instructor_course_from_firestore&quot;,
+      &quot;passed&quot;: true
+    },
+    {
+      &quot;case&quot;: &quot;course_created_through_ui_and_listed&quot;,
+      &quot;passed&quot;: true,
+      &quot;code&quot;: &quot;DEMOUI29&quot;,
+      &quot;created_in_this_run&quot;: false,
+      &quot;reused_previous_ui_fixture&quot;: true
+    },
+    {
+      &quot;case&quot;: &quot;instructor_session_after_refresh&quot;,
+      &quot;passed&quot;: true
+    },
+    {
+      &quot;case&quot;: &quot;student_browser_login&quot;,
+      &quot;passed&quot;: true,
+      &quot;url&quot;: &quot;http://localhost/elearning/&quot;
+    },
+    {
+      &quot;case&quot;: &quot;student_live_enrollment_count&quot;,
+      &quot;passed&quot;: true,
+      &quot;seed_course_students&quot;: 1
+    },
+    {
+      &quot;case&quot;: &quot;student_course_from_firestore&quot;,
+      &quot;passed&quot;: true
+    },
+    {
+      &quot;case&quot;: &quot;student_session_after_refresh&quot;,
+      &quot;passed&quot;: true
+    }
+  ],
+  &quot;scope&quot;: &quot;Synthetic local data, course UI creation and enrollment counts; optional external link preview / Google Sign-In not verified&quot;,
+  &quot;blocked_production_hosts&quot;: [],
+  &quot;browser_errors&quot;: []
 }</pre></section></html>

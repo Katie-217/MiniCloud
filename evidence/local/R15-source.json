@@ -1,25 +1,33 @@
 {
   "output": "R15",
-  "verified_at_utc": "2026-10-26T16:16:36.004629+00:00",
+  "verified_at_utc": "2026-10-29T11:40:03.943257+00:00",
   "details": {
-    "required_files_present": [
+    "required_source_files_present": [
       "docker-compose.yml",
+      "docker-compose.release.yml",
+      "release-images.json",
       ".env.example",
-      "scripts/setup.py",
-      "README.md",
-      "project-info.json",
       "web-frontend-server/Dockerfile",
       "application-backend-server/Dockerfile",
-      "relational-database-server/init/001_init.sql",
-      "authentication-identity-server/healthcheck.sh",
       "object-storage-server/Dockerfile",
+      "elearning-web/Dockerfile",
+      "firebase-emulator/Dockerfile",
+      "tools/Dockerfile",
+      "relational-database-server/init/002_students.sql",
+      "relational-database-server/init/003_student_permissions.sh",
+      "authentication-identity-server/realm-template.json",
       "internal-dns-server/db.cloud.local",
-      "monitoring-prometheus-server/prometheus.yml",
-      "monitoring-grafana-dashboard-server/provisioning/datasources/prometheus.yml",
-      "api-gateway-proxy-server/nginx.conf"
+      "api-gateway-proxy-server/nginx.conf",
+      "logging-loki-server/loki.yml",
+      "logging-alloy-server/config.alloy",
+      "elearning-web/provenance.json",
+      "elearning-web/source/pubspec.lock",
+      "scripts/run_release.py",
+      "scripts/build_elearning.py"
     ],
-    "compose_valid": true,
-    "setup_preserves_existing_credentials": true,
-    "runtime_verified": "R01-stack.json and full functional evidence"
+    "runtime_service_count": 17,
+    "published_custom_images": 6,
+    "runtime_build_required_for_release": false,
+    "source_build_instructions": "README.md; elearning-web/README.md"
   }
 }

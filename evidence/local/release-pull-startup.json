@@ -1,98 +1,113 @@
 {
-  "date": "2026-10-29",
-  "command": "python scripts/run_release.py",
-  "source_build_performed": false,
-  "service_count": 15,
-  "checks": [
-    {
-      "service": "web-frontend-server",
-      "image_matches_pinned_digest": true,
-      "running": true,
-      "health": "healthy"
-    },
-    {
-      "service": "web-frontend-server1",
-      "image_matches_pinned_digest": true,
-      "running": true,
-      "health": "healthy"
-    },
-    {
-      "service": "web-frontend-server2",
-      "image_matches_pinned_digest": true,
-      "running": true,
-      "health": "healthy"
-    },
-    {
-      "service": "application-backend-server",
-      "image_matches_pinned_digest": true,
-      "running": true,
-      "health": "healthy"
-    },
-    {
-      "service": "object-storage-server",
-      "image_matches_pinned_digest": true,
-      "running": true,
-      "health": "healthy"
-    },
-    {
-      "service": "elearning-web-server",
-      "image_matches_pinned_digest": true,
-      "running": true,
-      "health": "healthy"
-    },
-    {
-      "service": "firebase-emulator-server",
-      "image_matches_pinned_digest": true,
-      "running": true,
-      "health": "healthy"
-    },
-    {
-      "service": "api-gateway-proxy-server",
-      "image_matches_pinned_digest": true,
-      "running": true,
-      "health": "healthy"
-    },
-    {
-      "service": "relational-database-server",
-      "image_matches_pinned_digest": true,
-      "running": true,
-      "health": "healthy"
-    },
-    {
-      "service": "authentication-identity-server",
-      "image_matches_pinned_digest": true,
-      "running": true,
-      "health": "healthy"
-    },
-    {
-      "service": "internal-dns-server",
-      "image_matches_pinned_digest": true,
-      "running": true,
-      "health": "healthy"
-    },
-    {
-      "service": "monitoring-node-exporter-server",
-      "image_matches_pinned_digest": true,
-      "running": true,
-      "health": "healthy"
-    },
-    {
-      "service": "monitoring-web-exporter-server",
-      "image_matches_pinned_digest": true,
-      "running": true,
-      "health": "not-defined"
-    },
-    {
-      "service": "monitoring-prometheus-server",
-      "image_matches_pinned_digest": true,
-      "running": true,
-      "health": "healthy"
-    },
-    {
-      "service": "monitoring-grafana-dashboard-server",
-      "image_matches_pinned_digest": true,
-      "running": true,
-      "health": "healthy"
-    }
-  ]
+  "output": "Pinned release startup",
+  "verified_at_utc": "2026-10-29T11:45:51.434624+00:00",
+  "details": {
+    "command": "python scripts/run_release.py --verify",
+    "source_build_performed": false,
+    "service_count": 17,
+    "checks": [
+      {
+        "service": "web-frontend-server",
+        "image_matches_pinned_digest": true,
+        "running": true,
+        "health": "healthy"
+      },
+      {
+        "service": "web-frontend-server1",
+        "image_matches_pinned_digest": true,
+        "running": true,
+        "health": "healthy"
+      },
+      {
+        "service": "web-frontend-server2",
+        "image_matches_pinned_digest": true,
+        "running": true,
+        "health": "healthy"
+      },
+      {
+        "service": "application-backend-server",
+        "image_matches_pinned_digest": true,
+        "running": true,
+        "health": "healthy"
+      },
+      {
+        "service": "object-storage-server",
+        "image_matches_pinned_digest": true,
+        "running": true,
+        "health": "healthy"
+      },
+      {
+        "service": "elearning-web-server",
+        "image_matches_pinned_digest": true,
+        "running": true,
+        "health": "healthy"
+      },
+      {
+        "service": "firebase-emulator-server",
+        "image_matches_pinned_digest": true,
+        "running": true,
+        "health": "healthy"
+      },
+      {
+        "service": "api-gateway-proxy-server",
+        "image_matches_pinned_digest": true,
+        "running": true,
+        "health": "healthy"
+      },
+      {
+        "service": "relational-database-server",
+        "image_matches_pinned_digest": true,
+        "running": true,
+        "health": "healthy"
+      },
+      {
+        "service": "authentication-identity-server",
+        "image_matches_pinned_digest": true,
+        "running": true,
+        "health": "healthy"
+      },
+      {
+        "service": "internal-dns-server",
+        "image_matches_pinned_digest": true,
+        "running": true,
+        "health": "healthy"
+      },
+      {
+        "service": "monitoring-node-exporter-server",
+        "image_matches_pinned_digest": true,
+        "running": true,
+        "health": "healthy"
+      },
+      {
+        "service": "monitoring-web-exporter-server",
+        "image_matches_pinned_digest": true,
+        "running": true,
+        "health": "running"
+      },
+      {
+        "service": "monitoring-prometheus-server",
+        "image_matches_pinned_digest": true,
+        "running": true,
+        "health": "healthy"
+      },
+      {
+        "service": "monitoring-grafana-dashboard-server",
+        "image_matches_pinned_digest": true,
+        "running": true,
+        "health": "healthy"
+      },
+      {
+        "service": "logging-loki-server",
+        "image_matches_pinned_digest": true,
+        "running": true,
+        "health": "running"
+      },
+      {
+        "service": "logging-alloy-server",
+        "image_matches_pinned_digest": true,
+        "running": true,
+        "health": "running"
+      }
+    ]
+  }
 }

@@ -1,6 +1,6 @@
 {
   "output": "R12",
-  "verified_at_utc": "2026-10-26T16:01:15.401643+00:00",
+  "verified_at_utc": "2026-10-29T11:36:29.500632+00:00",
   "details": {
     "all_five_container_ids_changed": true,
     "named_volumes_unchanged": {
@@ -25,6 +25,6 @@
     "minio_demo_object_preserved": true,
     "grafana_custom_folder_preserved": true,
     "prometheus_historical_sample_preserved": true,
-    "historical_sample_time": 1793030422.2727716
+    "historical_sample_time": 1793273727.4548295
   }
 }

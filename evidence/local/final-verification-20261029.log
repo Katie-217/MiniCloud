@@ -1,0 +1,203 @@
+Existing .env preserved.
+.venv/Scripts/python.exe :  monitoring-web-exporter-server Pulling
+At line:17 char:1
++ .venv/Scripts/python.exe scripts/run_release.py --verify *> "$env:TEM ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( monitoring-web-exporter-server Pulling :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+ logging-loki-server Pulling
+ firebase-emulator-server Pulling
+ elearning-web-server Pulling
+ monitoring-node-exporter-server Pulling
+ relational-database-server Pulling
+ web-frontend-server2 Pulling
+ application-backend-server Pulling
+ internal-dns-server Pulling
+ monitoring-grafana-dashboard-server Pulling
+ authentication-identity-server Pulling
+ web-frontend-server Pulling
+ logging-alloy-server Pulling
+ object-storage-server Pulling
+ web-frontend-server1 Pulling
+ api-gateway-proxy-server Pulling
+ monitoring-prometheus-server Pulling
+ authentication-identity-server Pulled
+ monitoring-web-exporter-server Pulled
+ internal-dns-server Pulled
+ object-storage-server Pulled
+ monitoring-grafana-dashboard-server Pulled
+ elearning-web-server Pulled
+ web-frontend-server Pulled
+ monitoring-node-exporter-server Pulled
+ logging-alloy-server Pulled
+ application-backend-server Pulled
+ api-gateway-proxy-server Pulled
+ relational-database-server Pulled
+ web-frontend-server2 Pulled
+ monitoring-prometheus-server Pulled
+ web-frontend-server1 Pulled
+ firebase-emulator-server Pulled
+ logging-loki-server Pulled
+ Container relational-database-server  Running
+ Container logging-loki-server  Recreate
+ Container application-backend-server  Running
+ Container monitoring-node-exporter-server  Running
+ Container firebase-emulator-server  Running
+ Container internal-dns-server  Running
+ Container object-storage-server  Running
+ Container web-frontend-server  Recreate
+ Container elearning-web-server  Running
+ Container authentication-identity-server  Running
+ Container web-frontend-server  Recreated
+ Container web-frontend-server2  Recreate
+ Container web-frontend-server1  Recreate
+ Container monitoring-web-exporter-server  Running
+ Container monitoring-prometheus-server  Running
+ Container monitoring-grafana-dashboard-server  Recreate
+ Container logging-loki-server  Recreated
+ Container logging-alloy-server  Recreate
+ Container web-frontend-server1  Recreated
+ Container web-frontend-server2  Recreated
+ Container api-gateway-proxy-server  Running
+ Container monitoring-grafana-dashboard-server  Recreated
+ Container logging-alloy-server  Recreated
+ Container logging-loki-server  Starting
+ Container firebase-emulator-server  Waiting
+ Container web-frontend-server  Starting
+ Container relational-database-server  Waiting
+ Container web-frontend-server  Started
+ Container web-frontend-server  Waiting
+ Container web-frontend-server  Waiting
+ Container web-frontend-server  Waiting
+ Container logging-loki-server  Started
+ Container logging-alloy-server  Starting
+ Container relational-database-server  Healthy
+ Container firebase-emulator-server  Healthy
+ Container logging-alloy-server  Started
+ Container web-frontend-server  Healthy
+ Container web-frontend-server1  Starting
+ Container web-frontend-server  Healthy
+ Container monitoring-node-exporter-server  Waiting
+ Container web-frontend-server  Healthy
+ Container web-frontend-server2  Starting
+ Container web-frontend-server1  Started
+ Container web-frontend-server2  Started
+ Container web-frontend-server  Waiting
+ Container web-frontend-server1  Waiting
+ Container web-frontend-server2  Waiting
+ Container application-backend-server  Waiting
+ Container authentication-identity-server  Waiting
+ Container monitoring-node-exporter-server  Healthy
+ Container monitoring-prometheus-server  Waiting
+ Container web-frontend-server  Healthy
+ Container application-backend-server  Healthy
+ Container authentication-identity-server  Healthy
+ Container monitoring-prometheus-server  Healthy
+ Container monitoring-grafana-dashboard-server  Starting
+ Container monitoring-grafana-dashboard-server  Started
+ Container web-frontend-server1  Healthy
+ Container web-frontend-server2  Healthy
+ Container web-frontend-server2  Waiting
+ Container monitoring-prometheus-server  Waiting
+ Container web-frontend-server  Waiting
+ Container firebase-emulator-server  Waiting
+ Container api-gateway-proxy-server  Waiting
+ Container application-backend-server  Waiting
+ Container authentication-identity-server  Waiting
+ Container relational-database-server  Waiting
+ Container monitoring-grafana-dashboard-server  Waiting
+ Container object-storage-server  Waiting
+ Container monitoring-node-exporter-server  Waiting
+ Container internal-dns-server  Waiting
+ Container elearning-web-server  Waiting
+ Container logging-alloy-server  Waiting
+ Container web-frontend-server1  Waiting
+ Container logging-loki-server  Waiting
+ Container monitoring-web-exporter-server  Waiting
+ Container web-frontend-server1  Healthy
+ Container logging-loki-server  Healthy
+ Container monitoring-web-exporter-server  Healthy
+ Container web-frontend-server  Healthy
+ Container object-storage-server  Healthy
+ Container internal-dns-server  Healthy
+ Container firebase-emulator-server  Healthy
+ Container elearning-web-server  Healthy
+ Container monitoring-prometheus-server  Healthy
+ Container monitoring-node-exporter-server  Healthy
+ Container relational-database-server  Healthy
+ Container authentication-identity-server  Healthy
+ Container logging-alloy-server  Healthy
+ Container web-frontend-server2  Healthy
+ Container api-gateway-proxy-server  Healthy
+ Container application-backend-server  Healthy
+ Container monitoring-grafana-dashboard-server  Healthy
+docker.io/katie217/myminicloud-tools@sha256:8d7ed446e55f5ef7c6de4f85eb94d6974ebef9bed5805d25cdedab3d9afafb17: Pulling from katie217/myminicloud-tools
+Digest: sha256:8d7ed446e55f5ef7c6de4f85eb94d6974ebef9bed5805d25cdedab3d9afafb17
+Status: Image is up to date for katie217/myminicloud-tools@sha256:8d7ed446e55f5ef7c6de4f85eb94d6974ebef9bed5805d25cdedab3d9afafb17
+docker.io/katie217/myminicloud-tools@sha256:8d7ed446e55f5ef7c6de4f85eb94d6974ebef9bed5805d25cdedab3d9afafb17
+PASS: 2 static routes; evidence/local/R02-web.json
+PASS: 2 API paths; evidence/local/R03-api.json
+PASS: minicloud.notes contains initial seed; evidence/local/R04-database.json
+PASS: Flask reads actual MariaDB records; evidence/local/app-database.json
+PASS: administrator login and required test user; evidence/local/R05-auth.json
+PASS: S3 bucket/upload/download and checksum match; evidence/local/R06-storage.json
+PASS: authoritative DNS over internal and published ports; evidence/local/R07-dns.json
+PASS: node target UP and CPU/memory/network metrics available; evidence/local/R08-monitoring.json
+PASS: dashboard provisioned and CPU/RAM/network queries through Grafana return data; evidence/local/R09-grafana.json
+PASS: unified web/API/auth routes and issuer; evidence/local/R10-gateway.json
+PASS: Compose valid; all 17 services healthy/running, cloud-net, restart unless-stopped; evidence/local/R01-stack.json
+PASS: all 17 containers resolve and respond to ping; evidence/local/R11-network.json
+PASS E01: three articles, images and return links on direct/proxy Web.
+PASS E02: five packaged students, direct and gateway responses match.
+PASS E03: required schema, 3+ records, additive repeatable migration.
+PASS E04: two users accepted; missing, malformed, wrong audience and expired tokens rejected.
+PASS E05: profile-pics/avatar.jpg is public (200), documents/BaoCao_Local_521H0092.pdf is private (403), console screenshots captured.
+PASS E06: all 4 DNS records (Web, App, MinIO, Keycloak) resolve correctly on internal:53 and host:1053.
+PASS E07: web target is UP (1) with real nginx_up metric, Prometheus targets and graph screenshots captured.
+PASS E08: System Health of 521H0092 dashboard provisioned with CPU, Memory, and Network panels; screenshot captured.
+PASS E09: /student/ matches the five-student Flask response.
+PASS E10: Round robin load balancing alternating strictly between web-frontend-server1 and web-frontend-server2.
+PASS protected API UI: sv01/sv02 return 200; anonymous returns 401; passwords/tokens not displayed.
+PASS logging: real request log in Loki and Grafana UI; project filter verified; evidence/local/service-logging.json
+PASS: browser admin login and sv01 visible; screenshots saved.
+PASS: MinIO Console login, bucket and object visible.
+PASS: Prometheus and Grafana browser screenshots saved; inspect images for visual verification.
+Starting test suite: 27 verification steps...
+--> Running check_web.py...
+--> Running check_app.py...
+--> Running check_database.py...
+--> Running check_app_database.py...
+--> Running check_auth.py...
+--> Running check_storage.py...
+--> Running check_dns.py...
+--> Running check_monitoring.py...
+--> Running check_grafana.py...
+--> Running check_gateway.py...
+--> Running check_stack.py...
+--> Running check_network.py...
+--> Running check_blog.py...
+--> Running check_students.py...
+--> Running check_student_database.py...
+--> Running check_identity.py...
+--> Running check_profile_storage.py...
+--> Running check_service_dns.py...
+--> Running check_web_metrics.py...
+--> Running check_health_dashboard.py...
+--> Running check_student_proxy.py...
+--> Running check_round_robin.py...
+--> Running check_secure_portal.py...
+--> Running check_logging.py...
+--> Running capture_auth.py...
+--> Running capture_storage.py...
+--> Running capture_monitoring.py...
+SUCCESS: All 27 mandatory and extension checks passed completely!
+Recreating only the 5 MyMiniCloud stateful services; preserving named volumes.
+PASS: database/auth/storage/Prometheus/Grafana persistence; evidence/local/R12-persistence.json
+E-learning: synthetic seed ready.
+E-learning: submitted instructor browser login.
+E-learning: submitted student browser login.
+PASS E-learning: two real emulator logins, dashboards, session refresh; no production Firebase requests. evidence/local/elearning-demo.json
+PASS E-learning persistence: both users, course, Firestore marker and Storage object survived recreation. evidence/local/elearning-persistence.json
+PASS logging: real request log in Loki and Grafana UI; project filter verified; evidence/local/service-logging.json
+Pinned local release ready: http://localhost/ and http://localhost/elearning/

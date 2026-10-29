@@ -34,23 +34,23 @@ Không lấy trạng thái container Running thay cho kết quả kiểm thử c
 
 | ID | Output cần đạt / căn cứ PDF | Branch phụ trách | Trạng thái | Minh chứng / commit |
 |---|---|---|---|---|
-| R01 | Compose khởi động toàn hệ thống; `cloud-net`, container name, cổng, restart đúng — tr. 1–3 | `chore/project-foundation` + các nhóm tích hợp | DAT | evidence/local/R01-stack.json; 13 running/healthy containers / 9 server roles; commit `1f9f77b` |
+| R01 | Compose khởi động toàn hệ thống; `cloud-net`, container name, cổng, restart đúng — tr. 1–3 | `chore/project-foundation` + các nhóm tích hợp | DAT | evidence/local/R01-stack.json; 17 running/healthy containers / 9 server roles; commit `1f9f77b` |
 | R02 | Home và `/blog/` HTTP 200, nội dung đúng — tr. 12–13 | `feat/web-api-database` | DAT | evidence/local/R02-web.json; Home + Blog; commit `a28234e` |
 | R03 | `/hello` trực tiếp và qua proxy trả JSON đúng — tr. 13 | `feat/web-api-database` + `feat/gateway-network-tests` | DAT | evidence/local/R03-api.json; direct + proxy; commit `35f3502` |
 | R04 | `minicloud.notes` có bảng và dữ liệu khởi tạo — tr. 6, 14 | `feat/web-api-database` | DAT | evidence/local/R04-database.json; commit `ea51eb3` |
-| R05 | Keycloak admin đăng nhập được, tạo user sv01 — tr. 14–15 | `feat/identity-storage-dns` | DAT | evidence/local/R05-auth.json; admin token login + created sv01; UI screenshot captured later; commit `22e8a99` |
-| R06 | MinIO bucket demo, upload và tải file được — tr. 2, 15–16 | `feat/identity-storage-dns` | DAT | evidence/local/R06-storage.json; upload/download byte-for-byte; Console screenshot later; commit `2114441` |
+| R05 | Keycloak admin đăng nhập được, tạo user sv01 — tr. 14–15 | `feat/identity-storage-dns` | DAT | evidence/local/R05-auth.json; R05-keycloak-admin.png; R05-keycloak-user.png; commit `22e8a99` |
+| R06 | MinIO bucket demo, upload và tải file được — tr. 2, 15–16 | `feat/identity-storage-dns` | DAT | evidence/local/R06-storage.json; R06-minio-bucket.png; R06-minio-object.png; commit `2114441` |
 | R07 | DNS Web trả `10.10.10.10` bằng dig — tr. 16–17 | `feat/identity-storage-dns` | DAT | evidence/local/R07-dns.json; dig internal 53 + published host 1053; commit `41e7815` |
 | R08 | Prometheus node target UP, query metric có dữ liệu — tr. 17–18 | `feat/monitoring-dashboard` | DAT | evidence/local/R08-monitoring.json; commit `435dc43` |
-| R09 | Grafana datasource hoạt động, CPU/RAM/Network có dữ liệu — tr. 18–19 | `feat/monitoring-dashboard` | CHO_KIEM_THU | evidence/local/R09-grafana.json; datasource + queries đạt; chờ kiểm tra hình ảnh dashboard; commit `25d4a51` |
+| R09 | Grafana datasource hoạt động, CPU/RAM/Network có dữ liệu — tr. 18–19 | `feat/monitoring-dashboard` | DAT | evidence/local/R09-grafana.json; R09-grafana-dashboard.png; R09-grafana-network.png; commit `25d4a51` |
 | R10 | Proxy `/`, `/api/`, `/auth/` hoạt động, đúng status/redirect — tr. 19–20 | `feat/gateway-network-tests` | DAT | evidence/local/R10-gateway.json; Web/App/Auth + correct public OIDC issuer; commit `35f3502` |
-| R11 | Các server thông mạng, có log ping và network membership — tr. 20 | `feat/gateway-network-tests` | DAT | evidence/local/R11-network.json; ping 3 packets for each of 13 services, 0% loss; commit `1f9f77b` |
+| R11 | Các server thông mạng, có log ping và network membership — tr. 20 | `feat/gateway-network-tests` | DAT | evidence/local/R11-network.json; ping 3 packets for each of 17 services, 0% loss; commit `1f9f77b` |
 | R12 | Volume cần thiết lưu được dữ liệu, restart policy đầy đủ — tr. 3 | Các nhóm service + `feat/gateway-network-tests` | DAT | evidence/local/R12-persistence.json; custom data preserved across all 5 stateful service recreations; commit `5967fba` |
 | R13 | Ít nhất 1 image tùy chỉnh trên Docker Hub, có link/tag — tr. 3 | `chore/image-publication` | DAT | evidence/local/release-images.json; chore/local-release-images; 6 custom images pushed and manifests verified; commit `431197d` |
 | R14 | Toàn hệ thống chạy trên EC2 Ubuntu, public IP và test server đạt — tr. 1, 3 | `chore/cloud-deployment` | CHO_THONG_TIN | AWS deferred by user; no EC2 resources created/accessed |
-| R15 | Dockerfile/Compose/config và source đủ để tái tạo — tr. 3 | Toàn bộ branch triển khai | DAT | evidence/local/R15-source.json; full source/config, setup idempotent, README with tested commands |
+| R15 | Dockerfile/Compose/config và source đủ để tái tạo — tr. 3 | Toàn bộ branch triển khai | DAT | evidence/local/R15-source.json; pinned pull release + source/config/build instructions present |
 | R16 | Báo cáo đủ 5 chương + phụ lục, thống kê mở rộng — tr. 3, 27 | `docs/submission-evidence` | CHO_KIEM_THU | report/BaoCao_Local_521H0092.md/.pdf/.docx: đủ 5 chương cho local; chờ EC2 và MSSV thành viên hai; commit `503a61a` |
-| R17 | Video demo và link truy cập được trong phụ lục — tr. 3 | `docs/submission-evidence` | DAT | report/Demo_Local_521H0092.webm: complete walkthrough covering all 10 extensions; EC2 pending; commit `f3e3c15` |
+| R17 | Video demo và link truy cập được trong phụ lục — tr. 3 | `docs/submission-evidence` | CHO_KIEM_THU | report/Demo_Local_521H0092.webm: local walkthrough present; updating final local scenes; cloud demo pending; commit `f3e3c15` |
 | R18 | Ảnh từng server, log test; phân biệt local và EC2 — tr. 3 | Từng branch + `docs/submission-evidence` | CHO_KIEM_THU | evidence/local: đủ ảnh/log từng server, network, persistence, Docker Hub; EC2 chưa thực hiện; commit `0d2c665` |
 
 ## 4. Những output đã đạt

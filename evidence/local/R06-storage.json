@@ -1,12 +1,12 @@
 {
   "output": "R06",
-  "verified_at_utc": "2026-10-28T11:42:31.767521+00:00",
+  "verified_at_utc": "2026-10-29T11:32:50.098696+00:00",
   "details": {
     "bucket": "demo",
     "key": "index.html",
-    "uploaded_bytes": 9108,
-    "downloaded_bytes": 9108,
-    "sha256": "992c6ee7c97a0c4a3bc3a8dc2abe8991b7e7a61532d4247b2b482b4ec1042c82",
+    "uploaded_bytes": 11769,
+    "downloaded_bytes": 11769,
+    "sha256": "90c43cdbee58a817da95a9b88bafb8e5a7e2603fd7ac5c28e422434d6fc20bcb",
     "bytes_match": true,
     "objects": [
       "index.html"
