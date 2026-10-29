@@ -1,9 +1,30 @@
 """Verify E10: Nginx Round Robin load balancing across 2 Web servers."""
 import requests
-from lab import ROOT, save, result
+import argparse
+import time
+from lab import ROOT, save, result, run
 from progress import set_status
 
 base_url = "http://localhost/lb"
+parser = argparse.ArgumentParser()
+parser.add_argument("--recreate", action="store_true", help="Verify upstream DNS after recreating the two Web replicas")
+args = parser.parse_args()
+recreated = False
+if args.recreate:
+    services = ["web-frontend-server1", "web-frontend-server2"]
+    before = [run("docker", "inspect", name, "--format", "{{.Id}}") for name in services]
+    run("docker", "compose", "up", "-d", "--no-deps", "--force-recreate", "--wait", *services)
+    assert all(run("docker", "inspect", name, "--format", "{{.Id}}") != old for name, old in zip(services, before))
+    deadline = time.monotonic() + 35
+    seen = set()
+    while time.monotonic() < deadline:
+        response = requests.get(base_url + "/whoami", timeout=5)
+        value = response.headers.get("X-Backend-Server")
+        if value in services: seen.add(value)
+        if seen == set(services): break
+        time.sleep(.5)
+    assert seen == set(services), seen
+    recreated = True
 
 # 1. Sequential whoami requests
 whoami_results = []
@@ -37,6 +58,7 @@ for i in range(1, 5):
     })
 
 details = {
+    "verified_after_replica_recreation": recreated,
     "upstream": "web_lb",
     "servers": ["web-frontend-server1:80", "web-frontend-server2:80"],
     "whoami_requests": whoami_results,

@@ -1,7 +1,8 @@
 {
   "output": "E10",
-  "verified_at_utc": "2026-10-28T11:43:50.550977+00:00",
+  "verified_at_utc": "2026-10-29T11:02:31.383251+00:00",
   "details": {
+    "verified_after_replica_recreation": true,
     "upstream": "web_lb",
     "servers": [
       "web-frontend-server1:80",

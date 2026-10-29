@@ -69,6 +69,7 @@ Khi có kết quả, mỗi mục ghi: ID output, môi trường local/EC2, branc
 | FIX-002 | Chưa có remote GitHub ở lần kiểm tra đầu | Đã hết chặn push branch | Đã fetch, giữ lịch sử và push `chore/project-foundation` lên MiniCloud | DAT |
 | FIX-003 | Image/download MinIO được hướng dẫn không còn truy cập được tại lần kiểm tra | Không dựng được storage bằng cách copy image mẫu | Build source chính thức có tag/checksum, giữ license; UI và upload/download đã kiểm thử | DAT |
 | FIX-004 | Docker Desktop từ chối root bind mount rslave | Node Exporter không start với cấu hình host mount ban đầu | Dùng root bind read-only mặc định, giữ proc/sys mounts; metric và dashboard có dữ liệu | DAT |
+| FIX-005 | Round robin giữ IP cũ của hai Web sau recreate, có thể trỏ nhầm container | E10 không còn bảo đảm đúng backend sau khởi động lại | Dùng upstream zone và Docker DNS resolve; kiểm thử E10 với --recreate | DANG_LAM |
 
 Hiện không còn lỗi chức năng làm trượt các bài kiểm thử MiniCloud local đã chạy. Các hạn chế ngoài bộ kiểm thử được ghi ở mục 10; phần AWS và môi trường dữ liệu E-learning chưa được kiểm chứng. Không tính cảnh báo Wasm dry-run của repo E-learning là lỗi bản Web JavaScript đã build thành công.
 
