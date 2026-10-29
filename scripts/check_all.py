@@ -41,6 +41,7 @@ extensions = [
 
 checks.extend(extensions)
 checks.append(["check_secure_portal.py"])
+checks.append(["check_logging.py"])
 
 if args.screenshots:
     checks.extend([

@@ -1,0 +1,35 @@
+{
+  "output": "Centralized service logging",
+  "verified_at_utc": "2026-10-29T11:23:21.409462+00:00",
+  "details": {
+    "query": "{project=\"myminicloud\",service=\"application-backend-server\"} |= \"minicloud-log-check-47ea94849620\"",
+    "marker": "minicloud-log-check-47ea94849620",
+    "log_lines": [
+      "172.19.0.16 - - [29/Oct/2026:11:22:53 +0000] \"GET /hello?log_check=minicloud-log-check-47ea94849620 HTTP/1.0\" 200 37 \"-\" \"python-requests/2.32.5\""
+    ],
+    "grafana_datasource_health": "OK",
+    "grafana_proxy_query": "successful",
+    "only_project_streams_observed": true,
+    "stream_service_labels": [
+      "api-gateway-proxy-server",
+      "application-backend-server",
+      "authentication-identity-server",
+      "elearning-web-server",
+      "firebase-emulator-server",
+      "logging-alloy-server",
+      "logging-loki-server",
+      "monitoring-grafana-dashboard-server",
+      "monitoring-node-exporter-server",
+      "monitoring-prometheus-server",
+      "monitoring-web-exporter-server",
+      "object-storage-server",
+      "relational-database-server",
+      "web-frontend-server",
+      "web-frontend-server1",
+      "web-frontend-server2"
+    ],
+    "verified_after_loki_recreation": true,
+    "collection_scope": "myminicloud only",
+    "dashboard": "http://localhost:3000/d/minicloud-service-logs/myminicloud-service-logs"
+  }
+}

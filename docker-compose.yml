@@ -10,6 +10,30 @@ x-service-defaults: &service-defaults
       max-file: "3"
 
 services:
+  logging-loki-server:
+    <<: *service-defaults
+    image: grafana/loki:3.7.9
+    container_name: logging-loki-server
+    command: ["-config.file=/etc/loki/loki.yml"]
+    ports: ["127.0.0.1:3100:3100"]
+    volumes:
+      - ./logging-loki-server/loki.yml:/etc/loki/loki.yml:ro
+      - loki-data:/loki
+
+  logging-alloy-server:
+    <<: *service-defaults
+    image: grafana/alloy:v1.21.3
+    container_name: logging-alloy-server
+    command: ["run", "--server.http.listen-addr=0.0.0.0:12345", "--storage.path=/var/lib/alloy", "/etc/alloy/config.alloy"]
+    ports: ["127.0.0.1:12345:12345"]
+    volumes:
+      - ./logging-alloy-server/config.alloy:/etc/alloy/config.alloy:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - alloy-data:/var/lib/alloy
+    depends_on:
+      logging-loki-server:
+        condition: service_started
+
   elearning-web-server:
     <<: *service-defaults
     build: ./elearning-web
@@ -277,6 +301,8 @@ services:
       retries: 6
 
 volumes:
+  loki-data:
+  alloy-data:
   firebase-data:
   db-data:
   keycloak-data:

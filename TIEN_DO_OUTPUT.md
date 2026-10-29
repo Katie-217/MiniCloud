@@ -133,7 +133,7 @@ Hiện không còn lỗi chức năng làm trượt các bài kiểm thử MiniC
 2. **R16/R17/R18 mới hoàn tất bản local**: báo cáo, video và ảnh/log cloud phải bổ sung sau EC2. Video local có chú thích, không có giọng đọc; file `report/Demo_Local_521H0092.webm`, 75,68 giây, 1440×1000, đã kiểm tra playback.
 3. **MSSV Diệp Yến Nhi còn thiếu**: cập nhật `project-info.json`, trang Home, báo cáo và video khi được cung cấp; rebuild Web nếu đổi nội dung.
 4. **Metrics có giới hạn**: CPU/RAM Linux VM của Docker Desktop, network theo namespace exporter; chưa có cAdvisor/mọi container hoặc toàn bộ Windows. Một số panel Root FS/hệ thống tùy chọn của template có thể N/A; CPU/RAM/Network bắt buộc đã có dữ liệu.
-5. **Logging tập trung chưa làm**: theo bài demo chi tiết dùng Grafana + Prometheus, log container được lưu riêng đã loại mật khẩu; chưa có Loki.
+5. **Logging tập trung đã làm:** Alloy chỉ thu Docker logs thuộc project myminicloud, Loki giữ log trong volume theo retention 24 giờ, Grafana dashboard MyMiniCloud Service Logs hiển thị log thật. Marker request đã được tìm thấy qua Loki/Grafana và còn sau recreate Loki; `evidence/local/service-logging.json`, `logging-grafana.png`.
 6. **Mở rộng 0/10**: được làm trước EC2 theo thứ tự mới; kế hoạch đã có task/output/test cho cả 10 mục. `/secure` đã có test từ chối token thiếu/sai, chưa có realm MSSV/client/token hợp lệ của E04.
 7. **E-learning demo đã tích hợp:** `/elearning/`, source 9e9ebd5, Firebase Emulator trong Docker với dữ liệu giả; login hai vai trò, xem/tạo khóa học, số sinh viên ghi danh, refresh và recreate đạt. Google Sign-In, Cloud Functions/link preview và các luồng khác của đồ án gốc chưa kiểm chứng. SQL/Keycloak/MinIO theo đề vẫn giữ riêng.
 
