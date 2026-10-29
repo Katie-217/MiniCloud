@@ -334,3 +334,8 @@ tr:hover td {
   font-size: 13px;
   text-align: center;
 }
+
+.secure-form { display:flex; flex-wrap:wrap; align-items:end; gap:14px; margin-top:18px; }
+.secure-form label { display:flex; flex-direction:column; gap:7px; font-size:14px; }
+.secure-form input, .secure-form select { color:inherit; background:#172536; border:1px solid #56667a; padding:11px; border-radius:6px; }
+#secureResult { white-space:pre-wrap; min-height:80px; }

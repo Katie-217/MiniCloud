@@ -53,7 +53,7 @@
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">2. Application Backend</h3>
-          <span class="badge badge-blue">Flask 3.11</span>
+          <span class="badge badge-blue">Flask 3.1 · Python 3.11</span>
         </div>
         <p class="card-desc">Xử lý logic, API /hello, /student JSON và kết nối cơ sở dữ liệu MariaDB.</p>
         <a class="card-link" href="/api/hello" target="_blank">Gọi /api/hello →</a>
@@ -151,6 +151,18 @@
       <div class="lb-log" id="lbLog">Nhấn nút "Gọi Round Robin Load Balancer" để kiểm tra luân phiên request giữa web-frontend-server1 và web-frontend-server2...</div>
     </div>
 
+    <section class="demo-box" id="secure-demo" aria-labelledby="secure-title">
+      <h3 id="secure-title">Kiểm tra API có bảo vệ · Keycloak</h3>
+      <p class="card-desc">Đăng nhập tài khoản thử nghiệm để gọi /api/secure. Kết quả chỉ hiển thị trạng thái và username.</p>
+      <form id="secureForm" class="secure-form">
+        <label>Tài khoản Keycloak<select id="secureUser"><option>sv01</option><option>sv02</option></select></label>
+        <label>Mật khẩu Keycloak<input id="securePassword" type="password" required autocomplete="current-password"></label>
+        <button class="button" type="submit">Gọi API có bảo vệ</button>
+        <button class="button button-outline" type="button" onclick="callAnonymousSecure()">Gọi không có token</button>
+      </form>
+      <pre class="lb-log" id="secureResult" aria-live="polite">Chưa gửi yêu cầu.</pre>
+    </section>
+
     <!-- Blog Articles Links -->
     <section>
       <h2>Nhật ký triển khai</h2>
@@ -165,7 +177,7 @@
     <section aria-label="Thành viên nhóm" id="team">
       <h2>Nhóm thực hiện</h2>
       <div class="team-container">
-        <img class="avatar-img" src="http://localhost:9000/profile-pics/avatar.jpg" alt="Avatar Võ Thị Thiên Kim" onerror="this.src='/blog/images/storage.svg'">
+        <img class="avatar-img" src="http://localhost:9000/profile-pics/avatar.jpg" alt="Ảnh đại diện minh họa của project" onerror="this.src='/blog/images/storage.svg'">
         <div class="team-info">
           <p class="team-member">Võ Thị Thiên Kim <span>521H0092</span></p>
           <p class="team-member">Diệp Yến Nhi <span>MSSV đang bổ sung</span></p>
@@ -177,6 +189,37 @@
   </main>
 
   <script>
+    document.getElementById('secureForm').addEventListener('submit', async event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const button = form.querySelector('[type="submit"]');
+      const output = document.getElementById('secureResult');
+      button.disabled = true;
+      output.textContent = 'Đang xác thực…';
+      try {
+        const tokenResponse = await fetch('/auth/realms/realm_521H0092/protocol/openid-connect/token', {
+          method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+          body: new URLSearchParams({client_id:'flask-app', grant_type:'password',
+            username:document.getElementById('secureUser').value,
+            password:document.getElementById('securePassword').value})
+        });
+        if (!tokenResponse.ok) throw new Error('Đăng nhập thất bại (HTTP ' + tokenResponse.status + ').');
+        const tokenData = await tokenResponse.json();
+        const response = await fetch('/api/secure', {headers: {Authorization:'Bearer ' + tokenData.access_token}});
+        output.textContent = 'HTTP ' + response.status + '\n' + JSON.stringify(await response.json(), null, 2);
+      } catch (error) {
+        output.textContent = error.message;
+      } finally {
+        document.getElementById('securePassword').value = '';
+        button.disabled = false;
+      }
+    });
+
+    async function callAnonymousSecure() {
+      const response = await fetch('/api/secure');
+      document.getElementById('secureResult').textContent = 'HTTP ' + response.status + '\n' + JSON.stringify(await response.json(), null, 2);
+    }
+
     async function loadStudents() {
       try {
         const res = await fetch('/api/student');

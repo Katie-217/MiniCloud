@@ -40,6 +40,7 @@ extensions = [
 ]
 
 checks.extend(extensions)
+checks.append(["check_secure_portal.py"])
 
 if args.screenshots:
     checks.extend([

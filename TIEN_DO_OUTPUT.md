@@ -55,6 +55,8 @@ Không lấy trạng thái container Running thay cho kết quả kiểm thử c
 
 ## 4. Những output đã đạt
 
+Portal kiểm thử OIDC qua giao diện: `feat/secure-api-demo`; `scripts/check_secure_portal.py` xác minh sv01/sv02 trả HTTP 200, thiếu token trả 401; ảnh `portal-secure-success.png` và `portal-secure-missing-token.png`. Không hiển thị access token hoặc mật khẩu trong kết quả.
+
 Các dòng `DAT` ở bảng mục 3 và 7 là output đã kiểm thử đạt, kèm đường dẫn log/ảnh. Các dòng `CHO_KIEM_THU` mới đạt một phần hoặc còn thiếu test tích hợp.
 
 Công việc chuẩn bị đã hoàn thành: đọc PDF, trích yêu cầu/tiêu chí, lập kế hoạch hai ngày và quy trình branch/commit, tạo bảng này. Các công việc đó không được tính thay cho output hệ thống theo đề.
