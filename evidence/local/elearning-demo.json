@@ -1,0 +1,1490 @@
+{
+  "output": "E-learning integration",
+  "verified_at_utc": "2026-10-29T10:59:26.033613+00:00",
+  "details": {
+    "source_commit": "9e9ebd539c7f08092ea6855c9aceafe645bd28e0",
+    "url": "http://localhost/elearning/",
+    "project": "demo-minicloud",
+    "checks": [
+      {
+        "case": "instructor_authentication",
+        "passed": true
+      },
+      {
+        "case": "student_authentication",
+        "passed": true
+      },
+      {
+        "case": "seeded_course_read",
+        "passed": true
+      },
+      {
+        "case": "instructor_browser_login",
+        "passed": true,
+        "url": "http://localhost/elearning/"
+      },
+      {
+        "case": "instructor_live_enrollment_count",
+        "passed": true,
+        "seed_course_students": 1
+      },
+      {
+        "case": "instructor_course_from_firestore",
+        "passed": true
+      },
+      {
+        "case": "course_created_through_ui_and_listed",
+        "passed": true,
+        "code": "DEMOUI29"
+      },
+      {
+        "case": "instructor_session_after_refresh",
+        "passed": true
+      },
+      {
+        "case": "student_browser_login",
+        "passed": true,
+        "url": "http://localhost/elearning/"
+      },
+      {
+        "case": "student_live_enrollment_count",
+        "passed": true,
+        "seed_course_students": 1
+      },
+      {
+        "case": "student_course_from_firestore",
+        "passed": true
+      },
+      {
+        "case": "student_session_after_refresh",
+        "passed": true
+      }
+    ],
+    "blocked_production_hosts": [],
+    "browser_errors": [],
+    "responses": [
+      {
+        "path": "/elearning/",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/flutter_bootstrap.js",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/favicon.png",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/canvaskit/chromium/canvaskit.wasm",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/canvaskit/chromium/canvaskit.js",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/main.dart.js",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/assets/FontManifest.json",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/assets/fonts/MaterialIcons-Regular.otf",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/assets/packages/syncfusion_flutter_pdfviewer/assets/fonts/RobotoMono-Regular.ttf",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/s/roboto/v32/KFOmCnqEu92Fr1Me4GZLCzYlKw.woff2",
+        "host": "fonts.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-app.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-functions.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-firestore.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-analytics.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-storage.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-auth.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/gsi/client",
+        "host": "accounts.google.com",
+        "status": 200
+      },
+      {
+        "path": "/elearning/assets/AssetManifest.bin.json",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/assets/assets/icons/background-roler.png",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/s/notosanssymbols/v43/rP2up3q65FkAtHfwd-eIS2brbDN6gxP34F9jRRCe4W3gfQ8gb_VFRkzrbQ.woff2",
+        "host": "fonts.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/identitytoolkit.googleapis.com/v1/accounts:signInWithPassword",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/identitytoolkit.googleapis.com/v1/accounts:lookup",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Write/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Write/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Write/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Write/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/s/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.3.woff2",
+        "host": "fonts.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Write/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/v1/projects/demo-minicloud/databases/(default)/documents:runAggregationQuery",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/v1/projects/demo-minicloud/databases/(default)/documents:runAggregationQuery",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/v1/projects/demo-minicloud/databases/(default)/documents:runAggregationQuery",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/v1/projects/demo-minicloud/databases/(default)/documents:runAggregationQuery",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/v1/projects/demo-minicloud/databases/(default)/documents:runAggregationQuery",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/v1/projects/demo-minicloud/databases/(default)/documents:runAggregationQuery",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/v1/projects/demo-minicloud/databases/(default)/documents:runAggregationQuery",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/v1/projects/demo-minicloud/databases/(default)/documents:runAggregationQuery",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/v1/projects/demo-minicloud/databases/(default)/documents:runAggregationQuery",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/v1/projects/demo-minicloud/databases/(default)/documents:runAggregationQuery",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/flutter_bootstrap.js",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/canvaskit/chromium/canvaskit.wasm",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/canvaskit/chromium/canvaskit.js",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/favicon.png",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/main.dart.js",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/assets/FontManifest.json",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/assets/fonts/MaterialIcons-Regular.otf",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/assets/packages/syncfusion_flutter_pdfviewer/assets/fonts/RobotoMono-Regular.ttf",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/s/roboto/v32/KFOmCnqEu92Fr1Me4GZLCzYlKw.woff2",
+        "host": "fonts.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-app.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-functions.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-firestore.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-analytics.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-storage.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-auth.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/gsi/client",
+        "host": "accounts.google.com",
+        "status": 200
+      },
+      {
+        "path": "/identitytoolkit.googleapis.com/v1/accounts:lookup",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/s/notosanssc/v37/k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaG9_FrYRHbczS.woff2",
+        "host": "fonts.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/v1/projects/demo-minicloud/databases/(default)/documents:runAggregationQuery",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/v1/projects/demo-minicloud/databases/(default)/documents:runAggregationQuery",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/v1/projects/demo-minicloud/databases/(default)/documents:runAggregationQuery",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/v1/projects/demo-minicloud/databases/(default)/documents:runAggregationQuery",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/v1/projects/demo-minicloud/databases/(default)/documents:runAggregationQuery",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/v1/projects/demo-minicloud/databases/(default)/documents:runAggregationQuery",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/v1/projects/demo-minicloud/databases/(default)/documents:runAggregationQuery",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/v1/projects/demo-minicloud/databases/(default)/documents:runAggregationQuery",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/s/notosans/v37/o-0mIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjcz6L1SoM-jCpoiyD9A99Y41P6zHtY.woff2",
+        "host": "fonts.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/s/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.3.woff2",
+        "host": "fonts.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/flutter_bootstrap.js",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/favicon.png",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/canvaskit/chromium/canvaskit.wasm",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/canvaskit/chromium/canvaskit.js",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/main.dart.js",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/assets/FontManifest.json",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/assets/fonts/MaterialIcons-Regular.otf",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/assets/packages/syncfusion_flutter_pdfviewer/assets/fonts/RobotoMono-Regular.ttf",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/s/roboto/v32/KFOmCnqEu92Fr1Me4GZLCzYlKw.woff2",
+        "host": "fonts.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-app.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-auth.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-storage.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-firestore.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-functions.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/gsi/client",
+        "host": "accounts.google.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-analytics.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/elearning/assets/AssetManifest.bin.json",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/assets/assets/icons/background-roler.png",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/s/notosanssymbols/v43/rP2up3q65FkAtHfwd-eIS2brbDN6gxP34F9jRRCe4W3gfQ8gb_VFRkzrbQ.woff2",
+        "host": "fonts.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/identitytoolkit.googleapis.com/v1/accounts:signInWithPassword",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/identitytoolkit.googleapis.com/v1/accounts:lookup",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Write/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Write/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Write/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Write/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Write/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/s/notosans/v37/o-0mIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjcz6L1SoM-jCpoiyD9A99Y41P6zHtY.woff2",
+        "host": "fonts.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/v1/projects/demo-minicloud/databases/(default)/documents:runAggregationQuery",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/flutter_bootstrap.js",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/canvaskit/chromium/canvaskit.wasm",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/canvaskit/chromium/canvaskit.js",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/favicon.png",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/main.dart.js",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/assets/FontManifest.json",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/assets/fonts/MaterialIcons-Regular.otf",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/assets/packages/syncfusion_flutter_pdfviewer/assets/fonts/RobotoMono-Regular.ttf",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/elearning/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/s/roboto/v32/KFOmCnqEu92Fr1Me4GZLCzYlKw.woff2",
+        "host": "fonts.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-app.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-functions.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-firestore.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-analytics.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-storage.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/firebasejs/11.9.1/firebase-auth.js",
+        "host": "www.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/gsi/client",
+        "host": "accounts.google.com",
+        "status": 200
+      },
+      {
+        "path": "/identitytoolkit.googleapis.com/v1/accounts:lookup",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/s/notosanssc/v37/k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaG9_FrYRHbczS.woff2",
+        "host": "fonts.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/s/notosans/v37/o-0mIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjcz6L1SoM-jCpoiyD9A99Y41P6zHtY.woff2",
+        "host": "fonts.gstatic.com",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      },
+      {
+        "path": "/google.firestore.v1.Firestore/Listen/channel",
+        "host": "localhost",
+        "status": 200
+      }
+    ],
+    "credentials": "omitted",
+    "scope": "Synthetic local data, course UI creation and enrollment counts; optional external link preview / Google Sign-In not verified"
+  }
+}

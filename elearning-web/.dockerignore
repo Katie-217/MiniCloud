@@ -1,0 +1,8 @@
+source/.dart_tool/
+source/.flutter-plugins-dependencies
+source/lib/
+source/vendor/
+source/assets/
+source/web/
+source/pubspec.*
+source/analysis_options.yaml

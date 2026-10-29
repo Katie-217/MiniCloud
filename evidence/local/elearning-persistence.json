@@ -1,0 +1,16 @@
+{
+  "output": "E-learning persistence",
+  "verified_at_utc": "2026-10-29T10:59:41.833470+00:00",
+  "details": {
+    "container_recreated": true,
+    "both_auth_uids_preserved": true,
+    "firestore_marker_preserved": true,
+    "course_preserved": true,
+    "all_course_documents_preserved": 2,
+    "storage_bytes_preserved": true,
+    "object_sha256": "41039a755fa6b5cd38ad09d1e52e8275c589cd268add9a9cd1d47c050988784c",
+    "export_volume": "firebase-data",
+    "credentials": "omitted",
+    "production_firebase_used": false
+  }
+}

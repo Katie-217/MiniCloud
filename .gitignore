@@ -35,3 +35,9 @@ Thumbs.db
 ~$*
 logs/
 
+# Generated Flutter outputs; the pinned source and build script remain tracked.
+elearning-web/source/.dart_tool/
+elearning-web/source/build/
+elearning-web/source/.flutter-plugins-dependencies
+firebase-emulator/*debug.log*
+

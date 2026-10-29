@@ -1,0 +1,590 @@
+// ========================================
+// FILE: enrollment_repository.dart
+// MÔ TẢ: Repository quản lý việc ghi danh sinh viên vào khóa học
+// Collection: enrollments
+// Clean Architecture: Data Layer
+// ========================================
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../../domain/models/enrollment_model.dart';
+
+class EnrollmentRepository {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  static const String _collection = 'enrollments';
+
+  // ========================================
+  // HÀM: enrollStudent() - STRICT ENROLLMENT
+  // MÔ TẢ: Thêm sinh viên vào khóa học VÀ nhóm (single action)
+  // RULE: groupId là BẮT BUỘC, không được null
+  // ========================================
+  Future<String> enrollStudent({
+    required String courseId,
+    required String userId,
+    required String studentName,
+    required String studentEmail,
+    required String groupId, // ✅ BẮT BUỘC cho Strict Enrollment
+  }) async {
+    try {
+      // Tạo ID duy nhất theo format courseId_userId
+      final enrollmentId = '${courseId}_$userId';
+
+      // Kiểm tra đã tồn tại chưa
+      final existingDoc =
+          await _firestore.collection(_collection).doc(enrollmentId).get();
+
+      if (existingDoc.exists) {
+        final existing =
+            EnrollmentModel.fromMap(existingDoc.id, existingDoc.data()!);
+        if (existing.status == 'active') {
+          throw Exception('Sinh viên đã được ghi danh vào khóa học này');
+        }
+        // Nếu status là 'dropped', có thể re-enroll
+      }
+
+      // ✅ STRICT ENROLLMENT: groupId không bao giờ được null
+      if (groupId.isEmpty) {
+        throw Exception(
+            'STRICT ENROLLMENT: groupId là bắt buộc, không được rỗng');
+      }
+
+      final enrollment = EnrollmentModel(
+        id: enrollmentId,
+        courseId: courseId,
+        userId: userId,
+        studentName: studentName,
+        studentEmail: studentEmail,
+        enrolledAt: DateTime.now(),
+        role: 'student',
+        status: 'active',
+        groupId: groupId, // ✅ Luôn có giá trị cho Strict Enrollment
+      );
+
+      await _firestore
+          .collection(_collection)
+          .doc(enrollmentId)
+          .set(enrollment.toMap());
+
+      return enrollmentId;
+    } catch (e) {
+      throw Exception('Lỗi ghi danh sinh viên: $e');
+    }
+  }
+
+  // ========================================
+  // HÀM: unenrollStudent()
+  // MÔ TẢ: Xóa sinh viên khỏi khóa học (thay thế arrayRemove)
+  // ========================================
+  Future<void> unenrollStudent(String courseId, String userId) async {
+    try {
+      final enrollmentId = '${courseId}_$userId';
+
+      // Soft delete - chỉ đánh dấu status thành 'dropped'
+      await _firestore
+          .collection(_collection)
+          .doc(enrollmentId)
+          .update({'status': 'dropped'});
+    } catch (e) {
+      throw Exception('Lỗi xóa sinh viên khỏi khóa học: $e');
+    }
+  }
+
+  // ========================================
+  // HÀM: hardDeleteEnrollment()
+  // MÔ TẢ: Xóa hoàn toàn enrollment (chỉ dùng khi cần thiết)
+  // ========================================
+  Future<void> hardDeleteEnrollment(String courseId, String userId) async {
+    try {
+      final enrollmentId = '${courseId}_$userId';
+      await _firestore.collection(_collection).doc(enrollmentId).delete();
+    } catch (e) {
+      throw Exception('Lỗi xóa enrollment: $e');
+    }
+  }
+
+  // ========================================
+  // HÀM: getStudentsInCourse()
+  // MÔ TẢ: Lấy danh sách sinh viên trong khóa học (thay thế course.students)
+  // ========================================
+  Future<List<EnrollmentModel>> getStudentsInCourse(String courseId) async {
+    try {
+      print('DEBUG: 🔍 Getting students for courseId: $courseId');
+
+      // Simplified query để avoid composite index requirement
+      final querySnapshot = await _firestore
+          .collection(_collection)
+          .where('courseId', isEqualTo: courseId)
+          .where('status', isEqualTo: 'active')
+          .get();
+
+      // Filter by role in memory
+      final students = querySnapshot.docs
+          .map((doc) => EnrollmentModel.fromMap(doc.id, doc.data()))
+          .where((enrollment) => enrollment.role == 'student')
+          .toList();
+
+      // Sort by enrolledAt in memory
+      students.sort((a, b) => a.enrolledAt.compareTo(b.enrolledAt));
+
+      print('DEBUG: ✅ Found ${students.length} students in course');
+      return students;
+    } catch (e) {
+      print('DEBUG: ❌ Error getting students: $e');
+      throw Exception('Lỗi lấy danh sách sinh viên: $e');
+    }
+  }
+
+  // ========================================
+  // HÀM: getCoursesOfStudent()
+  // MÔ TẢ: Lấy danh sách khóa học của sinh viên (truy vấn ngược)
+  // ========================================
+  Future<List<EnrollmentModel>> getCoursesOfStudent(String userId) async {
+    try {
+      print('DEBUG: ========== GET COURSES OF STUDENT ==========');
+      print('DEBUG: 🔍 Querying enrollments for userId: $userId');
+
+      // Query chỉ với userId để tránh vấn đề composite index
+      // Sau đó filter status và role trong memory
+      QuerySnapshot querySnapshot;
+
+      try {
+        // Query chỉ với userId (không filter status ở Firestore để tránh cần index)
+        querySnapshot = await _firestore
+            .collection(_collection)
+            .where('userId', isEqualTo: userId)
+            .get();
+
+        print(
+            'DEBUG: 📋 Query found ${querySnapshot.docs.length} total enrollment documents');
+
+        // Log tất cả documents để debug
+        for (var doc in querySnapshot.docs) {
+          final data = doc.data() as Map<String, dynamic>;
+          print('DEBUG: 📄 Doc ID: ${doc.id}');
+          print('DEBUG:    - userId: ${data['userId']}');
+          print('DEBUG:    - courseId: ${data['courseId']}');
+          print('DEBUG:    - role: ${data['role']}');
+          print('DEBUG:    - status: ${data['status']}');
+        }
+      } catch (e) {
+        print('DEBUG: ❌ Error querying enrollments: $e');
+        print('DEBUG: ❌ Stack trace: ${StackTrace.current}');
+        rethrow;
+      }
+
+      // Filter by status and role in memory để đảm bảo lấy đủ
+      final allEnrollments = querySnapshot.docs
+          .map((doc) {
+            try {
+              final data = doc.data() as Map<String, dynamic>;
+              return EnrollmentModel.fromMap(doc.id, data);
+            } catch (e) {
+              print('DEBUG: ⚠️ Error parsing enrollment doc ${doc.id}: $e');
+              return null;
+            }
+          })
+          .whereType<EnrollmentModel>()
+          .toList();
+
+      print('DEBUG: 📊 Parsed ${allEnrollments.length} enrollment models');
+
+      // Filter active student enrollments
+      final enrollments = allEnrollments.where((enrollment) {
+        final isStudent = enrollment.role == 'student';
+        final isActive = enrollment.status == 'active';
+        if (!isStudent || !isActive) {
+          print(
+              'DEBUG: ⚠️ Filtered out enrollment: ${enrollment.id} - role: ${enrollment.role}, status: ${enrollment.status}');
+        }
+        return isStudent && isActive;
+      }).toList();
+
+      // Sort by enrolledAt in memory
+      enrollments.sort((a, b) => b.enrolledAt.compareTo(a.enrolledAt));
+
+      print(
+          'DEBUG: ✅ Final result: ${enrollments.length} active student enrollments');
+
+      if (enrollments.isEmpty) {
+        print('DEBUG: ⚠️ No active enrollments found for user $userId');
+        print(
+            'DEBUG: 💡 Check if user has enrollments in Firestore collection: $_collection');
+        print('DEBUG: 💡 Query: where userId == $userId');
+      } else {
+        print('DEBUG: 📚 Course IDs:');
+        for (var i = 0; i < enrollments.length; i++) {
+          print('DEBUG:   ${i + 1}. ${enrollments[i].courseId}');
+        }
+      }
+
+      print('DEBUG: ===========================================');
+      return enrollments;
+    } catch (e) {
+      print('DEBUG: ❌ Error in getCoursesOfStudent: $e');
+      print('DEBUG: ❌ Stack trace: ${StackTrace.current}');
+      throw Exception('Lỗi lấy danh sách khóa học của sinh viên: $e');
+    }
+  }
+
+  // ========================================
+  // HÀM: countStudentsInCourse()
+  // MÔ TẢ: Đếm số sinh viên trong khóa học (thay thế course.students.length)
+  // ========================================
+  Future<int> countStudentsInCourse(String courseId) async {
+    try {
+      final querySnapshot = await _firestore
+          .collection(_collection)
+          .where('courseId', isEqualTo: courseId)
+          .where('status', isEqualTo: 'active')
+          .where('role', isEqualTo: 'student')
+          .count()
+          .get();
+
+      return querySnapshot.count ?? 0;
+    } catch (e) {
+      throw Exception('Lỗi đếm sinh viên: $e');
+    }
+  }
+
+  // ========================================
+  // HÀM: isStudentEnrolled()
+  // MÔ TẢ: Kiểm tra sinh viên có trong khóa học không (thay thế course.students.contains)
+  // ========================================
+  Future<bool> isStudentEnrolled(String courseId, String userId) async {
+    try {
+      final enrollmentId = '${courseId}_$userId';
+      final docSnapshot =
+          await _firestore.collection(_collection).doc(enrollmentId).get();
+
+      if (!docSnapshot.exists) return false;
+
+      final enrollment =
+          EnrollmentModel.fromMap(docSnapshot.id, docSnapshot.data()!);
+      return enrollment.status == 'active' && enrollment.role == 'student';
+    } catch (e) {
+      return false;
+    }
+  }
+
+  // ========================================
+  // ========================================
+  // 🚀 HÀM: bulkEnrollStudents() - ULTRA-FAST WriteBatch ENROLLMENT
+  // MÔ TẢ: Ghi danh hàng loạt sinh viên với WriteBatch (1 request duy nhất)
+  // PERFORMANCE: Giảm từ N requests → 1 request
+  // RULE: Tất cả sinh viên đều phải có groupId
+  // ========================================
+  Future<BulkEnrollmentResult> bulkEnrollStudents({
+    required String courseId,
+    required String groupId,
+    required List<Map<String, dynamic>> students, // [{uid, name, email}, ...]
+  }) async {
+    final result = BulkEnrollmentResult();
+
+    if (students.isEmpty) {
+      return result;
+    }
+
+    print(
+        '🚀 BULK ENROLLMENT: Starting bulk enrollment for ${students.length} students');
+    print('   Course: $courseId');
+    print('   Group: $groupId');
+
+    try {
+      // 🚀 STEP 1: Initialize WriteBatch
+      final batch = _firestore.batch();
+      final now = DateTime.now();
+
+      // 🚀 STEP 2: Loop through students and add to batch (NO await here!)
+      for (int i = 0; i < students.length; i++) {
+        final student = students[i];
+        final userId =
+            student['uid']?.toString() ?? student['userId']?.toString() ?? '';
+        final studentName = student['name']?.toString() ?? '';
+        final studentEmail = student['email']?.toString() ?? '';
+
+        if (userId.isEmpty || studentName.isEmpty || studentEmail.isEmpty) {
+          result.failedStudents.add({
+            'student': student,
+            'error': 'Missing required fields (uid/userId, name, or email)',
+          });
+          continue;
+        }
+
+        try {
+          // Create enrollment ID
+          final enrollmentId = '${courseId}_$userId';
+
+          // Create enrollment model with correct parameters
+          final enrollment = EnrollmentModel(
+            id: enrollmentId,
+            courseId: courseId,
+            userId: userId,
+            studentName: studentName,
+            studentEmail: studentEmail,
+            enrolledAt: now,
+            role: 'student',
+            status: 'active',
+            groupId:
+                groupId, // ✅ STRICT ENROLLMENT: All students get assigned to group
+          );
+
+          // 🔥 ADD TO BATCH (not await) - This is the key optimization!
+          final docRef = _firestore.collection(_collection).doc(enrollmentId);
+          batch.set(docRef, enrollment.toMap());
+
+          result.successStudents.add({
+            'enrollmentId': enrollmentId,
+            'userId': userId,
+            'studentName': studentName,
+            'studentEmail': studentEmail,
+          });
+
+          print('   ✅ Added to batch: $studentEmail');
+        } catch (e) {
+          result.failedStudents.add({
+            'student': student,
+            'error': e.toString(),
+          });
+          print('   ❌ Failed to prepare: ${student['email']} - $e');
+        }
+      }
+
+      // 🚀 STEP 3: Commit ALL writes in ONE atomic operation
+      if (result.successStudents.isNotEmpty) {
+        print(
+            '🔥 BULK ENROLLMENT: Committing ${result.successStudents.length} enrollments in one batch...');
+        await batch.commit();
+        print(
+            '✅ BULK ENROLLMENT: Successfully enrolled ${result.successStudents.length} students!');
+      }
+
+      print(
+          '❌ BULK ENROLLMENT: ${result.failedStudents.length} students failed');
+
+      return result;
+    } catch (e) {
+      print('❌ BULK ENROLLMENT: Batch commit failed: $e');
+
+      // Move all successful students to failed since batch failed
+      for (final student in result.successStudents) {
+        result.failedStudents.add({
+          'student': student,
+          'error': 'Batch commit failed: $e',
+        });
+      }
+      result.successStudents.clear();
+
+      throw Exception('Bulk enrollment failed: $e');
+    }
+  }
+
+  // ========================================
+  // HÀM: listenToEnrollmentsInCourse()
+  // MÔ TẢ: Stream để theo dõi thay đổi danh sách sinh viên
+  // ========================================
+  Stream<List<EnrollmentModel>> listenToEnrollmentsInCourse(String courseId) {
+    return _firestore
+        .collection(_collection)
+        .where('courseId', isEqualTo: courseId)
+        .where('status', isEqualTo: 'active')
+        .where('role', isEqualTo: 'student')
+        .orderBy('enrolledAt')
+        .snapshots()
+        .map((snapshot) => snapshot.docs
+            .map((doc) => EnrollmentModel.fromMap(doc.id, doc.data()))
+            .toList());
+  }
+
+  // ========================================
+  // HÀM: updateEnrollmentStatus()
+  // MÔ TẢ: Cập nhật trạng thái enrollment
+  // ========================================
+  Future<void> updateEnrollmentStatus(
+    String courseId,
+    String userId,
+    String newStatus,
+  ) async {
+    try {
+      final enrollmentId = '${courseId}_$userId';
+      await _firestore
+          .collection(_collection)
+          .doc(enrollmentId)
+          .update({'status': newStatus});
+    } catch (e) {
+      throw Exception('Lỗi cập nhật trạng thái enrollment: $e');
+    }
+  }
+
+  // ========================================
+  // HÀM: getEnrollmentStatistics()
+  // MÔ TẢ: Thống kê enrollment
+  // ========================================
+  Future<Map<String, int>> getEnrollmentStatistics(String courseId) async {
+    try {
+      final allEnrollments = await _firestore
+          .collection(_collection)
+          .where('courseId', isEqualTo: courseId)
+          .where('role', isEqualTo: 'student')
+          .get();
+
+      final stats = <String, int>{
+        'total': allEnrollments.docs.length,
+        'active': 0,
+        'dropped': 0,
+      };
+
+      for (final doc in allEnrollments.docs) {
+        final status = doc.data()['status'] ?? 'active';
+        stats[status] = (stats[status] ?? 0) + 1;
+      }
+
+      return stats;
+    } catch (e) {
+      throw Exception('Lỗi lấy thống kê enrollment: $e');
+    }
+  }
+
+  // ========================================
+  // GROUP MANAGEMENT METHODS - NEW SINGLE SOURCE OF TRUTH
+  // ========================================
+
+  // ========================================
+  // HÀM: getStudentsInGroup()
+  // MÔ TẢ: Lấy danh sách sinh viên trong một nhóm
+  // ========================================
+  Future<List<EnrollmentModel>> getStudentsInGroup(String groupId) async {
+    try {
+      final querySnapshot = await _firestore
+          .collection(_collection)
+          .where('groupId', isEqualTo: groupId)
+          .where('status', isEqualTo: 'active')
+          .get();
+
+      return querySnapshot.docs
+          .map((doc) => EnrollmentModel.fromMap(doc.id, doc.data()))
+          .toList();
+    } catch (e) {
+      throw Exception('Lỗi lấy danh sách sinh viên trong nhóm: $e');
+    }
+  }
+
+  // ========================================
+  // HÀM: getEnrollment()
+  // MÔ TẢ: Lấy enrollment cụ thể (cho validation "1 student/1 group per course")
+  // ========================================
+  Future<EnrollmentModel?> getEnrollment(String courseId, String userId) async {
+    try {
+      final enrollmentId = '${courseId}_$userId';
+      final doc =
+          await _firestore.collection(_collection).doc(enrollmentId).get();
+
+      if (doc.exists) {
+        return EnrollmentModel.fromMap(doc.id, doc.data()!);
+      }
+      return null;
+    } catch (e) {
+      throw Exception('Lỗi lấy enrollment: $e');
+    }
+  }
+
+  // ========================================
+  // ❌ REMOVED: assignStudentToGroup() - VIOLATES STRICT ENROLLMENT
+  // ❌ REASON: Duplicate functionality - enrollment should happen WITH group
+  // ✅ USE INSTEAD: enrollStudent() with required groupId parameter
+  // ========================================
+
+  // ========================================
+  // ❌ REMOVED: removeStudentFromGroup() - VIOLATES STRICT ENROLLMENT
+  // ❌ REASON: Creates "ghost students" (enrollment without groupId)
+  // ✅ USE INSTEAD: changeStudentGroup() to move, or hardDeleteEnrollment() to remove completely
+  // ========================================
+
+  // ========================================
+  // HÀM: changeStudentGroup()
+  // MÔ TẢ: Đổi sinh viên sang nhóm khác
+  // ========================================
+  Future<bool> changeStudentGroup({
+    required String courseId,
+    required String userId,
+    required String newGroupId,
+  }) async {
+    try {
+      final enrollmentId = '${courseId}_$userId';
+
+      await _firestore.collection(_collection).doc(enrollmentId).update({
+        'groupId': newGroupId,
+      });
+
+      return true;
+    } catch (e) {
+      throw Exception('Lỗi đổi nhóm cho sinh viên: $e');
+    }
+  }
+
+  // ========================================
+  // HÀM: isStudentInGroup()
+  // MÔ TẢ: Kiểm tra sinh viên có trong nhóm cụ thể không
+  // ========================================
+  Future<bool> isStudentInGroup({
+    required String courseId,
+    required String userId,
+    required String groupId,
+  }) async {
+    try {
+      final enrollment = await getEnrollment(courseId, userId);
+      return enrollment?.groupId == groupId;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  // ========================================
+  // HÀM: countStudentsInGroup()
+  // MÔ TẢ: Đếm số sinh viên trong nhóm
+  // ========================================
+  Future<int> countStudentsInGroup(String groupId) async {
+    try {
+      final querySnapshot = await _firestore
+          .collection(_collection)
+          .where('groupId', isEqualTo: groupId)
+          .where('status', isEqualTo: 'active')
+          .get();
+
+      return querySnapshot.docs.length;
+    } catch (e) {
+      throw Exception('Lỗi đếm sinh viên trong nhóm: $e');
+    }
+  }
+
+  // ========================================
+  // HÀM: getStudentCurrentGroup()
+  // MÔ TẢ: Lấy nhóm hiện tại của sinh viên trong khóa học
+  // ========================================
+  Future<String?> getStudentCurrentGroup(String courseId, String userId) async {
+    try {
+      final enrollment = await getEnrollment(courseId, userId);
+      return enrollment?.groupId;
+    } catch (e) {
+      return null;
+    }
+  }
+}
+
+// ========================================
+// CLASS: BulkEnrollmentResult - Kết quả bulk enrollment
+// ========================================
+class BulkEnrollmentResult {
+  final List<Map<String, dynamic>> successStudents = [];
+  final List<Map<String, dynamic>> failedStudents = [];
+
+  int get successCount => successStudents.length;
+  int get failureCount => failedStudents.length;
+  int get totalCount => successCount + failureCount;
+
+  double get successRate =>
+      totalCount > 0 ? (successCount / totalCount) * 100 : 0;
+
+  @override
+  String toString() {
+    return 'BulkEnrollment: ${successCount}/${totalCount} successful (${successRate.toStringAsFixed(1)}%)';
+  }
+}

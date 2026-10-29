@@ -1,0 +1,14 @@
+{
+  "repository": "https://github.com/Katie-217/E-learning-Management-App",
+  "branch": "main",
+  "commit": "9e9ebd539c7f08092ea6855c9aceafe645bd28e0",
+  "imported": [
+    "lib",
+    "assets",
+    "web",
+    "pubspec.yaml",
+    "pubspec.lock",
+    "analysis_options.yaml"
+  ],
+  "adaptation": "Local emulator bootstrap and Web hosting; no production Firebase project configuration imported."
+}

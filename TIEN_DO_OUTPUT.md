@@ -17,7 +17,7 @@ Cập nhật lần đầu: **26/10/2026**, cập nhật kế hoạch **27/10/202
 - **Chưa hoàn tất toàn đề:** EC2/public IP và bằng chứng cloud; bổ sung MSSV Diệp Yến Nhi; cập nhật báo cáo/video bản cuối. Mở rộng hiện chưa làm.
 - **Thứ tự mới 27/10:** hoàn tất local và 10 mở rộng, Docker Hub/hồ sơ → người dùng kiểm tra bản cuối → mới thuê và triển khai EC2. Chưa thao tác AWS.
 - **Repo E-learning đã khảo sát:** main `9e9ebd5` build Flutter Web thành công; Firebase Auth/Firestore/Storage chưa chạy kiểm thử dữ liệu. Chưa nhập source hoặc thay Web MiniCloud. Branch management_system ahead main 12 commit, chưa build branch đó.
-  Minh chứng khảo sát: [source-audit-elearning.json](evidence/local/source-audit-elearning.json); đây là test build repo nguồn, không phải output E01–E10 đã đạt.
+  Minh chứng khảo sát: [source-audit-elearning.json](evidence/local/source-audit-elearning.json). Cập nhật 29/10: đã tích hợp E-learning tại `/elearning/`, dùng Firebase Emulator riêng; hai vai trò đăng nhập, xem/tạo khóa học, số ghi danh thật và refresh đã kiểm thử. Minh chứng `elearning-demo.json`, `elearning-persistence.json`; không dùng Firebase thật.
 
 ## 2. Quy ước trạng thái
 
@@ -81,7 +81,7 @@ Hiện không còn lỗi chức năng làm trượt các bài kiểm thử MiniC
 | Username Docker Hub và login local | DAT | Namespace katie217; push Web 1.0.0 và đọc lại manifest thành công |
 | Có EC2 Ubuntu hay chưa | CHO_THONG_TIN | Người dùng yêu cầu để sau; chưa thao tác AWS |
 | Public IP, user SSH, đường dẫn key nếu đã có EC2 | CHO_THONG_TIN | Kết nối bằng key local, không đưa nội dung key vào Git/chat |
-| Repo ứng dụng demo | DANG_LAM | Đã nhận E-learning; main build Web đạt; cần môi trường Firebase demo riêng và kiểm thử UI, không dùng database thật |
+| Repo ứng dụng demo | DAT | feat/elearning-web-demo; source main 9e9ebd5; hai vai trò, khóa học, số ghi danh và persistence bằng emulator; chức năng ngoài luồng demo chưa kiểm chứng |
 | Avatar cá nhân cho E05 | CHO_THONG_TIN | Cần ảnh được người dùng chọn/cung cấp; chưa coi ảnh minh họa bất kỳ là avatar cá nhân đã hoàn tất |
 
 ## 7. Mở rộng chưa làm
@@ -132,7 +132,7 @@ Hiện không còn lỗi chức năng làm trượt các bài kiểm thử MiniC
 4. **Metrics có giới hạn**: CPU/RAM Linux VM của Docker Desktop, network theo namespace exporter; chưa có cAdvisor/mọi container hoặc toàn bộ Windows. Một số panel Root FS/hệ thống tùy chọn của template có thể N/A; CPU/RAM/Network bắt buộc đã có dữ liệu.
 5. **Logging tập trung chưa làm**: theo bài demo chi tiết dùng Grafana + Prometheus, log container được lưu riêng đã loại mật khẩu; chưa có Loki.
 6. **Mở rộng 0/10**: được làm trước EC2 theo thứ tự mới; kế hoạch đã có task/output/test cho cả 10 mục. `/secure` đã có test từ chối token thiếu/sai, chưa có realm MSSV/client/token hợp lệ của E04.
-7. **E-learning chưa tích hợp:** main đã build Web, nhưng đăng nhập/dữ liệu Firebase, môi trường emulator, base path và proxy chưa kiểm thử. Không dùng kết quả build để tuyên bố đủ các luồng ứng dụng; không thay SQL/Keycloak/MinIO theo đề bằng Firebase.
+7. **E-learning demo đã tích hợp:** `/elearning/`, source 9e9ebd5, Firebase Emulator trong Docker với dữ liệu giả; login hai vai trò, xem/tạo khóa học, số sinh viên ghi danh, refresh và recreate đạt. Google Sign-In, Cloud Functions/link preview và các luồng khác của đồ án gốc chưa kiểm chứng. SQL/Keycloak/MinIO theo đề vẫn giữ riêng.
 
 Các artifact dùng ngay: [README](README.md), [báo cáo PDF local](report/BaoCao_Local_521H0092.pdf), [DOCX](report/BaoCao_Local_521H0092.docx), [video local](report/Demo_Local_521H0092.webm), [trang xem video](report/Demo_Local_521H0092.html), [ảnh/log](evidence/local/).
 
@@ -162,7 +162,7 @@ Chỉ dẫn mới nhất: mỗi chức năng một branch riêng. Bảng dưới
 | Avatar / tài liệu / DNS | feat/storage-dns-extensions | CHUA_LAM | E05/E06; PDF cuối upload lại sau cập nhật báo cáo |
 | Web metrics / dashboard | feat/observability-extensions | CHUA_LAM | E07/E08 với dữ liệu thật |
 | Round robin | feat/round-robin-balancing | CHUA_LAM | E10, giữ các route/metrics cũ đạt |
-| E-learning demo | feat/elearning-web-demo | CHUA_LAM | Build source đã khảo sát; bước tích hợp cần UI/data runtime và môi trường riêng |
+| E-learning demo | feat/elearning-web-demo | DAT | evidence/local/elearning-demo.json; elearning-persistence.json; ảnh giao diện hai vai trò và tạo khóa học |
 | Kiểm thử / image release | test/local-release-readiness; chore/local-release-images | CHUA_LAM | Regression, persistence, dựng lại, Hub tag/digest cuối |
 | Hồ sơ local cuối | docs/final-local-delivery | CHUA_LAM | Báo cáo/video/ảnh/log/tracker phản ánh bản release |
 | Duyệt local trước AWS | Phụ thuộc người dùng | CHO_THONG_TIN | Chỉ yêu cầu duyệt sau khi có bộ bàn giao local cụ thể |

@@ -13,6 +13,6 @@
     "source_commit": "9e9ebd539c7f08092ea6855c9aceafe645bd28e0",
     "alternative_branch": "management_system",
     "alternative_commit": "9eccf4771123d207a3b25f11347cc63d79cfdb4e",
-    "status": "web-build-passed-data-runtime-unverified"
+    "status": "local-emulator-demo-verified"
   }
 }

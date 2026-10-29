@@ -10,6 +10,35 @@ x-service-defaults: &service-defaults
       max-file: "3"
 
 services:
+  elearning-web-server:
+    <<: *service-defaults
+    build: ./elearning-web
+    image: ${DOCKERHUB_USERNAME:-katie217}/myminicloud-elearning:${IMAGE_TAG:-local}
+    container_name: elearning-web-server
+    depends_on:
+      firebase-emulator-server:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1/"]
+      interval: 10s
+      timeout: 3s
+      retries: 12
+
+  firebase-emulator-server:
+    <<: *service-defaults
+    build: ./firebase-emulator
+    image: ${DOCKERHUB_USERNAME:-katie217}/myminicloud-firebase:${IMAGE_TAG:-local}
+    container_name: firebase-emulator-server
+    ports: ["127.0.0.1:9099:9099", "127.0.0.1:8180:8180", "127.0.0.1:9199:9199"]
+    volumes: ["firebase-data:/data"]
+    stop_grace_period: 60s
+    healthcheck:
+      test: ["CMD", "node", "/app/healthcheck.js"]
+      interval: 10s
+      timeout: 5s
+      start_period: 60s
+      retries: 18
+
   web-frontend-server:
     <<: *service-defaults
     build: ./web-frontend-server
@@ -248,6 +277,7 @@ services:
       retries: 6
 
 volumes:
+  firebase-data:
   db-data:
   keycloak-data:
   minio-data:
