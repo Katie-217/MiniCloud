@@ -1,5 +1,7 @@
 # Bảng theo dõi output MyMiniCloud
 
+> **Rà soát 02/11/2026:** bảng R/E hiện có 14 nhóm bắt buộc DAT và 10 mở rộng DAT theo minh chứng ngày 29/10, baseline `fefd263`. Docker engine hiện chưa kết nối được nên runtime hôm nay là NOT_RUN. Một số đoạn tổng quan/kế hoạch bên dưới còn cũ; giao G01 đồng bộ, G02 cập nhật báo cáo, G03 quay video và G04 tổng hợp theo [BAN_GIAO_GEMINI.md](BAN_GIAO_GEMINI.md). Codex review/test trước khi tích hợp branch Gemini. AWS vẫn chờ xác nhận local của người dùng.
+
 Cập nhật lần đầu: **26/10/2026**, cập nhật kế hoạch **27/10/2026**. Nguồn yêu cầu: `Báo Cáo Cuối Kỳ.docx.pdf`. Tiêu chí theo trang: `KE_HOACH_MINICLOUD_2_NGAY.md`; thứ tự triển khai hiện hành: [KE_HOACH_HOAN_THIEN_LOCAL.md](KE_HOACH_HOAN_THIEN_LOCAL.md). Kế hoạch bắt buộc cũ lưu giai đoạn nền tảng đã thực hiện.
 
 ## 1. Tổng quan hiện tại

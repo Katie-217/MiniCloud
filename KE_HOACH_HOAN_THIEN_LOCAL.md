@@ -1,5 +1,7 @@
 # Kế hoạch hoàn thiện local trước khi thuê EC2
 
+> **Điều phối mới 02/11/2026:** Codex làm leader/tester, Gemini thực hiện từng task theo [BAN_GIAO_GEMINI.md](BAN_GIAO_GEMINI.md). Baseline `fefd263` có minh chứng 29/10: 14/18 nhóm tổng thể DAT, 10/10 mở rộng, 17 container/9 vai trò; chưa chạy lại runtime 02/11 vì Docker engine chưa sẵn sàng. Ưu tiên còn lại: G01 đồng bộ trạng thái → G02 báo cáo → G03 video → G04 tổng hợp → Codex QA cuối → người dùng kiểm tra → AWS. Nội dung kế hoạch 27/10 bên dưới có phần chưa đồng bộ (0/10, chưa tích hợp E-learning); G01 phải sửa các đoạn trạng thái hiện hành đó, giữ nhật ký lịch sử.
+
 Cập nhật: **27/10/2026**. Nguồn tiêu chí: `Báo Cáo Cuối Kỳ.docx.pdf`, đối chiếu trang và chi tiết tại `KE_HOACH_MINICLOUD_2_NGAY.md`. Trạng thái kiểm thử nằm trong `TIEN_DO_OUTPUT.md`.
 
 ## 1. Đích bàn giao và thứ tự

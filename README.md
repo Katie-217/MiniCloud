@@ -1,114 +1,70 @@
-# MiniCloud
-xây dựng hệ thống Cloud thu nhỏ (MyMiniCloud) gồm 9 loại máy chủ cơ bản, mô phỏng các thành phần trong hạ tầng của một Cloud Platform (như AWS, Azure, GCP).
+# MyMiniCloud
 
-Nhóm: **Võ Thị Thiên Kim — 521H0092**, **Diệp Yến Nhi — chờ MSSV**.
+Cloud thu nhỏ theo đề cuối kỳ: **9 vai trò máy chủ / 17 container**, network `cloud-net`, **10 mục mở rộng** và ứng dụng E-learning tái sử dụng. Nhóm: **Võ Thị Thiên Kim — 521H0092**, **Diệp Yến Nhi — chờ bổ sung MSSV**.
 
-Ưu tiên hiện tại: hoàn thành và kiểm thử phần bắt buộc trên local. AWS chờ thông tin từ người dùng; các mục mở rộng làm sau phần bắt buộc.
+Mốc kiểm thử đã lưu: **29/10/2026**, 27 bước chức năng/UI đạt. Rà soát ngày **02/11/2026**: Docker engine chưa chạy nên chưa xác nhận lại runtime; báo cáo/video và tracker cần đồng bộ theo bản cuối. **AWS chỉ triển khai sau khi người dùng xác nhận local.** [Trạng thái output](TIEN_DO_OUTPUT.md), [kế hoạch bàn giao Gemini](BAN_GIAO_GEMINI.md).
 
-## Chuẩn bị
+## Chạy release
 
-Docker Desktop dùng Linux containers, Docker Compose v2, Git và Python 3.11+ cho các script quản lý/kiểm thử.
+Cần Docker Desktop Linux engine, Compose v2 và Python 3.11+. Chạy trong PowerShell tại thư mục repo:
 
 ```powershell
-python scripts/setup.py
 python -m venv .venv
 .venv/Scripts/python -m pip install -r scripts/requirements-dev.txt
-docker compose config --quiet
+.venv/Scripts/python -m playwright install chromium
+.venv/Scripts/python scripts/run_release.py --verify
 ```
 
-Mật khẩu local sinh ngẫu nhiên trong `.env`, không commit file này. Không ghi đè `.env` đã có khi chạy lại setup.
+Nếu đã có môi trường thì bỏ qua bước tạo/cài đặt. Script tạo `.env` ngẫu nhiên nếu chưa có, giữ file đã có; kéo **17 runtime image ghim digest**, không build source. Lần đầu dùng `--verify` để thiết lập và kiểm tra đủ dữ liệu demo. Lần sau chỉ mở lại: `.venv/Scripts/python scripts/run_release.py`. Không cần Flutter để chạy release.
 
-## Tài liệu và tiến độ
+Release **local-20261029.1** có 6 image tùy chỉnh: Web/App/MinIO/E-learning/Firebase và tools (5 loại runtime + công cụ). Manifest/SHA256: [release-images.json](release-images.json), [Compose release](docker-compose.release.yml), [Docker Hub katie217](https://hub.docker.com/u/katie217).
 
-- [Yêu cầu theo PDF](KE_HOACH_MINICLOUD_2_NGAY.md)
-- [Thứ tự triển khai và branch](KE_HOACH_TRIEN_KHAI_BAT_BUOC.md)
-- [Output đã đạt, cần fix, chưa làm](TIEN_DO_OUTPUT.md)
+Mật khẩu đọc từ `.env` local, khóa mẫu ở [.env.example](.env.example). Không commit bí mật/dữ liệu volume; không dùng `docker compose down -v` để sửa lỗi thông thường.
 
-Mỗi nhóm có branch riêng; mỗi chức năng/output có commit nhỏ, thông điệp tiếng Anh theo `type: summary`.
+## Giao diện
 
-## Khởi động toàn hệ thống local
-
-```powershell
-docker compose up -d --build --wait
-docker build -t myminicloud-tools:local tools
-.venv/Scripts/python scripts/check_all.py --screenshots
-```
-
-Lần build MinIO đầu tải source chính thức và compile Go nên có thể mất vài phút. Tag nguồn và SHA256 archive đã ghim trong Dockerfile. Có **9 loại server / 10 container thường trực**; container công cụ chỉ chạy tạm khi kiểm thử.
-
-| Dịch vụ | URL / cổng host | Thông tin đăng nhập trong `.env` |
+| Chức năng | URL | Tài khoản / khóa .env |
 |---|---|---|
-| Gateway Web | http://localhost/ | — |
-| Web trực tiếp / Blog | http://localhost:8080/ và http://localhost:8080/blog/ | — |
-| API trực tiếp | http://localhost:8085/hello | — |
-| API qua proxy | http://localhost/api/hello ; http://localhost/api/notes | — |
-| MariaDB | 127.0.0.1:3306 hoặc exec trong container | MARIADB_USER / MARIADB_PASSWORD |
-| Keycloak qua proxy | http://localhost/auth/admin/master/console/ | KEYCLOAK_ADMIN / KEYCLOAK_ADMIN_PASSWORD |
-| Keycloak trực tiếp | http://localhost:8081/auth/admin/master/console/ | Cùng tài khoản trên |
+| Portal, Blog, sinh viên, API bảo vệ, cân bằng tải | http://localhost/ | sv01/sv02 + KEYCLOAK_TEST_PASSWORD cho form bảo vệ |
+| API | http://localhost/api/hello ; http://localhost/api/student ; http://localhost/student/ | /api/secure cần token |
+| SQL students | http://localhost/api/students-db | 3 SQL; /student có 5 JSON riêng |
+| Keycloak admin | http://localhost/auth/admin/master/console/ | KEYCLOAK_ADMIN / KEYCLOAK_ADMIN_PASSWORD |
 | MinIO Console | http://localhost:9001/ | MINIO_ROOT_USER / MINIO_ROOT_PASSWORD |
-| MinIO S3 API | http://localhost:9000/ | Cùng thông tin MinIO |
-| Bind9 | UDP/TCP 1053 → 53 | Không cần tài khoản |
-| Prometheus | http://localhost:9090/targets | — |
-| Grafana | http://localhost:3000/d/node-exporter-full/node-exporter-full | GRAFANA_ADMIN_USER / GRAFANA_ADMIN_PASSWORD |
-| Node Exporter | http://localhost:9100/metrics | — |
+| Avatar public | http://localhost:9000/profile-pics/avatar.jpg | Chữ K; documents PDF riêng tư |
+| Prometheus | http://localhost:9090/targets | Job node và web UP |
+| Grafana health | http://localhost:3000/d/system-health-521h0092 | GRAFANA_ADMIN_USER / GRAFANA_ADMIN_PASSWORD |
+| Grafana logs | http://localhost:3000/d/minicloud-service-logs | Cùng tài khoản Grafana |
+| E-learning | http://localhost/elearning/ | instructor@example.test / student@example.test; ELEARNING_INSTRUCTOR_PASSWORD / ELEARNING_STUDENT_PASSWORD |
 
-Kết quả đã kiểm chứng: Home/Blog 200; hello trực tiếp/proxy đúng JSON; DB có seed; admin Keycloak và sv01; MinIO upload/download khớp bytes; DNS đúng IP mẫu; Prometheus UP; Grafana CPU/RAM/Network; gateway Web/App/Auth; ping 10 service; volume giữ dữ liệu sau recreate. Log và ảnh cụ thể nằm ở `evidence/local/`.
+Cổng trực tiếp: Web8080, App8085, Keycloak8081, Bind9 UDP/TCP1053. MariaDB3306, NodeExporter9100, Loki3100, Alloy12345, Firebase9099/8180/9199 bind loopback. **[Hướng dẫn từng bước và ảnh cần chụp](HUONG_DAN_TEST_LOCAL.md)**.
 
-## Chạy lại từng nhóm kiểm thử
+## Kiểm thử và phạm vi
 
-```powershell
-.venv/Scripts/python scripts/check_web.py --blog
-.venv/Scripts/python scripts/check_app.py --proxy
-.venv/Scripts/python scripts/check_database.py
-.venv/Scripts/python scripts/check_app_database.py
-.venv/Scripts/python scripts/check_auth.py
-.venv/Scripts/python scripts/check_storage.py
-.venv/Scripts/python scripts/check_dns.py
-.venv/Scripts/python scripts/check_monitoring.py
-.venv/Scripts/python scripts/check_grafana.py
-.venv/Scripts/python scripts/check_gateway.py
-.venv/Scripts/python scripts/check_network.py
-.venv/Scripts/python scripts/check_stack.py
-```
+`run_release.py --verify` chạy 27 bước chức năng/UI, core persistence, hai vai trò E-learning, Firebase persistence và Loki persistence. [Minh chứng](evidence/local/evidence.html), [log 29/10](evidence/local/final-verification-20261029.log). Không dừng container ngoài project hoặc xóa volume.
 
-`check_auth.py` tạo user sv01 nếu chưa có, `check_storage.py` upload lại file HTML demo. Các script không xóa volume hay dừng project khác.
+CPU/RAM phản ánh Linux VM Docker Desktop; mạng là namespace Node Exporter. Chưa đo riêng từng container. DNS lab 10.10.10.x là bản ghi theo đề, khác Docker DNS kết nối service. E-learning dùng Firebase Emulator `demo-minicloud`, dữ liệu giả; hai vai trò, khóa học, số ghi danh/F5 đã thử, chức năng khác của repo gốc chưa được xác nhận.
 
-Kiểm chứng dữ liệu bền vững:
+## Build source khi phát triển
+
+Release không cần bước này. Nếu thay E-learning, dùng Flutter **3.35.7**; script build trong thư mục tạm ASCII để tránh lỗi đường dẫn Unicode Windows:
 
 ```powershell
-.venv/Scripts/python scripts/check_persistence.py
+.venv/Scripts/python scripts/setup.py
+.venv/Scripts/python scripts/build_elearning.py
+docker compose build
+docker build -t myminicloud-tools:local tools
+docker compose up -d --wait
+.venv/Scripts/python scripts/check_all.py --screenshots
+.venv/Scripts/python scripts/check_elearning.py
 ```
 
-Lệnh này tạo marker kiểm chứng và recreate đúng 5 service lưu dữ liệu của MyMiniCloud, có gián đoạn ngắn; không xóa named volume. Kết quả trong `R12-persistence.json`.
+MinIO build source chính thức ghim tag/checksum, giữ AGPL license. E-learning provenance/bản vá SDK: [README riêng](elearning-web/README.md), [provenance](elearning-web/provenance.json). Không push ngược repo ứng dụng gốc.
 
-## Báo cáo, ảnh và video
+## Hồ sơ
 
-- [Báo cáo local PDF](report/BaoCao_Local_521H0092.pdf), [DOCX](report/BaoCao_Local_521H0092.docx), [source Markdown](report/BaoCao_Local_521H0092.md).
-- [Video walkthrough local](report/Demo_Local_521H0092.webm): không có giọng đọc, có chú thích từng chương; trình bày các kết quả thực tế.
-- [Ảnh/log local](evidence/local/) và [trang xem kết quả lệnh](evidence/local/evidence.html).
-- [Docker Hub Web image](https://hub.docker.com/r/katie217/myminicloud-web), tag `1.0.0`; digest trong `evidence/local/R13-dockerhub.json`.
+- [Trạng thái R01–R18, E01–E10](TIEN_DO_OUTPUT.md)
+- [Kế hoạch local](KE_HOACH_HOAN_THIEN_LOCAL.md), [đối chiếu PDF](KE_HOACH_MINICLOUD_2_NGAY.md)
+- [Báo cáo PDF](report/BaoCao_Local_521H0092.pdf), [DOCX](report/BaoCao_Local_521H0092.docx), [Markdown](report/BaoCao_Local_521H0092.md) — đang chờ cập nhật theo bản 17 container
+- [Video](report/Demo_Local_521H0092.webm), [trang xem](report/Demo_Local_521H0092.html) — đang chờ quay lại bản cuối
 
-Tạo lại tài liệu khi có thay đổi kết quả:
-
-```powershell
-.venv/Scripts/python scripts/collect_logs.py
-.venv/Scripts/python scripts/capture_evidence.py
-.venv/Scripts/python scripts/record_demo.py
-.venv/Scripts/python scripts/build_report.py
-```
-
-Nếu chưa có browser dùng cho screenshot/video: `.venv/Scripts/python -m playwright install chromium`.
-
-## Phần đang chờ
-
-AWS EC2 chưa thực hiện theo yêu cầu người dùng. Hồ sơ hiện là **bản local**, cần bổ sung EC2/public IP và ảnh/video cloud trước khi đánh dấu toàn bộ phần bắt buộc hoàn tất. MSSV của Diệp Yến Nhi chưa được cung cấp. Các mục mở rộng hiện **0/10**.
-
-Giới hạn monitoring: số liệu CPU/RAM của Linux VM Docker Desktop, network theo namespace exporter; chưa có số liệu từng container hoặc toàn bộ Windows. Một số panel tùy chọn (ví dụ Root FS) có thể N/A. Grafana đang hiển thị metrics Prometheus; chưa triển khai Loki/logging tập trung.
-
-## Dừng project
-
-```powershell
-docker compose stop
-```
-
-Dữ liệu vẫn được giữ. Chỉ thao tác các service của project này; tránh `down -v` nếu muốn giữ dữ liệu demo.
+Mỗi chức năng một branch; commit tiếng Anh `type: summary` với 4–5 từ sau tiền tố. Gemini bàn giao branch/commit để Codex kiểm thử trước khi tích hợp main.

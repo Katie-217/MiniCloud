@@ -10,6 +10,8 @@
 
 ## Git và commit theo yêu cầu người dùng
 
+- Theo chỉ dẫn ngày 02/11/2026: Codex là leader/tester, Gemini thực hiện task do người dùng chuyển prompt. Dùng `BAN_GIAO_GEMINI.md` làm kế hoạch bàn giao. Gemini chỉ làm task được giao, không tự merge/cherry-pick/push main hoặc chuyển task tiếp theo; Codex review và kiểm thử độc lập trước khi tích hợp. Không để hai công cụ cùng sửa workspace hay chạy test recreate đồng thời.
+
 - Theo chỉ dẫn mới nhất: mỗi chức năng có một branch riêng; E01–E10 tách thành 10 branch, không gom nhiều chức năng độc lập chung branch. Các thay đổi, kiểm thử và minh chứng liên quan chức năng đó được commit trong branch tương ứng.
 - Mỗi thay đổi chức năng hoặc mỗi output hoàn thành có một commit riêng; không gom nhiều chức năng độc lập vào một commit lớn.
 - Commit message dùng **tiếng Anh**, ngắn gọn, đúng ý chính. Định dạng: `<type>: <English summary of 4–5 words>`. Số từ tính phần sau tiền tố; dùng `feat`, `fix`, `chore`, `test`, `docs` phù hợp.
