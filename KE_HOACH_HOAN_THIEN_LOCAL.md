@@ -1,6 +1,6 @@
 # Kế hoạch hoàn thiện local trước khi thuê EC2
 
-> **Điều phối mới 02/11/2026:** Codex làm leader/tester, Gemini thực hiện từng task theo [BAN_GIAO_GEMINI.md](BAN_GIAO_GEMINI.md). Baseline `fefd263` có minh chứng 29/10: 14/18 nhóm tổng thể DAT, 10/10 mở rộng, 17 container/9 vai trò; chưa chạy lại runtime 02/11 vì Docker engine chưa sẵn sàng. Ưu tiên còn lại: G01 đồng bộ trạng thái → G02 báo cáo → G03 video → G04 tổng hợp → Codex QA cuối → người dùng kiểm tra → AWS. Kế hoạch này được đồng bộ ở task G01: tách rõ các việc đã hoàn thành (E01–E10, E-learning, logging, release) khỏi các việc còn lại (G01–G04, QA, duyệt local và AWS).
+> **Điều phối mới 02/11/2026:** Codex làm leader/tester, Gemini thực hiện từng task theo [BAN_GIAO_GEMINI.md](BAN_GIAO_GEMINI.md). Baseline `fefd263` có minh chứng 29/10: 14/18 nhóm tổng thể DAT, 10/10 mở rộng, 17 container/9 vai trò. Tại lần rà soát ban đầu ngày 02/11, Docker engine chưa kết nối; phiên review sau đó của Codex ghi nhận Docker 29.0.1 và 17 container đều đang Up, tuy nhiên chưa chạy lại full suite mới nên tiếp tục giữ nguyên giá trị minh chứng lịch sử ngày 29/10. Ưu tiên còn lại: G01 đồng bộ trạng thái → G02 báo cáo → G03 video → G04 tổng hợp → Codex QA cuối → người dùng kiểm tra → AWS. Kế hoạch này được đồng bộ ở task G01: tách rõ các việc đã hoàn thành (E01–E10, E-learning, logging, release) khỏi các việc còn lại (G01–G04, QA, duyệt local và AWS).
 
 Cập nhật lần đầu: **27/10/2026**, đồng bộ trạng thái: **02/11/2026**. Nguồn tiêu chí: `Báo Cáo Cuối Kỳ.docx.pdf`, đối chiếu trang và chi tiết tại `KE_HOACH_MINICLOUD_2_NGAY.md`. Trạng thái kiểm thử cập nhật trong [TIEN_DO_OUTPUT.md](TIEN_DO_OUTPUT.md).
 
@@ -12,7 +12,7 @@ Cập nhật lần đầu: **27/10/2026**, đồng bộ trạng thái: **02/11/2
 4. Người dùng kiểm tra bản cuối, xem bảng đã đạt/cần fix/chưa làm và xác nhận local đạt.
 5. Sau xác nhận đó mới triển khai AWS EC2 Ubuntu; kiểm thử public IP và bổ sung hồ sơ cloud.
 
-Hiện tại theo baseline ngày 29/10 (`fefd263`): đã có **14/18 nhóm bắt buộc đạt** và **10/10 mở rộng đạt** theo minh chứng lưu tại `evidence/local/`. Kiến trúc hoàn chỉnh gồm **17 container / 9 vai trò server / 8 named volume**, 6 custom image trên Docker Hub và release ghim digest `local-20261029.1`. R14 chưa đạt (AWS chờ người dùng xác nhận local trước); R16–R18 giữ trạng thái `CHO_KIEM_THU` (báo cáo và video đang cập nhật ở task G02/G03, phần cloud còn thiếu). Ngày 02/11 Docker engine chưa kết nối được nên runtime hôm nay là NOT_RUN, giữ nguyên kết quả lịch sử 29/10. Hoàn tất local không đồng nghĩa hoàn tất toàn bộ đề.
+Hiện tại theo baseline ngày 29/10 (`fefd263`): đã có **14/18 nhóm bắt buộc đạt** và **10/10 mở rộng đạt** theo minh chứng lưu tại `evidence/local/`. Kiến trúc hoàn chỉnh gồm **17 container / 9 vai trò server / 8 named volume** (với 3 container Web riêng biệt: container Web chính `web-frontend-server` và hai replica `web-frontend-server1`, `web-frontend-server2`; các service/container có restart policy `unless-stopped`; 8 named volume lưu trữ dữ liệu bền vững), 6 custom image trên Docker Hub và release ghim digest `local-20261029.1`. R14 chưa đạt (AWS chờ người dùng xác nhận local trước); R16–R18 giữ trạng thái `CHO_KIEM_THU` (báo cáo và video đang cập nhật ở task G02/G03, phần cloud còn thiếu). Lần rà soát ban đầu Docker engine chưa kết nối; phiên review Codex ghi nhận Docker 29.0.1 và 17 container Up nhưng chưa có kết quả full suite mới, do đó giữ nguyên kết quả lịch sử 29/10. Hoàn tất local không đồng nghĩa hoàn tất toàn bộ đề.
 
 ## 2. Chọn ứng dụng demo từ phần đã có
 
@@ -35,7 +35,7 @@ Nhánh `feat/elearning-web-demo` đã hoàn tất tích hợp vào stack: Flutte
 ## 3. Kiến trúc cần giữ đúng đề
 
 - Giữ đủ 9 vai trò server theo đề:
-  1. **Web Frontend Server**: Nginx tĩnh + 3 bài blog + demo portal; 2 replica (`web-frontend-server1`, `web-frontend-server2`) và alias `web-frontend-server`.
+  1. **Web Frontend Server**: Nginx tĩnh + 3 bài blog + demo portal; gồm 3 container Web riêng biệt: container Web chính (`web-frontend-server`, host port 8080) và hai replica (`web-frontend-server1`, `web-frontend-server2`) phục vụ cân bằng tải round robin qua API Gateway.
   2. **Application Backend Server**: Flask REST API (`application-backend-server`), host port 8085; cung cấp `/hello`, `/notes`, `/student`, `/secure`.
   3. **Relational Database Server**: MariaDB (`relational-database-server`), volume `db-data`; lưu `minicloud.notes` và `studentdb.students`.
   4. **Authentication & Identity Server**: Keycloak (`authentication-identity-server`), host port 8081, volume `keycloak-data`; realm `realm_521H0092`, user sv01/sv02, public client `flask-app`.
@@ -51,7 +51,9 @@ Nhánh `feat/elearning-web-demo` đã hoàn tất tích hợp vào stack: Flutte
   - `firebase-emulator-server`: Firebase Auth & Firestore Emulator, volume `firebase-data`.
   - `logging-loki-server`: Grafana Loki lưu trữ log dịch vụ tập trung, volume `loki-data`.
   - `logging-alloy-server`: Grafana Alloy thu thập Docker logs, volume `alloy-data`.
-- 8 named volume cấu hình `restart: unless-stopped`: `db-data`, `keycloak-data`, `minio-data`, `prometheus-data`, `grafana-data`, `firebase-data`, `loki-data`, `alloy-data`.
+- Cấu hình restart và lưu trữ:
+  - Các service/container được thiết lập restart policy `restart: unless-stopped`.
+  - Hệ thống sử dụng 8 named volume để lưu trữ dữ liệu bền vững qua các lần recreate: `db-data`, `keycloak-data`, `minio-data`, `prometheus-data`, `grafana-data`, `firebase-data`, `loki-data`, `alloy-data`.
 - Mạng: `cloud-net` (bridge).
 
 ## 4. Phân công và lộ trình thực hiện
@@ -77,7 +79,7 @@ Mỗi chức năng đã được phát triển trên một branch riêng bắt �
 | Flutter E-learning demo | `feat/elearning-web-demo` | `ec74016` | DAT — `evidence/local/elearning-demo.json`, persistence |
 | Centralized service logs | `feat/centralized-service-logs` | `a249748` | DAT — `evidence/local/service-logging.json` |
 | Release image ghim digest | `chore/local-release-images` | `de99b36` | DAT — `evidence/local/release-images.json` |
-| Baseline kiểm thử local | `test/final-local-verification` | `fefd263` | DAT — `evidence/local/local-suite.json` (27 bước đạt) |
+| Baseline kiểm thử local | `test/final-local-verification` | `fefd263` | DAT — bộ 27 bước chạy bằng `python scripts/check_all.py --screenshots` (`evidence/local/local-suite.json`); các bài test persistence và E-learning là kiểm tra bổ sung riêng |
 | Bàn giao điều phối Codex | `docs/gemini-work-handoff` | `fd0b4e6` | DAT — Kế hoạch bàn giao và audit |
 
 ### 4.2. Kế hoạch công việc còn lại (G01–G04, Codex QA, Duyệt local và AWS)
@@ -86,11 +88,11 @@ Theo [BAN_GIAO_GEMINI.md](BAN_GIAO_GEMINI.md), Gemini thực hiện tuần tự 
 
 | Thứ tự / Task | Branch mới | Phạm vi thực hiện | Tiêu chí nghiệm thu |
 |---|---|---|---|
-| G01 Đồng bộ trạng thái | `docs/reconcile-local-status` | `TIEN_DO_OUTPUT.md`, `KE_HOACH_HOAN_THIEN_LOCAL.md`, `handoff/G01.md` | Đếm DAT đúng 14 R / 10 E; R14 chờ, R16–R18 CHO_KIEM_THU; xóa mâu thuẫn số container/0/10; dẫn chứng FIX-005; UTF-8 và git diff --check đạt |
+| G01 Đồng bộ trạng thái | `docs/reconcile-local-status` | `TIEN_DO_OUTPUT.md`, `KE_HOACH_HOAN_THIEN_LOCAL.md`, `handoff/G01.md` | Đếm DAT đúng 14 R / 10 E; R14 chờ, R16–R18 CHO_KIEM_THU; mô tả đúng cụm 3 container Web (Web chính + 2 replica) và 8 named volume; dẫn chứng FIX-005; UTF-8 và git diff --check đạt |
 | G02 Báo cáo release cuối | `docs/refresh-local-report` | `report/BaoCao_Local_521H0092.md`, PDF/DOCX/HTML, `report/architecture.*`, `scripts/build_report.py` | Đủ 5 chương + phụ lục theo PDF trang 3; kiến trúc đúng 17 container/9 vai trò/8 volume; nhúng ảnh thật đọc được từng server; verify hash PDF MinIO |
 | G03 Video local release | `docs/refresh-local-video` | `scripts/record_demo.py`, `report/Demo_Local_521H0092.webm/.html`, `evidence/local/demo-chapters.json` | Video 17 container xem được, đủ cảnh E-learning, logging, OIDC secure (không lộ secret); sinh chapters JSON từ cảnh quay thực tế; R17 giữ CHO_KIEM_THU |
 | G04 Tổng hợp đầu ra | `docs/local-output-handoff` | Tạo `TONG_HOP_OUTPUT_LOCAL.md`; cập nhật `README.md`, `HUONG_DAN_TEST_LOCAL.md`, tracker | Danh mục toàn bộ output, bảng URL/tài khoản (không mật khẩu), hướng dẫn chạy release, link và digest |
-| Codex QA cuối | `test/final-local-handoff` | Codex chạy độc lập suite 27 bước, persistence test, hash PDF, Docker Hub digest | Toàn bộ 27 bước đạt, volume giữ dữ liệu, không hồi quy; Docker engine sẵn sàng |
+| Codex QA cuối | `test/final-local-handoff` | Codex chạy độc lập suite 27 bước (`python scripts/check_all.py --screenshots`), persistence test, luồng E-learning, hash PDF, Docker Hub digest | Toàn bộ 27 bước đạt, volume giữ dữ liệu qua recreate, E-learning hoạt động, không hồi quy |
 | Người dùng kiểm tra | Phụ thuộc người dùng | Xem bảng output, kiểm tra UI bản cuối | Người dùng xác nhận local đạt trước khi chuyển sang AWS |
 | L10 Triển khai AWS EC2 | `chore/cloud-deployment` | Thuê EC2 Ubuntu, chạy stack, test public IP, bổ sung hồ sơ cloud R14/R16–R18 | Full stack EC2, public IP, hoàn thiện R14, cập nhật báo cáo/video cloud |
 
@@ -107,13 +109,13 @@ Theo [BAN_GIAO_GEMINI.md](BAN_GIAO_GEMINI.md), Gemini thực hiện tuần tự 
 | E07 / 25 | Job web đúng target web-frontend-server:80, UP, metrics thật | `evidence/local/E07-web-metrics.json`; Targets screenshot; Nginx exporter |
 | E08 / 25–26 | System Health of 521H0092, CPU%, Memory, Network có dữ liệu; export/lưu dashboard | `evidence/local/E08-system-health.json` và PNG; dashboard JSON |
 | E09 / 26 | /student/ qua Nginx trả đúng JSON /student của Flask | `evidence/local/E09-student-proxy.json` |
-| E10 / 26–27 | 2 Web, round robin, kết quả luân phiên có nhận diện backend | `evidence/local/E10-round-robin.json`; upstream config; xử lý FIX-005 |
+| E10 / 26–27 | 2 Web replica (thuộc cụm 3 container Web), round robin, kết quả luân phiên có nhận diện backend | `evidence/local/E10-round-robin.json`; upstream config; xử lý FIX-005 |
 
 IP DNS 10.10.10.x là bản ghi ví dụ của đề trong lab Bind9, không phải Docker IP thực. Kiểm tra DNS xác minh dig đạt; kết nối liên dịch vụ dùng mạng nội bộ `cloud-net` và service name Docker.
 
 ## 6. Kiểm thử bản local cuối và chuẩn bị EC2 khi chưa thuê server
 
-- Bộ kiểm thử 27 bước (`scripts/check_stack.py`) kiểm tra toàn bộ luồng chức năng, UI, OIDC, DNS, MinIO, metrics, logging và cân bằng tải.
+- Bộ kiểm thử tích hợp 27 bước chạy bằng lệnh `python scripts/check_all.py --screenshots` kiểm tra toàn bộ luồng chức năng, UI, OIDC, DNS, MinIO, metrics, logging và cân bằng tải. Các bài kiểm tra persistence dữ liệu (Core5, Firebase, Loki) và luồng E-learning demo là các bài kiểm tra bổ sung độc lập, không nằm hết trong bộ 27 bước này.
 - Test persistence: xác minh dữ liệu MariaDB, Keycloak, MinIO, Prometheus, Grafana, Firebase, Loki sau khi recreate container; không dùng `down -v` hoặc xóa volume dữ liệu.
 - Tách bạch minh chứng: `evidence/local/` lưu kết quả local; `evidence/ec2/` sẽ lưu kết quả chạy trên AWS EC2 sau này; không ghi đè lẫn nhau.
 - Node Exporter trên Docker Desktop đo Linux VM và network theo exporter namespace; các giới hạn đo lường được ghi chú rõ ràng trong hồ sơ.
@@ -130,7 +132,7 @@ IP DNS 10.10.10.x là bản ghi ví dụ của đề trong lab Bind9, không ph�
 | G02 | 2–3 giờ | Báo cáo cuối 5 chương, sơ đồ 17 container/9 vai trò/8 volume, nhúng ảnh thật từng server |
 | G03 | 2–3 giờ | Kịch bản `record_demo.py`, quay video WebM 17 container, chapters JSON |
 | G04 | 1–2 giờ | `TONG_HOP_OUTPUT_LOCAL.md`, cập nhật README và hướng dẫn test |
-| Codex QA cuối | 1–2 giờ | Chạy bộ test độc lập 27 bước, persistence, PDF hash khi Docker engine sẵn sàng |
+| Codex QA cuối | 1–2 giờ | Chạy bộ test độc lập 27 bước (`check_all.py --screenshots`), persistence, PDF hash khi Docker engine sẵn sàng |
 | Duyệt local | Phụ thuộc người dùng | Người dùng kiểm tra giao diện và xác nhận local đạt |
 | L10 (AWS EC2) | 3–4 giờ | Triển khai EC2 Ubuntu sau khi duyệt local, hoàn thiện R14 và hồ sơ cloud |
 
@@ -147,5 +149,5 @@ IP DNS 10.10.10.x là bản ghi ví dụ của đề trong lab Bind9, không ph�
 ## 9. Quy ước theo dõi và commit
 
 - Trạng thái: `CHUA_LAM` → `DANG_LAM` → `CHO_KIEM_THU` → `DAT`; lỗi quan sát được ghi `CAN_FIX`; phụ thuộc bên ngoài ghi `CHO_THONG_TIN`.
-- Commit tiếng Anh, format `<type>: <summary>`, phần summary 4–5 từ sau tiền tố, ví dụ `docs: reconcile current local status`.
+- Commit tiếng Anh, format `<type>: <summary>`, phần summary 4–5 từ sau tiền tố, ví dụ `docs: correct status review findings`.
 - Review diff → kiểm thử liên quan → cập nhật tracker → commit file liên quan; không đưa secrets, file tạm ngoài project hoặc dữ liệu thật vào commit.
