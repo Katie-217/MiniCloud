@@ -183,7 +183,7 @@ Theo [BAN_GIAO_GEMINI.md](BAN_GIAO_GEMINI.md), Gemini thực hiện tuần tự 
 
 | Task / Nhóm | Branch thực thi | Trạng thái | Điều kiện nghiệm thu / Nội dung bàn giao |
 |---|---|---|---|
-| G01 Đồng bộ trạng thái | `docs/reconcile-local-status` | DANG_LAM | Đồng bộ TIEN_DO_OUTPUT.md và KE_HOACH_HOAN_THIEN_LOCAL.md; đếm DAT 14 R / 10 E; R14 chờ, R16–R18 CHO_KIEM_THU; mô tả đúng cụm 3 container Web (Web chính + 2 replica) và 8 named volume; dẫn chứng FIX-005 |
+| G01 Đồng bộ trạng thái | `docs/reconcile-local-status` | DAT | Gemini `b31a1ef`; Codex nghiệm thu 20/20 kiểm tra tài liệu/cấu hình ngày 02/11; 3 finding đã đóng; reviews/G01_ACCEPTANCE.md và G01-acceptance-b31a1ef.json. Không phải lượt chạy mới bộ 27 bước chức năng. |
 | G02 Báo cáo cuối release | `docs/refresh-local-report` | CHUA_LAM | Cập nhật BaoCao_Local_521H0092.md/.pdf/.docx/HTML đủ 5 chương, 17 container/9 vai trò/8 volume, nhúng ảnh thật đọc được từng server; verify hash PDF MinIO |
 | G03 Video local release | `docs/refresh-local-video` | CHUA_LAM | Sửa scripts/record_demo.py quay video WebM 17 container, cảnh E-learning, logging, form secure (không lộ secret); demo-chapters.json đúng cảnh thực tế |
 | G04 Tổng hợp đầu ra | `docs/local-output-handoff` | CHUA_LAM | Tạo TONG_HOP_OUTPUT_LOCAL.md; cập nhật README.md, HUONG_DAN_TEST_LOCAL.md, đồng bộ tracker bản cuối |

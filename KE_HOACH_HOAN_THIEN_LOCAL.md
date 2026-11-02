@@ -1,5 +1,7 @@
 # Kế hoạch hoàn thiện local trước khi thuê EC2
 
+> **G01 đã nghiệm thu:** Codex xác nhận `b31a1ef` đạt 20 kiểm tra tài liệu/cấu hình ngày 02/11; 3 finding của lượt trước đã đóng. Xem [biên bản nghiệm thu](reviews/G01_ACCEPTANCE.md). Task tiếp theo giao Gemini là G02 trên branch `docs/refresh-local-report` từ main mới nhất; chưa chuyển G03 hoặc AWS.
+
 > **Điều phối mới 02/11/2026:** Codex làm leader/tester, Gemini thực hiện từng task theo [BAN_GIAO_GEMINI.md](BAN_GIAO_GEMINI.md). Baseline `fefd263` có minh chứng 29/10: 14/18 nhóm tổng thể DAT, 10/10 mở rộng, 17 container/9 vai trò. Tại lần rà soát ban đầu ngày 02/11, Docker engine chưa kết nối; phiên review sau đó của Codex ghi nhận Docker 29.0.1 và 17 container đều đang Up, tuy nhiên chưa chạy lại full suite mới nên tiếp tục giữ nguyên giá trị minh chứng lịch sử ngày 29/10. Ưu tiên còn lại: G01 đồng bộ trạng thái → G02 báo cáo → G03 video → G04 tổng hợp → Codex QA cuối → người dùng kiểm tra → AWS. Kế hoạch này được đồng bộ ở task G01: tách rõ các việc đã hoàn thành (E01–E10, E-learning, logging, release) khỏi các việc còn lại (G01–G04, QA, duyệt local và AWS).
 
 Cập nhật lần đầu: **27/10/2026**, đồng bộ trạng thái: **02/11/2026**. Nguồn tiêu chí: `Báo Cáo Cuối Kỳ.docx.pdf`, đối chiếu trang và chi tiết tại `KE_HOACH_MINICLOUD_2_NGAY.md`. Trạng thái kiểm thử cập nhật trong [TIEN_DO_OUTPUT.md](TIEN_DO_OUTPUT.md).

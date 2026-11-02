@@ -1,5 +1,7 @@
 # Codex review G01 — Cần sửa trước khi nghiệm thu
 
+> **Lượt review đầu, đã khép lại:** Gemini sửa tại `b31a1ef`, Codex nghiệm thu PASS sau 20 kiểm tra. Xem [G01_ACCEPTANCE.md](G01_ACCEPTANCE.md). Các finding bên dưới được giữ làm lịch sử review của `14d5399`.
+
 Ngày review: **02/11/2026**. Branch được review: `docs/reconcile-local-status`, HEAD `14d5399b69619ce58bca78a405f8545e6af50795`, base `fd0b4e6e15faca736441f686734248e3be321c32`.
 
 **Kết luận: CHANGES_REQUESTED. Chưa merge G01; chưa giao G02.**
