@@ -1,0 +1,96 @@
+{
+  "client_review_date": "2026-11-02",
+  "task": "G01",
+  "reviewer": "Codex",
+  "verdict": "CHANGES_REQUESTED",
+  "base_sha": "fd0b4e6e15faca736441f686734248e3be321c32",
+  "reviewed_head_sha": "14d5399b69619ce58bca78a405f8545e6af50795",
+  "branch": "docs/reconcile-local-status",
+  "checks": {
+    "only_allowed_files": true,
+    "changed_files": [
+      "KE_HOACH_HOAN_THIEN_LOCAL.md",
+      "TIEN_DO_OUTPUT.md",
+      "handoff/G01.md"
+    ],
+    "R_DAT_count": 14,
+    "E_DAT_count": 10,
+    "R14": "CHO_THONG_TIN",
+    "R16_R18": {
+      "R16": "CHO_KIEM_THU",
+      "R17": "CHO_KIEM_THU",
+      "R18": "CHO_KIEM_THU"
+    },
+    "missing_markdown_links": [],
+    "UTF8_readable": true,
+    "history_rows_preserved": true,
+    "no_environment_secret_values_in_changed_files": true,
+    "FIX005_historical_recreate": true,
+    "FIX005_current_regular_test": false,
+    "commit_diff_whitespace_exit": 0,
+    "working_diff_whitespace_exit": 2,
+    "working_tree": [
+      " M handoff/G01.md"
+    ],
+    "compose_config_valid": true,
+    "compose_services": 17,
+    "compose_volumes": 8,
+    "web_is_separate_service": true,
+    "restart_applies_to_all_services": true,
+    "engine_reachable_at_review": true,
+    "engine_version": "29.0.1",
+    "current_project_container_states": [
+      "logging-loki-server: Up 22 minutes",
+      "firebase-emulator-server: Up 22 minutes (healthy)",
+      "monitoring-grafana-dashboard-server: Up 22 minutes (healthy)",
+      "relational-database-server: Up 22 minutes (healthy)",
+      "monitoring-prometheus-server: Up 22 minutes (healthy)",
+      "authentication-identity-server: Up 22 minutes (healthy)",
+      "object-storage-server: Up 22 minutes (healthy)",
+      "logging-alloy-server: Up 22 minutes",
+      "web-frontend-server1: Up 22 minutes (healthy)",
+      "web-frontend-server2: Up 22 minutes (healthy)",
+      "web-frontend-server: Up 22 minutes (healthy)",
+      "api-gateway-proxy-server: Up 22 minutes (healthy)",
+      "elearning-web-server: Up 22 minutes (healthy)",
+      "application-backend-server: Up 22 minutes (healthy)",
+      "internal-dns-server: Up 22 minutes (healthy)",
+      "monitoring-web-exporter-server: Up 22 minutes",
+      "monitoring-node-exporter-server: Up 22 minutes (healthy)"
+    ],
+    "runtime_regression_suite": "NOT_RUN; documentation-only review"
+  },
+  "findings": [
+    {
+      "id": "G01-F01",
+      "severity": "P2",
+      "file": "KE_HOACH_HOAN_THIEN_LOCAL.md",
+      "lines": [
+        116
+      ],
+      "problem": "27-step suite is attributed to scripts/check_stack.py; this script only checks stack state/restart/network.",
+      "expected": "Use scripts/check_all.py --screenshots; list persistence/E-learning checks separately or reference run_release.py --verify."
+    },
+    {
+      "id": "G01-F02",
+      "severity": "P2",
+      "file": "KE_HOACH_HOAN_THIEN_LOCAL.md",
+      "lines": [
+        38,
+        54
+      ],
+      "problem": "web-frontend-server is described as alias; volumes are assigned restart policy. Both conflict with Compose.",
+      "expected": "Describe one separate main Web plus two LB replica containers; all service containers have restart unless-stopped, eight named volumes store data. Fix equivalent tracker text."
+    },
+    {
+      "id": "G01-F03",
+      "severity": "P3",
+      "file": "handoff/G01.md",
+      "lines": [
+        69
+      ],
+      "problem": "Uncommitted extra blank line produces git diff --check failure despite handoff PASS claim.",
+      "expected": "Remove excess final blank line, commit intended remaining edits, and rerun checks before returning clean branch."
+    }
+  ]
+}
