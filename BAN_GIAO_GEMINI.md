@@ -1,6 +1,8 @@
 # Bàn giao Gemini — Codex điều phối và kiểm thử
 
-Ngày rà soát: **02/11/2026**. Workspace: `D:\Điện toán đám mây`. Repo: `Katie-217/MiniCloud`.
+Ngày rà soát nền tảng: **02/11/2026**, bổ sung yêu cầu giao diện **09/11/2026**. Workspace: `D:\Điện toán đám mây`. Repo: `Katie-217/MiniCloud`.
+
+> **Ưu tiên hiện hành:** G01 đã nghiệm thu. Theo yêu cầu mới, giao **G05 Blog card/học thuật → G06 API metrics → G07 dashboard → G08 UI gọi API → G09 release UI**, sau đó mới G02 báo cáo/G03 video/G04 tổng hợp. Chi tiết và căn cứ E-learning: [KE_HOACH_NANG_CAP_GIAO_DIEN.md](KE_HOACH_NANG_CAP_GIAO_DIEN.md). Phiếu giao ngay: [G05_BLOG_CARDS.md](handoff/G05_BLOG_CARDS.md). Các kết quả nền tảng dưới đây là lịch sử, chưa tính UI mới đạt.
 
 ## 1. Phân công và nguyên tắc tích hợp
 
@@ -8,7 +10,7 @@ Ngày rà soát: **02/11/2026**. Workspace: `D:\Điện toán đám mây`. Repo:
 - **Gemini (thực hiện):** chỉ làm task được giao; viết/sửa code hoặc tài liệu, tự chạy kiểm tra phù hợp, commit trong branch task rồi trả kết quả cho Codex. **Không tự merge/cherry-pick/push vào main, không tự chuyển sang task tiếp theo.**
 - **Người dùng:** chuyển prompt và kết quả giữa hai bên, kiểm tra giao diện bản cuối; quyết định thời điểm bắt đầu AWS và bổ sung MSSV Diệp Yến Nhi khi có.
 
-Làm **tuần tự G01 → nghiệm thu → G02 → nghiệm thu → G03 → nghiệm thu → G04 → QA cuối**. Không để hai công cụ cùng sửa workspace hoặc chạy Compose/test làm recreate đồng thời. Mỗi task bắt đầu từ main đã tích hợp task trước; dùng branch riêng. Nếu cần sửa một chức năng runtime, tách task/branch của chính chức năng đó, không đưa vào branch tài liệu.
+Làm tuần tự theo ưu tiên hiện hành ở đầu file; Codex nghiệm thu và tích hợp mỗi task trước khi giao task kế tiếp. Không để hai công cụ cùng sửa workspace hoặc chạy Compose/test làm recreate đồng thời. Mỗi task bắt đầu từ main đã tích hợp task trước; dùng branch riêng. Với G05, tiếp tục branch E01 `feat/personal-blog` sau khi đưa lên main hiện tại bằng fast-forward. Không đưa sửa runtime vào branch tài liệu.
 
 Không yêu cầu người dùng duyệt từng thao tác Git thông thường. Gemini chỉ dừng ở điểm bàn giao để Codex review theo quy trình này. AWS vẫn là cổng riêng, cần người dùng xác nhận local trước.
 
@@ -143,26 +145,26 @@ Codex kiểm tra branch chức năng nào chưa có remote và push branch tươ
 
 ## 9. Prompt dùng cho Gemini
 
-Copy khối dưới và dùng **G01** cho lượt đầu. Các lượt tiếp theo chỉ đổi TASK_ID sau khi Codex đã nghiệm thu và tích hợp lượt trước.
+G01 đã nghiệm thu, không giao lại G01. Prompt thực hiện đầy đủ của **G05** ở [phiếu Blog](handoff/G05_BLOG_CARDS.md). Quy tắc chung khi chuyển task:
 
 ```text
 Bạn là người thực hiện task cho dự án MyMiniCloud; Codex là leader và tester độc lập.
 
 Workspace: D:\Điện toán đám mây
 Repo: https://github.com/Katie-217/MiniCloud
-TASK_ID: G01
+TASK_ID: G05
 
-Đọc AGENTS.md và BAN_GIAO_GEMINI.md trước, sau đó đọc PDF đề, KE_HOACH_MINICLOUD_2_NGAY.md, KE_HOACH_HOAN_THIEN_LOCAL.md, TIEN_DO_OUTPUT.md và source/evidence liên quan. Chỉ làm TASK_ID nêu trên theo phạm vi file, đầu ra và tiêu chí nghiệm thu trong BAN_GIAO_GEMINI.md; không thực hiện toàn bộ kế hoạch một lượt.
+Đọc AGENTS.md, BAN_GIAO_GEMINI.md, KE_HOACH_NANG_CAP_GIAO_DIEN.md và phiếu giao task. Chỉ làm TASK_ID được giao theo phạm vi file, đầu ra và tiêu chí nghiệm thu; không thực hiện toàn bộ kế hoạch một lượt.
 
-Kiểm tra git status, branch và SHA trước khi sửa. Nếu còn thay đổi dở không thuộc bạn, không reset/clean/stash hoặc commit gộp; báo rõ file đang chặn. Bắt đầu branch task từ main mới nhất đã tích hợp task trước, giữ author Git. Không tự merge/cherry-pick/push vào main. Mỗi output liên quan một commit, message tiếng Anh dạng type: summary với 4–5 từ sau tiền tố; chỉ stage file thuộc task. Không chạy script tự động commit/merge main.
+Kiểm tra git status, branch và SHA trước khi sửa. Nếu còn thay đổi dở không thuộc bạn, không reset/clean/stash hoặc commit gộp. Bắt đầu từ main mới nhất đã tích hợp task trước, theo branch mới/branch chức năng được chỉ định trong phiếu, giữ author Git. Không tự merge/cherry-pick/push vào main. Mỗi output liên quan một commit, message tiếng Anh dạng type: summary với 4–5 từ sau tiền tố; chỉ stage file thuộc task. Không chạy script tự động commit/merge main.
 
-Đã có baseline fefd263, 27 bước local đạt ngày 29/10, 10/10 mở rộng, release local-20261029.1 gồm 17 runtime image và 6 custom image. Đây là kết quả lịch sử. Ngày rà soát 02/11 Docker engine chưa kết nối được; không giả vờ vừa test runtime. Không xây lại các chức năng đã có chỉ vì kế hoạch cũ còn ghi 0/10.
+Đã có baseline fefd263, 27 bước local đạt ngày 29/10, 10/10 mở rộng, release local-20261029.1 gồm 17 runtime image và 6 custom image. G01 đã đạt sau đó. Đây là kết quả lịch sử, không phải kết quả UI mới. Xác minh engine tại lúc chạy test, không bịa timestamp/trạng thái. Image source preview và digest release cũ khác nhau; đọc kỹ quy trình build preview trước khi chạy.
 
 Giữ nguyên runtime, cloud-net, route/cổng/volume và release digest, trừ khi task chỉ rõ được sửa. Không down -v/prune/xóa dữ liệu, tác động container ngoài project, dùng Firebase/database thật hoặc truy cập AWS. Không in/commit mật khẩu, token hay key. Avatar chữ K; MSSV Diệp Yến Nhi chờ bổ sung, không chặn kỹ thuật. Dùng PowerShell, curl.exe và kiểm tra file UTF-8 thực tế.
 
-Chạy kiểm tra phù hợp, giữ assertion, không bịa log/ảnh/kết quả. Nếu có lỗi ngoài scope, báo expected/actual và đề xuất task riêng; không sửa lan rộng. G01 làm được khi Docker chưa chạy.
+Chạy kiểm tra phù hợp, giữ assertion, không bịa log/ảnh/kết quả. Nếu có lỗi ngoài scope, báo expected/actual và đề xuất task riêng; không sửa lan rộng. Không đổi số liệu thành mock hoặc sửa test yếu đi để UI đạt.
 
-Kết thúc bằng: task + branch + base/HEAD SHA; file thay đổi; output đã làm; bảng lệnh kiểm tra với PASS/FAIL/NOT_RUN và evidence; hạn chế/chưa làm; commit; điểm Codex cần review. Sau đó dừng chờ Codex nghiệm thu, không làm G02 hoặc tự merge main.
+Kết thúc bằng: task + branch + base/HEAD SHA; source HEAD đã build preview; file thay đổi; output đã làm; bảng lệnh kiểm tra với PASS/FAIL/NOT_RUN và evidence; hạn chế/chưa làm; commit; điểm Codex cần review. Sau đó dừng chờ Codex nghiệm thu, không làm task kế tiếp hoặc tự merge main.
 ```
 
-Khi giao G02/G03/G04: cập nhật TASK_ID và câu cuối theo task tương ứng; mọi quy tắc chung vẫn áp dụng. Khi Gemini trả kết quả, gửi lại Codex **branch/SHA, danh sách file và kết quả kiểm tra** để leader review trên source thật.
+Chỉ đổi TASK_ID và phiếu giao sau khi Codex đã nghiệm thu/tích hợp task trước. Khi Gemini trả kết quả, gửi lại Codex **branch/SHA, danh sách file và kết quả kiểm tra** để leader review trên source thật. G02/G03/G04 vẫn theo tiêu chí cũ nhưng chờ UI release G09.

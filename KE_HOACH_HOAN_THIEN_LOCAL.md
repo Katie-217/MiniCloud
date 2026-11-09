@@ -1,6 +1,6 @@
 # Kế hoạch hoàn thiện local trước khi thuê EC2
 
-> **G01 đã nghiệm thu:** Codex xác nhận `b31a1ef` đạt 20 kiểm tra tài liệu/cấu hình ngày 02/11; 3 finding của lượt trước đã đóng. Xem [biên bản nghiệm thu](reviews/G01_ACCEPTANCE.md). Task tiếp theo giao Gemini là G02 trên branch `docs/refresh-local-report` từ main mới nhất; chưa chuyển G03 hoặc AWS.
+> **Ưu tiên mới 09/11/2026:** hoàn thiện Blog/card, API metrics, dashboard và UI gọi API trước báo cáo/video. Thứ tự **G05 → G06 → G07 → G08 → G09 → G02 → G03 → G04 → QA cuối → người dùng duyệt → AWS**. Xem [kế hoạch UI](KE_HOACH_NANG_CAP_GIAO_DIEN.md) và [phiếu giao G05](handoff/G05_BLOG_CARDS.md). G01 đã nghiệm thu `b31a1ef` sau 20 kiểm tra tài liệu/cấu hình; giữ [biên bản](reviews/G01_ACCEPTANCE.md), không giao lại G01. UI mới chưa triển khai nên không tự thêm trạng thái DAT.
 
 > **Điều phối mới 02/11/2026:** Codex làm leader/tester, Gemini thực hiện từng task theo [BAN_GIAO_GEMINI.md](BAN_GIAO_GEMINI.md). Baseline `fefd263` có minh chứng 29/10: 14/18 nhóm tổng thể DAT, 10/10 mở rộng, 17 container/9 vai trò. Tại lần rà soát ban đầu ngày 02/11, Docker engine chưa kết nối; phiên review sau đó của Codex ghi nhận Docker 29.0.1 và 17 container đều đang Up, tuy nhiên chưa chạy lại full suite mới nên tiếp tục giữ nguyên giá trị minh chứng lịch sử ngày 29/10. Ưu tiên còn lại: G01 đồng bộ trạng thái → G02 báo cáo → G03 video → G04 tổng hợp → Codex QA cuối → người dùng kiểm tra → AWS. Kế hoạch này được đồng bộ ở task G01: tách rõ các việc đã hoàn thành (E01–E10, E-learning, logging, release) khỏi các việc còn lại (G01–G04, QA, duyệt local và AWS).
 
@@ -84,13 +84,18 @@ Mỗi chức năng đã được phát triển trên một branch riêng bắt �
 | Baseline kiểm thử local | `test/final-local-verification` | `fefd263` | DAT — bộ 27 bước chạy bằng `python scripts/check_all.py --screenshots` (`evidence/local/local-suite.json`); các bài test persistence và E-learning là kiểm tra bổ sung riêng |
 | Bàn giao điều phối Codex | `docs/gemini-work-handoff` | `fd0b4e6` | DAT — Kế hoạch bàn giao và audit |
 
-### 4.2. Kế hoạch công việc còn lại (G01–G04, Codex QA, Duyệt local và AWS)
+### 4.2. Kế hoạch công việc hiện hành (bổ sung UI ngày 09/11)
 
-Theo [BAN_GIAO_GEMINI.md](BAN_GIAO_GEMINI.md), Gemini thực hiện tuần tự từng task G01 → G04; Codex review và chạy kiểm thử độc lập trước khi tích hợp từng branch:
+Theo [BAN_GIAO_GEMINI.md](BAN_GIAO_GEMINI.md), G01 đã đạt; Gemini tiếp tục G05 → G06 → G07 → G08, Codex làm G09 rồi quay lại G02/G03/G04. Review và kiểm thử từng task trước khi tích hợp/giao task tiếp theo; không làm hồ sơ cuối dựa trên giao diện còn sắp sửa.
 
-| Thứ tự / Task | Branch mới | Phạm vi thực hiện | Tiêu chí nghiệm thu |
+| Thứ tự / Task | Branch thực thi | Phạm vi thực hiện | Tiêu chí nghiệm thu |
 |---|---|---|---|
 | G01 Đồng bộ trạng thái | `docs/reconcile-local-status` | `TIEN_DO_OUTPUT.md`, `KE_HOACH_HOAN_THIEN_LOCAL.md`, `handoff/G01.md` | Đếm DAT đúng 14 R / 10 E; R14 chờ, R16–R18 CHO_KIEM_THU; mô tả đúng cụm 3 container Web (Web chính + 2 replica) và 8 named volume; dẫn chứng FIX-005; UTF-8 và git diff --check đạt |
+| G05 Blog học thuật dạng card | `feat/personal-blog` fast-forward từ main | Blog index, 3 bài chi tiết, ảnh/CSS scope riêng, test và ảnh E01 | Card ảnh trái/chữ phải; mobile stack dọc; HTTP 200/ảnh/link; không hồi quy Home; nội dung theo PDF tr.21 |
+| G06 API số liệu Portal | `feat/portal-metrics-api` | Endpoint Flask `/dashboard`, test số liệu/lỗi | Prometheus thật, query cố định, timeout/units/null đúng; route cũ giữ đúng contract |
+| G07 Dashboard Portal | `feat/portal-health-dashboard` | KPI, biểu đồ live, refresh, card 9 vai trò | Dữ liệu thật và trạng thái thiếu/lỗi; desktop/mobile; ghi đúng phạm vi đo, E-learning bổ sung |
+| G08 Giao diện gọi API | `feat/api-console-interface` | Card/bảng/trạng thái response, secure, RR | Response khớp API; status/time thật; 200/401; không lộ token; RR count từ request thật |
+| G09 Release UI | `chore/ui-release-images` — Codex | Regression, tag/digest mới, pull/start, hướng dẫn chạy | Preview source khớp image release mới; giữ release cũ; số bước test ghi theo runner thực tế |
 | G02 Báo cáo release cuối | `docs/refresh-local-report` | `report/BaoCao_Local_521H0092.md`, PDF/DOCX/HTML, `report/architecture.*`, `scripts/build_report.py` | Đủ 5 chương + phụ lục theo PDF trang 3; kiến trúc đúng 17 container/9 vai trò/8 volume; nhúng ảnh thật đọc được từng server; verify hash PDF MinIO |
 | G03 Video local release | `docs/refresh-local-video` | `scripts/record_demo.py`, `report/Demo_Local_521H0092.webm/.html`, `evidence/local/demo-chapters.json` | Video 17 container xem được, đủ cảnh E-learning, logging, OIDC secure (không lộ secret); sinh chapters JSON từ cảnh quay thực tế; R17 giữ CHO_KIEM_THU |
 | G04 Tổng hợp đầu ra | `docs/local-output-handoff` | Tạo `TONG_HOP_OUTPUT_LOCAL.md`; cập nhật `README.md`, `HUONG_DAN_TEST_LOCAL.md`, tracker | Danh mục toàn bộ output, bảng URL/tài khoản (không mật khẩu), hướng dẫn chạy release, link và digest |
@@ -126,7 +131,7 @@ IP DNS 10.10.10.x là bản ghi ví dụ của đề trong lab Bind9, không ph�
 
 ## 7. Tiến độ dự kiến cho phần việc còn lại
 
-Ước lượng thời gian cho các task còn lại từ baseline hiện có:
+Ước lượng dưới đây là phần hồ sơ đã lập trước đợt UI ngày 09/11; chưa bao gồm G05–G09. Chưa chốt thời gian UI cho đến khi nghiệm thu lát cắt đầu G05. Đây không phải cam kết giờ hoàn tất hoặc triển khai AWS trước duyệt local.
 
 | Task / Khối | Thời gian dự kiến | Đầu ra chính |
 |---|---|---|
