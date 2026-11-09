@@ -122,6 +122,7 @@ Hiện tại toàn bộ 5 vấn đề kỹ thuật phát hiện trong quá trìn
 
 | Ngày | Nội dung | Branch / commit |
 |---|---|---|
+| 09/11/2026 | Viết lại HUONG_DAN_TEST_LOCAL.md cho partner: clone/setup lần đầu và mở lại, lệnh CMD/PowerShell, giải thích .venv/Docker/.env/localhost, tài khoản từng máy, checklist UI, xử lý lỗi và bảo toàn dữ liệu. Đối chiếu script, link, UTF-8 và kiểm tra lệnh trên môi trường hiện có; chưa xác nhận cài mới trên máy partner. Không thay đổi trạng thái R/E hoặc hoàn thành thay G02–G04. | `docs/partner-local-setup` / `docs: explain partner environment setup` |
 | 02/11/2026 | Rà soát bàn giao Codex – Gemini ([BAN_GIAO_GEMINI.md](BAN_GIAO_GEMINI.md)); Docker engine chưa kết nối ở lần rà soát ban đầu, Codex review ghi nhận Docker 29.0.1 và 17 container Up (chưa chạy lại full suite mới); hoàn thành G01 đồng bộ trạng thái và kế hoạch | `docs/reconcile-local-status` / `docs: reconcile current local status` |
 | 29/10/2026 | Chạy kiểm thử release và lưu bằng chứng 27 bước đạt bằng `check_all.py --screenshots`; ghim digest 17 runtime images và 6 custom images | `test/final-local-verification` / `fefd263`; evidence/local/local-suite.json, release-images.json |
 | 29/10/2026 | Tích hợp centralized logging với Loki và Alloy; tạo Grafana dashboard Service Logs; kiểm thử persistence sau recreate Loki | `feat/centralized-service-logs` / `a249748`; evidence/local/service-logging.json |
