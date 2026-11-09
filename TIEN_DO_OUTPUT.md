@@ -122,6 +122,7 @@ Hiện tại toàn bộ 5 vấn đề kỹ thuật phát hiện trong quá trìn
 
 | Ngày | Nội dung | Branch / commit |
 |---|---|---|
+| 09/11/2026 | Người dùng yêu cầu bỏ E-learning khỏi project hiện hành; lập phiếu G11 cho Gemini làm ngay, gồm source/config/caller, candidate release và bảo toàn dữ liệu. Xác định dashboard chỉ là giao diện quan sát, không thay 9 vai trò/E01–E10. Chưa triển khai gỡ bỏ, không đổi số runtime hoặc trạng thái R/E. | `docs/elearning-removal-handoff` / `docs: specify elearning removal handoff`; handoff/G11_REMOVE_ELEARNING.md |
 | 09/11/2026 | Chốt Portal quan sát/kiểm thử hạ tầng và website Blog riêng; Portal chỉ có card mở Blog, không nhúng bài viết, không E-learning trong luồng demo. Bổ sung G10 tách frontend, G11 thu gọn phụ thuộc EL nhưng giữ dữ liệu. Đây là đặc tả, không nghiệm thu prototype Portal 616f2e9 và không đổi runtime/count hiện tại. | `docs/portal-blog-scope` / `docs: finalize portal and blog`; PHAM_VI_CHOT_PORTAL_VA_BLOG.md |
 | 09/11/2026 | Chốt yêu cầu Portal card/dashboard với dữ liệu thật, API dễ đọc, Blog ảnh trái/chữ phải và nội dung học thuật theo PDF trang 21; xác định E-learning là ứng dụng bổ sung, không có mục riêng E01–E10. Lập G05–G09 trước hồ sơ G02–G04; mới lập kế hoạch, chưa đổi runtime hoặc tính UI đạt. | `docs/portal-ui-requirements` / `docs: specify portal interface improvements`; KE_HOACH_NANG_CAP_GIAO_DIEN.md; handoff/G05_BLOG_CARDS.md |
 | 09/11/2026 | Viết lại HUONG_DAN_TEST_LOCAL.md cho partner: clone/setup lần đầu và mở lại, lệnh CMD/PowerShell, giải thích .venv/Docker/.env/localhost, tài khoản từng máy, checklist UI, xử lý lỗi và bảo toàn dữ liệu. Đối chiếu script, link, UTF-8 và kiểm tra lệnh trên môi trường hiện có; chưa xác nhận cài mới trên máy partner. Không thay đổi trạng thái R/E hoặc hoàn thành thay G02–G04. | `docs/partner-local-setup` / `docs: explain partner environment setup` |
@@ -182,7 +183,7 @@ Các artifact dùng ngay: [README](README.md), [báo cáo PDF local](report/BaoC
 
 ## 12. Kế hoạch công việc còn lại — cập nhật ưu tiên UI 09/11/2026
 
-Theo [phạm vi chốt Portal/Blog](PHAM_VI_CHOT_PORTAL_VA_BLOG.md): sau review prototype, G05 → G10 → G06 → G07 → G08 → G11 → G09 → G02 → G03 → G04 → QA cuối → người dùng duyệt → AWS. G01 đã đạt. Gemini làm từng task trên branch riêng, Codex nghiệm thu trước tích hợp; chưa bắt đầu hồ sơ cuối khi UI/release chưa chốt.
+Theo [phiếu G11](handoff/G11_REMOVE_ELEARNING.md): ưu tiên G11 gỡ EL → review prototype → G05 → G10 → G06 → G07 → G08 → G09 → G02 → G03 → G04 → QA cuối → duyệt local → AWS. G01 đã đạt; không làm hai task song song. Codex nghiệm thu trước tích hợp; hồ sơ cuối chờ UI/release chốt.
 
 | Task / Nhóm | Branch thực thi | Trạng thái | Điều kiện nghiệm thu / Nội dung bàn giao |
 |---|---|---|---|
@@ -192,7 +193,7 @@ Theo [phạm vi chốt Portal/Blog](PHAM_VI_CHOT_PORTAL_VA_BLOG.md): sau review 
 | G06 API metrics Portal | `feat/portal-metrics-api` | CHUA_LAM | `/api/dashboard` đọc Prometheus thật, schema/units/null/timeout, không đổi API cũ |
 | G07 Dashboard Portal | `feat/portal-health-dashboard` | CHUA_LAM | 4 KPI/charts lịch sử, refresh, data states, nguồn/phạm vi đo; card mở Blog riêng, không E-learning |
 | G08 API console UI | `feat/api-console-interface` | CHUA_LAM | Response card/bảng + status/ms; secure 200/401; RR history/count; không in token |
-| G11 Thu gọn E-learning | `chore/retire-elearning-demo` | CHUA_LAM | Bỏ khỏi startup/verify/release mặc định, giữ source/volume/lịch sử; không giảm các bài kiểm tra đề |
+| G11 Gỡ bỏ E-learning — giao ngay | `chore/retire-elearning-demo` | CHUA_LAM | handoff/G11_REMOVE_ELEARNING.md; bỏ active code/config/caller, giữ Git history/volume; release candidate gọn và test không giảm yêu cầu đề |
 | G09 Release UI | `chore/ui-release-images` — Codex | CHUA_LAM | Regression + digest/tag mới và pull/start khớp source; không ghi đè release đã phát hành |
 | G02 Báo cáo cuối release | `docs/refresh-local-report` | CHUA_LAM | Cập nhật BaoCao_Local_521H0092.md/.pdf/.docx/HTML đủ 5 chương, 17 container/9 vai trò/8 volume, nhúng ảnh thật đọc được từng server; verify hash PDF MinIO |
 | G03 Video local release | `docs/refresh-local-video` | CHUA_LAM | Sửa scripts/record_demo.py quay video WebM 17 container, cảnh E-learning, logging, form secure (không lộ secret); demo-chapters.json đúng cảnh thực tế |

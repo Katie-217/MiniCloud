@@ -2,7 +2,7 @@
 
 Ngày rà soát nền tảng: **02/11/2026**, bổ sung yêu cầu giao diện **09/11/2026**. Workspace: `D:\Điện toán đám mây`. Repo: `Katie-217/MiniCloud`.
 
-> **Phạm vi hiện hành 09/11:** [Portal và Blog là hai frontend riêng](PHAM_VI_CHOT_PORTAL_VA_BLOG.md); bỏ E-learning khỏi luồng demo mặc định. G01 đã đạt. Review prototype Portal đang có, rồi G05 → **G10 tách frontend** → G06 → G07 → G08 → **G11 thu gọn EL** → G09 release → G02/G03/G04 và QA cuối. Phiếu Blog: [G05_BLOG_CARDS.md](handoff/G05_BLOG_CARDS.md). Đặc tả thiết kế: [KE_HOACH_NANG_CAP_GIAO_DIEN.md](KE_HOACH_NANG_CAP_GIAO_DIEN.md). Các kết quả nền tảng dưới đây là lịch sử, chưa tính UI mới đạt.
+> **Giao ngay G11 theo yêu cầu mới nhất 09/11:** [Bỏ E-learning khỏi project hiện hành](handoff/G11_REMOVE_ELEARNING.md), giữ Git history và dữ liệu volume. Sau nghiệm thu G11 mới review prototype Portal → G05 → G10 → G06 → G07 → G08 → G09 → G02/G03/G04 và QA cuối. [Phạm vi Portal/Blog](PHAM_VI_CHOT_PORTAL_VA_BLOG.md) giữ nguyên: Portal quan sát/kiểm thử, Blog website riêng; không làm Docker admin. G01 đã đạt. Các kết quả nền tảng dưới đây là lịch sử, chưa tính chức năng mới đạt.
 
 ## 1. Phân công và nguyên tắc tích hợp
 
@@ -145,14 +145,14 @@ Codex kiểm tra branch chức năng nào chưa có remote và push branch tươ
 
 ## 9. Prompt dùng cho Gemini
 
-G01 đã nghiệm thu, không giao lại G01. Prompt thực hiện đầy đủ của **G05** ở [phiếu Blog](handoff/G05_BLOG_CARDS.md). Quy tắc chung khi chuyển task:
+G01 đã nghiệm thu. **Prompt cần gửi Gemini ngay là G11**, tại [G11_REMOVE_ELEARNING.md](handoff/G11_REMOVE_ELEARNING.md), mục 8. Không giao đồng thời G05/G10. Phiếu Blog vẫn giữ cho lượt sau: [G05_BLOG_CARDS.md](handoff/G05_BLOG_CARDS.md). Mẫu dưới đây là quy tắc chung; dùng đúng phiếu của task đang được giao:
 
 ```text
 Bạn là người thực hiện task cho dự án MyMiniCloud; Codex là leader và tester độc lập.
 
 Workspace: D:\Điện toán đám mây
 Repo: https://github.com/Katie-217/MiniCloud
-TASK_ID: G05
+TASK_ID: G11
 
 Đọc AGENTS.md, BAN_GIAO_GEMINI.md, KE_HOACH_NANG_CAP_GIAO_DIEN.md và phiếu giao task. Chỉ làm TASK_ID được giao theo phạm vi file, đầu ra và tiêu chí nghiệm thu; không thực hiện toàn bộ kế hoạch một lượt.
 

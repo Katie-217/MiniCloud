@@ -4,6 +4,8 @@ Chốt yêu cầu người dùng ngày **09/11/2026**. Codex điều phối và 
 
 > **Phạm vi chốt mới nhất:** [PHAM_VI_CHOT_PORTAL_VA_BLOG.md](PHAM_VI_CHOT_PORTAL_VA_BLOG.md). Portal là control panel quan sát/kiểm thử; Blog là website demo có frontend riêng, mở từ card ứng dụng sang tab mới. Không nhúng danh sách bài Blog vào Portal. E-learning bỏ khỏi phạm vi demo; G10 tách hai frontend và G11 thu gọn phụ thuộc EL được thêm trước release cuối. Các mốc 17 container dưới đây mô tả release hiện có, không cố định cho bản sau G11.
 
+> **Task ưu tiên đầu:** [G11_REMOVE_ELEARNING.md](handoff/G11_REMOVE_ELEARNING.md). Gỡ app khỏi project hiện hành, giữ Git history/volume; sau khi Codex nghiệm thu mới tiếp tục prototype/Blog/dashboard. Không cần phát triển thêm tính năng E-learning để đáp ứng đề.
+
 ## 1. Đối chiếu đề và vai trò E-learning
 
 | Thành phần | Căn cứ / vai trò | Kết luận triển khai |
@@ -100,7 +102,7 @@ Nguồn đọc thêm chính thức cho kiến thức nền: [Docker bridge netwo
 
 ## 4. Thứ tự giao việc và branch
 
-**Thứ tự hiện hành:** review prototype Portal → G05 → **G10 tách frontend** → G06 → G07 → G08 → **G11 thu gọn EL** → G09 → G02 báo cáo → G03 video → G04 tổng hợp → QA cuối → người dùng duyệt → AWS. G01 đã đạt, không giao lại. Không làm nhiều task song song trong workspace.
+**Thứ tự hiện hành:** **G11 gỡ EL** → review prototype Portal → G05 → G10 tách frontend → G06 → G07 → G08 → G09 → G02 báo cáo → G03 video → G04 tổng hợp → QA cuối → người dùng duyệt → AWS. G01 đã đạt, không giao lại. Không làm nhiều task song song trong workspace.
 
 | Task | Phụ trách / branch | Output / phạm vi |
 |---|---|---|
@@ -109,7 +111,7 @@ Nguồn đọc thêm chính thức cho kiến thức nền: [Docker bridge netwo
 | G06 API số liệu Portal | Gemini, branch mới `feat/portal-metrics-api` từ main sau G05 | Flask endpoint cố định `/dashboard` → gateway `/api/dashboard`; test metric response/lỗi; không làm frontend ở task này |
 | G07 Dashboard Portal | Gemini, branch mới `feat/portal-health-dashboard` từ main sau G06 | KPI/charts/refresh/service cards, một card mở Blog riêng; không E-learning và không nội dung bài viết trong dashboard |
 | G08 Giao diện API demo | Gemini, branch mới `feat/api-console-interface` từ main sau G07 | Kết quả card/bảng, secure 200/401, RR và biểu đồ số request phiên demo; UI failure states |
-| G11 Thu gọn E-learning | Codex hoặc giao riêng `chore/retire-elearning-demo` | Bỏ EL khỏi luồng mặc định, gateway/runner/release phù hợp; giữ volume/source/lịch sử, không giảm kiểm thử đề |
+| G11 Gỡ bỏ E-learning — ưu tiên đầu | Gemini, `chore/retire-elearning-demo` | Theo phiếu G11: gỡ active source/config/caller; giữ Git history/volume; candidate gọn kiểm chứng thật, không giảm test đề |
 | G09 Kiểm thử và image release UI | Codex, `chore/ui-release-images` từ main đã tích hợp G08 | Regression, digest mới, pull/start và cập nhật hướng dẫn chạy; không ghi đè release cũ |
 
 Mỗi task có commit liên quan riêng, summary tiếng Anh 4–5 từ. Ví dụ G05 `feat: redesign academic blog cards`, G06 `feat: expose live dashboard metrics`, G07 `feat: build live portal dashboard`, G08 `feat: improve API demo interface`. Gemini không tự merge/push main hoặc chuyển task tiếp theo.

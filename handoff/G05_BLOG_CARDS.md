@@ -2,6 +2,8 @@
 
 Ngày giao: **09/11/2026**. Trạng thái **CHUA_LAM**, chưa phải biên bản nghiệm thu.
 
+> **Chờ G11:** theo chỉ dẫn mới nhất, [gỡ E-learning](G11_REMOVE_ELEARNING.md) được ưu tiên trước. Không thực hiện G05 đồng thời; Codex sẽ giao lại sau nghiệm thu G11.
+
 > **Bổ sung phạm vi chốt:** [Portal và Blog là hai frontend riêng](../PHAM_VI_CHOT_PORTAL_VA_BLOG.md). G05 làm website Blog có menu/CSS và trang bài riêng; không thêm danh sách bài vào Portal. G10 phụ trách việc tách source Portal và Blog Home/cấu hình route; G05 không tự đổi gateway/root Portal hoặc xóa E-learning.
 
 ## Phạm vi

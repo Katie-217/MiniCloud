@@ -1,6 +1,6 @@
 # Kế hoạch hoàn thiện local trước khi thuê EC2
 
-> **Phạm vi chốt 09/11/2026:** [Portal và Blog là hai frontend riêng](PHAM_VI_CHOT_PORTAL_VA_BLOG.md), không tích hợp E-learning trong bài demo. Sau review prototype Portal, thứ tự **G05 → G10 → G06 → G07 → G08 → G11 → G09 → G02 → G03 → G04 → QA cuối → người dùng duyệt → AWS**. G10 tách frontend, G11 thu gọn phụ thuộc EL và giữ dữ liệu. Xem [kế hoạch UI](KE_HOACH_NANG_CAP_GIAO_DIEN.md), [phiếu Blog](handoff/G05_BLOG_CARDS.md). G01 đã đạt; task mới chưa được tính DAT.
+> **Ưu tiên mới nhất 09/11:** giao [G11 gỡ bỏ E-learning](handoff/G11_REMOVE_ELEARNING.md) ngay; gỡ active source/config/caller, giữ Git history/volume và bảo toàn các bài test đề. Sau G11: review prototype → G05 → G10 → G06 → G07 → G08 → G09 → G02/G03/G04 → QA cuối → duyệt local → AWS. [Phạm vi Portal/Blog riêng](PHAM_VI_CHOT_PORTAL_VA_BLOG.md) không thay đổi; G01 đã đạt, task mới chưa tính DAT.
 
 > **Điều phối mới 02/11/2026:** Codex làm leader/tester, Gemini thực hiện từng task theo [BAN_GIAO_GEMINI.md](BAN_GIAO_GEMINI.md). Baseline `fefd263` có minh chứng 29/10: 14/18 nhóm tổng thể DAT, 10/10 mở rộng, 17 container/9 vai trò. Tại lần rà soát ban đầu ngày 02/11, Docker engine chưa kết nối; phiên review sau đó của Codex ghi nhận Docker 29.0.1 và 17 container đều đang Up, tuy nhiên chưa chạy lại full suite mới nên tiếp tục giữ nguyên giá trị minh chứng lịch sử ngày 29/10. Ưu tiên còn lại: G01 đồng bộ trạng thái → G02 báo cáo → G03 video → G04 tổng hợp → Codex QA cuối → người dùng kiểm tra → AWS. Kế hoạch này được đồng bộ ở task G01: tách rõ các việc đã hoàn thành (E01–E10, E-learning, logging, release) khỏi các việc còn lại (G01–G04, QA, duyệt local và AWS).
 
@@ -18,7 +18,7 @@ Hiện tại theo baseline ngày 29/10 (`fefd263`): đã có **14/18 nhóm bắt
 
 ## 2. Chọn ứng dụng demo từ phần đã có
 
-**Phương án hiện hành:** Portal chỉ quan sát/kiểm thử hạ tầng; Blog là website demo riêng, giữ Flask/MariaDB/Keycloak/MinIO và dữ liệu E02/E03. Không tiếp tục tích hợp E-learning cho bài nộp. Các đoạn khảo sát/tích hợp E-learning phía dưới là lịch sử giai đoạn trước; G11 sẽ thu gọn khỏi luồng mặc định và giữ source/volume hiện có.
+**Phương án hiện hành:** Portal chỉ quan sát/kiểm thử hạ tầng; Blog là website demo riêng, giữ Flask/MariaDB/Keycloak/MinIO và dữ liệu E02/E03. G11 gỡ active source/config/caller E-learning theo yêu cầu mới. Các đoạn khảo sát/tích hợp phía dưới là lịch sử giai đoạn trước; giữ Git history và volume dữ liệu, không giữ app trong luồng mặc định.
 
 Các repo đã khảo sát ban đầu:
 
@@ -86,7 +86,7 @@ Mỗi chức năng đã được phát triển trên một branch riêng bắt �
 
 ### 4.2. Kế hoạch công việc hiện hành (bổ sung UI ngày 09/11)
 
-Theo [phạm vi chốt](PHAM_VI_CHOT_PORTAL_VA_BLOG.md), G01 đã đạt; sau review prototype, tiếp tục G05 → G10 → G06 → G07 → G08 → G11 → G09 rồi G02/G03/G04. Review từng task trước tích hợp; không làm hồ sơ cuối dựa trên giao diện còn sắp sửa.
+Theo [phạm vi chốt](PHAM_VI_CHOT_PORTAL_VA_BLOG.md), G01 đã đạt; làm G11 trước, rồi review prototype → G05 → G10 → G06 → G07 → G08 → G09 → G02/G03/G04. Review từng task trước tích hợp; không làm hồ sơ cuối dựa trên giao diện còn sắp sửa.
 
 | Thứ tự / Task | Branch thực thi | Phạm vi thực hiện | Tiêu chí nghiệm thu |
 |---|---|---|---|
@@ -96,7 +96,7 @@ Theo [phạm vi chốt](PHAM_VI_CHOT_PORTAL_VA_BLOG.md), G01 đã đạt; sau re
 | G06 API số liệu Portal | `feat/portal-metrics-api` | Endpoint Flask `/dashboard`, test số liệu/lỗi | Prometheus thật, query cố định, timeout/units/null đúng; route cũ giữ đúng contract |
 | G07 Dashboard Portal | `feat/portal-health-dashboard` | KPI, biểu đồ live, refresh, card 9 vai trò | Dữ liệu thật, thiếu/lỗi rõ; desktop/mobile; chỉ card mở Blog riêng, không E-learning |
 | G08 Giao diện gọi API | `feat/api-console-interface` | Card/bảng/trạng thái response, secure, RR | Response khớp API; status/time thật; 200/401; không lộ token; RR count từ request thật |
-| G11 Thu gọn E-learning | `chore/retire-elearning-demo` | Gateway/startup/verify/release bỏ phụ thuộc EL mặc định | Giữ dữ liệu/source/lịch sử; đủ 9 vai trò và E01–E10; số service/volume theo cấu hình thực tế |
+| G11 Gỡ bỏ E-learning — ưu tiên đầu | `chore/retire-elearning-demo` | handoff/G11_REMOVE_ELEARNING.md; gỡ active source/config/caller, release candidate gọn | Giữ Git history/volume; đủ 9 vai trò và E01–E10; test/digest/số lượng thực tế; không đè release cũ |
 | G09 Release UI | `chore/ui-release-images` — Codex | Regression, tag/digest mới, pull/start, hướng dẫn chạy | Preview source khớp image release mới; giữ release cũ; số bước test ghi theo runner thực tế |
 | G02 Báo cáo release cuối | `docs/refresh-local-report` | `report/BaoCao_Local_521H0092.md`, PDF/DOCX/HTML, `report/architecture.*`, `scripts/build_report.py` | Đủ 5 chương + phụ lục theo PDF trang 3; kiến trúc đúng 17 container/9 vai trò/8 volume; nhúng ảnh thật đọc được từng server; verify hash PDF MinIO |
 | G03 Video local release | `docs/refresh-local-video` | `scripts/record_demo.py`, `report/Demo_Local_521H0092.webm/.html`, `evidence/local/demo-chapters.json` | Video 17 container xem được, đủ cảnh E-learning, logging, OIDC secure (không lộ secret); sinh chapters JSON từ cảnh quay thực tế; R17 giữ CHO_KIEM_THU |

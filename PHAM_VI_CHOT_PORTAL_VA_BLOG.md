@@ -4,6 +4,8 @@ Chốt theo yêu cầu người dùng **09/11/2026**. Tài liệu này ưu tiên
 
 **Quyết định:** hai giao diện riêng, cùng hệ thống MiniCloud. **Portal là nơi quan sát/kiểm thử hạ tầng. Blog là ứng dụng Web được triển khai để demo.** E-learning không thuộc phạm vi bài demo chính và không tiếp tục phát triển cho bài này.
 
+> **Chỉ dẫn thực hiện mới nhất:** ưu tiên [G11 gỡ bỏ E-learning](handoff/G11_REMOVE_ELEARNING.md) ngay, trước các task UI khác. Gỡ active source/config/caller, giữ lịch sử trong Git và dữ liệu volume. Không xóa lịch sử nhưng cũng không giữ app trong luồng chạy mặc định. Dashboard kiểu panel chỉ là giao diện quan sát MiniCloud, không thay thế việc triển khai/kiểm thử 9 vai trò và E01–E10.
+
 Đây là đặc tả đầu ra, chưa phải xác nhận các chức năng mới đã được lập trình/kiểm thử. Giữ nguyên minh chứng lịch sử và dữ liệu hiện có đến khi task triển khai liên quan được nghiệm thu.
 
 ## 1. Hai website được tách như thế nào
@@ -80,13 +82,13 @@ Web trực tiếp `:8080/` phải trả Home HTML HTTP 200; không thay bằng r
 
 | Bước | Branch / người làm | Đầu ra |
 |---|---|---|
+| **G11 Gỡ bỏ E-learning — ưu tiên đầu** | Gemini; `chore/retire-elearning-demo`, theo phiếu G11 | Gỡ active source/config/caller và EL runtime/default tests; giữ Git history/volume; release candidate gọn có digest thật, không đè tag cũ |
 | Review prototype Portal đang có | Codex; branch hiện có `feat/portal-cloud-panel` | Commit `616f2e9` chưa được nghiệm thu. Kiểm tra source/evidence và các nhãn “17 Containers Up” viết tĩnh; giữ lịch sử, không đưa vào main chỉ vì đã có card |
 | G05 Blog cards/học thuật | Gemini; `feat/personal-blog` cập nhật từ main | Danh sách/bài chi tiết Blog riêng, ảnh/CSS riêng, kiểm tra E01 |
 | **G10 Tách hai frontend** | Gemini; `feat/separate-portal-blog-sites` từ main đã tích hợp việc trước | Tách Portal source/asset và Blog Home; root proxy đúng Portal, direct Web Home/Blog và route cũ vẫn đạt; bỏ bài Blog/EL khỏi nội dung Portal |
 | G06 Metrics API | Gemini; `feat/portal-metrics-api` | `/api/dashboard` đọc Prometheus thật, lỗi/null/timeout có giới hạn |
 | G07 Dashboard | Gemini; `feat/portal-health-dashboard` | KPI/charts/service cards trên Portal riêng, không đưa bài Blog vào dashboard |
 | G08 API console | Gemini; `feat/api-console-interface` | API/SQL/Auth/RR trình bày dễ đọc, schema/response đúng, không lộ token |
-| **G11 Thu gọn E-learning** | Codex hoặc giao task riêng `chore/retire-elearning-demo` | Bỏ EL khỏi startup/verify/release mặc định, sửa gateway và metadata liên quan; giữ source/lịch sử và volume dữ liệu, không xóa chúng |
 | G09 Release UI | Codex; `chore/ui-release-images` | Regression và tag/digest mới đúng source, số service/volume/image ghi theo cấu hình thực tế |
 | G02/G03/G04 | Theo branch hồ sơ đã giao | Báo cáo/video/hướng dẫn phản ánh hai frontend và cấu hình cuối, không còn lấy E-learning làm luồng demo |
 | QA cuối, duyệt local, AWS | Codex → người dùng → cloud sau duyệt | Kiểm thử đủ output bắt buộc; local không thay cho R14/EC2 |
@@ -99,7 +101,7 @@ Hiện release đã kiểm chứng vẫn có **17 runtime container**, bao gồm
 
 Nếu G11 bỏ đúng hai container đó khỏi cấu hình mặc định mà không thêm service khác, mục tiêu sẽ là **15 runtime container**, vẫn đủ 9 vai trò và hai Web replica. Số cuối phải lấy từ Compose/release sau kiểm thử. Volume Firebase cũ được giữ; không gọi toàn bộ volume khai báo/lưu trên máy là số volume đang hoạt động.
 
-Các bài test E-learning có thể giữ như lịch sử/optional, nhưng runner mặc định của bài MiniCloud không được bắt buộc app ngoài phạm vi. Việc thu gọn không được loại bỏ hoặc nới assertion của E01–E10, core SQL/Auth/Storage/DNS/metrics/log/gateway/network/persistence.
+Các bài test/code E-learning được giữ trong Git history và các bằng chứng cũ có ngày rõ ràng; G11 gỡ caller/source hiện hành theo phiếu. Runner MiniCloud không được bắt buộc app ngoài phạm vi. Việc thu gọn không được loại bỏ hoặc nới assertion của E01–E10, core SQL/Auth/Storage/DNS/metrics/log/gateway/network/persistence.
 
 ## 8. Tiêu chí chấp nhận bản cuối
 
