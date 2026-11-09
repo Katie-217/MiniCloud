@@ -2,17 +2,19 @@
 
 Chốt yêu cầu người dùng ngày **09/11/2026**. Codex điều phối và kiểm thử; Gemini thực hiện từng task sau khi người dùng chuyển prompt. Tài liệu này bổ sung phạm vi UI trước đợt hoàn thiện báo cáo/video, không đánh dấu UI mới đã triển khai.
 
+> **Phạm vi chốt mới nhất:** [PHAM_VI_CHOT_PORTAL_VA_BLOG.md](PHAM_VI_CHOT_PORTAL_VA_BLOG.md). Portal là control panel quan sát/kiểm thử; Blog là website demo có frontend riêng, mở từ card ứng dụng sang tab mới. Không nhúng danh sách bài Blog vào Portal. E-learning bỏ khỏi phạm vi demo; G10 tách hai frontend và G11 thu gọn phụ thuộc EL được thêm trước release cuối. Các mốc 17 container dưới đây mô tả release hiện có, không cố định cho bản sau G11.
+
 ## 1. Đối chiếu đề và vai trò E-learning
 
 | Thành phần | Căn cứ / vai trò | Kết luận triển khai |
 |---|---|---|
-| Home và Blog | PDF trang 1, 12–13: Web server phục vụ index/blog, HTTP 200, nhận diện MyMiniCloud Home/Blog | Portal tại `/` là giao diện chính để trình bày bài MiniCloud |
+| Home và Blog | PDF trang 1, 12–13: Web server phục vụ index/blog, HTTP 200, nhận diện MyMiniCloud Home/Blog | Portal qua gateway `/`; website Blog riêng qua Web 8080, giữ `/blog/` và 3 file bài theo đề |
 | Blog cá nhân | PDF trang 21: ít nhất 3 bài HTML, chủ đề tự chọn; blog1/2/3.html có ảnh, liên kết về trang chính; index có danh sách hyperlink | Giữ đúng các URL, trình bày danh sách bằng card ảnh trái/chữ phải, nội dung học thuật tự biên soạn |
 | Dashboard trên Portal | Cải tiến giao diện theo yêu cầu người dùng; yêu cầu monitoring gốc nằm ở R08/R09, E07/E08 | Hiển thị dữ liệu thật từ Prometheus; giữ nguyên dashboard Grafana theo đề |
 | Gọi API trên Portal | Cải tiến trải nghiệm kiểm chứng R03/R04 và E02/E03/E04/E09/E10 | Kết quả chính là card/bảng/trạng thái; JSON gốc chỉ là tùy chọn mở rộng |
 | E-learning | Ứng dụng bổ sung từ repo người dùng để minh họa triển khai Flutter Web trên Nginx | Không có mục riêng bắt buộc trong E01–E10; không dùng làm bằng chứng thay Flask/SQL/Keycloak/MinIO |
 
-E-learning đang được Nginx riêng phục vụ qua gateway `/elearning/`; dữ liệu dùng Firebase Auth/Firestore/Storage Emulator. Không mô tả nó như ứng dụng đã chuyển backend sang Flask/MariaDB/Keycloak/MinIO. Giữ một card/link phụ **Ứng dụng demo bổ sung — E-learning**; Portal/dashboard/API/Blog là luồng trình bày yêu cầu chính. Không xóa E-learning hoặc các container dữ liệu trong đợt UI này.
+E-learning đã được tích hợp trong giai đoạn cũ, nhưng người dùng đã chọn không dùng cho bài demo này. Không giữ card/link E-learning trong Portal hoặc phát triển thêm app đó. G11 sẽ tách nó khỏi startup/verify/release mặc định theo quy trình riêng; giữ dữ liệu volume và lịch sử, không xóa để sửa giao diện. Flask/MariaDB/Keycloak/MinIO vẫn thực hiện các yêu cầu đề độc lập.
 
 ## 2. Những gì quan sát được trước khi sửa
 
@@ -27,7 +29,7 @@ E-learning đang được Nginx riêng phục vụ qua gateway `/elearning/`; d�
 ### 3.1. Ngôn ngữ giao diện chung
 
 - Một hệ thống màu thống nhất: nền slate đậm, card tương phản nhẹ, chữ sáng dễ đọc, teal/blue cho điểm nhấn; không dùng màu thành trạng thái duy nhất.
-- Header gọn với Portal, Dashboard, Thử API, Blog, Nhóm. E-learning là đường dẫn demo phụ có giải thích ngắn.
+- Portal có sidebar/nav cho các nhóm chức năng trong phạm vi chốt; Blog có menu/CSS riêng. Portal chỉ có card mở website Blog, không mang nội dung các bài Blog vào UI quản trị và không có mục E-learning.
 - Nội dung chia khu rõ ràng, khoảng cách đều, giới hạn chiều rộng; văn bản thường khoảng 16px, focus bàn phím rõ, label/form dễ hiểu.
 - Responsive tối thiểu desktop 1440×900 và mobile 390×844. Không tràn ngang toàn trang; bảng rộng có vùng cuộn riêng nếu cần.
 - Dùng HTML/CSS/JavaScript hiện có; không chuyển framework hoặc thêm CDN bắt buộc để mở các trang chính. Biểu đồ có thể dùng SVG/canvas hoặc thư viện đóng gói local.
@@ -37,13 +39,13 @@ E-learning đang được Nginx riêng phục vụ qua gateway `/elearning/`; d�
 ### 3.2. Dashboard Portal
 
 ```text
-[MyMiniCloud]   Dashboard | Thử API | Blog | Nhóm
+[MyMiniCloud]   Dashboard | Thử API | Dịch vụ | Ứng dụng demo | Nhóm
 Tổng quan hạ tầng       Cập nhật lúc ...   [Làm mới]
 [CPU %]   [RAM %]   [Network receive B/s]   [Web requests/s]
 [Biểu đồ CPU/RAM theo thời gian] [Biểu đồ Network / request-rate]
 [Node target: ...] [Web target: ...] [Mở Grafana] [Xem logs]
 [Các card 9 vai trò: mô tả ngắn + hành động truy cập]
-[Khu thử API] [Blog học thuật] [Ứng dụng bổ sung: E-learning]
+[Khu thử API] [Card ứng dụng: Mở website Blog ở tab mới]
 ```
 
 KPI phải lấy dữ liệu thật, có đơn vị, mốc cập nhật và trạng thái chờ/lỗi/thiếu dữ liệu. CPU/RAM dùng thang 0–100%, mạng là B/s, request-rate là req/s. Có lịch sử 15 phút với thời gian trên trục; dữ liệu rỗng không vẽ đường 0 giả.
@@ -98,14 +100,16 @@ Nguồn đọc thêm chính thức cho kiến thức nền: [Docker bridge netwo
 
 ## 4. Thứ tự giao việc và branch
 
-**Thứ tự mới:** G01 đã đạt → **G05 → G06 → G07 → G08 → G09** → G02 báo cáo → G03 video → G04 tổng hợp → QA cuối → người dùng duyệt → AWS. Không làm nhiều task song song trong workspace. Không quay lại sửa G01 đã nghiệm thu chỉ vì đổi thứ tự ưu tiên.
+**Thứ tự hiện hành:** review prototype Portal → G05 → **G10 tách frontend** → G06 → G07 → G08 → **G11 thu gọn EL** → G09 → G02 báo cáo → G03 video → G04 tổng hợp → QA cuối → người dùng duyệt → AWS. G01 đã đạt, không giao lại. Không làm nhiều task song song trong workspace.
 
 | Task | Phụ trách / branch | Output / phạm vi |
 |---|---|---|
 | G05 Blog card và nội dung học thuật | Gemini, tiếp tục `feat/personal-blog` sau khi fast-forward từ main hiện tại | `html/blog/**`, CSS Blog được scope riêng, kiểm tra/ảnh E01; [phiếu giao G05](handoff/G05_BLOG_CARDS.md) |
+| G10 Tách Portal và Blog | Gemini, `feat/separate-portal-blog-sites` | Hai frontend/menu/CSS riêng, Portal qua gateway, Blog Home qua Web trực tiếp; giữ HTTP 200 và các route đề |
 | G06 API số liệu Portal | Gemini, branch mới `feat/portal-metrics-api` từ main sau G05 | Flask endpoint cố định `/dashboard` → gateway `/api/dashboard`; test metric response/lỗi; không làm frontend ở task này |
-| G07 Dashboard Portal | Gemini, branch mới `feat/portal-health-dashboard` từ main sau G06 | KPI/charts/refresh/service cards, giải thích E-learning là bổ sung; CSS/JS và ảnh UI; không thay API nghiệp vụ |
+| G07 Dashboard Portal | Gemini, branch mới `feat/portal-health-dashboard` từ main sau G06 | KPI/charts/refresh/service cards, một card mở Blog riêng; không E-learning và không nội dung bài viết trong dashboard |
 | G08 Giao diện API demo | Gemini, branch mới `feat/api-console-interface` từ main sau G07 | Kết quả card/bảng, secure 200/401, RR và biểu đồ số request phiên demo; UI failure states |
+| G11 Thu gọn E-learning | Codex hoặc giao riêng `chore/retire-elearning-demo` | Bỏ EL khỏi luồng mặc định, gateway/runner/release phù hợp; giữ volume/source/lịch sử, không giảm kiểm thử đề |
 | G09 Kiểm thử và image release UI | Codex, `chore/ui-release-images` từ main đã tích hợp G08 | Regression, digest mới, pull/start và cập nhật hướng dẫn chạy; không ghi đè release cũ |
 
 Mỗi task có commit liên quan riêng, summary tiếng Anh 4–5 từ. Ví dụ G05 `feat: redesign academic blog cards`, G06 `feat: expose live dashboard metrics`, G07 `feat: build live portal dashboard`, G08 `feat: improve API demo interface`. Gemini không tự merge/push main hoặc chuyển task tiếp theo.
@@ -160,4 +164,4 @@ G09 thuộc Codex: kiểm thử source đã tích hợp, phát hành tag mới t
 
 ## 8. Trạng thái và giới hạn
 
-G05–G09 **CHUA_LAM** tại lúc lập kế hoạch. R/E DAT hiện có vẫn là kết quả của release đã kiểm chứng; việc lên kế hoạch UI không tự bổ sung output đạt. G02–G04 chờ sau release UI để tránh làm báo cáo/video lệch giao diện cuối. AWS vẫn chờ người dùng xác nhận bản local.
+Các task UI G05–G11 chưa được tính đạt khi mới lập kế hoạch. R/E DAT hiện có vẫn là kết quả của release đã kiểm chứng. Prototype Portal `616f2e9` còn chờ review, không được suy ra UI đã nghiệm thu. G02–G04 chờ sau release UI; AWS vẫn chờ người dùng xác nhận bản local.

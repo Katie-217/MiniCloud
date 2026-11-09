@@ -2,7 +2,7 @@
 
 Ngày rà soát nền tảng: **02/11/2026**, bổ sung yêu cầu giao diện **09/11/2026**. Workspace: `D:\Điện toán đám mây`. Repo: `Katie-217/MiniCloud`.
 
-> **Ưu tiên hiện hành:** G01 đã nghiệm thu. Theo yêu cầu mới, giao **G05 Blog card/học thuật → G06 API metrics → G07 dashboard → G08 UI gọi API → G09 release UI**, sau đó mới G02 báo cáo/G03 video/G04 tổng hợp. Chi tiết và căn cứ E-learning: [KE_HOACH_NANG_CAP_GIAO_DIEN.md](KE_HOACH_NANG_CAP_GIAO_DIEN.md). Phiếu giao ngay: [G05_BLOG_CARDS.md](handoff/G05_BLOG_CARDS.md). Các kết quả nền tảng dưới đây là lịch sử, chưa tính UI mới đạt.
+> **Phạm vi hiện hành 09/11:** [Portal và Blog là hai frontend riêng](PHAM_VI_CHOT_PORTAL_VA_BLOG.md); bỏ E-learning khỏi luồng demo mặc định. G01 đã đạt. Review prototype Portal đang có, rồi G05 → **G10 tách frontend** → G06 → G07 → G08 → **G11 thu gọn EL** → G09 release → G02/G03/G04 và QA cuối. Phiếu Blog: [G05_BLOG_CARDS.md](handoff/G05_BLOG_CARDS.md). Đặc tả thiết kế: [KE_HOACH_NANG_CAP_GIAO_DIEN.md](KE_HOACH_NANG_CAP_GIAO_DIEN.md). Các kết quả nền tảng dưới đây là lịch sử, chưa tính UI mới đạt.
 
 ## 1. Phân công và nguyên tắc tích hợp
 

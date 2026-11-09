@@ -2,13 +2,15 @@
 
 Ngày giao: **09/11/2026**. Trạng thái **CHUA_LAM**, chưa phải biên bản nghiệm thu.
 
+> **Bổ sung phạm vi chốt:** [Portal và Blog là hai frontend riêng](../PHAM_VI_CHOT_PORTAL_VA_BLOG.md). G05 làm website Blog có menu/CSS và trang bài riêng; không thêm danh sách bài vào Portal. G10 phụ trách việc tách source Portal và Blog Home/cấu hình route; G05 không tự đổi gateway/root Portal hoặc xóa E-learning.
+
 ## Phạm vi
 
 Đọc `AGENTS.md`, [kế hoạch UI](../KE_HOACH_NANG_CAP_GIAO_DIEN.md), PDF trang 12–13 và 21, `scripts/check_blog.py`, `scripts/check_web.py` và source Blog.
 
 Tiếp tục branch chức năng **`feat/personal-blog`**, đưa branch này lên main mới nhất bằng fast-forward trước khi sửa. Không quay lại source cũ của branch rồi ghi đè main. Nếu branch không thể fast-forward, báo trạng thái Git để Codex xử lý; không reset/force.
 
-Được sửa: `web-frontend-server/html/blog/**`; thêm CSS có scope riêng cho Blog ở `style.css` hoặc một file CSS trong thư mục Blog; script/ảnh/JSON test liên quan E01; dòng E01/nhật ký/task G05 trong tracker. Không sửa Portal, Flask, Keycloak, gateway, Compose/release lock, Flutter, báo cáo hoặc video trong G05.
+Được sửa: `web-frontend-server/html/blog/**`; ưu tiên CSS riêng trong thư mục Blog, tránh phụ thuộc style Portal; script/ảnh/JSON test liên quan E01; dòng E01/nhật ký/task G05 trong tracker. Không sửa Portal, Flask, Keycloak, gateway, Compose/release lock, Flutter, báo cáo hoặc video trong G05.
 
 ## Đầu ra
 
@@ -18,6 +20,7 @@ Tiếp tục branch chức năng **`feat/personal-blog`**, đưa branch này lê
 4. Viết mới 3 bài chia sẻ học thuật tiếng Việt theo dàn ý mục 3.4 của kế hoạch UI; khoảng 500–700 từ/bài là mục tiêu biên tập. Chủ đề tự chọn được PDF cho phép; không bịa dữ kiện, không sao chép nguyên bài nguồn.
 5. Có ảnh minh họa phù hợp. Ưu tiên SVG local hiện có; asset không phụ thuộc hotlink/CDN. Không sửa ảnh/avatar hoặc tạo thông tin MSSV còn thiếu.
 6. Giữ nhận diện `MyMiniCloud – Blog`, trả HTTP 200 qua cổng Web 8080 và gateway 80, Home hiện tại không bị CSS mới làm hỏng.
+7. Blog là ứng dụng demo riêng: menu/nội dung học thuật của Blog, không chứa dashboard hạ tầng hoặc bảng sinh viên. Liên kết về Blog/Home vẫn theo yêu cầu; Portal chỉ mở Blog sang tab mới sau G10.
 
 ## Preview và kiểm tra
 

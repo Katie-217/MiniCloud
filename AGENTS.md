@@ -5,7 +5,7 @@
 - Ưu tiên yêu cầu bắt buộc trên local của `Báo Cáo Cuối Kỳ.docx.pdf`, sau đó hoàn tất đủ 10 mục mở rộng, Docker Hub, báo cáo, video và minh chứng local trước khi người dùng kiểm tra bản cuối.
 - Theo chỉ dẫn mới nhất ngày 27/10/2026: chỉ triển khai AWS sau khi người dùng kiểm tra và xác nhận bản local đạt. Không tự tạo/truy cập tài nguyên AWS trong giai đoạn này. R14 và hồ sơ cloud vẫn chưa hoàn thành dù local đã đạt.
 - Đối chiếu `KE_HOACH_MINICLOUD_2_NGAY.md` để tra yêu cầu theo trang PDF; dùng `KE_HOACH_HOAN_THIEN_LOCAL.md` cho công việc tiếp theo. `KE_HOACH_TRIEN_KHAI_BAT_BUOC.md` lưu giai đoạn nền tảng đã thực hiện.
-- Repo đang đánh giá để tái sử dụng là `Katie-217/E-learning-Management-App` theo chỉ dẫn mới nhất; Coffee Shop là phương án đã khảo sát trước. Kiểm tra branch và source commit trước khi nhập. Không tự push thay đổi sang repo nguồn, không dùng database thật hoặc chạy seed xóa dữ liệu của repo nguồn.
+- Theo chỉ dẫn chốt 09/11/2026: Portal quan sát/kiểm thử hạ tầng và Blog là hai frontend riêng theo `PHAM_VI_CHOT_PORTAL_VA_BLOG.md`. Không tiếp tục tích hợp E-learning trong bài demo; E-learning/Coffee Shop là các phương án nguồn đã khảo sát trước. G11 thu gọn phụ thuộc EL mặc định nhưng giữ source/lịch sử/volume. Không tự push sang repo nguồn, dùng database thật hoặc chạy seed xóa dữ liệu nguồn.
 - Tuân thủ hướng dẫn trong đề khi khả thi. Nếu mẫu có lỗi hoặc mâu thuẫn, ghi rõ căn cứ, cách điều chỉnh và kết quả kiểm thử trong `TIEN_DO_OUTPUT.md`.
 
 ## Git và commit theo yêu cầu người dùng
