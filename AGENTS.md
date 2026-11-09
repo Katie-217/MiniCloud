@@ -7,6 +7,7 @@
 - Đối chiếu `KE_HOACH_MINICLOUD_2_NGAY.md` để tra yêu cầu theo trang PDF; dùng `KE_HOACH_HOAN_THIEN_LOCAL.md` cho công việc tiếp theo. `KE_HOACH_TRIEN_KHAI_BAT_BUOC.md` lưu giai đoạn nền tảng đã thực hiện.
 - Theo chỉ dẫn chốt 09/11/2026: Portal quan sát/kiểm thử hạ tầng và Blog là hai frontend riêng theo `PHAM_VI_CHOT_PORTAL_VA_BLOG.md`. Người dùng yêu cầu bỏ E-learning; ưu tiên giao G11 theo `handoff/G11_REMOVE_ELEARNING.md`: gỡ code/cấu hình/caller hiện hành, giữ Git history và volume dữ liệu, không giữ app trong luồng mặc định. Không tự push sang repo nguồn, dùng database thật hoặc chạy seed xóa dữ liệu nguồn.
 - Tuân thủ hướng dẫn trong đề khi khả thi. Nếu mẫu có lỗi hoặc mâu thuẫn, ghi rõ căn cứ, cách điều chỉnh và kết quả kiểm thử trong `TIEN_DO_OUTPUT.md`.
+- Theo yêu cầu UI mới nhất 09/11/2026: `DAC_TA_PORTAL_TRANG_API_CONSOLE.md` chốt nền trắng/chữ đen, sidebar trái, Tổng quan đầu/API Console thứ hai, terminal response nền sáng. Blog riêng từ source repo → image → Nginx, Portal có card mở; không làm upload ZIP/CMS. G07/G08 theo phiếu riêng, không trộn redesign vào G11.
 
 ## Git và commit theo yêu cầu người dùng
 

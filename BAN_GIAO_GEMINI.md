@@ -2,6 +2,8 @@
 
 Ngày rà soát nền tảng: **02/11/2026**, bổ sung yêu cầu giao diện **09/11/2026**. Workspace: `D:\Điện toán đám mây`. Repo: `Katie-217/MiniCloud`.
 
+> **Đặc tả UI mới nhất:** [nền trắng/sidebar trái/API Console terminal](DAC_TA_PORTAL_TRANG_API_CONSOLE.md). Blog đóng gói từ repo và host Nginx, Portal có một card mở ứng dụng; không upload ZIP. [G07](handoff/G07_LIGHT_SIDEBAR.md) làm shell/dashboard, [G08](handoff/G08_API_CONSOLE.md) làm operation/form/Execute/terminal sau nghiệm thu các task phụ thuộc. G11 vẫn là task giao ngay; không trộn redesign vào task gỡ E-learning.
+
 > **Giao ngay G11 theo yêu cầu mới nhất 09/11:** [Bỏ E-learning khỏi project hiện hành](handoff/G11_REMOVE_ELEARNING.md), giữ Git history và dữ liệu volume. Sau nghiệm thu G11 mới review prototype Portal → G05 → G10 → G06 → G07 → G08 → G09 → G02/G03/G04 và QA cuối. [Phạm vi Portal/Blog](PHAM_VI_CHOT_PORTAL_VA_BLOG.md) giữ nguyên: Portal quan sát/kiểm thử, Blog website riêng; không làm Docker admin. G01 đã đạt. Các kết quả nền tảng dưới đây là lịch sử, chưa tính chức năng mới đạt.
 
 ## 1. Phân công và nguyên tắc tích hợp
@@ -43,7 +45,7 @@ Các lỗi/hở hồ sơ quan sát trực tiếp:
 ## 3. Các điều phải giữ nguyên
 
 - Đọc `AGENTS.md`, PDF và bảng đối chiếu trang trước khi sửa. Nếu mẫu mâu thuẫn, ghi căn cứ và cách điều chỉnh, không bỏ yêu cầu để dễ test.
-- Giữ 9 vai trò và 17 container của release hiện tại, service names, `cloud-net`, routes/cổng/volume. Không đổi kiến trúc, thêm MongoDB hay thay hệ thống Auth để quay demo cho thuận tiện.
+- Giữ 9 vai trò, service names, `cloud-net`, routes/cổng/volume của bài. Baseline hiện tại có 17 container; G11 được phép gỡ đúng hai container EL theo phiếu, giữ volume cũ. Các task sau dùng cấu hình đã nghiệm thu, không tự thêm MongoDB/thay Auth để quay demo.
 - Giữ dữ liệu, `.env` hiện có và author Git. Không `down -v`, prune, reset/clean/stash bừa, force push, sửa global SDK/cache hoặc tác động container ngoài project.
 - Không dùng dữ liệu Firebase thật, không push sang repo E-learning nguồn. Không ghi mật khẩu, token, private key, URL ký có token vào Git, ảnh, video hay log.
 - Dùng PowerShell và `curl.exe`; ghi file **UTF-8**. PowerShell pipe sang Python có thể làm hỏng tiếng Việt; kiểm tra nội dung thực tế sau khi ghi.
@@ -76,11 +78,11 @@ Các lỗi/hở hồ sơ quan sát trực tiếp:
 **Đầu ra bắt buộc:**
 
 - Đủ 5 chương và phụ lục theo PDF trang 3: mục tiêu; kiến trúc/network/request flow; Dockerfile/Compose/config với đoạn code thực tế đã bỏ bí mật; demo/kiểm thử có ảnh mỗi vai trò server; đánh giá/khó khăn/hướng mở rộng.
-- Kiến trúc đúng **17 container / 9 vai trò / 8 volume**, gồm 2 Web replica, exporter, E-learning/Firebase, Loki/Alloy. Phân biệt host port/internal port.
-- Kết quả đúng 27 bước với `--screenshots`, 5 sinh viên JSON / 3 sinh viên SQL, token hợp lệ/từ chối, public avatar K/private PDF, DNS lab, Web metrics, dashboard cá nhân, round robin, E-learning và logging. Không trình bày 22 bước cũ như lượt cuối.
-- Nhúng ảnh thật đọc được cho Web, App/API, SQL, Keycloak realm/client, MinIO, DNS, Prometheus, Grafana/logging, Gateway/RR; thêm ảnh hai vai trò E-learning và API bảo vệ. Không chỉ ghi tên file. Không dùng ảnh cũ để minh họa một trạng thái mới chưa chụp.
-- Phụ lục có link GitHub, 6 image Hub/tag/digest, video và log. URL dự kiến của video: `https://raw.githubusercontent.com/Katie-217/MiniCloud/main/report/Demo_Local_521H0092.webm`; ghi chờ xác minh nếu chưa kiểm tra được. Không bịa link đã public.
-- Ghi rõ giới hạn monitoring, repo E-learning, bản local/cloud, MSSV Nhi còn thiếu. Không ghi đã sẵn sàng deploy cloud hoàn toàn khi script đang hardcode localhost.
+- Kiến trúc đúng release sau G11/G09: **9 vai trò**, 2 Web replica, exporter, Loki/Alloy; container/volume/image đếm thực tế, E-learning không còn luồng mặc định. Phân biệt host port/internal port; baseline 17/8 chỉ nêu khi ghi lịch sử.
+- Kết quả theo suite thực sự chạy với `--screenshots`: 5 sinh viên JSON / ít nhất 3 sinh viên SQL, secure hợp lệ/từ chối, avatar K/PDF riêng tư, DNS, metrics/Grafana, round robin, logging và UI mới. Không gán số 27 bước lịch sử cho suite đã đổi.
+- Nhúng ảnh thật đọc được cho Portal và Blog riêng, App/API, SQL, Keycloak realm/client, MinIO, DNS, Prometheus, Grafana/logging, Gateway/RR và API bảo vệ. Không yêu cầu ảnh E-learning cho bản cuối; không dùng ảnh cũ minh họa trạng thái mới chưa chụp.
+- Phụ lục có link GitHub, các image Hub/tag/digest thực tế, video và log. URL dự kiến video: `https://raw.githubusercontent.com/Katie-217/MiniCloud/main/report/Demo_Local_521H0092.webm`; ghi chờ xác minh nếu chưa kiểm tra được. Không bịa link đã public.
+- Ghi rõ giới hạn monitoring, bản local/cloud, MSSV Nhi còn thiếu. Không ghi sẵn sàng cloud hoàn toàn khi script đang hardcode localhost.
 
 **Kiểm tra:** chạy `build_report.py`; mở PDF/DOCX/HTML, xác nhận đủ chương, ảnh có trong PDF và DOCX, không tràn/mất chữ. Chạy `check_profile_storage.py` sau khi PDF cuối đổi để upload documents và xác minh SHA256 file tải về khớp PDF hiện tại. Nếu Docker chưa chạy: ghi NOT_RUN bước upload, không tuyên bố E05/PDF mới đã đồng bộ. Việc upload MinIO chỉ đi `localhost:9000`, không phải AWS.
 
@@ -94,8 +96,8 @@ Các lỗi/hở hồ sơ quan sát trực tiếp:
 
 **Đầu ra:**
 
-- Video xem được, chú thích đúng **17 container/9 vai trò**, thể hiện đủ các nhóm server và E01–E10 qua UI hoặc kết quả lệnh thực tế; riêng SQL/DNS/network/persistence có thể quay trang minh chứng đã ghi đúng thời điểm.
-- Cảnh rõ: Portal/3 bài blog, 5 JSON và 3 SQL, realm/user/public client, form secure trả 200 đúng user rồi 401 khi thiếu token, MinIO avatar K/PDF, Prometheus UP, Grafana 3 panel có dữ liệu, log HTTP thật, RR hai backend, E-learning hai vai trò/khóa học.
+- Video xem được, chú thích đúng số container thực tế và **9 vai trò**, thể hiện đủ E01–E10; SQL/DNS/network/persistence có thể quay minh chứng có thời điểm. Không ép số 17 của baseline sau khi gỡ EL.
+- Cảnh rõ: Portal nền trắng/sidebar, Blog riêng/3 bài, API Console terminal, 5 JSON/ít nhất 3 SQL, realm/user/client, secure 200 đúng user rồi anonymous 401, MinIO avatar K/PDF, Prometheus UP, Grafana 3 panel, log HTTP, RR hai backend. Không quay E-learning trong luồng mới; automation phải chọn đúng view trước thao tác.
 - Không quay ô mật khẩu đang có giá trị hiển thị, JWT, cookie/session hoặc trang lỗi/spinner làm minh chứng đạt. Đợi dữ liệu thật tải xong; không dùng sleep để giả lập thành công.
 - Sửa script giữ **R17 CHO_KIEM_THU** cho toàn đề, ghi local video đã có và cloud pending. Không hardcode độ dài/số cảnh theo video cũ; sinh chapter JSON theo cảnh thực sự quay.
 - Kiểm tra playback bằng trình duyệt: metadata hợp lệ, duration > 0, phát được tới giữa/cuối; trả dung lượng, duration và số cảnh thực tế. Kiểm tra link public sau khi leader tích hợp/push, không tự push main.
@@ -112,7 +114,7 @@ Các lỗi/hở hồ sơ quan sát trực tiếp:
 
 - Bảng output đã đạt / cần fix / chưa làm / phụ thuộc người dùng, có branch/commit/lệnh test/minh chứng. Dẫn đến PDF/DOCX/video/Hub và hướng dẫn kiểm tra từng giao diện.
 - Hướng dẫn từ môi trường mới dùng image release không cần Flutter; phân biệt chạy lần đầu `run_release.py --verify` và mở lại `run_release.py`. Chỉ ghi “đã thử trên máy sạch” nếu có test riêng thật.
-- Bảng URL/tài khoản chỉ ghi tên khóa `.env`, không mật khẩu. Hai vai trò E-learning dùng browser profile tách biệt; 401/403 mong đợi không bị báo nhầm là lỗi.
+- Bảng URL/tài khoản chỉ ghi tên khóa `.env`, không mật khẩu; bỏ E-learning khỏi hướng dẫn chạy cuối sau G11. 401/403 mong đợi không bị báo nhầm là lỗi.
 - Chốt số trang PDF, duration/số cảnh video theo bản mới nếu có ghi; không giữ số liệu 18 trang/75 giây/14 cảnh cũ khi chưa xác minh.
 - Ghi rõ chưa triển khai EC2, chưa có public IP và hồ sơ cloud; MSSV Nhi bổ sung sau. Không tự tạo deadline/điểm chấm bảo đảm.
 

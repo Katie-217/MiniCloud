@@ -6,6 +6,8 @@ Ngày giao: **09/11/2026**. Trạng thái **CHUA_LAM**, chưa phải biên bản
 
 > **Bổ sung phạm vi chốt:** [Portal và Blog là hai frontend riêng](../PHAM_VI_CHOT_PORTAL_VA_BLOG.md). G05 làm website Blog có menu/CSS và trang bài riêng; không thêm danh sách bài vào Portal. G10 phụ trách việc tách source Portal và Blog Home/cấu hình route; G05 không tự đổi gateway/root Portal hoặc xóa E-learning.
 
+> **Thiết kế mới nhất:** Blog nền trắng/chữ đen, card ảnh trái/chữ phải, menu riêng; không sidebar hạ tầng. Người dùng chọn source trong repo → build image → Nginx host, Portal có card mở ứng dụng. Không làm upload ZIP/CMS. Xem [đặc tả mới](../DAC_TA_PORTAL_TRANG_API_CONSOLE.md).
+
 ## Phạm vi
 
 Đọc `AGENTS.md`, [kế hoạch UI](../KE_HOACH_NANG_CAP_GIAO_DIEN.md), PDF trang 12–13 và 21, `scripts/check_blog.py`, `scripts/check_web.py` và source Blog.

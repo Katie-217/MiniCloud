@@ -4,6 +4,8 @@ Chốt theo yêu cầu người dùng **09/11/2026**. Tài liệu này ưu tiên
 
 **Quyết định:** hai giao diện riêng, cùng hệ thống MiniCloud. **Portal là nơi quan sát/kiểm thử hạ tầng. Blog là ứng dụng Web được triển khai để demo.** E-learning không thuộc phạm vi bài demo chính và không tiếp tục phát triển cho bài này.
 
+**Giao diện chốt:** nền trắng/chữ đen, sidebar trái, Tổng quan đầu tiên và API Console thứ hai; response hiển thị trong terminal sáng. Theo [đặc tả UI mới](DAC_TA_PORTAL_TRANG_API_CONSOLE.md), thay các mô tả cũ nền tối hoặc kết quả chính dạng card/bảng. Blog đóng gói từ repo, chạy bằng Nginx; không làm upload ZIP trên Portal.
+
 > **Chỉ dẫn thực hiện mới nhất:** ưu tiên [G11 gỡ bỏ E-learning](handoff/G11_REMOVE_ELEARNING.md) ngay, trước các task UI khác. Gỡ active source/config/caller, giữ lịch sử trong Git và dữ liệu volume. Không xóa lịch sử nhưng cũng không giữ app trong luồng chạy mặc định. Dashboard kiểu panel chỉ là giao diện quan sát MiniCloud, không thay thế việc triển khai/kiểm thử 9 vai trò và E01–E10.
 
 Đây là đặc tả đầu ra, chưa phải xác nhận các chức năng mới đã được lập trình/kiểm thử. Giữ nguyên minh chứng lịch sử và dữ liệu hiện có đến khi task triển khai liên quan được nghiệm thu.
@@ -26,8 +28,8 @@ Tách website không bắt buộc thêm repo hoặc container. Phương án ít 
 | Mục | Chức năng chốt | Nguồn dữ liệu / cách kiểm chứng | Liên hệ yêu cầu |
 |---|---|---|---|
 | **1. Tổng quan** | Card CPU%, RAM%, network receive B/s, Web requests/s; biểu đồ lịch sử, thời điểm cập nhật, làm mới và trạng thái thiếu/lỗi | Backend đọc Prometheus; số thực, không giá trị random/hardcode. CPU/RAM của Linux VM Docker Desktop, network của namespace exporter | Trình diễn monitoring, hỗ trợ R08/R09/E07/E08; vẫn giữ Grafana theo đề |
-| **2. Dịch vụ & kiến trúc** | Card 9 vai trò, service name, chức năng, cổng host/internal, cloud-net và volume; cấu hình chỉ đọc, link đến công cụ liên quan | Metadata ghi rõ “theo cấu hình”; chỉ hiển thị UP/Healthy khi có probe thật, nêu thời điểm/nguồn đo | R01/R11/R12; không suy 17 container khỏe từ 2 target |
-| **3. API & Database demo** | Chọn endpoint cố định, gửi request, thấy HTTP status/ms/thời điểm; kết quả dạng card/bảng, JSON mở rộng. Xem 5 sinh viên JSON, ít nhất 3 sinh viên SQL, ghi chú và schema yêu cầu | `/api/hello`, `/api/student`, `/student/`, `/api/students-db`, `/api/notes`. Ghi rõ schema hiển thị lấy từ cấu hình hay truy vấn thực tế; không tự gọi một bản mô tả là kết quả SHOW COLUMNS mới chạy | R03/R04/E02/E03/E09 |
+| **2. API Console & Database** | Chọn endpoint cố định, nhập tham số được hỗ trợ, Execute; terminal nền sáng hiển thị response/status/ms/thời điểm; bảng là chế độ phụ. Xem 5 sinh viên JSON, ít nhất 3 sinh viên SQL, notes | `/api/hello`, `/api/student`, `/student/`, `/api/students-db`, `/api/notes`; các GET này hiện không có tham số. Ghi rõ schema từ cấu hình hay truy vấn thực tế | R03/R04/E02/E03/E09 |
+| **3. Dịch vụ & kiến trúc** | Card tên/một câu nhiệm vụ/nút mở công cụ; chi tiết đọc-only service name/cổng/cloud-net/volume. MariaDB mở view SQL, Bind9 mở view DNS vì chưa có Web UI | Metadata ghi rõ “theo cấu hình”; chỉ UP/Healthy khi probe thật có thời điểm/nguồn đo | R01/R11/R12; không suy mọi container khỏe từ 2 target |
 | **4. Xác thực** | Chọn sv01/sv02, đăng nhập Keycloak, gọi secure API; hiển thị username và 200/401; mở Console quản trị khi cần | OIDC/Keycloak thật, `/api/secure`; password masked và xóa sau submit, không in/lưu JWT vào UI/log/localStorage | R05/E04 |
 | **5. Lưu trữ** | Card avatar public, thông tin bucket/object/PDF và nút mở MinIO Console để upload/download, kiểm tra quyền | MinIO, `profile-pics/avatar.jpg`, documents/PDF. Avatar 200 ẩn danh, PDF riêng tư 403 ẩn danh là đúng. Form upload trong Portal là cải tiến riêng, không bắt buộc để chấm E05 | R06/E05 |
 | **6. Mạng & DNS** | Hiển thị zone, 4 bản ghi, expected/actual và minh chứng dig có thời điểm/môi trường; kết quả network test | Bind9 và kết quả test thực tế. Bản đầu có thể xem minh chứng đã ghi; không gắn nhãn Live nếu chưa chạy probe mới. IP 10.10.10.x là bản ghi lab, khác IP Docker | R07/R11/E06 |
@@ -35,7 +37,7 @@ Tách website không bắt buộc thêm repo hoặc container. Phương án ít 
 | **8. Load Balancer** | Nút gửi request tuần tự; hiện backend trong header/body, lịch sử và số phản hồi mỗi replica trong phiên demo | Gateway Nginx Round Robin tới web-frontend-server1/2. Không poll nền làm nhiễu luân phiên; không gọi đây là migrate server | E10 |
 | **9. Ứng dụng demo** | Một card Blog và nút mở website độc lập; URL qua Web/Gateway, nguồn/source version nếu đã xác minh | Website Blog thật trên Web server; trạng thái HTTP chỉ hiện khi có kiểm tra tương ứng | R02/E01 và hỗ trợ demo gateway/LB |
 
-Các mục là nhóm chức năng, không bắt buộc xây 9 trang riêng; có thể dùng sidebar/tab nhưng nội dung và thao tác phải rõ. Cấu hình Docker trên Portal ở dạng thông tin chỉ đọc. Không triển khai giao diện nhập Compose rồi chạy/xóa container theo input người dùng.
+Các mục trên là nhóm chức năng; sidebar theo thứ tự trong đặc tả UI mới, chỉ hiện view đang chọn. Monitoring/logs dùng card ở Tổng quan/Dịch vụ; không cần một trang riêng chỉ chứa link. Cấu hình Docker trên Portal ở dạng thông tin chỉ đọc. Không triển khai giao diện nhập Compose rồi chạy/xóa container theo input người dùng.
 
 ## 3. Chức năng website Blog riêng
 
@@ -47,6 +49,8 @@ Các mục là nhóm chức năng, không bắt buộc xây 9 trang riêng; có 
 6. Dùng Blog làm Web để thử HTTP 200, assets/ảnh, proxy, Nginx metrics và luân phiên hai Web replica.
 
 E01 cho phép Blog tĩnh. Không bắt buộc CMS, CRUD bài viết, đăng nhập quản trị Blog hoặc database chứa bài viết. API metadata bài viết/tác giả có thể bổ sung riêng nếu muốn minh họa dữ liệu ứng dụng, nhưng không thay API 5 sinh viên và schema `studentdb.students` mà E02/E03 quy định.
+
+**Cách triển khai đã được người dùng chọn:** source Blog nằm trong repo → build image Web → Compose/Nginx host → G09 phát hành tag/digest Docker Hub đã kiểm tra. Portal mở Blog từ card ứng dụng; không làm upload ZIP hoặc tự deploy qua browser. Đây là Web hosting của bài, chưa thay cho yêu cầu EC2 sau duyệt local.
 
 ## 4. Phương án tách frontend mà giữ các đường dẫn đề
 
@@ -87,8 +91,8 @@ Web trực tiếp `:8080/` phải trả Home HTML HTTP 200; không thay bằng r
 | G05 Blog cards/học thuật | Gemini; `feat/personal-blog` cập nhật từ main | Danh sách/bài chi tiết Blog riêng, ảnh/CSS riêng, kiểm tra E01 |
 | **G10 Tách hai frontend** | Gemini; `feat/separate-portal-blog-sites` từ main đã tích hợp việc trước | Tách Portal source/asset và Blog Home; root proxy đúng Portal, direct Web Home/Blog và route cũ vẫn đạt; bỏ bài Blog/EL khỏi nội dung Portal |
 | G06 Metrics API | Gemini; `feat/portal-metrics-api` | `/api/dashboard` đọc Prometheus thật, lỗi/null/timeout có giới hạn |
-| G07 Dashboard | Gemini; `feat/portal-health-dashboard` | KPI/charts/service cards trên Portal riêng, không đưa bài Blog vào dashboard |
-| G08 API console | Gemini; `feat/api-console-interface` | API/SQL/Auth/RR trình bày dễ đọc, schema/response đúng, không lộ token |
+| G07 Dashboard | Gemini; `feat/portal-health-dashboard` | [Nền trắng/sidebar trái/KPI/card dịch vụ](handoff/G07_LIGHT_SIDEBAR.md); Tổng quan đầu, API Console thứ hai |
+| G08 API console | Gemini; `feat/api-console-interface` | [Operation/form/Execute/terminal](handoff/G08_API_CONSOLE.md); API/SQL/Auth/RR thật, không lộ token |
 | G09 Release UI | Codex; `chore/ui-release-images` | Regression và tag/digest mới đúng source, số service/volume/image ghi theo cấu hình thực tế |
 | G02/G03/G04 | Theo branch hồ sơ đã giao | Báo cáo/video/hướng dẫn phản ánh hai frontend và cấu hình cuối, không còn lấy E-learning làm luồng demo |
 | QA cuối, duyệt local, AWS | Codex → người dùng → cloud sau duyệt | Kiểm thử đủ output bắt buộc; local không thay cho R14/EC2 |
@@ -106,6 +110,7 @@ Các bài test/code E-learning được giữ trong Git history và các bằng 
 ## 8. Tiêu chí chấp nhận bản cuối
 
 - Portal và Blog có giao diện/asset/navigation riêng, mở từ hai địa chỉ mục tiêu; Portal chỉ chứa card mở Blog sang tab mới.
+- Nền trắng/chữ đen, sidebar trái, Tổng quan/API Console theo thứ tự đã chốt; không mô tả dài hoặc nhãn health giả. API Console hiển thị terminal response thật theo đặc tả mới.
 - Blog đáp ứng E01 và Web Home/Blog HTTP 200; gateway tiếp tục reverse proxy đúng các route; LB nhận diện cả hai replica.
 - Portal hiển thị dữ liệu thật, có loading/error/empty/timestamp, không có badge UP/Healthy suy từ số cấu hình.
 - E02/E03 vẫn dùng dữ liệu và schema sinh viên theo PDF; console không biến thành shell/SQL executor tùy ý.
